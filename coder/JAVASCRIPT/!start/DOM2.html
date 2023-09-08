@@ -1,0 +1,114 @@
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+
+<br>
+<span>Привет, мир!</span>
+<script>
+// alert( document.body ); 
+/*
+var elems = document.body.children;
+elems = [].slice.call(elems); // теперь elems ‐ массив
+elems.forEach(function(elem) {
+alert( elem.tagName ); // HEAD, текст, BODY
+});
+*/</script>
+
+
+
+
+<ul>
+  <li class="chapter">Глава I
+  <ul>
+  <li class="subchapter">Глава <span class="num">1.1</span>
+    <ul> <li class="subsubchapter">подглава <span class="subnum">1.1.1</span></li></ul>
+  </li>
+  <li class="subchapter">Глава <span class="num">1.2</span></li>
+  </ul>
+  </li>
+</ul>
+
+<script>
+/*var numberSpan = document.querySelector('.num');
+// ближайший элемент сверху подходящий под селектор li
+alert(numberSpan.closest('li').className) // subchapter
+// ближайший элемент сверху подходящий под селектор .chapter
+alert(numberSpan.closest('.chapter').tagName) // LI
+// ближайший элемент сверху, подходящий под селектор span
+// это сам numberSpan, так как поиск включает в себя сам элемент
+alert(numberSpan.closest('span') === numberSpan) // true
+*/
+
+
+
+var spis = document.getElementsByTagName('ul')[1].getElementsByTagName('li');
+for (var i=0; i< spis.length; i++) {
+  var spisI = spis[i].childNodes;
+  for (var j=0; j< spisI.length; j++) {
+	//   alert (spisI[j])
+	// if(spisI[j].childNodes.length){alert(spisI[j].childNodes.length)};  
+  }
+}
+
+</script>
+
+
+
+
+<style>
+/* 2018 */
+.alert {
+padding: 15px;
+border: 1px solid #d6e9c6;
+border-radius: 10px;
+color: #9c763d;
+background.color: #dff0d8;
+} 
+</style>
+
+<script>
+// ##appendChild  ##insertBefore   создание, вставка, клонирование элемента
+var div = document.createElement('div');
+div.className = "alert alert.success";
+div.innerHTML = "<strong>Ура!</strong> (клик) Вы прочитали это важное сообщение.";
+document.body.insertBefore(div, document.body.firstChild);
+// создать копию узла
+var div2 = div.cloneNode(true);
+// копию можно подправить
+div2.querySelector('strong').innerHTML = 'Супер!';
+// вставим её после текущего сообщения
+document.body.appendChild(div2);
+
+
+div.onclick = function  (){
+document.body.insertBefore(div2, document.body.firstChild);
+	document.body.appendChild(div);
+}
+div2.onclick = function  (){
+document.body.insertBefore(div, document.body.firstChild);
+	document.body.appendChild(div2);
+	
+}
+
+
+
+</script>
+
+
+<div id="elem"> </div>
+<script>
+var text = '<b>текст</b>';
+elem.appendChild(document.createTextNode(text));
+
+/*var text = '<b>текст</b>';
+elem.innerHTML = text;
+*/
+</script>
+
+
+
+
+</body>
+</html>

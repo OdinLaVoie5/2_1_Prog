@@ -1,0 +1,11 @@
+@import url('style3.css');
+td {
+	color: #00F;
+}
+
+
+ @media screen and (max-width: 600px) {
+td {
+	color: #0FF;
+}
+}

@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>nindja2</title>
+<script src="../jquery.js"></script>
+<script src='../OSC.js'></script>
+
+</head>
+
+<body>
+<ul id="results" style="position:relative"> </ul>
+
+<div id="parent">
+<div id="a">меня удаляют в "пример  расширения встроенного объекта".</div>
+<div id="b">меня тоже</div>
+</div>
+
+
+<script>
+
+//   ##конструктор и ##прототип 
+function Ninja(){}
+Ninja.prototype.swingSword = function(){ return true;
+};
+var ninjal = Ninja();    // Ninja как ф-ция (хоть и предназначена для конструктора) !!
+assert(ninjal, "Ninja как ф-ция прототипом не затронута");  //1///////////   !!
+var ninja2 = new Ninja();  // Ninja как конструктор
+assert(ninja2 && ninja2.swingSword && ninja2.swingSword(),"Объект создан, метод присоединён прототипом и действует." );    //2///////////
+
+
+
+
+//  приоритет конструктора перед прототипом
+// ... ##instanceof ...,  ##constructor
+function Ninja(){
+	this.swung = false;
+	this.swingSword = function(){ 		
+		return !this.swung;
+	};
+}
+Ninja.prototype.swingSword = function(){ 	
+	return this.swung;
+};
+
+var ninja = new Ninja();
+assert(ninja.swingSword(), "Я из конструктора");   //3////////////////
+assert(ninja instanceof Ninja, "ninja instanceof Ninja");  //4////////////////
+assert(ninja.constructor == Ninja, 'ninja.constructor == Ninja');   //5////////////////
+/*
+Ninja.prototype.swung = true;	
+alert ( ninja.swung);
+alert (ninja.constructor);
+alert (Ninja.prototype.constructor);
+*/
+
+
+
+
+// Получение нового экземпляра объекта по ссылке на конструктор
+function NinjaT() { }
+var ninjaT = new NinjaT();
+var ninja2T = new ninjaT.constructor();   // !!!  
+
+assert(ninja2T instanceof NinjaT, "я ниндзя");  //6////////////////
+assert(ninjaT == ninja2T, "но другой ниндзя!");  //7////////////////
+
+
+
+
+
+function PersonQ(){}
+PersonQ.prototype.dance = function(){};
+function NinjaQ(){}
+//k  NinjaQ.prototype = { dance: Person.prototype.dance };  // !!!  Прототип - это объект. можно и так определить его.    !!! (((он присоединяется к экземпляру как подкорка )))
+
+NinjaQ.prototype = new PersonQ ();  //  (определение Ninja как подкласса класса Person)
+//  !!  Не рекомендуется след способ: Ninja.prototype = Person.prototype; (нарушение иерархии?)
+var ninjaQ = new NinjaQ();
+
+assert(ninjaQ instanceof NinjaQ, "... NinjaQ прототип ninjaQ"); //8/////
+assert(ninjaQ instanceof PersonQ, "... PersonQ прототип ninjaQ");       //9/////////
+assert( ninjaQ instanceof Object, "... Object прототип ninjaQ");     //10////////  на верхушке эволюции объект Object.
+assert(typeof ninjaQ.dance == "function" , "... метод прото прототипа присоединён");  //11/////
+
+
+
+ 
+
+
+//  пример  расширения встроенного объекта (применялось, когда в JS не было forEach)
+/*
+if (!Array.prototype.forEach) {
+  Array.prototype.forEach = function(callback, context ) { 
+  	for (var i = 0; i < this.length; i++) {
+	callback.call(context || null, this[i], i, this);   //  context||null чтобы избежать undefined  !!
+	}
+  };
+}
+["a", "b", "c"].forEach(function(value, index, array) { 
+	assert(value, "Is in position " + index + " out of " + (array.length - 1));
+});
+*/
+
+
+
+
+
+//    пример  расширения встроенного объекта     ##DOM
+/*
+HTMLElement.prototype.remove = function() { 
+	if (this.parentNode) this.parentNode.removeChild(this);
+};
+var a = document.getElementById("a"); 
+a.parentNode.removeChild(a);          //  обычное удаление эл-та
+document.getElementById("b").remove();   //  удаление новым методом
+
+setTimeout(function () {   // my
+	assert(!document.getElementById("a"),"a удалено.");
+	assert(!document.getElementById("b"),"b удалено тоже .");}
+, 1500)
+*/
+
+
+
+
+
+
+
+// Подклассификация объектов собственных классов (возможны проблемы в некоторых браузах)
+/*
+function MyArray() {}
+MyArray.prototype = new Array();
+var mine = new MyArray();
+mine.push(1, 2, 3);
+
+assert(mine.length == 3,"(методы Array действуют в mine)");  
+assert(mine instanceof Array, "(mine дочернее для Array)");  
+*/
+
+//  варинт без потенц. проблем (без создания подкласса к Array  а присоединение методов Array в прототип  MyArray)
+function MyArray() {}
+MyArray.prototype.length = 0;
+(function() { var methods = ['push', 'pop','shift', 'unshift', 'slice', 'splice', 'join'];
+for (var i = 0; i < methods.length; i++) (function(name) { MyArray.prototype[name] = function() {
+return Array.prototype[name].apply(this, arguments);
+};
+}) (methods [i]);
+}) ();
+var mine = new MyArray();
+mine.push(1, 2, 3);
+
+assert(mine.length == 3, "методы действуют");          //12////////////
+assert(mine instanceof Array, "но Array не мой предок")         //13////////////
+
+
+
+
+
+
+//  Код, похожий на класс.   ??    Пример синтаксиса, осуществляющего наследование в стиле, похожем на классический объектно-ориентированный.
+//    частности-    Метод подклассификации? Инициализация подклассов? Сохранение суперметодов?
+
+(function() {
+  var initializing = false,
+  superPattern = /xyz/.test(function() { xyz; }) ? /\b_super\b/ : /.*/;  // Сериализация функции см onenote
+
+  Object.subClass = function(properties) {
+	var _super = this.prototype;
+	initializing = true;
+	var proto = new this();
+	initializing = false;
+  
+	for (var name in properties) {
+	  proto[name] = typeof properties[name] == "function" && typeof _super[name] == "function" && superPattern.test(properties[name]) ? 
+	  (function(name, fn) {
+		return function() {
+		  var tmp = this._super;
+		  this._super = _super[name];
+		  var ret = fn.apply(this, arguments); this._super = tmp;
+		  return ret;
+		};
+	  })(name, properties[name])
+	  :properties[name];     /////////////////////// ??? не знаю здесь ли ставить :
+	}
+  
+	function Class() {
+	  // все конструирование фактически выполняется в методе init()
+	  if (!initializing && this.init) this.init.apply(this, arguments);
+	}
+	Class.prototype = proto;
+	Class.constructor = Class;
+	Class.subClass = arguments.callee; return Class;
+  }; 
+}) ();
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

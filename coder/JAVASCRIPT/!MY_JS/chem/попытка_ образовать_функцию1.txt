@@ -1,0 +1,23 @@
+	var s=0;
+	document.getElementById(arrRez[i][11]).ondblclick = function illuminatDblClick(e) {
+		
+		
+		var arrRezSmall = [];
+		
+		
+		
+		var row = this;
+		while (row){
+			var ser = row.outerHTML; 
+			ser = ser.replace(/id=\"\w+\"/,"id='"+s+"'"); // id заменяем
+			ser = ser.replace(/class=\"\w+\"/,"class='"+s+"'"); // ??? class тоже заменяем
+			if (!flagColorRezSmall) ser = ser.replace(/\s*style=\s*\"background\-color:\s*\S*\s*\S*\s*\S*\;\s*\"/g,"");// результ по дабл клику без лишней расцветки  ??  !!!
+			arrRezSmall.unshift(ser);
+			if (this.id == fin) row.firstChild.style.backgroundColor = colorPreFin;
+			row = document.getElementById(row.className);
+			s++;
+		};
+		if (this.id == fin) document.getElementById(fin).firstChild.style.backgroundColor = colorFin;	// подсветка результата
+		document.getElementById("textsmall").innerHTML += arrRezSmall.join("")+ "<tr style='height:8px;'> &nbsp; </tr>"//  + "<br>"+ "<br>";
+///  неправильно отражается в браузе ???  пришлось ставить "<br>"
+	};

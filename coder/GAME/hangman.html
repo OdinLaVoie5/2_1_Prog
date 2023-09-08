@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Документ без названия</title>
+
+</head>
+
+<body>
+
+
+
+	<!--/////////////  GAME Hangman                 ##концепт   число попыток фиксировано !!!!! (др - число попыток пропорц длине слова !!!  анимация по несколько элементов, если число попыток небольшое.  ///////////////-->
+
+	<canvas id="canvas" width="300" height="300"></canvas>
+	<h1 id="start">Hangman! </h1> <small>Кликни</small>
+
+
+
+	<script>
+		var start = document.getElementById("start");
+		start.onclick = funGame;
+
+		// База слов.
+		var words = [
+			"экскаватор", "обезьяна", "чудеса", "рюкзак", "удача", "прогресс", "игрок", "длина", "вызов", "взрыв", "ответ", "добро", "игра"];
+
+		// canvas
+		var canvas = document.getElementById("canvas");
+		var ctx = canvas.getContext("2d");
+		var width = canvas.width;
+		var height = canvas.height;
+		ctx.strokeRect(0, 0, width, height);
+		var myRemaining = 11;
+		var answerArray = [];
+		var myShoot = [];
+
+		// массив человечка	      ??? СДЕЛАТЬ АНИМАЦИЮ
+		var areCan = [[[100, 70], [100, 120]], [[100, 80], [70, 100]], [[100, 80], [130, 100]], [[101, 118], [70, 150]], [[99, 118], [130, 150]], [[20, 180], [180, 180]], [[40, 20], [40, 180]], [[160, 20], [160, 180]], [[37, 20], [163, 20]], [[100, 20], [100, 50]]];
+
+
+		////////////           показ результата
+		function viewRight() {
+			ctx.font = "20px Courier";
+			ctx.fillStyle = "Black";
+			ctx.textAlign = "left";
+			ctx.textBaseline = "top";
+			ctx.clearRect(230, 44, 30, 20);
+			ctx.fillText(myRemaining, 230, 44);
+		};
+
+		function viewBot() {
+			ctx.font = "20px Courier";
+			ctx.fillStyle = "Black";
+			ctx.textAlign = "center";
+			ctx.textBaseline = "top";
+			ctx.fillText(answerArray.join(" "), width / 2, height - 40);
+		};
+		/////////////////////////////
+
+
+		function funGame() {
+			// начальная позиция   число попыток 11       ##проект   уменьшить? разные уровни?
+			myRemaining = 11;
+			answerArray = [];       // ??
+			// стирание прежней картинки
+			ctx.clearRect(0, 0, width, height);
+			ctx.lineWidth = 1;
+			ctx.strokeRect(0, 0, width, height);
+			// случайное слово
+			var word = words[Math.floor(Math.random() * words.length)];
+			// массив использованые буквы,  массив угадываемого слова.
+			myShoot = [];
+			for (var i = 0; i < word.length; i++) {
+				answerArray[i] = "_";
+			}
+			var remainingLetters = word.length;
+
+			// ЦИКЛ ИГРЫ
+			while (remainingLetters > 0) {
+				// показ прогресса игроку.
+				viewBot(); viewRight();
+				// ход игрока - ввод буквы.
+				var guess = prompt("Введите букву или нажмите Cancel для выхода.");
+				if (guess !== null) { guess = guess.trim().toLowerCase() }
+				///////// убрал лишние пробелы, перевёл букву в нижний регистр
+				if (guess === null) {
+					// выход по Cancel.    !!!         
+					ctx.clearRect(0, 0, width, height);
+					ctx.lineWidth = 1;
+					ctx.strokeRect(0, 0, width, height);
+					return;
+				} else if (guess.length !== 1) {
+					alert("Пожалуйста, введите одну букву.");
+					// ?? усовершенствовать отсев цифр и англ букв ...
+				} else if ("1234567890-=_+`~[]{};'\:|,./?><qwertyuiopasdfghjklzxcvbnm".indexOf(guess) >= 0) {
+					alert("Пожалуйста, введите букву!");
+				} else if (myShoot.join("").indexOf(guess) >= 0) {
+					alert("Уже было. Введите другую букву");
+				} else {
+					myShoot.push(guess);       // пополнение массива использованных букв.  	
+					if (word.indexOf(guess) < 0) {
+						myRemaining--;
+						// мимо - уменьшение числа попыток.
+
+
+
+						//////////////////////////////////////////////////////////////////
+
+						if (myRemaining === 10) {
+							ctx.lineWidth = 5;           // голова
+							ctx.beginPath();
+							ctx.arc(100, 60, 10, 0, Math.PI * 2, false);
+							ctx.stroke();
+						}
+						if (myRemaining < 10) {
+							// МЕСТО анимации ... ???
+							var i = 9 - myRemaining;
+							ctx.moveTo(areCan[i][0][0], areCan[i][0][1]);
+							ctx.lineTo(areCan[i][1][0], areCan[i][1][1]);
+							ctx.stroke();
+						};
+						//////////////////////////////////////////////////////////////////
+
+
+
+						if (myRemaining === 0) {    // число попыток 0 
+							viewRight();
+							var con = confirm("Попыток больше нет.  Сначала?");
+							if (con) {
+								ctx.clearRect(0, 0, width, height);
+								return funGame();
+							} else {
+								ctx.clearRect(0, 0, width, height);
+								ctx.lineWidth = 1;
+								ctx.strokeRect(0, 0, width, height);
+								return;
+							}
+							// ?? сделать выход
+						}
+					} else {
+						//  попадание. 
+						for (var j = 0; j < word.length; j++) {
+							if (word[j] === guess) {
+								answerArray[j] = guess;
+								remainingLetters--;    // уменьшение числа неразгаданных букв.
+							}
+						}
+					}
+				}
+				// КОНЕЦ ЦИКЛА ИГРЫ
+			}
+			if (remainingLetters == 0) {
+				viewBot();
+				var con = confirm("ПОБЕДА!  Загаданное слово - " + word.toUpperCase() + " Повторить?");
+				if (con) {
+					ctx.clearRect(0, 0, width, height);
+					return funGame();
+				} else {
+					ctx.clearRect(0, 0, width, height);
+					ctx.lineWidth = 1;
+					ctx.strokeRect(0, 0, width, height);
+					return;
+				}
+				// ?? сделать выход
+			}
+		}
+
+
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

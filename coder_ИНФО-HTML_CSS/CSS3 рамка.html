@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0" />  
+  <title>CSS3 рамка</title>  
+  <!--[if lt IE 9]>
+	<script src="http://html5book.ru/wp-content/themes/papercuts/js/html5.js"></script>
+	<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49017436-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<style type='text/css'></style>
+<!-- This site is optimized with the Yoast SEO plugin v3.0.7 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="CSS3 рамка предоставляет расширенный набор возможностей форматирования границ элементов с помощью свойств, позволяющих закруглить углы элемента, и использовать изображения для оформления границ элемента"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="http://html5book.ru/css3-borders/" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="CSS3 рамка" />
+<meta property="og:description" content="CSS3 рамка предоставляет расширенный набор возможностей форматирования границ элементов с помощью свойств, позволяющих закруглить углы элемента, и использовать изображения для оформления границ элемента" />
+<meta property="og:url" content="http://html5book.ru/css3-borders/" />
+<meta property="og:site_name" content="html5book" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/css3-border.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/10/border-radius1.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/10/border-radius.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/10/border_r_21.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/border_round.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/border_1.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/border_2.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/10/border_image_primer.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/border_slice.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/border_image_width.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/border-image-slice.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/strech_repeat_round.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/outset.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/outline_offset.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/linear_border.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/linear_border2.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/linear_border3.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/linear_border4.png" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента" href="http://html5book.ru/feed/" />
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента комментариев" href="http://html5book.ru/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента комментариев к &laquo;2.16. CSS3 рамка&raquo;" href="http://html5book.ru/css3-borders/feed/" />
+<link rel='stylesheet' id='crayon-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-idle-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/themes/idle/idle.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-consolas-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/fonts/consolas.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='papercuts-style-css'  href='http://html5book.ru/wp-content/themes/papercuts/style.css?ver=4.4.2' type='text/css' media='all' />
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/html5book.ru\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u041d\u0430\u0436\u043c\u0438\u0442\u0435 %s \u0434\u043b\u044f \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f, %s \u0434\u043b\u044f \u0432\u0441\u0442\u0430\u0432\u043a\u0438","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<link rel='https://api.w.org/' href='http://html5book.ru/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://html5book.ru/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://html5book.ru/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='http://html5book.ru/?p=2649' />
+<link rel="alternate" type="application/json+oembed" href="http://html5book.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5book.ru%2Fcss3-borders%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://html5book.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5book.ru%2Fcss3-borders%2F&#038;format=xml" />
+ 
+
+   
+    <style type="text/css">   
+      #panel_load {
+  		 background:#fff;
+  		 border:1px solid #ccc;
+  		 opacity:1;
+  		 padding:10px;
+  		 position:fixed;
+  		 right: 30px;
+  		 top: 40px;
+  		 color:#555;
+  		 font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
+  		 font-size:12px;
+  		 text-align:center;
+  		 z-index:100;
+  		 
+  		 box-shadow:5px 5px 5px -6px #000;
+  		 -moz-box-shadow:5px 5px 5px -6px #000;
+  		 -webkit-box-shadow:5px 5px 5px -6px #000;
+  		 -khtml-box-shadow:5px 5px 5px -6px #000;
+  		 -o-box-shadow:5px 5px 5px -6px #000;
+      }  
+     </style>  
+    
+    <!--[if IE]>
+<style type="text/css" media="screen">
+#wrapper-header, #wrapper-footer, #top-navigation-wrapper, .header-image-wrapper, .entry-content, .home-list-posts, .post-entry, .sidebar-widget, .sidebar-headline, .footer-signature, #nav-below, #papercuts-post-nav, .search .navigation {
+        behavior: url("http://html5book.ru/wp-content/themes/papercuts/css/pie/PIE.php");
+        zoom: 1;
+}
+</style>
+<![endif]-->
+  
+</head>
+<body class="page page-id-2649 page-template-default" id="wrapper">
+
+<header>  
+ <div class="header-content">
+<a href="http://html5book.ru/">
+<img class="header-logo" src="http://html5book.ru/wp-content/themes/papercuts/images/logo.png"></a>
+  <div class="menu-box-wrapper">
+<div class="menu-top-container"><ul id="nav" class="menu"><li id="menu-item-3827" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3827"><a href="http://html5book.ru/html-html5/">HTML</a></li>
+<li id="menu-item-3871" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3871"><a href="http://html5book.ru/css-css3/">CSS</a></li>
+<li id="menu-item-3975" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3975"><a href="http://html5book.ru/javascript-jquery/">JavaScript</a></li>
+<li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884"><a href="http://html5book.ru/web-topography/">Веб-типографика</a></li>
+<li id="menu-item-5292" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5292"><a href="http://html5book.ru/category/uroki/">Уроки</a></li>
+<li id="menu-item-5951" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5951"><a href="http://html5book.ru/css-spravochnik/">CSS справочник</a></li>
+<li id="menu-item-7807" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7807"><a href="http://html5book.ru/seo/">SEO</a></li>
+</ul></div>  </div>
+    </div>
+</header> <!-- end of wrapper-header -->
+
+<div id="container">
+  <div id="main-content">
+  <div id="content">    <article class="entry-content"> 
+      <div class="entry-content-inner">
+		        <h1 class="content-headline">2.16. CSS3 рамка</h1>
+		<!--Ad Injection:top-->
+<div style='margin-bottom:30px;padding-top:0px;padding-bottom:30px;'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ADAPT -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4906567094890032"
+     data-ad-slot="5808407100"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><p><img src="http://html5book.ru/wp-content/uploads/2014/11/css3-border.png" alt="css3-border" width="250" height="250" class="alignleft size-full wp-image-4117" srcset="http://html5book.ru/wp-content/uploads/2014/11/css3-border-150x150.png 150w, http://html5book.ru/wp-content/uploads/2014/11/css3-border.png 250w" sizes="(max-width: 250px) 100vw, 250px" /><strong>CSS3 рамка</strong> предоставляет расширенный набор возможностей форматирования границ элементов с помощью свойств, позволяющих <b>закруглить углы элемента</b>, а также использовать <b>изображения для оформления границ элемента</b>.</p>
+<h2 style="clear:both">Оформление границ элементов с помощью закруглений углов и рамок-изображений</h2>
+<ul class="contents">
+<li style="color:white; background:#5e4a3f;">Содержание:</li>
+<li><a href="#border-radius">1. Закругление границ углов: <kbd>border-radius</kbd></a></li>
+<li><a href="#border-image">2. Рамки-изображения: <kbd>border-image</kbd></a></li>
+<li><a href="#border-image-width">2.1. Ширина рамки-изображения: <kbd>border-image-width</kbd></a></li>
+<li><a href="#border-image-source">2.2. Ресурс рамки-изображения: <kbd>border-image-source</kbd></a></li>
+<li><a href="#border-image-slice">2.3. Элементы рамки-изображения: <kbd>border-image-slice</kbd></a></li>
+<li><a href="#border-image-repeat">2.4. Повтор рамки-изображения: <kbd>border-image-repeat</kbd></a></li>
+<li><a href="#border-image-outset">2.5. Смещение рамки-изображение: <kbd>border-image-outset</kbd></a></li>
+<li><a href="#outline-offset">3. Смещение внешней рамки: <kbd>outline-offset</kbd></a></li>
+<li><a href="#part9">4. Градиентная рамка</a></li>
+</ul>
+<h3 id="border-radius">1. Закругление границ углов</h3>
+<h4>Поддержка браузерами</h4>
+<blockquote><p>
+<b>IE:</b> 9.0<br />
+<b>Firefox:</b> 4.0<br />
+<b>Chrome:</b> 4.0<br />
+<b>Safari:</b> 5.0, 3.1 -webkit-<br />
+<b>Opera:</b> 10.5<br />
+<b>iOS Safari:</b> 7.1<br />
+<b>Opera Mini:</b> &#8212;<br />
+<b>Android Browser:</b> 4.1<br />
+<b>Chrome for Android:</b> 44</p></blockquote>
+<p><img src="http://html5book.ru/wp-content/uploads/2014/10/border-radius1.png" alt="border-radius" width="590" height="186" class="alignleft size-full wp-image-2672" srcset="http://html5book.ru/wp-content/uploads/2014/10/border-radius1-300x94.png 300w, http://html5book.ru/wp-content/uploads/2014/10/border-radius1.png 590w" sizes="(max-width: 590px) 100vw, 590px" /></p>
+<p style="clear:left">Свойство <kbd>border-radius</kbd> позволяет определить, каким образом закруглить границы углов. Кривая для каждого угла определяется с помощью одного или двух радиусов, определяющих его форму: <b>круга</b> или <b>эллипса</b>. Радиус распространяется на весь фон, даже если элемент не имеет границ, точное положение секущей определяется с помощью свойства <kbd>background-clip</kbd>. </p>
+<p>Закруглить углы можно как для всех углов элемента одновременно (с помощью <kbd>border-radius</kbd>), так и по отдельности, с помощью конструкций <kbd>border-top-left-radius, border-top-right-radius, border-bottom-right-radius, border-bottom-left-radius</kbd>. </p>
+<p>Если задать два значения для свойства <kbd>border-radius</kbd>, то первое значение закруглит <b>верхний левый</b> и <b>нижний правый угол</b>, а второе &#8212; для <b>верхний правый</b> и <b>нижний левый</b>. </p>
+<p>Значения, заданные через <kbd>/</kbd>, определяют <b>горизонтальные</b> и <b>вертикальные радиусы</b>.</p>
+<table class="t1">
+<tr>
+<th colspan="2">border-radius<br />
+<span style="font-size:12px">(border-top-left-radius, border-top-right-radius, border-bottom-right-radius, border-bottom-left-radius)</span></th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td>длина</td>
+<td>Позволяет закруглить углы блока с помощью значений единиц длины &#8212; <kbd>(px, em)</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>%</kbd></td>
+<td>Значения, позволяющие закруглить углы, задаются в процентах от длины и ширины сторон блока.</td>
+</tr>
+</table>
+<p>Варианты:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0493e63de2571649318" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {width: 100px; height: 100px; border: 5px solid;}
+.r1 {border-radius: 0 0 20px 20px;}
+.r2 {border-radius: 0 10px 20px;}
+.r3 {border-radius: 10px 20px;}
+.r4 {border-radius: 10px/20px;}
+.r5 {border-radius: 5px 10px 15px 30px/30px 15px 10px 5px;}
+.r6 {border-radius: 10px 20px 30px 40px/30px;}
+.r7 {border-radius: 50%;}
+.r8 {border-top: none; border-bottom: none; border-radius: 30px/90px;}
+.r9 {border-bottom-left-radius: 100px;}
+.r10 {border-radius: 0 100%;}
+.r11 {border-radius: 0 50% 50% 50%;}
+.r12 {border-top-left-radius: 100% 20px; border-bottom-right-radius: 100% 20px;}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-1">1</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-2">2</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-3">3</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-4">4</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-5">5</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-6">6</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-7">7</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-8">8</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-9">9</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-10">10</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-11">11</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-12">12</div><div class="crayon-num" data-line="crayon-56d0493e63de2571649318-13">13</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0493e63de2571649318-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">100px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">100px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-e ">border</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">5px</span><span class="crayon-h"> </span><span class="crayon-i ">solid</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-2"><span class="crayon-k ">.r1 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">20px</span><span class="crayon-h"> </span><span class="crayon-i ">20px</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-3"><span class="crayon-k ">.r2 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-h"> </span><span class="crayon-i ">20px</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-4"><span class="crayon-k ">.r3 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-h"> </span><span class="crayon-i ">20px</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-5"><span class="crayon-k ">.r4 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">10px/20px</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-6"><span class="crayon-k ">.r5 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">5px</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-h"> </span><span class="crayon-i ">15px</span><span class="crayon-h"> </span><span class="crayon-i ">30px/30px</span><span class="crayon-h"> </span><span class="crayon-i ">15px</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-h"> </span><span class="crayon-i ">5px</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-7"><span class="crayon-k ">.r6 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-h"> </span><span class="crayon-i ">20px</span><span class="crayon-h"> </span><span class="crayon-i ">30px</span><span class="crayon-h"> </span><span class="crayon-i ">40px/30px</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-8"><span class="crayon-k ">.r7 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">50%</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-9"><span class="crayon-k ">.r8 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-top</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">none</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-e ">border-bottom</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">none</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-e ">border-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">30px/90px</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-10"><span class="crayon-k ">.r9 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-bottom-left-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">100px</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-11"><span class="crayon-k ">.r10 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">100%</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-12"><span class="crayon-k ">.r11 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">50%</span><span class="crayon-h"> </span><span class="crayon-i ">50%</span><span class="crayon-h"> </span><span class="crayon-i ">50%</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63de2571649318-13"><span class="crayon-k ">.r12 </span><span class="crayon-sy">{</span><span class="crayon-e ">border-top-left-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">100%</span><span class="crayon-h"> </span><span class="crayon-i ">20px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-e ">border-bottom-right-radius</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">100%</span><span class="crayon-h"> </span><span class="crayon-i ">20px</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0022 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/10/border-radius.png" alt="border-radius" width="710" height="110" class="alignleft size-full wp-image-2613" srcset="http://html5book.ru/wp-content/uploads/2014/10/border-radius-300x46.png 300w, http://html5book.ru/wp-content/uploads/2014/10/border-radius.png 710w" sizes="(max-width: 710px) 100vw, 710px" /><br />
+<img src="http://html5book.ru/wp-content/uploads/2014/10/border_r_21.png" alt="border_r_2" width="715" height="110" class="alignleft size-full wp-image-2855" srcset="http://html5book.ru/wp-content/uploads/2014/10/border_r_21-300x46.png 300w, http://html5book.ru/wp-content/uploads/2014/10/border_r_21.png 715w" sizes="(max-width: 715px) 100vw, 715px" /></p>
+<figcaption>Рис. 1. Примеры различных вариантов закругления углов блока</figcaption>
+</figure>
+<h3 id="border-image">2. Рамки-изображения</h3>
+<h4>Поддержка браузерами</h4>
+<blockquote><p>
+<b>IE:</b> 11.0<br />
+<b>Firefox:</b> 15.0, 3.5 -moz-<br />
+<b>Chrome:</b> 16.0, 7.0 -webkit-<br />
+<b>Safari:</b> 6.0, 3.0 -webkit-<br />
+<b>Opera:</b> 15.0, 11.0 -o-<br />
+<b>iOS Safari:</b> 7.1<br />
+<b>Opera Mini:</b> 8 -o-<br />
+<b>Android Browser:</b> 4.4, 4.1 -webkit-<br />
+<b>Chrome for Android:</b> 42</p></blockquote>
+<p>Свойство <kbd>border-image</kbd> позволяет использовать изображение в качестве рамки элемента. Основное требование, предъявляемое к изображению &#8212; оно должно быть симметричным. Задается при помощи следующих значений: <kbd>{border-image: width source slice repeat outset;}</kbd>.</p>
+<table class="t1">
+<tr>
+<th colspan="2">border-image</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td>source slice width outset repeat</td>
+<td>Устанавливает рамку-изображение с помощью одного свойства, являющегося краткой записью свойств  <kbd>border-image-source</kbd>, <kbd>border-image-slice</kbd>, <kbd>border-image-width</kbd>, <kbd>border-image-outset</kbd> и <kbd>border-image-repeat</kbd>. Значения по умолчанию: <kbd>{border-image: 1 none 100% stretch 0;}</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>initial</kbd></td>
+<td>Устанавливает это свойство в значение по умолчанию.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение этого свойства от родительского элемента.</td>
+</tr>
+</table>
+<p><img src="http://html5book.ru/wp-content/uploads/2014/11/border_round.png" alt="border_round" width="90" height="90" class="alignleft size-full wp-image-2970">При помощи такого простого изображения можно получить вот такие рамки для элемента.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0493e63dec543007246" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+/*Пример 1:*/
+div {
+width: 260px; height: 100px; 
+border-image-width: 15px;
+border-image-source: url(http://html5book.ru/images/border_round.png);
+border-image-slice: 30;
+border-image-repeat: stretch;
+}
+/*Пример 2:*/
+div {
+width: 260px; height: 100px; 
+border-image-width: 15px;
+border-image-source: url(http://html5book.ru/images/border_round.png);
+border-image-slice: 30;
+border-image-repeat: round;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-1">1</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-2">2</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-3">3</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-4">4</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-5">5</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-6">6</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-7">7</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-8">8</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-9">9</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-10">10</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-11">11</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-12">12</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-13">13</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-14">14</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-15">15</div><div class="crayon-num" data-line="crayon-56d0493e63dec543007246-16">16</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0493e63dec543007246-1"><span class="crayon-c">/*Пример 1:*/</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-2"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-3"><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">260px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">100px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-4"><span class="crayon-e ">border-image-width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">15px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-5"><span class="crayon-e ">border-image-source</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-e ">http</span><span class="crayon-sy">:</span><span class="crayon-i ">//html5book.ru/images/border_round.png</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-6"><span class="crayon-e ">border-image-slice</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">30</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-7"><span class="crayon-e ">border-image-repeat</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">stretch</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-8"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-9"><span class="crayon-c">/*Пример 2:*/</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-10"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-11"><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">260px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">100px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-12"><span class="crayon-e ">border-image-width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">15px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-13"><span class="crayon-e ">border-image-source</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-e ">http</span><span class="crayon-sy">:</span><span class="crayon-i ">//html5book.ru/images/border_round.png</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-14"><span class="crayon-e ">border-image-slice</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">30</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-15"><span class="crayon-e ">border-image-repeat</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">round</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63dec543007246-16"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0011 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/border_1.png" alt="border_1" width="286" height="110" class="alignleft size-full wp-image-2974"><img src="http://html5book.ru/wp-content/uploads/2014/11/border_2.png" alt="border_2" width="286" height="110" class="alignleft size-full wp-image-2975"><br />
+<img src="http://html5book.ru/wp-content/uploads/2014/10/border_image_primer.png" alt="border_image_primer" width="115" height="150" class="alignleft size-full wp-image-2876"><img src="http://html5book.ru/wp-content/uploads/2014/11/border_slice.png" alt="border_slice" width="115" height="150" class="alignleft size-full wp-image-2904"></p>
+<figcaption style="clear:both">Рис. 2. Пример оформления границ блока с помощью изображения</figcaption>
+</figure>
+<p>Cрезы A &#8212; B &#8212; C &#8212; D образуют углы рамки, а часть рисунка, расположенная между ними, заполняет оставшееся пространство рамки в соответствии с заданным значением свойства <kbd>border-image-repeat</kbd>.<br />
+Размер угловой части (в данном примере это число <kbd>30</kbd>), задается с помощью значения свойства <kbd>border-image-slice</kbd>.</p>
+<h4 id="border-image-width">2.1. Ширина рамки-изображения</h4>
+<p>Свойство <kbd>border-image-width</kbd> определяет ширину изображения для границы элемента. Если ширина не задана, то по умолчанию она равна <kbd>1</kbd>.</p>
+<table class="t1">
+<tr>
+<th colspan="2">border-image-width</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td>длина</td>
+<td>Устанавливает ширину рамки в единицах длины &#8212; <kbd>px / em</kbd>. Можно задавать от одной до четырех значений одновременно. Если задано одно значение, то ширина всех сторон рамки одинакова, два значения задают ширину верхней-нижней и правой-левой и т.д.</td>
+</tr>
+<tr>
+<td>число</td>
+<td>Числовое значение, на которое умножается значение <kbd>border-width</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>%</kbd></td>
+<td>Ширина рамки элемента вычисляется относительно размера изображения. Горизонтальные относительно ширины, вертикальные — относительно высоты.</td>
+</tr>
+<tr>
+<td><kbd>auto</kbd></td>
+<td>Соответствует значению <kbd>border-image-slice</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>initial</kbd></td>
+<td>Устанавливает это свойство в значение по умолчанию.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение этого свойства от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0493e63df1139468764" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+border-image-source: url(border.png);
+border-image-width: 30px;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0493e63df1139468764-1">1</div><div class="crayon-num" data-line="crayon-56d0493e63df1139468764-2">2</div><div class="crayon-num" data-line="crayon-56d0493e63df1139468764-3">3</div><div class="crayon-num" data-line="crayon-56d0493e63df1139468764-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0493e63df1139468764-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63df1139468764-2"><span class="crayon-e ">border-image-source</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-i ">border.png</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63df1139468764-3"><span class="crayon-e ">border-image-width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">30px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63df1139468764-4"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p> </p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/border_image_width.png" alt="border_image_width" width="680" height="108" class="alignleft size-full wp-image-3004"></p>
+<figcaption>Рис. 3. Пример задания ширины рамки-изображения с помощью различных типов значений</figcaption>
+</figure>
+<h4 id="border-image-source">2.2. Ресурс рамки-изображения</h4>
+<p>Свойство <kbd>border-image-source</kbd> задает путь к изображению, которое будет использоваться для границы блока.</p>
+<table class="t1">
+<tr>
+<th colspan="2">border-image-source</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>none</kbd></td>
+<td>Отсутствие изображения для рамки. Значение по умолчанию.</td>
+</tr>
+<tr>
+<td><kbd>url(url)</kbd></td>
+<td>Относительный или абсолютный путь к изображению.</td>
+</tr>
+<tr>
+<td><kbd>initial</kbd></td>
+<td>Устанавливает это свойство в значение по умолчанию.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение этого свойства от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0493e63df5931299506" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+border-image-source: url(border.png);
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0493e63df5931299506-1">1</div><div class="crayon-num" data-line="crayon-56d0493e63df5931299506-2">2</div><div class="crayon-num" data-line="crayon-56d0493e63df5931299506-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0493e63df5931299506-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63df5931299506-2"><span class="crayon-e ">border-image-source</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-i ">border.png</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63df5931299506-3"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<h4 id="border-image-slice">2.3. Элементы рамки-изображения</h4>
+<p>Свойство <kbd>border-image-slice</kbd> определяет размер частей изображения, используемых для оформления границ элемента и делит изображение на девять частей: четыре угла, четыре края между углами и центральную часть.</p>
+<table class="t1">
+<tr>
+<th colspan="2">border-image-slice</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td>число</td>
+<td>Размер частей рамки можно задавать с помощь одного, двух, трех или четырех значений.<br />
+Одно значение устанавливает границы одинакового размера для каждой стороны элемента.<br />
+Два значения: первое определяет размер верхней и нижней границы, второе — правой и левой.<br />
+Три значения: первое определяет размер верхней границы, второе — правой и левой, а третье — нижней границы.<br />
+Четыре значения: определяет размеры верхней, правой, нижней и левой границы.<br />
+Числовое значение представляет количество <kbd>px</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>%</kbd></td>
+<td>Размеры границ рассчитываются относительно размера изображения. Горизонтальные относительно ширины, вертикальные — относительно высоты.</td>
+</tr>
+<tr>
+<td><kbd>fill</kbd></td>
+<td>Значение указывается вместе с числом или процентным значением. Если оно задано, изображение не обрезается внутренним краем рамки, а заполняет также область внутри рамки.</td>
+</tr>
+<tr>
+<td><kbd>initial</kbd></td>
+<td>Устанавливает это свойство в значение по умолчанию.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение этого свойства от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0493e63df9921536798" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+border-image-slice: 50 20;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0493e63df9921536798-1">1</div><div class="crayon-num" data-line="crayon-56d0493e63df9921536798-2">2</div><div class="crayon-num" data-line="crayon-56d0493e63df9921536798-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0493e63df9921536798-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63df9921536798-2"><span class="crayon-e ">border-image-slice</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">50</span><span class="crayon-h"> </span><span class="crayon-i ">20</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63df9921536798-3"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/border-image-slice.png" alt="border-image-slice" width="660" height="269" class="alignleft size-full wp-image-7571" srcset="http://html5book.ru/wp-content/uploads/2014/11/border-image-slice-300x122.png 300w, http://html5book.ru/wp-content/uploads/2014/11/border-image-slice.png 660w" sizes="(max-width: 660px) 100vw, 660px" /></p>
+<figcaption>Рис. 4. Пример задания срезов рамки-изображения</figcaption>
+</figure>
+<h4 id="border-image-repeat">2.4. Повтор рамки-изображения</h4>
+<p>Свойство <kbd>border-image-repeat</kbd> управляет заполнением фоновым изображением пространства между углами рамки. Можно задавать как с помощью одного значения, так  и с помощью пары значений.</p>
+<table class="t1">
+<tr>
+<th colspan="2">border-image-repeat</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>stretch</kbd></td>
+<td>Растягивает изображение на все пространство. Значение по умолчанию.</td>
+</tr>
+<tr>
+<td><kbd>repeat</kbd></td>
+<td>Повторяет заполняющую часть изображения, при этом видны места стыков с угловой частью, и если длины образца не хватает, то он растягивается.</td>
+</tr>
+<tr>
+<td><kbd>round</kbd></td>
+<td>Наиболее точно заполняет промежуток между углами рамки, дублируя заполняющую часть изображения, при этом может образовать стыки по середине стороны рамки.</td>
+</tr>
+<tr>
+<td><kbd>space</kbd></td>
+<td>Действует аналогично с <kbd>repeat</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>initial</kbd></td>
+<td>Устанавливает это свойство в значение по умолчанию.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение этого свойства от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0493e63dfc618894308" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+border-image-source: url(border.png);
+border-image-repeat: repeat;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0493e63dfc618894308-1">1</div><div class="crayon-num" data-line="crayon-56d0493e63dfc618894308-2">2</div><div class="crayon-num" data-line="crayon-56d0493e63dfc618894308-3">3</div><div class="crayon-num" data-line="crayon-56d0493e63dfc618894308-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0493e63dfc618894308-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63dfc618894308-2"><span class="crayon-e ">border-image-source</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-i ">border.png</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63dfc618894308-3"><span class="crayon-e ">border-image-repeat</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">repeat</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63dfc618894308-4"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/strech_repeat_round.png" alt="strech_repeat_round" width="680" height="110" class="alignleft size-full wp-image-3008" srcset="http://html5book.ru/wp-content/uploads/2014/11/strech_repeat_round-300x48.png 300w, http://html5book.ru/wp-content/uploads/2014/11/strech_repeat_round.png 680w" sizes="(max-width: 680px) 100vw, 680px" /></p>
+<figcaption>Рис. 5. Пример повтора центральной части рамки-изображения с помощью различных типов значений</figcaption>
+</figure>
+<h4 id="border-image-outset">2.5. Смещение рамки-изображение</h4>
+<p>Свойство <kbd>border-image-outset</kbd> позволяет переместить изображение-рамку за пределы границ элемента на указанную длину. Может задаваться как с помощью одного, так и с помощью четырех значений.</p>
+<table class="t1">
+<tr>
+<th colspan="2">border-image-outset</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td>длина</td>
+<td>Отступ рамки-изображения задается с помощью любого положительного числа, указанного в <kbd>px</kbd> или <kbd>em</kbd>.</td>
+</tr>
+<tr>
+<td>число</td>
+<td>Числовое значение, на которое умножается <kbd>border-width</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>initial</kbd></td>
+<td>Устанавливает это свойство в значение по умолчанию.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение этого свойства от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0493e63e00210954098" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+border-image-source: url(border.png);
+border-image-outset: 10px;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0493e63e00210954098-1">1</div><div class="crayon-num" data-line="crayon-56d0493e63e00210954098-2">2</div><div class="crayon-num" data-line="crayon-56d0493e63e00210954098-3">3</div><div class="crayon-num" data-line="crayon-56d0493e63e00210954098-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0493e63e00210954098-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63e00210954098-2"><span class="crayon-e ">border-image-source</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-i ">border.png</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e00210954098-3"><span class="crayon-e ">border-image-outset</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e00210954098-4"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/outset.png" alt="outset" width="680" height="171" class="alignleft size-full wp-image-3010" srcset="http://html5book.ru/wp-content/uploads/2014/11/outset-300x75.png 300w, http://html5book.ru/wp-content/uploads/2014/11/outset.png 680w" sizes="(max-width: 680px) 100vw, 680px" /></p>
+<figcaption>Рис. 6. Пример смещения рамки-изображения с помощью различных типов значений</figcaption>
+</figure>
+<h3 id="outline-offset">3. Смещение внешней рамки</h3>
+<p>Свойство <kbd>outline-offset</kbd> задает расстояние между границей элемента <kbd>border</kbd> и внешней границей, созданной с помощью свойства <kbd>outline</kbd>.</p>
+<table class="t1">
+<tr>
+<th colspan="2">outline-offset</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td>длина</td>
+<td>Задаёт расстояние с помощью единиц длины &#8212; <kbd>px / em</kbd>. Отрицательное значение отображает рамку внутри элемента, положительное — снаружи элемента.</td>
+</tr>
+<tr>
+<td><kbd>initial</kbd></td>
+<td>Устанавливает это свойство в значение по умолчанию.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение этого свойства от родительского элемента.</td>
+</tr>
+</table>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0493e63e03556577535" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+/*Рисунок 1:*/
+img {
+border: 1px solid pink; 
+outline: 1px dashed grey;
+outline-offset: 3px;
+}
+/*Рисунок 2:*/
+img {
+border-width: 1px 10px;
+border-style: solid;
+border-color: pink; 
+outline: 1px dashed grey;
+outline-offset: 3px;
+}
+/*Рисунок 3:*/
+img {
+border: 3px inset pink; 
+outline: 1px dashed grey;
+outline-offset: 1px;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-1">1</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-2">2</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-3">3</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-4">4</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-5">5</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-6">6</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-7">7</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-8">8</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-9">9</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-10">10</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-11">11</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-12">12</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-13">13</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-14">14</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-15">15</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-16">16</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-17">17</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-18">18</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-19">19</div><div class="crayon-num" data-line="crayon-56d0493e63e03556577535-20">20</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0493e63e03556577535-1"><span class="crayon-c">/*Рисунок 1:*/</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-2"><span class="crayon-k ">img </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-3"><span class="crayon-e ">border</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">1px</span><span class="crayon-h"> </span><span class="crayon-i ">solid</span><span class="crayon-h"> </span><span class="crayon-i ">pink</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-4"><span class="crayon-e ">outline</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">1px</span><span class="crayon-h"> </span><span class="crayon-i ">dashed</span><span class="crayon-h"> </span><span class="crayon-i ">grey</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-5"><span class="crayon-e ">outline-offset</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-6"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-7"><span class="crayon-c">/*Рисунок 2:*/</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-8"><span class="crayon-k ">img </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-9"><span class="crayon-e ">border-width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">1px</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-10"><span class="crayon-e ">border-style</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">solid</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-11"><span class="crayon-e ">border-color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">pink</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-12"><span class="crayon-e ">outline</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">1px</span><span class="crayon-h"> </span><span class="crayon-i ">dashed</span><span class="crayon-h"> </span><span class="crayon-i ">grey</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-13"><span class="crayon-e ">outline-offset</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-14"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-15"><span class="crayon-c">/*Рисунок 3:*/</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-16"><span class="crayon-k ">img </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-17"><span class="crayon-e ">border</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3px</span><span class="crayon-h"> </span><span class="crayon-i ">inset</span><span class="crayon-h"> </span><span class="crayon-i ">pink</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-18"><span class="crayon-e ">outline</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">1px</span><span class="crayon-h"> </span><span class="crayon-i ">dashed</span><span class="crayon-h"> </span><span class="crayon-i ">grey</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-19"><span class="crayon-e ">outline-offset</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">1px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e03556577535-20"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0012 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/outline_offset.png" alt="outline_offset" width="680" height="191" class="alignleft size-full wp-image-3023" srcset="http://html5book.ru/wp-content/uploads/2014/11/outline_offset-300x84.png 300w, http://html5book.ru/wp-content/uploads/2014/11/outline_offset.png 680w" sizes="(max-width: 680px) 100vw, 680px" /></p>
+<figcaption>Рис. 7. Пример оформления изображения внешней рамкой</figcaption>
+</figure>
+<h3 id="part9">4. Градиентная рамка</h3>
+<p>В качестве <kbd>border-image</kbd> может выступать не только изображение, но и градиентная заливка.</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0493e63e06291137441" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+/*Рисунок 1:*/
+img {
+border-width: 40px;
+border-image: repeating-linear-gradient(45deg, #c1b59b, #c1b59b 10px, white 10px, white 20px) 40;
+}
+/*Рисунок 2:*/
+img {
+border-width:40px;
+border-image:linear-gradient(to left, #f8ab8d, #ae7863 25%, #c1b59b 25%, #746d5d 50%, #e1d663 50%, #87803b 75%, #d1ead4 75%, #7d8c7f 100%) 40;
+}
+/*Рисунок 3:*/
+img {
+border-width:40px;
+border-image:linear-gradient(135deg, #90d7e9 0%, #9eadcc 20%, #ba95be 80%, #7aa4ce 100%) 40;
+}
+/*Рисунок 4:*/
+img {
+border-width: 40px;
+border-image: repeating-radial-gradient(#c1b59b 10%, white 20%) 20;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-1">1</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-2">2</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-3">3</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-4">4</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-5">5</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-6">6</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-7">7</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-8">8</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-9">9</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-10">10</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-11">11</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-12">12</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-13">13</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-14">14</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-15">15</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-16">16</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-17">17</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-18">18</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-19">19</div><div class="crayon-num" data-line="crayon-56d0493e63e06291137441-20">20</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0493e63e06291137441-1"><span class="crayon-c">/*Рисунок 1:*/</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-2"><span class="crayon-k ">img </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-3"><span class="crayon-e ">border-width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">40px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-4"><span class="crayon-e ">border-image</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">repeating-linear-gradient</span><span class="crayon-sy">(</span><span class="crayon-i ">45deg,</span><span class="crayon-h"> </span><span class="crayon-i ">#c1b59b,</span><span class="crayon-h"> </span><span class="crayon-i ">#c1b59b</span><span class="crayon-h"> </span><span class="crayon-i ">10px,</span><span class="crayon-h"> </span><span class="crayon-i ">white</span><span class="crayon-h"> </span><span class="crayon-i ">10px,</span><span class="crayon-h"> </span><span class="crayon-i ">white</span><span class="crayon-h"> </span><span class="crayon-i ">20px</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i ">40</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-5"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-6"><span class="crayon-c">/*Рисунок 2:*/</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-7"><span class="crayon-k ">img </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-8"><span class="crayon-e ">border-width</span><span class="crayon-sy">:</span><span class="crayon-i ">40px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-9"><span class="crayon-e ">border-image</span><span class="crayon-sy">:</span><span class="crayon-i ">linear-gradient</span><span class="crayon-sy">(</span><span class="crayon-i ">to</span><span class="crayon-h"> </span><span class="crayon-i ">left,</span><span class="crayon-h"> </span><span class="crayon-i ">#f8ab8d,</span><span class="crayon-h"> </span><span class="crayon-i ">#ae7863</span><span class="crayon-h"> </span><span class="crayon-i ">25%,</span><span class="crayon-h"> </span><span class="crayon-i ">#c1b59b</span><span class="crayon-h"> </span><span class="crayon-i ">25%,</span><span class="crayon-h"> </span><span class="crayon-i ">#746d5d</span><span class="crayon-h"> </span><span class="crayon-i ">50%,</span><span class="crayon-h"> </span><span class="crayon-i ">#e1d663</span><span class="crayon-h"> </span><span class="crayon-i ">50%,</span><span class="crayon-h"> </span><span class="crayon-i ">#87803b</span><span class="crayon-h"> </span><span class="crayon-i ">75%,</span><span class="crayon-h"> </span><span class="crayon-i ">#d1ead4</span><span class="crayon-h"> </span><span class="crayon-i ">75%,</span><span class="crayon-h"> </span><span class="crayon-i ">#7d8c7f</span><span class="crayon-h"> </span><span class="crayon-i ">100%</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i ">40</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-10"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-11"><span class="crayon-c">/*Рисунок 3:*/</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-12"><span class="crayon-k ">img </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-13"><span class="crayon-e ">border-width</span><span class="crayon-sy">:</span><span class="crayon-i ">40px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-14"><span class="crayon-e ">border-image</span><span class="crayon-sy">:</span><span class="crayon-i ">linear-gradient</span><span class="crayon-sy">(</span><span class="crayon-i ">135deg,</span><span class="crayon-h"> </span><span class="crayon-i ">#90d7e9</span><span class="crayon-h"> </span><span class="crayon-i ">0%,</span><span class="crayon-h"> </span><span class="crayon-i ">#9eadcc</span><span class="crayon-h"> </span><span class="crayon-i ">20%,</span><span class="crayon-h"> </span><span class="crayon-i ">#ba95be</span><span class="crayon-h"> </span><span class="crayon-i ">80%,</span><span class="crayon-h"> </span><span class="crayon-i ">#7aa4ce</span><span class="crayon-h"> </span><span class="crayon-i ">100%</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i ">40</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-15"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-16"><span class="crayon-c">/*Рисунок 4:*/</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-17"><span class="crayon-k ">img </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-18"><span class="crayon-e ">border-width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">40px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-19"><span class="crayon-e ">border-image</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">repeating-radial-gradient</span><span class="crayon-sy">(</span><span class="crayon-i ">#c1b59b</span><span class="crayon-h"> </span><span class="crayon-i ">10%,</span><span class="crayon-h"> </span><span class="crayon-i ">white</span><span class="crayon-h"> </span><span class="crayon-i ">20%</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-i ">20</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0493e63e06291137441-20"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0018 seconds] -->
+<p></p>
+<p><img src="http://html5book.ru/wp-content/uploads/2014/11/linear_border.png" alt="linear_border" width="308" height="284" class="alignleft size-full wp-image-3012"><img src="http://html5book.ru/wp-content/uploads/2014/11/linear_border2.png" alt="linear_border2" width="308" height="284" class="alignleft size-full wp-image-3013"><img src="http://html5book.ru/wp-content/uploads/2014/11/linear_border3.png" alt="linear_border3" width="308" height="284" class="alignleft size-full wp-image-3014"><img src="http://html5book.ru/wp-content/uploads/2014/11/linear_border4.png" alt="linear_border4" width="308" height="284" class="alignleft size-full wp-image-3015"></p>
+<ul>
+<li>
+<h4>Читайте также:</h4>
+</li>
+<li><a href="http://html5book.ru/css-border/" target="_blank" class="site">CSS рамки</a></li>
+<li><a href="http://html5book.ru/css3-gradient/" target="_blank" class="site">CSS3 градиенты</a></li>
+<li><a href="http://html5book.ru/krasivye-gradienty/" target="_blank" class="site">Красивые градиенты</a></li>
+</ul>
+<!--Ad Injection:bottom-->
+<div style='clear:both;margin-top:30px;padding-top:30px;padding-bottom:0px;'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ADAPT -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4906567094890032"
+     data-ad-slot="5808407100"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<div id="disqus_thread">
+            <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-105">
+        <div id="dsq-comment-header-105" class="dsq-comment-header">
+            <cite id="dsq-cite-105">
+                <span id="dsq-author-user-105">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-105" class="dsq-comment-body">
+            <div id="dsq-comment-message-105" class="dsq-comment-message"><p>Всё таки что такое border-image-slice не совсем понятно&#8230;</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-107">
+        <div id="dsq-comment-header-107" class="dsq-comment-header">
+            <cite id="dsq-cite-107">
+http://html5book.ru                <span id="dsq-author-user-107">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-107" class="dsq-comment-body">
+            <div id="dsq-comment-message-107" class="dsq-comment-message"><p>Добавила новый рисунок для наглядности. Как делится картинка с помощью срезов, смотрите Рис. 2.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-3" id="dsq-comment-108">
+        <div id="dsq-comment-header-108" class="dsq-comment-header">
+            <cite id="dsq-cite-108">
+                <span id="dsq-author-user-108">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-108" class="dsq-comment-body">
+            <div id="dsq-comment-message-108" class="dsq-comment-message"><p>Да с рисунком два всё давно ясно, вот они 9 частей, всё понятно&#8230; Но вот КАКИМ ОБРАЗОМ задаётся этот размер &#8212; совершенно не ясно. Что означает значение 40? 40 пикселей? 40 пикселей у нас ширина, которая задана другим свойством. Более того, когда играешься этими размерами (slice) боковые рамки иногда чудным образом исчезают&#8230; В общем объясните, пожалуйста, подробно, принцип работы, если можно&#8230;</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-4" id="dsq-comment-109">
+        <div id="dsq-comment-header-109" class="dsq-comment-header">
+            <cite id="dsq-cite-109">
+http://html5book.ru                <span id="dsq-author-user-109">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-109" class="dsq-comment-body">
+            <div id="dsq-comment-message-109" class="dsq-comment-message"><p>Числовое значение вычисляется в px. В случае border-image-slice: 40; из каждой вершины рисунка &#171;вырезается&#187; квадрат размером 40х40 px, каждый из которых помещается в соответствующие вершины блока. В примере показано, что размер изображения равен размеру блока, а толщина рамки блока равна всем размерам вырезанного квадрата. В таком случае искажения не будет. Если толщина рамки меньше или больше стороны квадрата, то рисунок будет сжиматься/растягиваться. Если для среза заданы два числа, первое отвечает за высоту, второе за ширину.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-5" id="dsq-comment-110">
+        <div id="dsq-comment-header-110" class="dsq-comment-header">
+            <cite id="dsq-cite-110">
+                <span id="dsq-author-user-110">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-110" class="dsq-comment-body">
+            <div id="dsq-comment-message-110" class="dsq-comment-message"><p>Елена, а можете дать прямую ссылку на на border.png, квадрат со снежинками размером 200px, который Вы добавили в пример? Попробую с ним поиграться&#8230; Спасибо!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt depth-5" id="dsq-comment-111">
+        <div id="dsq-comment-header-111" class="dsq-comment-header">
+            <cite id="dsq-cite-111">
+http://html5book.ru                <span id="dsq-author-user-111">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-111" class="dsq-comment-body">
+            <div id="dsq-comment-message-111" class="dsq-comment-message"><p><a href="http://html5book.ru/wp-content/uploads/2015/10/border-new.png" rel="nofollow">http://html5book.ru/wp-content/uploads/2015/10/border-new.png</a> &#8212; это рисунок. Живой пример использования рамки-изображения <a href="http://html5book.ru/examples/demo-styling-images-3.html" rel="nofollow">http://html5book.ru/examples/demo-styling-images-3.html</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even depth-5" id="dsq-comment-112">
+        <div id="dsq-comment-header-112" class="dsq-comment-header">
+            <cite id="dsq-cite-112">
+                <span id="dsq-author-user-112">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-112" class="dsq-comment-body">
+            <div id="dsq-comment-message-112" class="dsq-comment-message"><p>Спасибо Вам большое! Поиграюсь в песочнице&#8230; А пример красивый! <img src="http://html5book.ru/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt depth-5" id="dsq-comment-113">
+        <div id="dsq-comment-header-113" class="dsq-comment-header">
+            <cite id="dsq-cite-113">
+http://html5book.ru                <span id="dsq-author-user-113">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-113" class="dsq-comment-body">
+            <div id="dsq-comment-message-113" class="dsq-comment-message"><p>Пожалуйста! На мой взгляд в этом примере оптимальное применение этому свойству))</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even depth-5" id="dsq-comment-119">
+        <div id="dsq-comment-header-119" class="dsq-comment-header">
+            <cite id="dsq-cite-119">
+                <span id="dsq-author-user-119">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-119" class="dsq-comment-body">
+            <div id="dsq-comment-message-119" class="dsq-comment-message"><p>Учту <img src="http://html5book.ru/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt depth-5" id="dsq-comment-120">
+        <div id="dsq-comment-header-120" class="dsq-comment-header">
+            <cite id="dsq-cite-120">
+                <span id="dsq-author-user-120">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-120" class="dsq-comment-body">
+            <div id="dsq-comment-message-120" class="dsq-comment-message"><p>8я идея в Вашем примере по ссылке довольно оригинальна <img src="http://html5book.ru/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even depth-5" id="dsq-comment-121">
+        <div id="dsq-comment-header-121" class="dsq-comment-header">
+            <cite id="dsq-cite-121">
+http://html5book.ru                <span id="dsq-author-user-121">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-121" class="dsq-comment-body">
+            <div id="dsq-comment-message-121" class="dsq-comment-message"><p>Согласна) Псевдоэлементы на пару с генерируемым контентом &#8212; крутая штука. Разметки минимум, зато какие результаты!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt depth-5" id="dsq-comment-123">
+        <div id="dsq-comment-header-123" class="dsq-comment-header">
+            <cite id="dsq-cite-123">
+                <span id="dsq-author-user-123">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-123" class="dsq-comment-body">
+            <div id="dsq-comment-message-123" class="dsq-comment-message"><p>Да, и идея красивая и реализация интересная! Не сразу заметил, что псевдоэлементы немного отличаются по цвету&#8230; Вообще было бы здорово, создать такой скрипт, который анализировал как-то содержимое рисунка, и предлагал установить цвет рамок&#8230; Конечно у скрипта глаз нет, и такая возможность хороша, только если можно потом всё поменять в ручном режиме, но для заливки большого количества фотографий он мог бы сгодится&#8230;<br />
+ А если б Вам нужно было туда добавить третью рамку? По какому пути Вы бы пошли? (вопрос на засыпку и если над ним нужно ломать голову, то можете не отвечать <img src="http://html5book.ru/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /> )</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even depth-5" id="dsq-comment-125">
+        <div id="dsq-comment-header-125" class="dsq-comment-header">
+            <cite id="dsq-cite-125">
+http://html5book.ru                <span id="dsq-author-user-125">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-125" class="dsq-comment-body">
+            <div id="dsq-comment-message-125" class="dsq-comment-message"><p>Вместо скрипта можно использовать цветовые сочетания colourlovers.com, я там тоже коллекционирую цветовые палитры)))</p>
+<p>Три и более рамок возможны при другой разметке, например, взять элементы списка. </p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt depth-5" id="dsq-comment-137">
+        <div id="dsq-comment-header-137" class="dsq-comment-header">
+            <cite id="dsq-cite-137">
+                <span id="dsq-author-user-137">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-137" class="dsq-comment-body">
+            <div id="dsq-comment-message-137" class="dsq-comment-message"><p>Для рамки одного элемента делаешь список, и только в одном пункте рисунок, а остальные &#8212; для оформления?</p>
+<p>Цветовые палитры, пожалуй, хороши для выбора рамки индивидуально для каждого рисунка, а я говорю, когда автомат делает что-то приемлемое ДО вмешательства человека <img src="http://html5book.ru/wp-includes/images/smilies/simple-smile.png" alt=":-)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p>Кстати сочетания цветов, неплохо ещё смотреть тут:</p>
+<p><a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://design-seeds.com/"  rel="nofollow">http://design-seeds.com/</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even depth-5" id="dsq-comment-139">
+        <div id="dsq-comment-header-139" class="dsq-comment-header">
+            <cite id="dsq-cite-139">
+http://html5book.ru                <span id="dsq-author-user-139">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-139" class="dsq-comment-body">
+            <div id="dsq-comment-message-139" class="dsq-comment-message"><p>Да, в последнем элементе списка рисунок, остальные как подложка. </p>
+<p>Сервис design-seeds.com в копилку, спасибо. От себя добавлю colorcombos.com, там по URL можно получить палитру цветов.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt depth-5" id="dsq-comment-141">
+        <div id="dsq-comment-header-141" class="dsq-comment-header">
+            <cite id="dsq-cite-141">
+                <span id="dsq-author-user-141">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-141" class="dsq-comment-body">
+            <div id="dsq-comment-message-141" class="dsq-comment-message"><p>Да, со всем этим нужно будет подразобраться, когда буду рисование осваивать, и всякие программы вроде Фотошопа или Gimp&#8230; Хочется, но всё в своё время, пока нужно вёрстку освоить, а потом уже как программирование, так и графику&#8230; Интересно и то, и то!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-122">
+        <div id="dsq-comment-header-122" class="dsq-comment-header">
+            <cite id="dsq-cite-122">
+http://html5book.ru                <span id="dsq-author-user-122">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-122" class="dsq-comment-body">
+            <div id="dsq-comment-message-122" class="dsq-comment-message"><p>Василий, все верно, изображение делится на 9 частей, но не все части используются. В качестве исходного изображения может выступать как рамка на прозрачном фоне, так и сплошной рисунок.</p>
+<p>Размер угловых частей задается свойством border-image-slice. Если толщина рамки равна стороне вырезаемого квадрата, то уголки рамки-изображения элемента не деформируются. В противном случае они или сужаются или растягиваются.</p>
+<p>Средняя часть не участвует в формировании рамки-изображения, для png-рамки ее может не быть вообще.</p>
+<p>Промежутки между углами в элементе заполняются оставшимися между угловыми частями картинки с помощью свойства border-image-repeat. </p>
+<p>border-image-width управляет шириной рамки-изображения. </p>
+<p>Когда вы используете краткую запись свойства border-image, border-image-repeat принимает значение stretch и заполняющие части будут растягиваться-сужаться.</p>
+<p>За основу всегда берется вырезаемый квадрат (или прямоугольник), им заполняются углы. Левый вырезанный квадрат заполнит левый угол элемента, правый &#8212; правый и т.д.</p>
+<p>1) Если border-image-slice=border-image-width, уголки заполнятся как есть, 1:1. Если при этом border-image-repeat=stretch, оставшиеся части картинки растянутся по вертикали и горизонтали для соответствующих сторон элемента. Если border-image-repeat=repeat, стороны заполнятся вырезанными частями без деформации, по принципу кирпичиков, обрезаясь или надстраиваясь.</p>
+<p>&#8212; Если border-image-slice &gt;border-image-width, уголки заполнятся вырезанными квадратиками в уменьшенном масштабе.</p>
+<p>&#8212; Если border-image-slice&lt;border-image-width, уголки заполнятся вырезанными квадратиками в увеличенном масштабе.</p>
+<p>Надеюсь, так будет понятнее))</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-124">
+        <div id="dsq-comment-header-124" class="dsq-comment-header">
+            <cite id="dsq-cite-124">
+                <span id="dsq-author-user-124">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-124" class="dsq-comment-body">
+            <div id="dsq-comment-message-124" class="dsq-comment-message"><p>Елена, Вы знаете, более-менее стало ясно, как оно работает, по крайней мере, в первом приближении! Большое спасибо, что потратили на меня столько времени и за подробные объяснения! <img src="http://html5book.ru/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-3" id="dsq-comment-126">
+        <div id="dsq-comment-header-126" class="dsq-comment-header">
+            <cite id="dsq-cite-126">
+http://html5book.ru                <span id="dsq-author-user-126">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-126" class="dsq-comment-body">
+            <div id="dsq-comment-message-126" class="dsq-comment-message"><p>Пожалуйста! Я очень рада)))</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt depth-2" id="dsq-comment-143">
+        <div id="dsq-comment-header-143" class="dsq-comment-header">
+            <cite id="dsq-cite-143">
+                <span id="dsq-author-user-143">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-143" class="dsq-comment-body">
+            <div id="dsq-comment-message-143" class="dsq-comment-message"><p>Вот ещё вариант с радиальным градиентом в песочнице:</p>
+<p><a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://jsfiddle.net/Launder/jeauxeu8/"  rel="nofollow">http://jsfiddle.net/Launder/jeauxeu8/</a></p>
+<p>нужно просто понимать что узор с градиентом используется как рисунок, по сути, отличий нет.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-3" id="dsq-comment-144">
+        <div id="dsq-comment-header-144" class="dsq-comment-header">
+            <cite id="dsq-cite-144">
+http://html5book.ru                <span id="dsq-author-user-144">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-144" class="dsq-comment-body">
+            <div id="dsq-comment-message-144" class="dsq-comment-message"><p>Спасибо, пример хороший, приятно видеть ваш интерес к веб-технологиям) Подход у вас правильный, ведь чтобы разобраться, как работает то или иное свойство, нужно с ним экспериментировать. </p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-128">
+        <div id="dsq-comment-header-128" class="dsq-comment-header">
+            <cite id="dsq-cite-128">
+http://html5book.ru                <span id="dsq-author-user-128">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-128" class="dsq-comment-body">
+            <div id="dsq-comment-message-128" class="dsq-comment-message"><p>В этом случае вы уходите от начального условия &#8212; картинка делится на 9 частей, иначе нет смысла.  </p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-135">
+        <div id="dsq-comment-header-135" class="dsq-comment-header">
+            <cite id="dsq-cite-135">
+                <span id="dsq-author-user-135">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-135" class="dsq-comment-body">
+            <div id="dsq-comment-message-135" class="dsq-comment-message"><p>Ну по-моему понимание куда исчезают грани при определённых значениях border-image-slice полезно &#8212; дабы не впадать в ступор <img src="http://html5book.ru/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-129">
+        <div id="dsq-comment-header-129" class="dsq-comment-header">
+            <cite id="dsq-cite-129">
+http://html5book.ru                <span id="dsq-author-user-129">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-129" class="dsq-comment-body">
+            <div id="dsq-comment-message-129" class="dsq-comment-message"><p>А я Елена, а не Наталья 😉</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-134">
+        <div id="dsq-comment-header-134" class="dsq-comment-header">
+            <cite id="dsq-cite-134">
+                <span id="dsq-author-user-134">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-134" class="dsq-comment-body">
+            <div id="dsq-comment-message-134" class="dsq-comment-message"><p>Ой, простите! Вот ведь бестолочь!))</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-3" id="dsq-comment-138">
+        <div id="dsq-comment-header-138" class="dsq-comment-header">
+            <cite id="dsq-cite-138">
+http://html5book.ru                <span id="dsq-author-user-138">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-138" class="dsq-comment-body">
+            <div id="dsq-comment-message-138" class="dsq-comment-message"><p>Прощаю, с кем не бывает)))</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-190">
+        <div id="dsq-comment-header-190" class="dsq-comment-header">
+            <cite id="dsq-cite-190">
+                <span id="dsq-author-user-190">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-190" class="dsq-comment-body">
+            <div id="dsq-comment-message-190" class="dsq-comment-message"><p>Кстати, а можно ли, добавить border-image только для одной стороны?</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-191">
+        <div id="dsq-comment-header-191" class="dsq-comment-header">
+            <cite id="dsq-cite-191">
+http://html5book.ru                <span id="dsq-author-user-191">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-191" class="dsq-comment-body">
+            <div id="dsq-comment-message-191" class="dsq-comment-message"><p>Можно, для этого нужно задать, например, border-image-width: 15px 0 0 0; В этом варианте рамка будет только сверху.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-228">
+        <div id="dsq-comment-header-228" class="dsq-comment-header">
+            <cite id="dsq-cite-228">
+                <span id="dsq-author-user-228">VovanPopov</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-228" class="dsq-comment-body">
+            <div id="dsq-comment-message-228" class="dsq-comment-message"><p>А как же значения &#171;initial&#187; и &#171;inherit&#187; у border-image-slice, border-image-width и т.д.? Или я что-то путаю?</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-229">
+        <div id="dsq-comment-header-229" class="dsq-comment-header">
+            <cite id="dsq-cite-229">
+http://html5book.ru                <span id="dsq-author-user-229">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-229" class="dsq-comment-body">
+            <div id="dsq-comment-message-229" class="dsq-comment-message"><p>Вы не путаете. Спасибо что заметили,  добавила в статью.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+var disqus_url = 'http://html5book.ru/css3-borders/';
+var disqus_identifier = '2649 http://html5book.ru/?page_id=2649';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'html5book';
+var disqus_title = "2.16. CSS3 рамка";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=2649';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+      </div>
+    </article>
+  </div> <!-- end of content -->
+<aside id="sidebar">
+  <div class="searchform-wrapper">
+ <script>
+  (function() {
+    var cx = '008774849217505016839:j25nz2oka_a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search></div><div id="nav_menu-2" class="sidebar-widget widget_nav_menu"><div class="menu-left-container"><ul id="menu-left" class="menu"><li id="menu-item-1860" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1860"><a href="http://html5book.ru/html-html5/">HTML</a>
+<ul class="sub-menu">
+	<li id="menu-item-2804" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2804"><a href="http://html5book.ru/osnovy-html/">1.1. Основы HTML</a></li>
+	<li id="menu-item-1859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1859"><a href="http://html5book.ru/html-tags/">1.2. HTML теги</a></li>
+	<li id="menu-item-1841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1841"><a href="http://html5book.ru/html-attributes/">1.3. HTML атрибуты</a></li>
+	<li id="menu-item-1847" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1847"><a href="http://html5book.ru/html-text/">1.4. HTML текст</a></li>
+	<li id="menu-item-1845" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1845"><a href="http://html5book.ru/hyperlinks-in-html/">1.5. HTML ссылки</a></li>
+	<li id="menu-item-1843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1843"><a href="http://html5book.ru/images-in-html/">1.6. HTML изображения</a></li>
+	<li id="menu-item-1846" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1846"><a href="http://html5book.ru/html-table/">1.7. HTML таблицы</a></li>
+	<li id="menu-item-1844" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1844"><a href="http://html5book.ru/html-lists/">1.8. HTML списки</a></li>
+	<li id="menu-item-1858" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1858"><a href="http://html5book.ru/specsimvoly-html/">1.9. Спецсимволы HTML</a></li>
+	<li id="menu-item-1856" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-1856"><a href="http://html5book.ru/poleznye-servisy-html/">1.10. HTML генераторы</a></li>
+</ul>
+</li>
+<li id="menu-item-1862" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1862"><a href="http://html5book.ru/html-html5/">HTML5</a>
+<ul class="sub-menu">
+	<li id="menu-item-2838" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2838"><a href="http://html5book.ru/html5-semantic-elements/">1.11. HTML5 семантические элементы</a></li>
+	<li id="menu-item-1848" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1848"><a href="http://html5book.ru/html5-audio/">1.12. HTML5 аудио</a></li>
+	<li id="menu-item-1849" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1849"><a href="http://html5book.ru/html5-video/">1.13. HTML5 видео</a></li>
+	<li id="menu-item-2011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2011"><a href="http://html5book.ru/neobyazatelnye-tegi-html5/">1.14. Необязательные теги разметки HTML5</a></li>
+	<li id="menu-item-5395" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5395"><a href="http://html5book.ru/html5-forms/">1.15. HTML5 формы</a></li>
+</ul>
+</li>
+<li id="menu-item-1861" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1861"><a href="http://html5book.ru/css-css3/">CSS</a>
+<ul class="sub-menu">
+	<li id="menu-item-3695" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-3695"><a href="http://html5book.ru/osnovy-css/">2.1. Основы CSS</a></li>
+	<li id="menu-item-3276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3276"><a href="http://html5book.ru/block-inline-elements/">2.2. Блочные и строчные элементы</a></li>
+	<li id="menu-item-3168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3168"><a href="http://html5book.ru/css-position/">2.3. CSS позиционирование</a></li>
+	<li id="menu-item-1837" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1837"><a href="http://html5book.ru/css-text/">2.4. CSS текст</a>
+	<ul class="sub-menu">
+		<li id="menu-item-6931" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-6931"><a href="http://html5book.ru/css-text/css-text-2/">CSS текст (часть 2)</a></li>
+		<li id="menu-item-6932" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-6932"><a href="http://html5book.ru/css-text/css-text-3/">CSS текст (часть 3)</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1840"><a href="http://html5book.ru/css-shrifty/">2.5. CSS шрифты</a></li>
+	<li id="menu-item-1855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1855"><a href="http://html5book.ru/styling-hyperlinks/">2.6. CSS ссылки</a></li>
+	<li id="menu-item-1836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1836"><a href="http://html5book.ru/css3-tables/">2.7. CSS таблицы</a></li>
+	<li id="menu-item-1835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1835"><a href="http://html5book.ru/css-spiski/">2.8. CSS списки</a></li>
+	<li id="menu-item-2603" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2603"><a href="http://html5book.ru/css-background/">2.9. CSS фон</a></li>
+	<li id="menu-item-2665" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2665"><a href="http://html5book.ru/css-border/">2.10. CSS рамка</a></li>
+	<li id="menu-item-3752" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3752"><a href="http://html5book.ru/css-content/">2.11. CSS content</a></li>
+	<li id="menu-item-1853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1853"><a href="http://html5book.ru/generatory-css/">2.12. CSS генераторы</a></li>
+	<li id="menu-item-1842" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-1842"><a href="http://html5book.ru/css-colors/">2.13. CSS цвета</a></li>
+</ul>
+</li>
+<li id="menu-item-2534" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-2534"><a href="http://html5book.ru/css-css3/">CSS3</a>
+<ul class="sub-menu">
+	<li id="menu-item-2950" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2950"><a href="http://html5book.ru/css3-text/">2.14. CSS3 текст</a></li>
+	<li id="menu-item-2548" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2548"><a href="http://html5book.ru/css3-gradient/">2.15. CSS3 градиент</a></li>
+	<li id="menu-item-3032" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2649 current_page_item menu-item-3032"><a href="http://html5book.ru/css3-borders/">2.16. CSS3 рамка</a></li>
+	<li id="menu-item-3076" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3076"><a href="http://html5book.ru/css3-shadows/">2.17. CSS3 тень</a></li>
+	<li id="menu-item-3723" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3723"><a href="http://html5book.ru/css3-transition/">2.18. CSS3 переходы</a></li>
+	<li id="menu-item-3748" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3748"><a href="http://html5book.ru/css3-transform/">2.19. CSS3 трансформации</a></li>
+	<li id="menu-item-3914" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3914"><a href="http://html5book.ru/css3-animation/">2.20. CSS3 анимация</a></li>
+	<li id="menu-item-5880" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5880"><a href="http://html5book.ru/css3-flexbox/">2.21. CSS3 flexbox</a></li>
+	<li id="menu-item-5989" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5989"><a href="http://html5book.ru/css3-columns/">2.22. CSS3 columns</a></li>
+	<li id="menu-item-6186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6186"><a href="http://html5book.ru/3d-transform/">2.23. CSS3 3D трансформации</a></li>
+	<li id="menu-item-6237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6237"><a href="http://html5book.ru/css3-mediazaprosy/">2.24. CSS3 медиа запросы</a></li>
+	<li id="menu-item-8072" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-8072"><a href="http://html5book.ru/css3-filtry/">2.25. CSS3 фильтры</a></li>
+</ul>
+</li>
+<li id="menu-item-5592" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5592"><a href="http://html5book.ru/javascript-jquery/">JavaScript</a>
+<ul class="sub-menu">
+	<li id="menu-item-5593" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-5593"><a href="http://html5book.ru/osnovy-javascript/">3.1. Основы JavaScript</a></li>
+	<li id="menu-item-5701" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5701"><a href="http://html5book.ru/vyrazheniya-v-javascript/">3.2. Выражения в JavaScript</a></li>
+</ul>
+</li>
+<li id="menu-item-1863" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1863"><a href="http://html5book.ru/javascript-jquery/">jQuery</a>
+<ul class="sub-menu">
+	<li id="menu-item-1851" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-1851"><a href="http://html5book.ru/vvedenie-v-jquery/">3.10. Введение в jQuery</a></li>
+	<li id="menu-item-1854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1854"><a href="http://html5book.ru/metody-jquery/">3.11. Методы jQuery</a>
+	<ul class="sub-menu">
+		<li id="menu-item-6875" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-6875"><a href="http://html5book.ru/metody-jquery/jquery-manipulyacii/">3.11.1. Манипуляции html-элементами</a></li>
+		<li id="menu-item-6874" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6874"><a href="http://html5book.ru/metody-jquery/jquery-svoistva-klassy-atribyti/">3.11.2. Чтение и изменение css-свойств, классов и атрибутов</a></li>
+		<li id="menu-item-6873" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6873"><a href="http://html5book.ru/metody-jquery/jquery-vyborka-elementov/">3.11.3. Обход DOM и выборка html-элементов</a></li>
+		<li id="menu-item-6895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6895"><a href="http://html5book.ru/metody-jquery/jquery-animaciya/">3.11.4. jQuery анимация</a></li>
+		<li id="menu-item-6894" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-6894"><a href="http://html5book.ru/metody-jquery/jquery-metody-window/">3.11.5. Методы объекта window</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1857" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1857"><a href="http://html5book.ru/sobytiya-jquery/">3.12. События jQuery</a></li>
+	<li id="menu-item-4153" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-4153"><a href="http://html5book.ru/jquery-selectors/">3.13. Селекторы jQuery</a></li>
+</ul>
+</li>
+<li id="menu-item-1866" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1866"><a href="http://html5book.ru/web-topography/">Веб-типографика</a>
+<ul class="sub-menu">
+	<li id="menu-item-1850" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-1850"><a href="http://html5book.ru/kakoj-shrift-mne-ispolzovat-pyat-principov-vybora-i-ispolzovaniya-shriftov/">4.1. Пять принципов выбора и использования шрифтов</a></li>
+	<li id="menu-item-1852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1852"><a href="http://html5book.ru/shrift-dlya-sita/">4.2. Выбираем шрифт для сайта</a></li>
+	<li id="menu-item-7976" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-7976"><a href="http://html5book.ru/pravila-veb-tipografiki/">4.3. Правила веб-типографики</a></li>
+</ul>
+</li>
+<li id="menu-item-7796" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7796"><a href="http://html5book.ru/seo/">SEO</a>
+<ul class="sub-menu">
+	<li id="menu-item-7803" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-7803"><a href="http://html5book.ru/ranzhirovanie-google-200-faktorov/">Ранжирование Google: 200 факторов</a></li>
+</ul>
+</li>
+</ul></div></div>		<div id="recent-posts-2" class="sidebar-widget widget_recent_entries">		 <p class="sidebar-headline">Свежие записи</p>		<ul>
+					<li>
+				<a href="http://html5book.ru/mnogourovnevoe-vypadayushee-menu/">Горизонтальное выпадающее многоуровневое меню</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/shpargalka-po-tablicam/">Шпаргалка по работе с таблицами</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/pole-poiska-dlya-sayta/">Поле поиска для сайта. Идеи для оформления</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/adaptivnyy-dizayn-saita/">Адаптивный дизайн сайта</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/oformlenie-tablicy-psevdoklassami/">Оформление таблицы с помощью псевдоклассов</a>
+						</li>
+				</ul>
+		</div>		</aside> <!-- end of sidebar -->
+  </div> <!-- end of main-content -->
+</div> <!-- end of container -->
+<footer id="wrapper-footer">
+  <div id="footer">
+    <div class="footer-widget-area footer-widget-area-1">
+<div id="text-4" class="footer-widget widget_text">			<div class="textwidget"><!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='//www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t44.10;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31' ><\/a>")
+//--></script><!--/LiveInternet--></div>
+		</div>    </div>
+    
+    <div class="footer-widget-area footer-widget-area-2">
+<div id="text-9" class="footer-widget widget_text">			<div class="textwidget">&copy; Запрещено копирование материала без согласия автора</div>
+		</div>    </div>
+   
+    <div class="footer-widget-area footer-widget-area-3">
+<div id="text-7" class="footer-widget widget_text">			<div class="textwidget"><!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=23928760&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/23928760/3_0_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0; position:absolute; left:-9999px;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:23928760,lang:'ru'});return false}catch(e){}"/></a>
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter23928760 = new Ya.Metrika({id:23928760,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/23928760" style="position:absolute; left:-9999px; bottom:0;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter --></div>
+		</div>    </div>
+  </div>
+</footer>  <!-- end of wrapper-footer -->
+<span id="bruteprotect_uptime_check_string" style="display:none;">7ads6x98y</span>        <script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'html5book';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1) {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script'); 
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+        <script type='text/javascript' src='http://html5book.ru/wp-includes/js/comment-reply.min.js?ver=4.4.2'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/themes/papercuts/js/placeholders.js?ver=2.1.0'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/themes/papercuts/js/responsive.js?ver=1.0'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/wp-embed.min.js?ver=4.4.2'></script>
+    
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+<style>
+#box {
+	position:relative;
+	background: orange;
+	border : 1px solid red;
+	left:0px;
+}
+div { font-size: .8em; border: 0 solid gold; }
+#testSubject {
+  background-color: #ffc; 
+  display: inline; 
+  font-size:1.8em; 
+  border: 1px solid crimson; 
+  color: green;
+}
+</style>
+</head>
+
+<body>
+<ul id="results"> </ul>
+
+<div style="color:#000;" title="Ninja power!">Ninja</div>
+<div style="color:red;font-size:12px;background-color:#eee;">Ronin</div>
+
+
+<p id="greenplanet" title="1111111" > greenplanet </p>
+<a id="mylink" href="http://mysite.com">Щелкни </a>
+<p>Привет, <span class="nemo">неизвестный</span>!  Как дела, <span class="nemo">неизвестный</span>? </p>
+
+
+<script>
+/////   ##DOM
+
+// getElementById() O    getElementsByTagName() className C    style S
+// ##setAttribute    ##getAttribute    назначить или получить атрибут тега  ##innerHTML
+var planet = O("greenplanet");  
+planet.innerHTML = "Red Alert: hit by phaser fire!";
+S(planet).color = "green"
+
+assert (1, planet.getAttribute("title"))  //1////////////////
+planet.setAttribute("title", 2222222);
+assert (1, planet.getAttribute("title"))  //2////////////////
+
+
+
+//  ##пример замена в тексте       
+var serNemo = C("nemo");
+var newNemo = prompt("Как звать то?");
+
+for (i=0;i<serNemo.length;i++){
+	serNemo[i].innerHTML = newNemo;
+}
+
+
+///   (захват значения ссылки)      ##links     
+url = document.links.mylink.href     // !! можно сокращенно  url = mylink.href
+// для IE  url = document.getElementById('mylink').href 
+document.write('URL-адрес — ' + url + "<br>")
+
+
+
+
+////////   объект  ##style
+
+planet.style.border = "solid";
+
+// анимация  
+/*kkk
+var sizeQ =  0; 
+var leftQ = 0;
+setInterval(animate, 100)
+function animate(){
+  sizeQ += 10;
+  leftQ += 30;
+  if (sizeQ == 50){ sizeQ = 0};
+  if (leftQ == 600) {leftQ = 0};
+  S('box').width = sizeQ + 'px';
+  S('box').height = sizeQ + 'px';
+  S('box').left = leftQ + 'px';
+}
+*/
+
+
+
+
+
+
+
+///////  ##window  ##open
+
+// Открыть др. окно   window.open("lalala.html")   ?? window.close(); Пытаемся закрыть текущий документ.   ??
+window.open("operators_comand.html", "", "width = 300, height = 400");
+
+
+//   ##alert  ##prompt  ##confirm        
+// !!  (всегда можно сделать promt для ввода и alert для вывода)
+
+/*con1 = confirm("спать?");   // форма да/нет        
+if(con1)alert ("спать так спать");
+else alert ("не спать так не спать")
+
+w=prompt("прывэт", "тута");   //ввод    prompt(текст_сообщения, текст_по_умолчанию)
+alert (w);
+*/
+/*alert ('«Я – JavaScript!»')*/
+[1111, 2222].forEach(alert);
+var вася =5 // !!  переменные кирилицей не принято, но не ошибка
+alert(вася);
+
+
+
+
+/// объект history   ##history
+document.write(history.length + "<hr>")
+	// history.go(-1); history.back(); history.forward()    вперёд, назад по истории
+	//document.location.href = 'http://google.com'   !! замена загруж страницы другой
+
+
+///      объект navigator
+var isNav = (navigator.appName == "Netscape");
+var isIE = (navigator.appName == "Microsoft Internet Explorer");
+
+var isOpera = (navigator.userAgent.indexOf("Opera") != -1);
+	// kkk   alert(navigator.userAgent); alert(navigator.appName);alert(navigator.userLanguage);alert(navigator.language); alert(navigator.cookieEnabled)
+
+
+
+
+
+// +  !! 
+assert(window.JSON,"объект window.JSON ?? ");  //3///////////
+</script>
+
+
+<div>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse congue facilisis dignissim. Fusce sodales, odio commodo accumsan commodo, lacus odio aliquet purus, <img src="map.jpg" id="withPole" /> <img src="image1.png" id="withShuriken" style="display:none" /> vel rhoncus elit sem quis libero. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In hac habitasse platea dictumst. Donec adipiscing urna ut nibh vestibulum vitae mattis leo rutrum. Etiam a lectus ut nunc mattis laoreet at placerat nulla. Aenean tincidunt lorem eu dolor commodo ornare.
+</div>
+
+<div style="color:crimson;" id="testSubject" title="Ninja power!">Ninja power!</div>
+<div id="testObject"></div>
+
+<div id='box'></div>
+
+
+
+<script src="style.js"></script>
+
+</body>
+</html>

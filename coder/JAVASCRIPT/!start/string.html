@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+</head>
+
+<body>
+<ul id="results"> </ul>
+
+<input type="text" name="firstName" id="firstName" placeholder="и маленькие станут большими" size="26" maxlength="50" onchange="this.value = this.value.toUpperCase()" />
+
+
+
+<script>
+// length     substring   indexOf   split   charAt  toUpperCase  toLowerCase  trim       eval
+
+
+
+///   ##Strings   ##строки   ##типы    (( my  литерал проще становится строкой чем числом ))
+var numberNine = 9;
+var stringNine = "9";
+document.write(numberNine + numberNine+" "); // 18
+document.write(stringNine + stringNine+" ");  // 99
+document.write(numberNine + stringNine+" ");// 99
+document.write(numberNine+'' + numberNine+" ");// 99
+document.write(stringNine*1 + stringNine*1+" ");// 18
+document.write(numberNine + stringNine*1+" ");// 18
+
+// Joining Strings
+var greeting = "Hello ";
+var myName = "Nick";
+greeting + myName;
+document.write(greeting + myName+" ");
+
+// Finding the Length of a String      ////////// ##length  ////////// 
+document.write("Supercalifragilisticexpialidocious".length +" ");
+
+var java = "Java";
+var script = "Script";
+var javascript = java + script;
+document.write((java + script).length +" ");
+
+// Getting a Single Character from a String   !!  ##строка как массив
+var myName = "Nick";
+document.write(myName[0] +" ");
+document.write(myName[2] +" ");
+document.write(myName[2]+myName[0]+" ");
+
+// Cutting Up Strings    ////////// ##slice  ##substring  ##substr  ////////// 
+var longString = "JavaScript";    // если второго числа нет - до конца строки
+document.write(longString.substring(9, 7)+"____");// направление не имеет значения. первое число входит,  второе нет.
+document.write(longString.slice(3, 7)+"____");    // my первое число должно быть меньше второго
+document.write(longString.substr(1, 3)+"____");  // координата и длина     удобно
+
+var name = "Jenny";
+var phone = "867-5609";
+var fact = "This is a prime number";
+var songName = phone + "/" + name;
+var index = phone.indexOf("6");
+if (fact.substring(10, 15) === "prime") {
+	document.write(fact);
+}
+document.write (index);
+
+
+var s = "Главрыба";
+var l = s.length;
+var s1 = s.substr(4);       
+var s2 = s.substr(4, 2);   // (от 4-го, 2 знака)
+var s3 = s.substring(2,6)  //  (от 2-го до 6-го),    ?? др методы?
+document.write(s+" "+l+" "+s1+" "+s2+" "+s3) ;
+document.write( "<hr>") ;
+
+
+
+
+
+////   ##toUpperCase()  большими буквами    ##trim() удаление лишних пробелов     
+document.write("Hello there,?".toUpperCase()+"____");
+document.write("hELlo THERE,?".toLowerCase()+"____");
+
+var emot = "XOxxOO";
+var hugs = 0;
+var kisses = 0;
+emot = emot.trim();
+emot = emot.toUpperCase();
+for(var i = 0; i < emot.length ; i++) {
+if (emot.charAt(i) === "X") {
+hugs++;
+} else if (emot.charAt(i) == "O") {
+kisses++;
+}
+}
+document.write(hugs+"   "+kisses);
+
+
+///   ##toLowerCase() маленькими буквами
+var text = "YOU SHOULD NEVER SHOUT WHEN TYPING";
+var presentableText = text.toLowerCase();
+if (presentableText.length > 0) {
+//kkk   alert(presentableText);
+}
+
+var sillyString = "hELlo THERE, hOW ARE yOu doINg?";
+document.write(sillyString[0].toUpperCase() + sillyString.slice(1).toLowerCase()+"____");  //  !! ( нормализация строки) первая буква большая, следующие маленьк
+
+
+
+
+
+
+
+/////////////////   ##split  ///////////////////   строку разделить  по произвольному знаку   !!! н/р("") в массив      
+  document.write("<hr>");      
+document.write("boringAnimals".split("") );    document.write("<br>");
+document.write(typeof "boringAnimals".split(""),' ' );    document.write("boringAnimals".split("")[7],'<br>');
+
+var data = "name|phone|address";
+var vals = data.split("|");
+document.write("Split array is ", vals); //  !! в document.write можно через ,
+  
+var data = "name, phone, address";
+var vals = data.split(", ", 2);            // необязательный второй аргумент
+document.write('<br>',"Split1 array is ", vals); //  !! в document.write можно через ,
+ 
+
+
+
+
+
+//  ##eval    !!  СТРОКА как ЧИСЛА     или более обобщённо  Вычисление кода  см onenote
+a= eval ("3+24");
+  document.write("<br><br>");      
+document.write (a);
+document.write( "<hr>") ;
+
+
+
+
+
+
+
+
+
+	
+
+////    ##charAt  значение символа    
+var input = "jenny@wickedlysmart.com";
+for(var i = 0; i < input.length; i++) {
+if (input.charAt(i) ===  "@") {
+document.write("There's an @ sign at index " + i);
+}
+}
+
+
+
+
+
+
+
+
+//// !!! ##пример  контроль н/р номера телефона по шаблону 2 варианта
+function validate(phoneNumber) {
+if (phoneNumber.length > 8 ||
+phoneNumber.length < 7) {
+return false;
+}
+var first = phoneNumber.substring(0,3);
+var second = phoneNumber.substring(phoneNumber.length - 4);
+if (isNaN(first) || isNaN(second)) {    // ##проверка
+return false;
+}
+if (phoneNumber.length === 8) {
+return (phoneNumber.charAt(3) === "-");
+}
+return true;
+}
+var test = validate("111-5111");
+document.write(test);
+document.write('<hr>');
+
+
+
+///  контроль н/р номера телефона по шаблону
+function validate(phoneNumber) {
+if (phoneNumber.length !== 8) {
+return false;
+}
+var first = phoneNumber.substring(0,3);
+var second = phoneNumber.substring(4);
+if (phoneNumber.charAt(3) !== "-" || isNaN(first) || isNaN(second)) {
+return false;
+}
+return true;
+}
+
+var test = validate("111-5111");
+document.write(test);
+
+
+
+
+
+
+
+//   повторение мать учения
+///      1 substring  slice  substr
+var myString = "Every good boy does fine.";
+var section = myString.substring(0, 10);    // section is now "Every good"
+
+var myString = "Every good boy does fine.";
+var section = myString.slice(11, -6);    // section is now "boy does"
+
+var myString = "Every good boy does fine.";
+var section = myString.substr(6, 4);    // section is now "good"
+
+
+
+///      2 toLowerCase  toLowerCase
+var myString = "New York";
+var lcString = myString.toLowerCase();
+var ucString = myString.toUpperCase();
+
+myString = myString.toLowerCase();
+
+
+
+
+///      3 ##match   поиск ##регулярн выраж
+var shortStr = "Framistan 2000";
+var re = new RegExp(shortStr, "g");    //  ((g - поиск по всей фразе? ))
+var result = "Framistan 2000 vvvvvvvvvvv dddddddddd jjjjjjjjj ddddddd Framistan 2000".match(re);
+
+if (result) {
+// kkk    alert("Found " + result.length + " instances of the text: " + result[0]);
+} else {
+// kkk    alert("Sorry, no matches.");
+}
+
+
+
+// ???
+function handleClick(evt) {
+   var evt = (evt) ? evt : ((window.event) ? window.event : null);
+   if (evt) {
+       var elem = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+       if (elem && elem.id.indexOf("menuImg") == 0) {
+           // process events from elements whose IDs begin with "menuImg"
+       }
+   }
+}
+
+
+//  my поиск регулярн выраж  усложненый   ??
+var mainStr = 'ffff hhhh ssss llll, rrrr ffff dddd'
+var srchStr = 'ffff hhhh'
+function countInstances(mainStr, srchStr) {
+    var count = 0;
+    var offset = 0;
+    do {
+        offset = mainStr.indexOf(srchStr, offset);
+        count += (offset != -1) ? 1 : 0;
+    } while (offset++ != -1)
+    return count
+}
+
+// kkk  alert(countInstances(mainStr, srchStr));
+
+
+
+
+
+
+
+
+
+///    charAt(i)  символ по номеру в строке
+//  десятичное число в 16-ти    ##пример  ##матем,  ##parseInt
+
+function dec2Hex(dec) {
+    dec = parseInt(dec, 10);
+    if (!isNaN(dec)) {
+        hexChars = "0123456789ABCDEF";
+        if (dec > 255) {
+            return "Out of Range";
+        }
+        var i = dec % 16;
+        var j = (dec - i) / 16;
+        result = "0x";
+        result += hexChars.charAt(j) + hexChars.charAt(i);
+        return result;
+    } else {
+        return NaN;   // ##NaN
+    }
+}
+
+//  !!!  проще использовать встроенные методы :
+document.write("<br>");
+// 10 в 16
+document.write((266).toString(16));    document.write(" ");
+// 16 в 10
+document.write(parseInt('10A qwerty',16));    document.write("<br>");
+
+
+
+</script>
+
+<script>     //   !!! несколько скриптов в докум работают как одно целое
+	// kkk   alert(dec2Hex(94));
+</script>
+
+<script src="string.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>for_kid</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+<style>
+canvas {
+	border:solid ;	
+}
+</style>
+
+</head>
+  
+  
+  
+<body>
+<ul id="results"> </ul>
+
+<canvas id="canvas" width="200" height="200" ></canvas>
+<canvas id="canvas1" width="200" height="200" ></canvas>
+
+
+<script>
+//    ##MY  2 движущихся
+var canvas = document.getElementById("canvas");    
+var mmm = canvas.getContext("2d");            
+var size = 0;
+var position = 0;
+setInterval(function () {
+	mmm.clearRect(0, 0, 200, 200);
+
+	mmm.fillStyle = "Blue";
+	mmm.fillRect(0, 0, size, size);
+	size++;
+	if (size > 200) {
+	size = 0;
+	}
+
+	mmm.fillStyle = "Red";
+	mmm.fillRect(position, 0, 20, 20);
+	position++;
+	if (position > 200) {
+	position = 0;
+	}
+	}, 30);
+
+
+//   ##MY   квадрат увелич - уменьш
+var canvas1 = document.getElementById("canvas1");    
+var nnn = canvas1.getContext("2d");            
+
+var size1 = 0;
+var sss = 3;
+
+setInterval(function () {
+	nnn.clearRect(0, 0, 200, 200);
+	nnn.fillStyle = "Blue";
+	nnn.fillRect(0, 0, size1, size1);
+	size1+=sss;
+	if (size1 <0 || size1 > 200) {
+		sss=-sss;
+		}
+	
+	}, 30);
+
+
+</script>
+
+
+</body>
+</html>
+
+

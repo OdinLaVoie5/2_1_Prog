@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="../jquery.js"></script>
+<script src='../OSC.js'></script>
+
+</head>
+
+<body>
+<ul id="results"> </ul>
+<div id = "main"> main</div>
+
+<script src="func.js"></script>
+
+
+<script>
+
+//   повторение - мать учения
+
+
+/// Objects
+var cat = {
+legs: 3,
+name: "Lolo",
+"name 1": "Harmony",
+color: "Tortoiseshell"
+};
+
+// Accessing Values in Objects       
+document.write(cat["name"]);    document.write(" ");
+document.write(cat.name);    document.write("");
+document.write(cat["name 1"]);    document.write(" ");
+document.write(cat.color);    document.write(" ");
+document.write(cat.legs);    document.write("<br>");
+
+                                  ///////  Object.keys(cat)  ///////
+document.write(Object.keys(cat));    document.write("<br>");
+console.log(Object.keys(cat));
+
+// Adding Values to Objects
+var CCC = {};
+CCC["legs"] = 5;
+CCC["name"] = "Lolo";
+CCC["color"] = "Red";
+document.write(CCC);    document.write("<br>");
+console.log(CCC);
+
+// Adding Keys with Dot Notation
+var cat = {};
+cat.legs = 3;
+cat.name = "Harmony";
+cat.color = "Tortoiseshell";
+document.write(cat);    document.write("<br>");
+document.write(cat.legs);    document.write("<br>");
+
+
+// Combining Arrays and Objects
+var dinosaurs = [
+{ name: "Tyrannosaurus Rex", period: "Late Cretaceous" },
+{ name: "Stegosaurus", period: "Late Jurassic" },
+{ name: "Plateosaurus", period: "Triassic" }
+];
+
+document.write(dinosaurs[0]["name"]);    document.write("<br>");
+document.write(dinosaurs[1].period);    document.write("<br>");
+
+// + Exploring Objects in the Console
+var anna = { name: "Anna", age: 11, luckyNumbers: [2, 4, 8, 16] };
+var dave = { name: "Dave", age: 5, luckyNumbers: [3, 9, 40] };
+var kate = { name: "Kate", age: 9, luckyNumbers: [1, 2, 3] };
+var friends = [anna, dave, kate];
+console.log(friends);
+document.write(friends[0].luckyNumbers[1]);    document.write("<br>");
+document.write(friends[0]["luckyNumbers"][2]);    document.write("<br>");
+
+
+var movies = {
+"Finding Nemo": {
+releaseDate: 2003,
+duration: 100,
+actors: ["Albert Brooks", "Ellen DeGeneres", "Alexander Gould"],
+format: "DVD"
+},
+"Star Wars: Episode VI - Return of the Jedi": {
+releaseDate: 1983,
+duration: 134,
+actors: ["Mark Hamill", "Harrison Ford", "Carrie Fisher"],
+format: "DVD"
+},
+"Harry Potter and the Goblet of Fire": {
+releaseDate: 2005,
+duration: 157,
+actors: ["Daniel Radcliffe", "Emma Watson", "Rupert Grint"],
+format: "Blu-ray"
+}
+};
+var cars = {
+releaseDate: 2006,
+duration: 117,
+actors: ["Owen Wilson", "Bonnie Hunt", "Paul Newman"],
+format: "Blu-ray"
+};
+movies["Cars"] = cars;
+
+document.write(movies["Star Wars: Episode VI - Return of the Jedi"].actors);    document.write("<br>");
+document.write(Object.keys(movies));    document.write("<br>");
+
+var myCrazyObject = {
+"name": "A ridiculous object",
+"some array": [7, 9, { purpose: "confusion", number: 123 }, 3.3],
+"random animal": "Banana Shark"
+};
+document.write(myCrazyObject["some array"][2].number);    document.write("<br>");
+
+
+
+
+
+
+
+/// Functions
+var medalForScore = function (score) {
+if (score < 3) {
+return "Bronze";
+}
+if (score < 7) {
+return "Silver";
+}
+return "Gold";
+};
+
+document.write(medalForScore (9));    document.write("<br>");
+
+
+function sumTwo (num1,num2) {
+	var sum = num1 + num2;	
+	return (sum);
+}
+function mulTwo (num1,num2) {
+	var mul = num1*num2;	
+	return (mul);
+}
+
+
+document.write(sumTwo(mulTwo (36325 ,9824),777));    document.write("<br>");
+
+
+
+
+
+
+function areArraysSame (area1,area2) {
+	if (area1.join("")-area2.join("")===0){
+ 	return (true);
+	}
+ 	return (false);
+}
+
+document.write(areArraysSame([21, 22, 322,22], [21, 22, 322,22]));    document.write("<br>");
+
+
+
+/// Object
+var Car = function (x, y) {
+this.x = x;
+this.y = y;
+};
+var tesla = new Car(10, 20);
+console.log(tesla);
+
+//    конструктор?
+function Car (x, y) {
+this.x = x;
+this.y = y;
+};
+var tesla = new Car(10, 20);
+console.log(tesla);
+
+
+
+
+
+
+var NNN = document.getElementById("main");
+document.write(NNN);    document.write("<br>");
+console.log(NNN);   
+
+
+</script>
+
+</body>
+</html>

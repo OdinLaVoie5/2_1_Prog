@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+</head>
+
+<body>
+
+<style>
+#canvas, #block  {
+	position:absolute;
+	left:0px; top:0px;	  //  ?? изменить положение7 
+}
+</style>
+
+
+
+
+
+<!--/////////////    GAME  НАЙДИТЕ колоду ... вора, клад  ////////////-->
+      <!-- ?? отмечать попытки на карте в виде кляксы -->
+      <!-- ?? выделть фигуры map   массив фигур, случ выбор вора -->
+
+<div id="block">
+<img id="map" src="image/amberites.jpg" width="800" height="600" lang="" />
+<p> Где колода карт? Найдите! 
+	<span id="temp1" style="color:#CCCCCC"> &nbsp;</span> 
+	<span id="coords" style="color:#00FF00">&nbsp;</span> 
+	<span id="info" style="color:#FF0000">&nbsp;</span>
+</p>
+</div>
+
+<canvas id="canvas" width="800" height="600"></canvas>
+
+
+
+
+
+<script>
+var canvas = document.getElementById("canvas");    
+var ctx = canvas.getContext("2d");            
+
+			<!--  загадать точку  -->
+var	inX, inY, tick;		
+var map= document.getElementById("map");
+var coords = document.getElementById("coords");
+var info = document.getElementById("info");
+var width = canvas.width;
+var height = canvas.height;
+
+window.onload = init;
+
+
+
+function init() {
+	inX = Math.floor(Math.random()*canvas.offsetWidth + canvas.offsetLeft); 
+	inY = Math.floor(Math.random()*canvas.offsetHeight + canvas.offsetTop);
+	coords.innerHTML = " выбрано 0, 0  // осталось 10 попыток"; 
+	info.innerHTML = "&nbsp;"; 
+	tick = 0; 
+//				  ВРЕМЕН    показ 
+	var temp1 = document.getElementById("temp1");
+	temp1.innerHTML = "загадано: " +inX + ", " +inY;
+				<!--  событие выбор точки  -->
+	canvas.onclick = gameClick;  
+}
+
+
+
+
+
+//			игра   клик
+function gameClick (eventObj) {
+	var outX = eventObj.pageX;  
+	var outY = eventObj.pageY;
+	var dist = Math.sqrt((outX-inX)*(outX-inX)+(outY-inY)*(outY-inY));
+	
+//	  число попыток 
+//	??  событие проигрыша  gif ? 
+//				    показ выстрела  
+	coords.innerHTML = " выбрано: " + outX + ", " + outY + " // осталось " + (9-tick) + " попыток"; 
+	tick++;
+	if (tick > 9) {
+		var con = confirm("Попыток больше нет.  Сначала?");
+		if (con) {
+			ctx.clearRect(0,0, width, height ); 
+			init();
+		} else {
+//	 ??  изменить поведение 
+			ctx.clearRect(0,0, width, height ); 
+			info.innerHTML = "УТОМЛЁННОЕ СОЛНЦЕ ..."; 
+			tick = 0; 
+		}
+		return;
+	};
+	
+//	??  картинки попаданий разного цвета на карту 
+	if (dist < 25){                                    //	 ??  событие победы  gif ?
+		info.innerHTML = "ПОБЕДА!"; 
+		ctx.fillStyle="Red"; 
+		ctx.strokeStyle="blue";
+		ctx.beginPath();
+		ctx.arc(outX, outY, 20, 0, Math.PI * 2, false);
+		ctx.fill(); ctx.stroke();
+		 
+		var con1 = confirm("ПОБЕДА!  продолжить?");
+		if (con1) {
+			ctx.clearRect(0,0, width, height ); 
+			init();
+			return;
+		} else {
+//	??  изменить поведение  
+			ctx.clearRect(0,0, width, height ); 
+			info.innerHTML = "УТОМЛЁННОЕ СОЛНЦЕ ...";
+			tick = 0; 
+			return;
+		}
+	}
+	else if(dist < 50 ){ 
+		info.innerHTML = "Очень горячо"; 
+		ctx.fillStyle="Orange"; ctx.strokeStyle="blue";		 
+	}
+	else if (dist < 100 ){ 
+		info.innerHTML = "Горячо"; 
+		ctx.fillStyle="Yellow"; ctx.strokeStyle="blue";		 
+	}
+	else if (dist < 200 ){ 
+		info.innerHTML = "Тепло"; 
+		ctx.fillStyle="Green"; ctx.strokeStyle="blue";		 
+	}else{
+		info.innerHTML = "Холодно";
+		ctx.fillStyle="Blue"; ctx.strokeStyle="blue";		 
+	}
+	
+
+//  ??  изменить картинку canvas?   
+	ctx.beginPath();
+	ctx.arc(outX, outY, 20, 0, Math.PI * 2, false);
+	ctx.fill(); ctx.stroke();
+}
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

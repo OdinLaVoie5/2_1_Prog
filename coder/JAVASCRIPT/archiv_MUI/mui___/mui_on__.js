@@ -1,0 +1,523 @@
+// ЦИКЛ.   ( ФОРМАЛЬНЫЕ СИСТЕМЫ )
+// ВСЁ ЖЕ ЦИКЛОМ  ОПТИМАЛЬНЕЙ ??  ИДЁТ СЛОЙ ЗА СЛОЕМ.  
+
+//  БЕЗ ПОВТОРОВ     с повторами не получится ??
+
+// кнопку "наверх" ???
+//случай когда после операции выражене исчезает совсем (н/р UU).   + операции с пустотой ?
+// ?? как узнать расходится ли цепочка или сходится?
+
+// ?? статистика - подсчёт какой уровень самый богатый, бедный? самое короткое, длинное выражение ... ... ...
+
+// ways заменить строковым массивом  ?????
+
+
+
+// ???   нулевая операция с М ??
+
+
+
+/////////////////////////////////////////////////////////////////////////
+//////////////////////////  ГЛАВНАЯ    //////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+function MUI (){									
+
+	/////////  ДАННЫЕ  оформить как в mui_zikl_1.js. + убирать кнопкой  ... ...  ?? проверка вводных
+	var start = "MUIII", fin = "MUUUUUU", stopWord = 16;  // ??? юзер ввод  +  в выражении убирать случ пробелы везде ?
+	stopWord = Math.max(stopWord, start.length, fin.length); // ограничение длины выражений
+//начальн и конечн выражения. ????? если fin "" то поиск не ограничен  нахождением fin. (?? +ставить огранич stopWord и stopLewels подобрать чтоб не тормозил (+ учесть вычисл способн конкретных брауза и компа)).  
+	var arrFnc=[UU,III,I,M]; //// МАССИВ ФУНКЦИЙ 
+	var arrFncColor = ["Red", "rgb(255,0,255)", "rgb(0,255,255)", "rgb(0,255,0)"];  // цвета ф-ций + юзер ввод ???
+	
+	///// ФЛАГИ ограничения  /////
+	var stopLewels=500000;  //ограничение  уровней - если без повторов не нужно.
+	var flagRepeatLewel = 0, flagRepeatAll = 0; //c повторениями выражений на УРОВНЕ и вообще 1.
+	if (flagRepeatAll) {
+		flagRepeatLewel = 1 //?? нужно ли связывать? //если общие повторы да, то и на уровне тоже.
+		stopLewels = 30; // ?? ограничение уровней если c повторами.
+	};
+	var flagBreakYes = 0; // останов при нахождении fin  - 1(на уровне), 2(на слове)
+	
+//////  ПОВТОР  ?????     нельзя?   повторы на уровне позволить?   + возникновение разных? циклов.   
+
+// ФУНКЦИ  - должны выдавать 1 массив строк   2 без повторов	
+/*function tuningMe(arrFunc, arrColor){
+	var arrError = [];
+	
+	for (var i=0; i < arrFunc.length; i++) {
+		if (typeof arrFunc[i]!=="function") arrError.push(i) 
+	}
+	if (arrError.length) alert("Проверьте массив функций. \n Позиции " + arrError +".")
+	
+	/// ????? если ф выдаёт несколько одинаковых результата на разных позициях - сократить, выкинуть лишние.     но но если важна точка приложения ф-ции - то не сокращать, а точку както передаватьь ...
+	if (!arrColor){arrColor = ["Red", "Purple", "Blue", "Green" ]};
+} 
+*/
+	
+	/////////////// ПЕРЕМЕННЫЕ //////////////////
+	var hash=[], lewel=[];  // ,ways=[] 
+	var arrActs=[], act="" ; //    k, m
+	lewel[0] = [start], hash[start] = start;      // ways[start] = [[]];,  
+	var numAll = 0, numberYes = 0; 
+	
+	/////// МАССИВ ИНФО (экстремумы ...) ///////  передаётся в dispBig // внести ещё флаги ... ??
+	var infoMaxMin = []; 
+	infoMaxMin["maxFncName"] = 0;  // макс длина имени ф-ций
+	infoMaxMin["fnc"] = arrFnc;  //  ф-ции
+	infoMaxMin["fncColor"] = arrFncColor;  // цвета ф-ций
+	infoMaxMin["maxAct"] = 0;  // макс длина выражения реально
+	infoMaxMin["numYes"] = 0;  // номер нахождения  yes
+	infoMaxMin["lewelYes"] = 0;  // уровень нахождения  yes   ещё 2 infoMaxMin ниже
+
+	/////////////// ВЫВОД  //////////////////
+	var arrRez = [], arrRezTemp = [];
+	
+	/// если на старте уже финишное выражение ///
+	if (start==fin) { 
+		// ways[fin]=[0, "idiot"]; 
+		// break;
+		alert ("start==fin")  ///  ???  перенести в вывод?
+	}
+
+	///////////    ПЕРЕБОР уровней   /////////// 
+	for (var i=1; i < stopLewels; i++) {  ///
+		lewel[i] = [];
+		if (!lewel[i-1].length)	break; // если слова кончились - обрыв цикла.
+		/// FINISH    проверка не пустой ли lewel   см nullLewel
+
+		///////// ПЕРЕБОР всех выражений в уровне /////////
+		for (var j=0; j < lewel[i-1].length; j++){ // 
+			var word = lewel[i-1][j];
+
+			//// ИЗБЕЖАНИЕ ПОВТОРОВ.    
+			//   if (i>1 && hash[word]) continue;
+			///  проверка не тупиковое ли слово  см nullAct
+			///var nullAct = 0; 
+			
+			//////// ПЕРЕБОР всех ф-ций ////////
+			for (var k=0; k < arrFnc.length; k++) {   
+
+				var arrActs = arrFnc[k](word); 
+				/// if (arrActs.length) nullAct++;
+				var fncName = arrFnc[k].name;
+				if (fncName.length > infoMaxMin["maxFncName"]) {infoMaxMin["maxFncName"]=fncName.length}; 
+
+				////// ПЕРЕБОР всех применений ф-ции //////
+				for (var m=0; m < arrActs.length; m++) { 
+
+					if (arrActs[m] && (arrActs[m].length<= stopWord)) {act = arrActs[m]}
+					else act = "";
+
+					// 	
+					var term0 = !hash[act]||flagRepeatAll;	// условие- нет среди общего хеша 
+					var term1 = (lewel[i-1].indexOf(act)==-1) || flagRepeatAll;	//- нет среди предыдущ результ				
+					var term2 = (lewel[i].indexOf(act)==-1) || flagRepeatLewel;	//- нет среди результ этого же уровня				
+
+					if (term0 && term1 && term2){//  ??? избежание повторов  flagRepeatLewel
+						if (act){
+							numAll++; // общая нумерация  ?? вынести за if ??
+							if (act.length > infoMaxMin["maxAct"]) {infoMaxMin["maxAct"] = act.length};
+							if (act==fin){
+								infoMaxMin["numYes"]=numAll;  
+								infoMaxMin["lewelYes"]=i;
+							}; 
+							
+							// break out ////// ????? ///// ОСТАНОВ ЕСЛИ НАЙДЕНО см выше ??? или нет.
+							
+							
+							if ((lewel[i].indexOf(act)==-1)) {lewel[i].push(act)}; // не пускать повторы на след уровень
+							
+							// выделение операции в слове
+							partWord0 =  word.slice(0, m);  
+							partWord1 =  word.slice(m, m+fncName.length);  // ??? название ф-ции должно определять действие ф-ции, + методы ф-ции? 
+							partWord2 =  word.slice(m+fncName.length);
+							
+							// ДЕЛАЕМ РЕЗУЛЬТИРУЮЩИЙ МАССИВ 
+							arrRezTemp = [numAll, i, word, j,   partWord0, partWord1, partWord2,     fncName,     k, m,  act];
+							arrRez.push(arrRezTemp);// нужны ли в массиве j и k?  
+							
+							infoMaxMin["maxNumAll"] = numAll;  // макс нумерация
+							infoMaxMin["maxI"] = i;  //  макс уровней
+
+							////////////   ЗАПИСЬ ПУТИ ДОСТИЖЕНИЯ  ДЛЯ КАЖДОГО ВЫРАЖЕНИЯ !! /////////
+							/*arrTemp = []; s=0;
+							for (var s=0; s < ways[word].length; s++){
+								arrTemp[s]=ways[word][s]; 
+							}
+							arrTemp.push([word, arrFnc[k].name, m, act]);
+							ways[act] = arrTemp;*/
+							
+						}
+					}			
+				}
+				/*if (!nullAct) { 
+					arrRez.push([numAll, i, word,      j, fncName, k, -1, -1, "<br>"]); // разделение меж словами?  ???  ?? не тупиковое ли слово
+				}*/ 
+			}
+			if (infoMaxMin["numYes"] && flagBreakYes==2){break} ////////// ОСТАНОВ ЕСЛИ НАЙДЕНО (обрыв на слове)
+			hash[word]=word; 
+		}
+		if (infoMaxMin["numYes"] && flagBreakYes){break} ////////// ОСТАНОВ ЕСЛИ НАЙДЕНО (уровень довершается)
+	}	
+	
+/*	if(!ways[fin]) ways[fin]=[];
+	dispSmall(ways[fin].slice(1),arrDekor,typeDekor); ///// на дисплей. первая строка пустая-удалил
+*/
+
+
+
+	///  ???  сделать ф-цию сортировки, групировки таблицы ...
+
+	dispBig (arrRez, stopWord, fin, infoMaxMin); 
+	
+	
+	return arrRez; /////  //return ways; // нужен ли снаружи ways ??    
+}
+			
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+////////////////   ВЫВОД РЕЗУЛЬТАТА  в виде таблицы  !!! ////////////////
+/////////////////////////////////////////////////////////////////////////
+function  dispBig(arrRez, stopWord, fin, infoMaxMin){
+	var arrIgnor = [2,3,8,9,11];  // массив игнора столбов  + юзер ввод ???
+	
+	var textRez = ""; 
+	var textUp = "";
+	
+	var separ = alignTextOSC ( ("<td>"+"&nbsp;"+ "</td>"),arrRez[0].length-2, arrIgnor.length);
+	var separ1 = "<tr class='separ1'>" + separ + "</tr>"; // оформ пробела  меж уровнями
+	var separ2 = "<tr class='separ2'>" + separ + "</tr>"; // оформ пробела  меж выражениями
+	// длина зависит от кол-ва игнор столбцов и объединённых столбцов -2
+
+	///// формирование таблицы /////
+	textRez += "<TABLE id='bigtable'>" 
+	
+	for (var i=0; i < arrRez.length; i++) { ///// СТРОКИ 
+		
+		///// оформление пробелов  /////
+		if (arrRez[i-1] && (arrRez[i-1][1]!=arrRez[i][1])) {textRez += separ1} //  пробел  меж уровнями
+		else {
+			if (arrRez[i-1] && (arrRez[i-1][2]!=arrRez[i][2])) {textRez += separ2}; // пробел  меж выражениями
+		};
+		
+		textRez += " <tr class='" +  arrRez[i][2] + "' id='" + arrRez[i][10] +"'>"; ///// КЛАСС И ID 
+		// ??? class нач выраж, id  второе выражение,  title ??  потом по клику цепочкой циклом (анимир) выделять ... ... ...
+		
+		
+		out: for (var j=0; j < arrRez[i].length; j++) {  ///// СТОЛБЦЫ
+			for (var s=0; s < arrIgnor.length; s++) { // цикл игнора столбцов
+				if 	(j == arrIgnor[s]) {continue out};
+			};
+			
+			if (j!=5 && j!=6) textRez += "<td>"; // для объединения partWord0, partWord1, partWord2
+			if (j==5){textRez += "<span class=" + arrRez[i][7] + ">"}; // выделение цветом. класс по имени ф-ции
+			if (j==7){textRez += "--"};
+			
+			textRez += arrRez[i][j];     ///// собственно значение
+
+			if (j==0 || j==1){textRez += "." };
+			if (j==7){textRez += "--"};
+			if (j==5){textRez += "</span>"};
+			if (j!=4 && j!=5) textRez += "</td>";
+		}
+		textRez += "</tr>";
+	
+	}
+	textRez += "</TABLE>"; 
+// шаблон таблицы      [numAll,  i,  word,  j,   partWord0, partWord1, partWord2,     fncName,     k, m,  act]
+	
+	/// создаём цветовые стили ///
+	var styleFnc = "<style> "; 
+	for (var s=0; s < infoMaxMin["fnc"].length; s++) {
+		if (!infoMaxMin["fncColor"][s]) infoMaxMin["fncColor"][s] = "Goldenrod"
+		styleFnc+= "." + infoMaxMin["fnc"][s].name + "{color:" + infoMaxMin["fncColor"][s] + ";} "	
+	}; 
+	styleFnc+="</style> "
+	textRez += styleFnc;
+	
+	
+	///// ОКОНЧАТЕЛЬНЫЙ ВЫВОД /////
+	
+	document.getElementById("textbig").innerHTML=textRez;	// вывод большого результата
+			
+	document.getElementById("textup12").innerHTML= infoMaxMin["numYes"] + " / "  + infoMaxMin["lewelYes"]; // резюме верхнее	
+	document.getElementById("textup22").innerHTML= infoMaxMin["maxNumAll"] + " / " + infoMaxMin["maxI"];	
+	
+
+	/////////// + малый вывод  //////////
+	var rowFin = document.getElementById(fin);
+	var arrRezSmall = [];
+	while (rowFin){
+		arrRezSmall.push(rowFin);
+		rowFin.style.backgroundColor = "Orange";
+		rowFin = document.getElementById(rowFin.className);
+	};
+	document.getElementById(fin).style.backgroundColor = "Red";	// подсветка результата
+
+	
+	/////////////////
+	illuminatChain (arrRez, arrRezSmall, fin, infoMaxMin);
+
+}
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////  РЕАКЦИЯ НА НАВЕДЕНИЕ    //////////////////////////
+/////////////////////////////////////////////////////////////////////////
+function  illuminatChain (arrRez, arrRezSmall, fin, infoMaxMin){
+	// +++  elem.closest('ul > li:last‐child')  parentElement     +parentNode   .rows   .className
+	var arrElem = [];
+
+	for (var i = 0; i < infoMaxMin["maxNumAll"]; i++) {
+		document.getElementById(arrRez[i][10]).onclick = function illuminatClick(e) {
+			var flagBack = 0;
+			var elemColor = "Yellow" ; // --- 'rgb('+ Math.floor(Math.random()*255) +','+ Math.floor(Math.random()*255)+','+ Math.floor(Math.random()*255)  +')'   юзер ??? rgb(255,230,242)
+			if (~arrElem.indexOf(this)) {flagBack = 1};
+			
+			for (var j=0; j < arrElem.length; j++) {  ///////// реституция 
+				arrElem[j].style.backgroundColor = "White";	
+			};
+			for (var k=1; k < arrRezSmall.length; k++) {
+				if ((!~arrElem.indexOf(arrRezSmall[k]) || flagBack)) arrRezSmall[k].style.backgroundColor = "Orange";	
+			};			 
+			
+
+			if ((!~arrElem.indexOf(document.getElementById(fin))) || flagBack)document.getElementById(fin).style.backgroundColor = "Red";
+			
+			arrElem = [];
+			
+			
+			if (flagBack == 1) {return};/////// второй клик снимает подсветку
+			var row = this;   /////// подсветка
+			while (row){
+				arrElem.push(row);
+				row.style.backgroundColor = elemColor;
+				row = document.getElementById(row.className);
+			};
+		};
+
+
+
+		document.getElementById(arrRez[i][10]).onmouseover = function illuminatOver(e) {
+			var elemColor = "Lavender";   // юзер ?? rgb(255,230,242)
+			var row = this;
+
+			while (row){
+				row.style.backgroundColor = elemColor;
+				row = document.getElementById(row.className);
+			};
+		}; 
+
+		document.getElementById(arrRez[i][10]).onmouseout = function illuminatOut(e) {
+			var elemColor = "White";
+			var row = this;
+			
+			while (row){
+				row.style.backgroundColor = elemColor;
+				row = document.getElementById(row.className);
+			};
+			for (var j=0; j < arrElem.length; j++) {
+				arrElem[j].style.backgroundColor = "Yellow";	
+			};
+
+			
+			for (var k=1; k < arrRezSmall.length; k++) { ///////// реституция 
+				if (!~arrElem.indexOf(arrRezSmall[k])) arrRezSmall[k].style.backgroundColor = "Orange";	
+			};
+			if (!~arrElem.indexOf(document.getElementById(fin)))document.getElementById(fin).style.backgroundColor = "Red";
+			
+			
+		};
+		
+		
+
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+////////////////////// ФУНКЦИИ ПРЕОБРАЗОВАНИЯ  //////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+/*function UU (word){
+	var temp =[];
+	for (var m=0; m < word.length-1; m++) {   /////////////////  правило UU
+		if (word[m] == "U" && word[m+1] == "U") {  //  && (word.length <= stopWord)
+			var wordAfter = word.slice(0, m) + word.slice(m+2);
+			temp[m] = wordAfter;
+		}
+	}
+	return temp;
+}
+*/ // начальный вариант
+
+function UU (word){
+	var temp =[];
+	var arrPositionGrupp = allIndexGruppOSC(word, "U", 2)[0]; // массив поззиций групп UU... 	
+	for (var m=0; m < arrPositionGrupp.length; m++) {   //////////  правило UU
+		var punkt = arrPositionGrupp[m];
+		var wordAfter = word.slice(0, punkt) + word.slice(punkt+2);
+		temp[punkt] = wordAfter;
+	}
+	return temp;
+}
+
+/////////////////////////////////////////////////////////////////////////
+function III (word){
+	var temp =[];
+	for (var m=0; m < word.length-2; m++) {  ////////////// правило III
+		if (word[m] == "I" && word[m+1] == "I"  && word[m+2] == "I" ) {
+			var wordAfter = word.slice(0, m) + "U" + word.slice(m+3);
+			temp[m] = wordAfter;
+		}
+	}
+	return temp;
+}
+
+
+/////////////////////////////////////////////////////////////////////////
+function I(word){
+	var temp =[];
+	if ((word[word.length-1] == "I")) {//////////////  правило I
+		var wordAfter = word + "U";
+		temp[word.length-1] = wordAfter; // word.length-, точка приложения ф-ции
+	}
+	return temp;
+}
+
+
+/////////////////////////////////////////////////////////////////////////
+function M(word){
+	var temp =[];
+	if (word[0] == "M") {  //	//////////  правило M
+		var wordAfter =  "M"+ word.slice(1) + word.slice(1);
+		temp[0] = wordAfter;  //  
+	}
+	return temp;
+}
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+// кусочки из других концепций
+
+/*///// Малый вывод  ////////////
+function dispSmall (waysFin, arrDekor, typeDekor){
+	var str = "", con="", numAll="", numI="";
+	var clr0 = "<span style='color:Red'>", clr1 = "</span>";
+	var tmpNum = waysFin.length+"";
+	var elem = document.getElementById("disp0");
+	
+	if (waysFin[0]=="idiot"){ // если на входе уже дано искомое выражение.
+		elem.innerHTML = "На входе уже дано искомое выражение."; 
+		return;
+	};
+	if (!waysFin[0]){ // если нет вывода
+		elem.innerHTML = "Нет вывода."; 
+		return;
+	};
+	if (~typeDekor.indexOf("s")){ // вывод без прикрас
+		alert (waysFin); 
+		return;
+	};
+	for (var i=0; i < waysFin.length; i++) { 
+		//// нумерация ////
+		str += i+1;
+		numAll = (waysFin.length+"").length; //выравнивание
+		numI = (i+1+"").length;
+		var tmp 
+		for (var t=0; t < numAll-numI; t++) {str += "&nbsp;"}; // 		
+		//// отметка точки приложения ф-ции ////
+		var word = waysFin[i][0], punkt0 = waysFin[i][2],  punkt1 = punkt0 + waysFin[i][1].length;
+		waysFin[i][0] = word.slice(0,punkt0) + clr0 +  word.slice(punkt0,punkt1) + clr1 + word.slice(punkt1);
+		//// вставка декора //// 
+		out: for (var j=0; j < waysFin[i].length; j++) {
+			for (var k=0; k < typeDekor.length; k++) {
+				var ser = typeDekor[k];
+				//if (typeof ser != "number") continue; // не нужно.  игнор пропуска !!! my 
+				if(j===ser) continue out; // пропуск ненужных рядов
+			}str += "<nobr>"   // строчки без переносов
+			str += arrDekor[j][0] + waysFin[i][j] + arrDekor[j][1]
+		}
+		str += "<br>";
+	} 
+	for (var t=0; t < numAll+1; t++) {str += "&nbsp;"}; // 		
+	str +=fin + "<br>"+ "<br>";
+	
+	//// окончания заголовка ////  в отдельную ф-цию ???
+	if (tmpNum[tmpNum.length-2]==1 || /[567890]/.test(tmpNum[tmpNum.length-1])) {con="й"}
+	else if (tmpNum[tmpNum.length-1]==1){con="ю"}
+	else {con="и"};
+	//else if (waysFin.length==1)
+	elem.innerHTML = "Выводится за " + waysFin.length + " операци"+ con+"<br>"+ "<br>"; // ??? окончания 
+	elem.innerHTML += str;
+}
+*/
+
+
+
+
+/*	var arrDekor = [["&nbsp;",""],["<span style='color:LightGreen'> =", "=> </span>"],[""," "],["",""]]; //  вставки декора    ?? + анимация?
+	var typeDekor = [2, 3]; // указать какой столб пропустить через зпт 0,1,2,3.  
+	//,"s" - simple вывод без прикрас
+	// показ цепью ???
+*/
+/*var finTemp = fin;*/  // ?? расширение - массив финишных слов?  или меняющееся fin по какойто ф-ции?
+// hashlewel[acts] ??
+
+/*	//// окончания заголовка ////  в отдельную ф-цию ??
+	if (tmpNum[tmpNum.length-2]==1 || /[567890]/.test(tmpNum[tmpNum.length-1])) {con="й"}
+	else if (tmpNum[tmpNum.length-1]==1){con="ю"}
+	else {con="и"};
+	//else if (waysFin.length==1)
+	elem.innerHTML = "Выводится за " + waysFin.length + " операци"+ con+"<br>"+ "<br>"; // ?? окончания
+	elem.innerHTML += str;
+*/
+/*dispSmall(ways[fin],4,1);*/ ///// на дисплей. 4-х звеная цепь, с накладкой 1 эл. ??
+/*function dispSmall (waysFin, chain, imposit){
+	var str ="", num=0;
+	var elem = document.getElementById("disp0");
+	
+	if (waysFin){
+		num = (waysFin.length-imposit)/(chain-imposit);  
+		// число операций
+		
+		for (var i=0; i <= num; i++) {
+			str += waysFin[3*i];
+			waysFin[3*i+1]?str += "&nbsp;"+ "<span style='color:rgb(150,230,150)'>" + "=" +	waysFin[3*i+1]:"";
+			waysFin[3*i+2]?str += "_" +	waysFin[3*i+2] + "&rArr;" +	"</span>" + " ":"";
+		};
+	
+		elem.innerHTML = "Выводится за " + num + " операций:"+ "<br>";
+		elem.innerHTML += str+ "<br>";
+	}
+	else  elem.innerHTML = "Нет вывода"+ "<br>";
+}
+*/
+// совпадения с start...

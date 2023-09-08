@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src="!start\func.js"></script>
+</head>
+
+<body>
+
+
+
+
+
+<!--  ДУБЛЬ ДУБЛЬ ДУБЛЬ  код для распознавания кирилицы в коде ... ...  -->
+
+<script>
+
+//   где флаг переключ на латиницу   - переключается на пробеле .  исправить
+//   там где  комменты  /* */    херня какая-то
+
+
+function checkCodeOSC (code) { 
+  var codeStr = code + '', arrStr = [];
+  arrStr = codeStr.split('\n');           //  перевод строки находит
+  for (var i=0; i<arrStr.length; i++) {
+	if(~arrStr[i].indexOf('//')){ 
+	  arrStr[i] = arrStr[i].split('//');	
+	  arrStr[i][2] = arrStr[i][1];	
+	  arrStr[i][1] = '//';	
+	  arrStr[i][0] = checkSyCyDbOSC(arrStr[i][0], '<');
+	  arrStr[i] =  arrStr[i].join('');
+	}
+	else arrStr[i] = checkSyCyDbOSC(arrStr[i], '<');
+  }
+preOSC(arrStr.join(''));  
+}
+checkCodeOSC ('DEBIL');
+
+
+
+////////////   дополн ф-ции      !!!!
+
+//  результат на экран как есть.  <pre> <\pre>   
+function preOSC(str) {    
+  var rez = "<hr>" + "<pre>" + str + "<\pre>" + "<hr>";
+  return (document.write(rez)); 
+}
+
+
+
+
+//  Поиск символа <    ...    ??  продолжить др эл-ты ?
+function checkSymbolOSC(code, target) {
+  var codeStr = code + '', arrStr = [], rez;
+  arrStr = codeStr.split(target);
+  target = ' ' + target + ' '; 
+  rez = arrStr.join(target);
+  return rez;  
+}
+
+
+// Поиск кирилицы.  для коректн работы - сначала исправл отсутствия пробела после < ... После  желательно убрать двойн пробелы    (checkSymbolOSC  checkDblSpaceOSC)
+function checkCyrOSC (code) { 
+  var codeStr = code + '',  codeArr = [],  flagCyr=1, flagLat=1, arrNumCyr=[], arrStr=[];
+  for (var i=0; i<codeStr.length; i++) {
+	 codeArr[i] =  codeStr[i];    //  массив отдельных букв
+  }
+  for (var i=0; i<codeArr.length; i++) {
+	if(codeArr[i].charCodeAt(0) >=  1025 && codeArr[i].charCodeAt(0) <=  1105 )  {
+		flagLat=1; 
+		if(flagCyr) arrNumCyr.push(i);
+		flagCyr=0;
+	}
+	else  {
+		flagCyr=1; 
+		if(flagLat) arrNumCyr.push(i);
+		flagLat=0;
+	}
+  }
+  arrNumCyr.push(codeArr.length);
+  for (var i=0; i<arrNumCyr.length-1 ; i++) {
+	arrStr.push(codeStr.slice(arrNumCyr[i], arrNumCyr[i+1]));
+	if(i%2) arrStr.push('~</mark> ')
+	else if (i<arrNumCyr.length-2)   arrStr.push(' <mark style="background-color:Yellow">~');
+  }
+  
+  return  arrStr.join('');
+}
+
+//  Поиск двойн пробела 
+function checkDblSpaceOSC(code) {
+  var codeStr = code + '', arrStr = [], rez;
+  arrStr = codeStr.split('  '); 
+  if(arrStr[0]===''){arrStr[0]=' '} // вернул удалённый пробел в начале строки
+  rez = arrStr.join(' ');
+  return rez;  
+}
+
+
+
+//   объединение 3х ф-ций
+function checkSyCyDbOSC(code, target) {
+  var sy = checkSymbolOSC, cy = checkCyrOSC, db =  checkDblSpaceOSC; 
+  return  db (cy (sy(code, target))) ;
+}
+
+
+
+
+
+
+
+//=====================================================================================
+
+//  !!  Поиск всех вхождений с помощью цикла while,     здесь не применяю ?
+function allIndexOfOSC(str, target) {
+  var rez = [], pos = -1;
+  while (~(pos = str.indexOf(target, pos + 1))) { 
+	rez.push(pos);
+  }
+  return rez ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="../jquery.js"></script>
+<script src="../osc.js"></script>
+
+<style>
+canvas {
+	border:solid ;	
+}
+</style>
+
+
+</head>
+
+<body>
+
+<canvas id="canvas" width="200" height="200" ></canvas>
+<canvas id="canvas1" width="200" height="200" ></canvas>
+
+
+<script>
+
+//  #canvas   # animation   #physic
+// !!!   цветные шары  10 шт           
+
+var canvas = document.getElementById("canvas");    
+var ctx = canvas.getContext("2d");            
+canvas.setAttribute("width", "400");     // изменение значения аттрибута 
+canvas.setAttribute("height", "400");    
+
+function Ball (x,y,xSpeed,ySpeed) {       // конструктор
+this.x = x;
+this.y = y;
+this.xSpeed = xSpeed;
+this.ySpeed = ySpeed;
+};
+
+Ball.prototype.draw = function () {
+circle(this.x, this.y, 10, true, ctx);        // ?? сделать переменный радиус   по клаве 1-0 вывести prompt и ввод R
+};
+
+Ball.prototype.move = function () {
+this.x += this.xSpeed;
+this.y += this.ySpeed;
+};
+
+Ball.prototype.checkCollision = function () {
+if (this.x <= 0) {  
+	this.x = 0
+	this.xSpeed = -this.xSpeed;
+}
+if (this.x >= 400) { 
+	this.x = 400
+	this.xSpeed = -this.xSpeed;
+}
+
+if (this.y <= 0) {
+	this.y = 0
+this.ySpeed = -this.ySpeed;
+}
+if (this.y >= 400) {
+	this.y = 400
+this.ySpeed = -this.ySpeed;
+}
+};
+
+
+Ball.prototype.update = function () {      // прибавил ф-цию (см выше Дрож)
+var offX = Math.floor(Math.random()* 10) -5;     
+var offY = Math.floor(Math.random()* 10) -5;     
+this.x += offX;
+this.x += offY;
+};
+
+var ball=[];                         // создал 10 мячей циклом  !!!
+for(i=0;i<10;i++){
+	ball[i] = new Ball(Math.floor(Math.random()* 200), Math.floor(Math.random()* 200), i+2, 10-i);
+}
+var colorBall=["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Lime", "LimeGreen", "Gold", "Magenta", "Maroon", "MediumAquamarine"];
+
+
+
+setInterval(function () {
+ctx.clearRect(0, 0, 400, 400);    // модификация без строки - траектории
+for(i=0;i<10;i++){                  //  и прорисовка 10 мячей
+	ctx.fillStyle = colorBall[i];            //  цвета из массива colorBall
+	ball[i].draw();
+	ball[i].move();
+	ball[i].checkCollision();	
+	// ball[i].update();    модификация с дрожанием
+}
+
+for(i=0;i<10;i++){                  //  и прорисовка 10 мячей
+	for(j=0;j<10;j++){      //  ???? не учтено  удар вскользь-отражение под углом ...
+		if (i!==j){
+			var ixS=ball[i].xSpeed,  iyS=ball[i].ySpeed,  jxS=ball[j].xSpeed,  jyS=ball[j].ySpeed;
+			var ijX=ball[i].x - ball[j].x, ijY=ball[i].y - ball[j].y;                 //  разница координат
+			var ddd = Math.pow(ijX,2) + Math.pow(ijY,2);   ddd= Math.sqrt(ddd);                                // расстояние меж шарами
+			if (  ddd <=20 )  {
+				var delX=ijX*(20/ddd-1)/2           // нахлёст друг на друга 
+				var delY=ijY*(20/ddd-1)/2 		
+				ball[i].x+=delX; ball[i].y+=delY; ball[j].x-=delX; ball[j].y-=delY; // после контакта развести чтобы не было повторного контакта)  ???
+				ball[i].xSpeed=jxS;  ball[j].xSpeed=ixS;   	ball[i].ySpeed=jyS;   	ball[j].ySpeed=iyS;      //  обмениваться скоростями   
+			}
+		}
+	}
+}
+
+}, 30);
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

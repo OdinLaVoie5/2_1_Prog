@@ -1,0 +1,314 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>прывэт</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+
+</head>
+<body>
+<ul id="results"> </ul>
+
+
+<script>
+///    ##цикл        
+// ###break
+var matrix = [[], , []]; // Получить 2-мерный массив чисел откуда-нибудь 
+// Найти сумму всех чисел в матрице, 
+var sum = 0, success = false;
+// Пометить инструкцию, выполнение которой требуется прервать в случае ошибки 
+compute_sum: if (matrix) { // прерывание по метке !!!
+	for(var x = 0; x < matrix.length; x++) {
+		var row = matrix[x]; 
+		if (!row) break compute_sum; 
+		for(var у = 0; у < row.length; у++) { 
+			var cell = row[y]; 
+			if (isNaN(cell)) break compute_sum; 
+			sum += cell;
+		}
+	}
+	success = true;
+}
+// Здесь инструкция break выполняет переход. Если будет выполнено условие 
+// success == false, значит, что-то не так в полученной матрице.
+// В противном случае переменная sum будет содержать сумму всех элементов матрицы.
+//  alert (success)
+
+
+
+
+///////  ##for  ##while ////////
+//  1 2  !! степени 2  и 3
+var res = "";
+for (var x = 2; x < 10000; x = x * 2) {
+res += x + " "};
+assert(1,  res);        //1////////////////////////////
+
+res = "";
+var x=3
+while (x<10000){
+	x*=3;
+res += x + " "
+};
+assert(1,  res);        //2///////////////////////////
+
+
+///     ##цикл     
+haystack = new Array()
+haystack[17] = "Иголка"
+for (j = 0 ; j < 20 ; ++j)
+{
+if (haystack[j] == "Иголка")
+{
+document.write("<br>- найдена в элементе " + j)
+break
+}
+else document.write(j + ", ")
+}
+document.write("<br><br>")
+
+
+
+haystack = new Array()
+haystack[4] = "Иголка"
+haystack[11] = "Иголка"
+haystack[17] = "Иголка"
+for (j = 0 ; j < 20 ; ++j)
+{
+if (haystack[j] == "Иголка")
+{
+document.write("<br>- найдена в элементе " + j + "<br>")
+continue
+}
+document.write(j + ", ")
+}
+document.write("<br><br>")
+
+
+
+//   использование массива аргументов    
+displayItems("Собака", "Кошка", "Пони", "Хомяк", "Черепаха")
+function displayItems()
+{
+for (j = 0 ; j < displayItems.arguments.length ; ++j)
+document.write(displayItems.arguments[j] + "<br>")
+}
+document.write("<br>")
+
+
+// пример  все чётные до 10
+/*for (var i=1; i<=10 ; i++) {
+	if(i%2-1){alert(i)}	
+}
+*/
+
+// !!  my (пример бесконечного цикла  для интерактивного прерывания)
+/*while (true) {
+  var value = +prompt("Введите число больше 100", '');
+  if (!value||value>100) break; 
+} 
+//    ##концепт 
+var num;
+do {
+num = prompt("Введите число больше 100?", 0);
+} while (num <= 100 && num != null);
+*/
+
+// ##метки   ##пример простые числа
+/*function mySimpl(num) {
+  outer: for (var i=2; i<=num; i++) {
+	for (var j=2; j<=(Math.sqrt(i)^0); j++) {
+		if(i%j===0){continue outer}
+	}alert(i);
+  }
+}
+mySimpl(13)
+*/
+
+
+
+
+// 3   конструкция  <условие>? <выражение "то">: <выражение "иначе">; 
+var a=0;
+a!=0? b=1: b=2;
+assert(1,  b);  //3/////////////////////////////
+  
+  
+// switch (<исходное выражение>) {  case <значение 1> :  <блок 1>  [break;]  [case <значение 2> :  <блок 2>  [break;]]  <… другие секции case>  [default:  <блок, исполняемый для остальных значений>]  }        ??
+
+
+
+
+
+// ##примеры
+/*
+var sheepCounted = 0;
+while (sheepCounted < 3) {
+document.write("I have counted " + sheepCounted + " sheep!");    document.write("<br>");
+sheepCounted++;
+}
+document.write("Zzzzzzzzzzz");    document.write("<br>");
+
+
+for (sheepCounted = 0;sheepCounted < 3; sheepCounted++){
+	document.write("I have counted " + sheepCounted + " sheep!");    document.write("<br>");
+	}
+document.write("Zzzzzzzzzzz");    document.write("<br>");
+
+
+
+
+var name = "Nick";
+for (var i = 0; i < name.length; i++) {
+console.log("My name contains the letter " + name[i] + ".");
+}
+
+var animals = ["Lion", "Flamingo", "Polar Bear", "Boa Constrictor"];
+for (var i = 0; i < animals.length; i++) {
+document.write("This zoo contains a " + animals[i] + ".");    document.write("<br>");
+}
+
+
+var name = "Nick";
+for (var i = 0; i < name.length; i++) {
+document.write("My name contains the letter " + name[i] + ".");    document.write("<br>");
+}
+*/
+
+/*var drawCats = function (howManyTimes) {
+for (var i = 0; i < howManyTimes; i++) {
+assert(1,  i + " =^.^=");
+}
+};
+drawCats(3); // You can put any number here instead of 10.
+
+*/
+
+// ##метка цикла     (выход сразу из обоих циклов)    ##пример
+/*  outer: for (var i = 0; i < 3; i++) {
+for (var j = 0; j < 3; j++) {
+var input = prompt('Значение в координатах '+i+','+j, '');
+// если отмена ввода или пустая строка ‐
+// завершить оба цикла
+if (!input) break outer; // (*)
+}
+} alert('Готово!');
+*/
+
+
+//  4  перебор и изменение массива 
+var animals = ["Cat", "Fish", "Lemur", "Komodo Dragon"];
+for (i=0;i<animals.length;i++){
+	animals[i] = (i+1) + ") " + animals[i] + " ";
+};
+assert(1,  animals);
+
+
+
+//  26 сучайных 26-ти буквенных слов  !!!  мартышки и Шекспир
+/*var BBB=[]; 
+var alphabet = "abcdefghijklmnopqrstuvwxyz";
+for (j=1;j<26;j++){
+for (i=0;i<26;i++){
+	BBB[i]=alphabet[Math.floor(Math.random()*alphabet.length)];
+}
+strBBB=BBB.join("");
+document.write(strBBB);    document.write("<br>");
+}
+*/
+
+
+
+///  устаревшее    Использование инструкции   ##with  (позволяет значительно сократить код)
+string = "пора спать"
+with (string)
+	{
+	document.write("В строке " + length + " символов <br>")
+	document.write("В верхнем регистре: " + toUpperCase()+ "<hr>")
+}
+// with тормозит код
+var i = 0;
+function fast() {
+i++;
+}
+function slow() {
+with(i) {}
+i++;
+}
+//  alert (benchmarkMyMy (1000, 1000, 1, fast,  slow))
+
+
+
+
+
+
+
+
+///  ##операторы    ##++
+// Incrementing and Decrementing
+var highFives = 0;
+++highFives;
+++highFives;
+--highFives;
+document.write(highFives+" ");
+
+// += (plus-equals) and  –= (minus-equals)     +=, –=, *=, /=, %=, &=, |=, ^=
+var score = 10;
+score += 7;
+score -= 3;
+document.write(score+" ");
+
+var balloons = 100;
+balloons /= 4;
+document.write(balloons+" ");
+
+var balloons1 = 100;
+balloons1 *= 2;
+document.write(balloons1+ "<br>");
+
+//  !!  my  различия  постфиксная форма  и  префиксная форма
+/*var mmm=4;       alert (mmm++===4);  // true
+var mmm=4;   alert (++mmm===5); // true
+*/
+
+
+
+///  Booleans        ##логические
+/////////    &&(and)  ||(or)  !(not) ////////////
+
+//  Операторы отношения    равенства, сравнения и логические (булевые)   ==, >, < 
+//  логические
+a = 1; b = 0
+document.write((a && b) + "  ")
+document.write((a || b) + "  ")
+document.write(( !b ) + "<br>")
+
+
+var javascriptIsCool = true;
+document.write(javascriptIsCool+"____");
+
+var hadShower = true;
+var hasBackpack = false;
+document.write(hadShower && hasBackpack +"____");
+document.write((hasBackpack || hadShower) + "____");
+
+var isWeekend = true;
+document.write(!isWeekend + "____");
+
+document.write(!(hadShower && hasBackpack||!isWeekend));
+document.write(" <br>");
+
+
+
+/// Comparing Numbers with Booleans
+var height = 65;
+var heightRestriction = 60;
+document.write(height > heightRestriction);    document.write(" ");
+
+
+
+</script>
+<script src="oper.js"></script>
+</body>
+</html>

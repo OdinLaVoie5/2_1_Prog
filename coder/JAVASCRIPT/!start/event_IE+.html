@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+
+</head>
+
+
+
+<body onkeypress="f_body();" onmousemove="f_body();" onbeforeunload="f_unload();">
+<p oncontextmenu="f_body();">
+Над этим абзацем нельзя вывести контекстное меню</p>
+<div id="div2"> </div>
+<div id="div1"> </div>
+<div id="div3"> </div>
+<div id="div4"> </div>
+<div id="div5"> </div>
+<div id="div6">Нажмите клавишу на клавиатуре, чтобы увидеть ее код</div>
+<p>Нажмите левую или правую клавишу Ctrl вместе с Enter, чтобы увидеть сообщение</p>
+<p onselectstart="f_body();">Этот абзац нельзя выделить отдельно от других абзацев</p>
+<div><a href="file.html">Нажмите для перехода по ссылке</a></div>
+</body>
+
+<script type="text/javascript">
+function f_unload() {
+event.returnValue = "Хотите покинуть документ?";
+}
+function f_body() {
+switch (event.type) {
+case "mousemove":
+var m1, m2;
+m1 = event.clientX;
+m2 = event.clientY;
+var div1 = document.getElementById("div1");
+div1.innerHTML = "clientX, clientY: x - " + m1 + " y - " + m2;
+
+var nl, n2;
+nl = event.screenX; 
+n2 = event.screenY;
+var div2 = document.getElementById("div2");
+div2.innerHTML = "screenX, screenY: x - "+nl+" y - " + n2;
+
+var sl, s2;
+s1 = event.offsetX;
+s2 = event.offsetY;
+var div3 = document.getElementById("div3");
+var div4 = document.getElementById("div4");
+var div5 = document.getElementById("div5");
+div3.innerHTML = "offsetX, offsetY: x - " + s1 + " y - " + s2;
+
+div4.innerHTML = "x, y: x - " + event.x + " y - " + event.y;
+
+div5.innerHTML = "Тег: " + event.srcElement.tagName;
+break;
+
+case "keypress":
+var div6 = document.getElementById("div6");
+div6.innerHTML = "код нажатой клавиши - " + event.keyCode;
+if (event.ctrlLeft && event.keyCode==10) {
+window.alert("Нажата левая клавиша Ctrl + Enter");
+}
+if (!event.ctrlLeft && event.keyCode==10) {
+window.alert("Нажата правая клавиша Ctrl + Enter");
+}
+break;
+case "contextmenu":
+event.returnValue = false;
+break;
+case "selectstart":
+event.returnValue = false;
+break;
+}
+}
+</script>
+
+</html>

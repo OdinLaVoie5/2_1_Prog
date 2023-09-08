@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0" />  
+  <title>CSS3 анимация (свойство animation)</title>  
+  <!--[if lt IE 9]>
+	<script src="http://html5book.ru/wp-content/themes/papercuts/js/html5.js"></script>
+	<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49017436-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<style type='text/css'></style>
+<!-- This site is optimized with the Yoast SEO plugin v3.0.7 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="CSS3 анимация позволяет создавать эффекты, которые раньше воспроизводились с помощью скрипта. Анимация применяется к любым html-элементам."/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="http://html5book.ru/css3-animation/" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="CSS3 анимация (свойство animation)" />
+<meta property="og:description" content="CSS3 анимация позволяет создавать эффекты, которые раньше воспроизводились с помощью скрипта. Анимация применяется к любым html-элементам." />
+<meta property="og:url" content="http://html5book.ru/css3-animation/" />
+<meta property="og:site_name" content="html5book" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2015/01/css3-animation.png" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента" href="http://html5book.ru/feed/" />
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента комментариев" href="http://html5book.ru/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента комментариев к &laquo;2.20. CSS3 анимация&raquo;" href="http://html5book.ru/css3-animation/feed/" />
+<link rel='stylesheet' id='crayon-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-idle-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/themes/idle/idle.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-consolas-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/fonts/consolas.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='papercuts-style-css'  href='http://html5book.ru/wp-content/themes/papercuts/style.css?ver=4.4.2' type='text/css' media='all' />
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/html5book.ru\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u041d\u0430\u0436\u043c\u0438\u0442\u0435 %s \u0434\u043b\u044f \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f, %s \u0434\u043b\u044f \u0432\u0441\u0442\u0430\u0432\u043a\u0438","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<link rel='https://api.w.org/' href='http://html5book.ru/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://html5book.ru/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://html5book.ru/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='http://html5book.ru/?p=2990' />
+<link rel="alternate" type="application/json+oembed" href="http://html5book.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5book.ru%2Fcss3-animation%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://html5book.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5book.ru%2Fcss3-animation%2F&#038;format=xml" />
+ 
+
+   
+    <style type="text/css">   
+      #panel_load {
+  		 background:#fff;
+  		 border:1px solid #ccc;
+  		 opacity:1;
+  		 padding:10px;
+  		 position:fixed;
+  		 right: 30px;
+  		 top: 40px;
+  		 color:#555;
+  		 font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
+  		 font-size:12px;
+  		 text-align:center;
+  		 z-index:100;
+  		 
+  		 box-shadow:5px 5px 5px -6px #000;
+  		 -moz-box-shadow:5px 5px 5px -6px #000;
+  		 -webkit-box-shadow:5px 5px 5px -6px #000;
+  		 -khtml-box-shadow:5px 5px 5px -6px #000;
+  		 -o-box-shadow:5px 5px 5px -6px #000;
+      }  
+     </style>  
+    
+    <!--[if IE]>
+<style type="text/css" media="screen">
+#wrapper-header, #wrapper-footer, #top-navigation-wrapper, .header-image-wrapper, .entry-content, .home-list-posts, .post-entry, .sidebar-widget, .sidebar-headline, .footer-signature, #nav-below, #papercuts-post-nav, .search .navigation {
+        behavior: url("http://html5book.ru/wp-content/themes/papercuts/css/pie/PIE.php");
+        zoom: 1;
+}
+</style>
+<![endif]-->
+  
+</head>
+<body class="page page-id-2990 page-template-default" id="wrapper">
+
+<header>  
+ <div class="header-content">
+<a href="http://html5book.ru/">
+<img class="header-logo" src="http://html5book.ru/wp-content/themes/papercuts/images/logo.png"></a>
+  <div class="menu-box-wrapper">
+<div class="menu-top-container"><ul id="nav" class="menu"><li id="menu-item-3827" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3827"><a href="http://html5book.ru/html-html5/">HTML</a></li>
+<li id="menu-item-3871" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3871"><a href="http://html5book.ru/css-css3/">CSS</a></li>
+<li id="menu-item-3975" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3975"><a href="http://html5book.ru/javascript-jquery/">JavaScript</a></li>
+<li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884"><a href="http://html5book.ru/web-topography/">Веб-типографика</a></li>
+<li id="menu-item-5292" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5292"><a href="http://html5book.ru/category/uroki/">Уроки</a></li>
+<li id="menu-item-5951" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5951"><a href="http://html5book.ru/css-spravochnik/">CSS справочник</a></li>
+<li id="menu-item-7807" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7807"><a href="http://html5book.ru/seo/">SEO</a></li>
+</ul></div>  </div>
+    </div>
+</header> <!-- end of wrapper-header -->
+
+<div id="container">
+  <div id="main-content">
+  <div id="content">    <article class="entry-content"> 
+      <div class="entry-content-inner">
+		        <h1 class="content-headline">2.20. CSS3 анимация</h1>
+		<!--Ad Injection:top-->
+<div style='margin-bottom:30px;padding-top:0px;padding-bottom:30px;'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ADAPT -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4906567094890032"
+     data-ad-slot="5808407100"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><p><img src="http://html5book.ru/wp-content/uploads/2015/01/css3-animation.png" alt="css3-animation" width="250" height="250" class="alignleft size-full wp-image-4254" srcset="http://html5book.ru/wp-content/uploads/2015/01/css3-animation-150x150.png 150w, http://html5book.ru/wp-content/uploads/2015/01/css3-animation.png 250w" sizes="(max-width: 250px) 100vw, 250px" /><strong>CSS3 анимация</strong> &#8212; вдохновение для веб-разработчиков. С ее помощью можно создавать эффекты, которые раньше воспроизводились с помощью скрипта и с использованием графических редакторов. </p>
+<p>Анимация применяется к любым html-элементам, а также к псевдоэлементам <kbd>:before</kbd> и <kbd>:after</kbd>. Список свойств, которые можно анимировать, приведен <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties"  target="_blank" class="site">здесь</a>. </p>
+<h2 style="clear:both">Анимация элементов с помощью свойства animation</h2>
+<ul class="contents">
+<li style="color:white; background:#5e4a3f;">Содержание:</li>
+<li><a href="#keyframes">1. Правило <kbd>@keyframes</kbd></a></li>
+<li><a href="#animation-name">2. Название анимации <kbd>animation-name</kbd></a></li>
+<li><a href="#animation-duration">3. Длительность анимации <kbd>animation-duration</kbd></a></li>
+<li><a href="#animation-timing-function">4. Временная функция <kbd>animation-timing-function</kbd></a></li>
+<li><a href="#animation-delay">5. Анимация с задержкой <kbd>animation-delay</kbd></a></li>
+<li><a href="#animation-iteration-count">6. Повтор анимации <kbd>animation-iteration-count</kbd></a></li>
+<li><a href="#animation-direction">7. Направление анимации <kbd>animation-direction</kbd></a></li>
+<li><a href="#animation">8. Краткая запись анимации <kbd>animation</kbd></a></li>
+<li><a href="#animation-play-state">9. Проигрывание анимации <kbd>animation-play-state</kbd></a></li>
+<li><a href="#animation-fill-mode">10. Состояние элемента до и после воспроизведения анимации <kbd>animation-fill-mode</kbd></a></li>
+<li><a href="#part10">11. Множественные анимации</a></li>
+<li><a href="http://html5book.ru/urok-sozdanie-animacii/">12. Урок: создание анимации</a></li>
+</ul>
+<h4>Поддержка браузерами</h4>
+<blockquote><p>
+<b>IE:</b> 10.0<br />
+<b>Firefox:</b> 16.0, 5.0 -moz-<br />
+<b>Chrome:</b> 43.0, 4.0 -webkit-<br />
+<b>Safari:</b> 4.0 -webkit-<br />
+<b>Opera:</b> 12.1, 12.0 -o-<br />
+<b>iOS Safari:</b> 9, 7.1 -webkit-<br />
+<b>Opera Mini:</b> &#8212;<br />
+<b>Android Browser:</b> 44, 4.1 -webkit-<br />
+<b>Chrome for Android:</b> 44</p></blockquote>
+<p data-height="445" data-theme-id="5012" data-slug-hash="YyPyoZ" data-default-tab="result" data-user="nazarelen" class='codepen'>See the Pen <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen/pen/YyPyoZ/" >Coffee cup animation</a> by Elena Nazarova (<a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen" >@nazarelen</a>) on <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io" >CodePen</a>.</p>
+<p><script async src="//assets.codepen.io/assets/embed/ei.js"></script></p>
+<h3 id="keyframes">1. Правило @keyframes</h3>
+<p><strong>CSS3-анимация</strong> состоит из двух компонентов: сначала идет объявление <kbd>@keyframes</kbd>, которое затем используется в свойстве <kbd>animation</kbd> элемента.</p>
+<p>Правило <kbd>@keyframes</kbd> позволяет создавать анимацию с помощью <b>ключевых кадров</b> &#8212; состояний объекта в определенный момент времени. </p>
+<p>Ключевые кадры анимации создаются с помощью ключевых слов <kbd>from</kbd> и <kbd>to</kbd> (эквивалентны значениям <kbd>0%</kbd> и <kbd>100%</kbd>) или с помощью процентных пунктов, которых можно задавать сколько угодно. Также можно комбинировать ключевые слова и процентные пункты.</p>
+<p>Если 0% или 100% кадры не указаны, то браузер пользователя создает их, используя вычисляемые (первоначально заданные) значения анимируемого свойства.  </p>
+<p>Если у двух ключевых кадров будут одинаковые селекторы, то последующий отменит действие предыдущего. </p>
+<h5>Синтаксис:</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c679885941343000" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+@-webkit-keyframes shadow {
+from {text-shadow: 0 0 3px black;}
+50% {text-shadow: 0 0 30px black;}
+to {text-shadow: 0 0 3px black;}
+}
+@keyframes shadow {
+from {text-shadow: 0 0 3px black;}
+50% {text-shadow: 0 0 30px black;}
+to {text-shadow: 0 0 3px black;}
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c679885941343000-1">1</div><div class="crayon-num" data-line="crayon-56d049c679885941343000-2">2</div><div class="crayon-num" data-line="crayon-56d049c679885941343000-3">3</div><div class="crayon-num" data-line="crayon-56d049c679885941343000-4">4</div><div class="crayon-num" data-line="crayon-56d049c679885941343000-5">5</div><div class="crayon-num" data-line="crayon-56d049c679885941343000-6">6</div><div class="crayon-num" data-line="crayon-56d049c679885941343000-7">7</div><div class="crayon-num" data-line="crayon-56d049c679885941343000-8">8</div><div class="crayon-num" data-line="crayon-56d049c679885941343000-9">9</div><div class="crayon-num" data-line="crayon-56d049c679885941343000-10">10</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c679885941343000-1"><span class="crayon-n">@-webkit-keyframes shadow {</span></div><div class="crayon-line" id="crayon-56d049c679885941343000-2"><span class="crayon-n">from {text-shadow: 0 0 3px black;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d049c679885941343000-3"><span class="crayon-k ">50% </span><span class="crayon-sy">{</span><span class="crayon-e ">text-shadow</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">30px</span><span class="crayon-h"> </span><span class="crayon-i ">black</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d049c679885941343000-4"><span class="crayon-k ">to </span><span class="crayon-sy">{</span><span class="crayon-e ">text-shadow</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">3px</span><span class="crayon-h"> </span><span class="crayon-i ">black</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d049c679885941343000-5"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d049c679885941343000-6"><span class="crayon-n">@keyframes shadow {</span></div><div class="crayon-line" id="crayon-56d049c679885941343000-7"><span class="crayon-n">from {text-shadow: 0 0 3px black;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d049c679885941343000-8"><span class="crayon-k ">50% </span><span class="crayon-sy">{</span><span class="crayon-e ">text-shadow</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">30px</span><span class="crayon-h"> </span><span class="crayon-i ">black</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d049c679885941343000-9"><span class="crayon-k ">to </span><span class="crayon-sy">{</span><span class="crayon-e ">text-shadow</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">3px</span><span class="crayon-h"> </span><span class="crayon-i ">black</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d049c679885941343000-10"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p> </p>
+<p>Теперь, объявив <kbd>@keyframes</kbd>, мы можем ссылаться на него в свойстве <kbd>animation</kbd>:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c679891509997072" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+h1 {
+font-size: 3.5em;
+color: darkmagenta;
+-webkit-animation: shadow  2s infinite ease-in-out;
+animation: shadow  2s infinite ease-in-out;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c679891509997072-1">1</div><div class="crayon-num" data-line="crayon-56d049c679891509997072-2">2</div><div class="crayon-num" data-line="crayon-56d049c679891509997072-3">3</div><div class="crayon-num" data-line="crayon-56d049c679891509997072-4">4</div><div class="crayon-num" data-line="crayon-56d049c679891509997072-5">5</div><div class="crayon-num" data-line="crayon-56d049c679891509997072-6">6</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c679891509997072-1"><span class="crayon-k ">h1 </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d049c679891509997072-2"><span class="crayon-e ">font-size</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3.5em</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d049c679891509997072-3"><span class="crayon-e ">color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">darkmagenta</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d049c679891509997072-4"><span class="crayon-e ">-webkit-animation</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">shadow</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-i ">2s</span><span class="crayon-h"> </span><span class="crayon-i ">infinite</span><span class="crayon-h"> </span><span class="crayon-i ">ease-in-out</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d049c679891509997072-5"><span class="crayon-e ">animation</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">shadow</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-i ">2s</span><span class="crayon-h"> </span><span class="crayon-i ">infinite</span><span class="crayon-h"> </span><span class="crayon-i ">ease-in-out</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d049c679891509997072-6"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p> </p>
+<h3 id="animation-name">2. Название анимации</h3>
+<p>Свойство <kbd>animation-name</kbd> задает имя анимации. Рекомендуется использовать название, отражающее суть анимации, при этом можно использовать одно слово или несколько, связанных между собой при помощи пробела <kbd>-</kbd> или нижнего подчеркивания <kbd>_</kbd>.</p>
+<h5>Синтаксис:</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c679895891479605" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+-webkit-animation-name: mymove;
+animation-name: mymove;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c679895891479605-1">1</div><div class="crayon-num" data-line="crayon-56d049c679895891479605-2">2</div><div class="crayon-num" data-line="crayon-56d049c679895891479605-3">3</div><div class="crayon-num" data-line="crayon-56d049c679895891479605-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c679895891479605-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d049c679895891479605-2"><span class="crayon-e ">-webkit-animation-name</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">mymove</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d049c679895891479605-3"><span class="crayon-e ">animation-name</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">mymove</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d049c679895891479605-4"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p> </p>
+<h3 id="animation-duration">3. Длительность анимации</h3>
+<p>Свойство устанавливает длительность анимации, например: <kbd>animation-duration: 1s;</kbd>. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">animation-duration</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td>время (<kbd>s</kbd> / <kbd>ms</kbd>)</td>
+<td>Длительность анимации задается в секундах или миллисекундах.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует это свойство от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис:</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c679898789527109" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+-webkit-animation-duration: 2s;
+animation-duration: 2s;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c679898789527109-1">1</div><div class="crayon-num" data-line="crayon-56d049c679898789527109-2">2</div><div class="crayon-num" data-line="crayon-56d049c679898789527109-3">3</div><div class="crayon-num" data-line="crayon-56d049c679898789527109-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c679898789527109-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d049c679898789527109-2"><span class="crayon-e ">-webkit-animation-duration</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">2s</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d049c679898789527109-3"><span class="crayon-e ">animation-duration</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">2s</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d049c679898789527109-4"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p> </p>
+<h3 id="animation-timing-function">4. Временная функция</h3>
+<p>Свойство определяет изменение скорости от начала до конца анимации с помощью временных функций. Задается при помощи ключевых слов или кривой Безье <kbd>cubic-bezier(x1, y1, x2, y2)</kbd>. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">animation-timing-function</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>ease</kbd></td>
+<td>Функция по умолчанию, анимация начинается медленно, разгоняется быстро и замедляется в конце. Соответствует <kbd>cubic-bezier(0.25,0.1,0.25,1)</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>linear</kbd></td>
+<td>Анимация происходит равномерно на протяжении всего времени, без колебаний в скорости. Соответствует <kbd>cubic-bezier(0,0,1,1)</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>ease-in</kbd></td>
+<td>Анимация начинается медленно, а затем плавно ускоряется в конце. Соответствует <kbd>cubic-bezier(0.42,0,1,1)</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>ease-out</kbd></td>
+<td>Анимация начинается быстро и плавно замедляется в конце. Соответствует <kbd>cubic-bezier(0,0,0.58,1)</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>ease-in-out</kbd></td>
+<td>Анимация медленно начинается и медленно заканчивается. Соответствует <kbd>cubic-bezier(0.42,0,0.58,1)</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>cubic-bezier(x1, y1, x2, y2)</kbd></td>
+<td>Позволяет вручную установить значения от 0 до 1. <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://roblaplaca.com/examples/bezierBuilder/"  target="_blank" class="site">На этом сайте</a> вы сможете построить любую траекторию скорости изменения анимации.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует это свойство от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис:</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c67989c996279306" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+-webkit-animation-timing-function: linear; 
+animation-timing-function: linear;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c67989c996279306-1">1</div><div class="crayon-num" data-line="crayon-56d049c67989c996279306-2">2</div><div class="crayon-num" data-line="crayon-56d049c67989c996279306-3">3</div><div class="crayon-num" data-line="crayon-56d049c67989c996279306-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c67989c996279306-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d049c67989c996279306-2"><span class="crayon-e ">-webkit-animation-timing-function</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">linear</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d049c67989c996279306-3"><span class="crayon-e ">animation-timing-function</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">linear</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d049c67989c996279306-4"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p> </p>
+<p data-height="330" data-theme-id="5012" data-slug-hash="YXvPVz" data-default-tab="result" data-user="nazarelen" class='codepen'>See the Pen <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen/pen/YXvPVz/" >YXvPVz</a> by Elena Nazarova (<a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen" >@nazarelen</a>) on <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io" >CodePen</a>.</p>
+<p><script async src="//assets.codepen.io/assets/embed/ei.js"></script></p>
+<h3 id="animation-delay">5. Анимация с задержкой</h3>
+<p>Свойство игнорирует анимацию заданное количество времени, что дает возможность по отдельности запускать каждую анимацию. Отрицательная задержка начинает анимацию с определенного момента внутри её цикла, т.е. со времени, указанного в задержке. Это позволяет применять анимацию к нескольким элементам со сдвигом фазы, изменяя лишь время задержки. Если вы хотите, чтобы анимация началась с середины, задайте отрицательную задержку, равную половине времени, установленном в <kbd>animation-duration</kbd>. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">animation-delay</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td>время (<kbd>s</kbd> / <kbd>ms</kbd>)</td>
+<td>Длительность анимации задается в секундах или миллисекундах.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует это свойство от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис:</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c6798a0240862715" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+-webkit-animation-delay: 2s; 
+animation-delay: 2s; 
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c6798a0240862715-1">1</div><div class="crayon-num" data-line="crayon-56d049c6798a0240862715-2">2</div><div class="crayon-num" data-line="crayon-56d049c6798a0240862715-3">3</div><div class="crayon-num" data-line="crayon-56d049c6798a0240862715-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c6798a0240862715-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d049c6798a0240862715-2"><span class="crayon-e ">-webkit-animation-delay</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">2s</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d049c6798a0240862715-3"><span class="crayon-e ">animation-delay</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">2s</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d049c6798a0240862715-4"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p> </p>
+<p data-height="170" data-theme-id="5012" data-slug-hash="vEapjj" data-default-tab="result" data-user="nazarelen" class='codepen'>See the Pen <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen/pen/vEapjj/" >vEapjj</a> by HeleN (<a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen" >@nazarelen</a>) on <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io" >CodePen</a>.</p>
+<p><script async src="//assets.codepen.io/assets/embed/ei.js"></script></p>
+<h3 id="animation-iteration-count">6. Повтор анимации</h3>
+<p>Свойство позволяет запустить анимацию несколько раз. Значение 0 или любое отрицательное число удаляют анимацию из проигрывания. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">animation-iteration-count</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td>число</td>
+<td>С помощью целого числа задается количество повторов анимации.</td>
+</tr>
+<tr>
+<td><kbd>infinite</kbd></td>
+<td>Анимация проигрывается бесконечно.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует это свойство от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис:</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c6798a3266507888" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+-webkit-animation-iteration-count: 3; 
+animation-iteration-count: 3; 
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c6798a3266507888-1">1</div><div class="crayon-num" data-line="crayon-56d049c6798a3266507888-2">2</div><div class="crayon-num" data-line="crayon-56d049c6798a3266507888-3">3</div><div class="crayon-num" data-line="crayon-56d049c6798a3266507888-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c6798a3266507888-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d049c6798a3266507888-2"><span class="crayon-e ">-webkit-animation-iteration-count</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d049c6798a3266507888-3"><span class="crayon-e ">animation-iteration-count</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d049c6798a3266507888-4"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p> </p>
+<h3 id="animation-direction">7. Направление анимации</h3>
+<p>Свойство задает направление повтора анимации. Если анимация повторяется только один раз, то это свойство не имеет смысла. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">animation-direction</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>alternate</kbd></td>
+<td>Анимация проигрывается с начала до конца, затем в обратном направлении.</td>
+</tr>
+<tr>
+<td><kbd>alternate-reverse</kbd></td>
+<td>Анимация проигрывается с конца до начала, затем в обратном направлении.</td>
+</tr>
+<tr>
+<td><kbd>normal</kbd></td>
+<td>Значение по умолчанию, анимация проигрывается в обычном направлении, с начала и до конца.</td>
+</tr>
+<tr>
+<td><kbd>reverse</kbd></td>
+<td>Анимация проигрывается с конца.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует это свойство от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис:</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c6798a6611766817" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+-webkit-animation-direction: alternate; 
+animation-direction: alternate; 
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c6798a6611766817-1">1</div><div class="crayon-num" data-line="crayon-56d049c6798a6611766817-2">2</div><div class="crayon-num" data-line="crayon-56d049c6798a6611766817-3">3</div><div class="crayon-num" data-line="crayon-56d049c6798a6611766817-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c6798a6611766817-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d049c6798a6611766817-2"><span class="crayon-e ">-webkit-animation-direction</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">alternate</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d049c6798a6611766817-3"><span class="crayon-e ">animation-direction</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">alternate</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d049c6798a6611766817-4"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p> </p>
+<p data-height="530" data-theme-id="5012" data-slug-hash="mJKeqv" data-default-tab="result" data-user="nazarelen" class='codepen'>See the Pen <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen/pen/mJKeqv/" >mJKeqv</a> by Elena Nazarova (<a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen" >@nazarelen</a>) on <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io" >CodePen</a>.</p>
+<p><script async src="//assets.codepen.io/assets/embed/ei.js"></script></p>
+<h3 id="animation">8. Краткая запись анимации</h3>
+<p>Все параметры воспроизведения анимации можно объединить в одном свойстве &#8212; <kbd>animation</kbd>, перечислив их через пробел:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c6798a9998911076" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+animation: animation-name animation-duration animation-timing-function animation-delay animation-iteration-count animation-direction;</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c6798a9998911076-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c6798a9998911076-1"><span class="crayon-e ">animation</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">animation-name</span><span class="crayon-h"> </span><span class="crayon-i ">animation-duration</span><span class="crayon-h"> </span><span class="crayon-i ">animation-timing-function</span><span class="crayon-h"> </span><span class="crayon-i ">animation-delay</span><span class="crayon-h"> </span><span class="crayon-i ">animation-iteration-count</span><span class="crayon-h"> </span><span class="crayon-i ">animation-direction</span><span class="crayon-sy">;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p> </p>
+<h3 id="animation-play-state">9. Проигрывание анимации</h3>
+<p>Свойство позволяет управлять проигрыванием и остановкой анимации. Остановка анимации внутри цикла возможна через использование этого свойства в скрипте (JavaScript). Также можно останавливать анимацию при наведении курсором мыши на объект (состояние <kbd>:hover</kbd>, например <kbd>h1:hover {animation-play-state: paused;}</kbd>). Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">animation-play-state</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>paused</kbd></td>
+<td>Останавливает анимацию.</td>
+</tr>
+<tr>
+<td><kbd>running</kbd></td>
+<td>Значение по умолчанию, означает проигрывание анимации.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует это свойство от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис:</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c6798ac217462440" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div:hover {
+-webkit-animation-play-state: paused;
+animation-play-state: paused; 
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c6798ac217462440-1">1</div><div class="crayon-num" data-line="crayon-56d049c6798ac217462440-2">2</div><div class="crayon-num" data-line="crayon-56d049c6798ac217462440-3">3</div><div class="crayon-num" data-line="crayon-56d049c6798ac217462440-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c6798ac217462440-1"><span class="crayon-k ">div:hover </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d049c6798ac217462440-2"><span class="crayon-e ">-webkit-animation-play-state</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">paused</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d049c6798ac217462440-3"><span class="crayon-e ">animation-play-state</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">paused</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d049c6798ac217462440-4"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p> </p>
+<p data-height="271" data-theme-id="5012" data-slug-hash="EjRagd" data-default-tab="result" data-user="nazarelen" class='codepen'>See the Pen <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen/pen/EjRagd/" >EjRagd</a> by Elena Nazarova (<a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen" >@nazarelen</a>) on <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io" >CodePen</a>.</p>
+<p><script async src="//assets.codepen.io/assets/embed/ei.js"></script></p>
+<h3 id="animation-fill-mode">10. Состояние элемента до и после воспроизведения анимации</h3>
+<p>Свойство определяет порядок применения определенных в <kbd>@keyframes</kbd> стилей к объекту. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">animation-fill-mode</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>none</kbd></td>
+<td>Значение по умолчанию. Состояние элемента не меняется до или после воспроизведения анимации.</td>
+</tr>
+<tr>
+<td><kbd>forwards</kbd></td>
+<td>Воспроизводит анимацию до последнего кадра по окончанию последнего повтора и не отматывает ее к первоначальному состоянию.</td>
+</tr>
+<tr>
+<td><kbd>backwards</kbd></td>
+<td>Возвращает состояние элемента после загрузки страницы к первому кадру, даже если установлена задержка <kbd>animation-delay</kbd>, и оставляет его там, пока не начнется анимация.</td>
+</tr>
+<tr>
+<td><kbd>both</kbd></td>
+<td>Позволяет оставлять элемент в первом ключевом кадре до начала анимации (игнорируя положительное значение задержки) и задерживать на последнем кадре до конца последней анимации.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует это свойство от родительского элемента.</td>
+</tr>
+</table>
+<h5>Синтаксис:</h5>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c6798b0552365428" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+-webkit-animation-fill-mode: forwards; 
+animation-fill-mode: forwards;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c6798b0552365428-1">1</div><div class="crayon-num" data-line="crayon-56d049c6798b0552365428-2">2</div><div class="crayon-num" data-line="crayon-56d049c6798b0552365428-3">3</div><div class="crayon-num" data-line="crayon-56d049c6798b0552365428-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c6798b0552365428-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d049c6798b0552365428-2"><span class="crayon-e ">-webkit-animation-fill-mode</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">forwards</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d049c6798b0552365428-3"><span class="crayon-e ">animation-fill-mode</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">forwards</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d049c6798b0552365428-4"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p></p>
+<p data-height="352" data-theme-id="5012" data-slug-hash="Qbxgmj" data-default-tab="result" data-user="nazarelen" class='codepen'>See the Pen <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen/pen/Qbxgmj/" >Qbxgmj</a> by Elena Nazarova (<a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io/nazarelen" >@nazarelen</a>) on <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io" >CodePen</a>.</p>
+<p><script async src="//assets.codepen.io/assets/embed/ei.js"></script></p>
+<h3 id="part10">11. Множественные анимации</h3>
+<p>Для одного элемента можно задавать несколько анимаций, перечислив их названия через запятую:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d049c6798b3307487243" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {animation: shadow 1s ease-in-out 0.5s alternate, move 5s linear 2s;}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d049c6798b3307487243-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d049c6798b3307487243-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">animation</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">shadow</span><span class="crayon-h"> </span><span class="crayon-i ">1s</span><span class="crayon-h"> </span><span class="crayon-i ">ease-in-out</span><span class="crayon-h"> </span><span class="crayon-i ">0.5s</span><span class="crayon-h"> </span><span class="crayon-i ">alternate,</span><span class="crayon-h"> </span><span class="crayon-i ">move</span><span class="crayon-h"> </span><span class="crayon-i ">5s</span><span class="crayon-h"> </span><span class="crayon-i ">linear</span><span class="crayon-h"> </span><span class="crayon-i ">2s</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p> </p>
+<!--Ad Injection:bottom-->
+<div style='clear:both;margin-top:30px;padding-top:30px;padding-bottom:0px;'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ADAPT -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4906567094890032"
+     data-ad-slot="5808407100"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<div id="disqus_thread">
+            <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-86">
+        <div id="dsq-comment-header-86" class="dsq-comment-header">
+            <cite id="dsq-cite-86">
+                <span id="dsq-author-user-86">Аноним</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-86" class="dsq-comment-body">
+            <div id="dsq-comment-message-86" class="dsq-comment-message"><p>Большое спасибо за материал!</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-87">
+        <div id="dsq-comment-header-87" class="dsq-comment-header">
+            <cite id="dsq-cite-87">
+http://html5book.ru                <span id="dsq-author-user-87">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-87" class="dsq-comment-body">
+            <div id="dsq-comment-message-87" class="dsq-comment-message"><p>Пожалуйста!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-177">
+        <div id="dsq-comment-header-177" class="dsq-comment-header">
+            <cite id="dsq-cite-177">
+                <span id="dsq-author-user-177">campusboy</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-177" class="dsq-comment-body">
+            <div id="dsq-comment-message-177" class="dsq-comment-message"><p>Удобная для изучения статья, спасибо! Было бы круто, если бы при прочтении рядом сбоку или вверху фиксировано при прокрутке ехал блок и с перечислением всего синтаксиса. Как бы читаешь и в блок поглядываешь, что вот это свойство идет после этого.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-178">
+        <div id="dsq-comment-header-178" class="dsq-comment-header">
+            <cite id="dsq-cite-178">
+http://html5book.ru                <span id="dsq-author-user-178">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-178" class="dsq-comment-body">
+            <div id="dsq-comment-message-178" class="dsq-comment-message"><p>Спасибо, хорошая идея, подумаю. Правда, для мобильных не сработает (</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-3" id="dsq-comment-179">
+        <div id="dsq-comment-header-179" class="dsq-comment-header">
+            <cite id="dsq-cite-179">
+                <span id="dsq-author-user-179">campusboy</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-179" class="dsq-comment-body">
+            <div id="dsq-comment-message-179" class="dsq-comment-message"><p>Ну изучать такие статьи с помощью мобильного то ещё извращение <img src="http://html5book.ru/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /> практиковаться то всё равно на компе и всё равно прибегать к справке (статье).</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-4" id="dsq-comment-181">
+        <div id="dsq-comment-header-181" class="dsq-comment-header">
+            <cite id="dsq-cite-181">
+http://html5book.ru                <span id="dsq-author-user-181">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-181" class="dsq-comment-body">
+            <div id="dsq-comment-message-181" class="dsq-comment-message"><p>Согласна 😉</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-194">
+        <div id="dsq-comment-header-194" class="dsq-comment-header">
+            <cite id="dsq-cite-194">
+                <span id="dsq-author-user-194">Charly Chaplin</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-194" class="dsq-comment-body">
+            <div id="dsq-comment-message-194" class="dsq-comment-message"><p>Спасибо за подробное описание и наглядные примеры. Все очень легко для изучения. )</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-195">
+        <div id="dsq-comment-header-195" class="dsq-comment-header">
+            <cite id="dsq-cite-195">
+http://html5book.ru                <span id="dsq-author-user-195">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-195" class="dsq-comment-body">
+            <div id="dsq-comment-message-195" class="dsq-comment-message"><p>Пожалуйста! Рада, что мой труд был вам полезен)</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-202">
+        <div id="dsq-comment-header-202" class="dsq-comment-header">
+            <cite id="dsq-cite-202">
+                <span id="dsq-author-user-202">SkeLetOn</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-202" class="dsq-comment-body">
+            <div id="dsq-comment-message-202" class="dsq-comment-message"><p>Прошу помочь. Мне нужно, чтобы анимация останавливалась и не возвращалась на изначальную позицию.Код типа этого:</p>
+<p>.container{</p>
+<p>width:60px;</p>
+<p>height:60px;</p>
+<p>background:#000;</p>
+<p>display:inline-block;</p>
+<p>}</p>
+<p>#q{</p>
+<p>animation:animation 4s linear 1s .5;</p>
+<p>}</p>
+<p>#w{</p>
+<p>animation:animation2 4s linear 3s .5;</p>
+<p>}</p>
+<p>@keyframes animation{</p>
+<p>from{</p>
+<p>transform:rotateX(0deg);</p>
+<p>}</p>
+<p>to{</p>
+<p>transform:rotateX(180deg);</p>
+<p>}</p>
+<p>}</p>
+<p>@keyframes animation2{</p>
+<p>from{</p>
+<p>transform:rotateY(0deg);</p>
+<p>}</p>
+<p>to{</p>
+<p>transform:rotateY(180deg);</p>
+<p>}</p>
+<p>}</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-203">
+        <div id="dsq-comment-header-203" class="dsq-comment-header">
+            <cite id="dsq-cite-203">
+http://html5book.ru                <span id="dsq-author-user-203">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-203" class="dsq-comment-body">
+            <div id="dsq-comment-message-203" class="dsq-comment-message"><p>Вам нужно добавить #q и #w animation-fill-mode: forwards; </p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-3" id="dsq-comment-204">
+        <div id="dsq-comment-header-204" class="dsq-comment-header">
+            <cite id="dsq-cite-204">
+                <span id="dsq-author-user-204">SkeLetOn</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-204" class="dsq-comment-body">
+            <div id="dsq-comment-message-204" class="dsq-comment-message"><p>Спасибо)</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-4" id="dsq-comment-207">
+        <div id="dsq-comment-header-207" class="dsq-comment-header">
+            <cite id="dsq-cite-207">
+http://html5book.ru                <span id="dsq-author-user-207">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-207" class="dsq-comment-body">
+            <div id="dsq-comment-message-207" class="dsq-comment-message"><p>Пожалуйста)</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-205">
+        <div id="dsq-comment-header-205" class="dsq-comment-header">
+            <cite id="dsq-cite-205">
+                <span id="dsq-author-user-205">SkeLetOn</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-205" class="dsq-comment-body">
+            <div id="dsq-comment-message-205" class="dsq-comment-message"><p>А не могли бы Вы мне ещё кое с чем помочь.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-206">
+        <div id="dsq-comment-header-206" class="dsq-comment-header">
+            <cite id="dsq-cite-206">
+                <span id="dsq-author-user-206">SkeLetOn</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-206" class="dsq-comment-body">
+            <div id="dsq-comment-message-206" class="dsq-comment-message"><p>Мне нужно чтобы при нечётном нажатии выполнялась одна анимация, а при чётном та же самая, но уже наоборот(от 100% к 0%)</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-208">
+        <div id="dsq-comment-header-208" class="dsq-comment-header">
+            <cite id="dsq-cite-208">
+http://html5book.ru                <span id="dsq-author-user-208">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-208" class="dsq-comment-body">
+            <div id="dsq-comment-message-208" class="dsq-comment-message"><p>Средствами CSS на одном элементе такой эффект не сделать, только с помощью скрипта.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-209">
+        <div id="dsq-comment-header-209" class="dsq-comment-header">
+            <cite id="dsq-cite-209">
+                <span id="dsq-author-user-209">SkeLetOn</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-209" class="dsq-comment-body">
+            <div id="dsq-comment-message-209" class="dsq-comment-message"><p>Я тут подумал</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-210">
+        <div id="dsq-comment-header-210" class="dsq-comment-header">
+            <cite id="dsq-cite-210">
+                <span id="dsq-author-user-210">SkeLetOn</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-210" class="dsq-comment-body">
+            <div id="dsq-comment-message-210" class="dsq-comment-message"><p>А может использовать для этого alternate</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-211">
+        <div id="dsq-comment-header-211" class="dsq-comment-header">
+            <cite id="dsq-cite-211">
+                <span id="dsq-author-user-211">SkeLetOn</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-211" class="dsq-comment-body">
+            <div id="dsq-comment-message-211" class="dsq-comment-message"><p>А как Вы сделали кнопку для начала анимации??При помощи animation-play-state???<br />
+И я подумал, может при помощи alternate получится воспроизвести анимацию, про которую я спрашивал?</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-212">
+        <div id="dsq-comment-header-212" class="dsq-comment-header">
+            <cite id="dsq-cite-212">
+http://html5book.ru                <span id="dsq-author-user-212">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-212" class="dsq-comment-body">
+            <div id="dsq-comment-message-212" class="dsq-comment-message"><p>Все примеры демонстрируются на странице благодаря встроенному редактору, кнопка на скрипте. Вся проблема в том, что на один элемент может быть один вариант :hover</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-213">
+        <div id="dsq-comment-header-213" class="dsq-comment-header">
+            <cite id="dsq-cite-213">
+                <span id="dsq-author-user-213">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-213" class="dsq-comment-body">
+            <div id="dsq-comment-message-213" class="dsq-comment-message"><p>Спасибо большое за материал!<br />
+Мне всё более-менее понятно, с поправкой на то, что я про это уже немного читал.<br />
+Очень интересен пример с часами. Скажем, примечательно как Вы смещение циферблата сделали с помощью марджин в половину размера блока. Пришлось разбираться сначала каким образом элементы циферблата смещаются при абсолютном позиционировании. При чтении кода сразу не очевидно что bottom: 0 это не идентично top: 100%. Получается марджин компенсирует на 50% от размера элемента в те стороны, которые указаны в позиционировании. Скажем top: 0 left: 50% за счёт отрицательного марджина смещается вверх на 50% от размера элемента и влево на столько же. Это угадывается, но совсем не очевидно из кода, как именно оно работает. Поэтому было бы здорово, по возможности, комментировать код.<br />
+Подобный пример компенсации смещения на размер элемента Вы, в основном, в примере, компенсируете через свойство calc. Также, насколько мне известно, это делается с помощью transform: translate ну и вот через марджин можно оказывается.<br />
+Думаю, человек, знакомый с синтаксисом CSS, но не имеющий большого опыта его применения, над этим долго бы думал, и комментарии для чего применяется то или иное свойство, могло бы ему здорово помочь отказаться от гадания на кофейной гуще <img src="http://html5book.ru/wp-includes/images/smilies/simple-smile.png" alt=":-)" class="wp-smiley" style="height: 1em; max-height: 1em;" /><br />
+Не совсем понятно свойство animation: clock 3s steps(60, end) infinite;<br />
+что такое степс интуитивно понятно, каким справочником Вы пользуетесь для уточнения синтаксиса? И зачем нужно 3 секунды, затем что у animation есть минимальный набор параметров? Просто в коде ниже указано что время анимации 60 секунд, почему для свойства animation нельзя было сразу установить 60 секунд?<br />
+А так в целом, спасибо большое, материал отличный, смотрю тут рожицы на форуме<br />
+<a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://htmlforum.ru/index.php?showtopic=53862"  rel="nofollow">http://htmlforum.ru/index.php?showtopic=53862</a><br />
+разбираюсь с кодом, вот Ваш материал помог! <img src="http://html5book.ru/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-215">
+        <div id="dsq-comment-header-215" class="dsq-comment-header">
+            <cite id="dsq-cite-215">
+http://html5book.ru                <span id="dsq-author-user-215">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-215" class="dsq-comment-body">
+            <div id="dsq-comment-message-215" class="dsq-comment-message"><p>Пожалуйста! Рада слышать вас снова  Алексей) Мне очень импонирует ваш интерес и настойчивость в освоении веб-технологий. Спасибо за комментарии, они полезны не только читателям, но и мне, иногда находятся неточности или же проверяется то или иное свойство на практике.</p>
+<p>В отношении clock 3s steps(60, end) infinite; следует читать clock 60s steps(60, end) infinite; Опечатка, и эти 3 секунды не действовали,  потому что ниже продолжительность была переопределена. Стрелка часов движется по кругу за 60 шагов в течение 60 секунд.</p>
+<p>Про пошаговую анимацию я кратко писала в уроке <a href="http://html5book.ru/urok-sozdanie-animacii/" rel="nofollow">http://html5book.ru/urok-sozdanie-animacii/</a>, можете посмотреть.</p>
+<p>Рожицы на форуме интересные, но к сожалению, анимация в таком виде на практике редко будет уместна, я больше склоняюсь к css-переходам.</p>
+<p>Прием с отрицательным margin при позиционировании можно использовать как альтернативу функции calc(). При позиционировании в 50% элемент  не будет располагаться строго по центру, так как не учитывается его собственная ширина ()или высота). Поэтому используется отрицательный  margin, равный половине его ширины. Т.е. такой способ работает только если для элемента ширина задана явно.</p>
+<p>!Обратите внимание, если при позиционировании используется left: 50% , то выравнивание по середине происходит  за счет отрицательного margin-left, если top, то margin-top!</p>
+<p>Подробнее про способы позиционирования можете почитать <a href="http://html5book.ru/horizontal-vertical-alignment/" rel="nofollow">http://html5book.ru/horizontal-vertical-alignment/</a>.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-3" id="dsq-comment-219">
+        <div id="dsq-comment-header-219" class="dsq-comment-header">
+            <cite id="dsq-cite-219">
+                <span id="dsq-author-user-219">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-219" class="dsq-comment-body">
+            <div id="dsq-comment-message-219" class="dsq-comment-message"><p>Спасибо большое! Ссылки почитал, интересно. Насчёт переходов, наверное, Вы правы, но думаю и изучение анимации будет не лишним&#8230;<br />
+Поздравляю с Новым Годом, желаю приятных открытий в любимом деле, творческих успехов, движения вперёд, а также здоровья и чтоб времени хватало на любимых, понимания во всём и взаимности :))</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-4" id="dsq-comment-222">
+        <div id="dsq-comment-header-222" class="dsq-comment-header">
+            <cite id="dsq-cite-222">
+http://html5book.ru                <span id="dsq-author-user-222">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-222" class="dsq-comment-body">
+            <div id="dsq-comment-message-222" class="dsq-comment-message"><p>Спасибо за теплые слова! Вас тоже с праздником, помимо всех приятностей, без которых жить было бы сложно и  грустно, желаю вам в этом году получить необходимые знания и  применить их на практике. Буду рада слышать вас в новом году)) </p>
+<p>Насчет изучения анимации &#8212; я не утверждаю, что это бесполезное занятие, наоборот, помогает развивать аналитические способности. Дело все в том, что чаще слышишь негатив в отношении всех этих эффектов, которые на самом деле больше раздражают и утомляют. А так, для саморазвития даже очень полезно.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt depth-3" id="dsq-comment-225">
+        <div id="dsq-comment-header-225" class="dsq-comment-header">
+            <cite id="dsq-cite-225">
+                <span id="dsq-author-user-225">Алексей</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-225" class="dsq-comment-body">
+            <div id="dsq-comment-message-225" class="dsq-comment-message"><p>По поводу центрирования текста мне очень нравится вот эта статья:</p>
+<p><a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://frontender.info/centering-css-complete-guide/"  rel="nofollow">http://frontender.info/centering-css-complete-guide/</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-214">
+        <div id="dsq-comment-header-214" class="dsq-comment-header">
+            <cite id="dsq-cite-214">
+                <span id="dsq-author-user-214">SkeLetOn</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-214" class="dsq-comment-body">
+            <div id="dsq-comment-message-214" class="dsq-comment-message"><p>Ещё один вопрос. Я создаю сайт в нём задействую анимацию, но на мобильных устройствах он не будет работать, есть способы &#171;борьбы&#187; с этим?</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-216">
+        <div id="dsq-comment-header-216" class="dsq-comment-header">
+            <cite id="dsq-cite-216">
+http://html5book.ru                <span id="dsq-author-user-216">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-216" class="dsq-comment-body">
+            <div id="dsq-comment-message-216" class="dsq-comment-message"><p>Можно уточнить, какого плана будет анимация?</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-3" id="dsq-comment-217">
+        <div id="dsq-comment-header-217" class="dsq-comment-header">
+            <cite id="dsq-cite-217">
+                <span id="dsq-author-user-217">SkeLetOn</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-217" class="dsq-comment-body">
+            <div id="dsq-comment-message-217" class="dsq-comment-message"><p>.v{<br />
+font-size:30px;<br />
+position:fixed;<br />
+top:-5px;<br />
+right:100px;<br />
+}<br />
+.v:active{<br />
+animation:q 1s linear alternate infinite forwards;<br />
+}<br />
+@keyframes q{<br />
+from{<br />
+transform:rotateY(0deg);<br />
+}<br />
+to{<br />
+position:fixed;<br />
+top:-5px;<br />
+right:0;<br />
+transform:rotateY(180deg);<br />
+}<br />
+}</p>
+<p>&#10145;</p>
+<p>Смысл таков))</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-4" id="dsq-comment-220">
+        <div id="dsq-comment-header-220" class="dsq-comment-header">
+            <cite id="dsq-cite-220">
+http://html5book.ru                <span id="dsq-author-user-220">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-220" class="dsq-comment-body">
+            <div id="dsq-comment-message-220" class="dsq-comment-message"><p>Анимация работает во многих браузерах мобильных устройств. В вашем примере вероятно вы ожидали другого эффекта, при :active стрелка не вращается, нужный эффект наблюдается при :hover.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even depth-4" id="dsq-comment-227">
+        <div id="dsq-comment-header-227" class="dsq-comment-header">
+            <cite id="dsq-cite-227">
+http://html5book.ru                <span id="dsq-author-user-227">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-227" class="dsq-comment-body">
+            <div id="dsq-comment-message-227" class="dsq-comment-message"><p>Посмотрите этот пример <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/https://www.screenfeed.fr/demos/css3-animation-on-click/#"  rel="nofollow">https://www.screenfeed.fr/demos/css3-animation-on-click/#</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+var disqus_url = 'http://html5book.ru/css3-animation/';
+var disqus_identifier = '2990 http://html5book.ru/?page_id=2990';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'html5book';
+var disqus_title = "2.20. CSS3 анимация";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=2990';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+      </div>
+    </article>
+  </div> <!-- end of content -->
+<aside id="sidebar">
+  <div class="searchform-wrapper">
+ <script>
+  (function() {
+    var cx = '008774849217505016839:j25nz2oka_a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search></div><div id="nav_menu-2" class="sidebar-widget widget_nav_menu"><div class="menu-left-container"><ul id="menu-left" class="menu"><li id="menu-item-1860" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1860"><a href="http://html5book.ru/html-html5/">HTML</a>
+<ul class="sub-menu">
+	<li id="menu-item-2804" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2804"><a href="http://html5book.ru/osnovy-html/">1.1. Основы HTML</a></li>
+	<li id="menu-item-1859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1859"><a href="http://html5book.ru/html-tags/">1.2. HTML теги</a></li>
+	<li id="menu-item-1841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1841"><a href="http://html5book.ru/html-attributes/">1.3. HTML атрибуты</a></li>
+	<li id="menu-item-1847" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1847"><a href="http://html5book.ru/html-text/">1.4. HTML текст</a></li>
+	<li id="menu-item-1845" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1845"><a href="http://html5book.ru/hyperlinks-in-html/">1.5. HTML ссылки</a></li>
+	<li id="menu-item-1843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1843"><a href="http://html5book.ru/images-in-html/">1.6. HTML изображения</a></li>
+	<li id="menu-item-1846" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1846"><a href="http://html5book.ru/html-table/">1.7. HTML таблицы</a></li>
+	<li id="menu-item-1844" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1844"><a href="http://html5book.ru/html-lists/">1.8. HTML списки</a></li>
+	<li id="menu-item-1858" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1858"><a href="http://html5book.ru/specsimvoly-html/">1.9. Спецсимволы HTML</a></li>
+	<li id="menu-item-1856" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-1856"><a href="http://html5book.ru/poleznye-servisy-html/">1.10. HTML генераторы</a></li>
+</ul>
+</li>
+<li id="menu-item-1862" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1862"><a href="http://html5book.ru/html-html5/">HTML5</a>
+<ul class="sub-menu">
+	<li id="menu-item-2838" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2838"><a href="http://html5book.ru/html5-semantic-elements/">1.11. HTML5 семантические элементы</a></li>
+	<li id="menu-item-1848" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1848"><a href="http://html5book.ru/html5-audio/">1.12. HTML5 аудио</a></li>
+	<li id="menu-item-1849" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1849"><a href="http://html5book.ru/html5-video/">1.13. HTML5 видео</a></li>
+	<li id="menu-item-2011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2011"><a href="http://html5book.ru/neobyazatelnye-tegi-html5/">1.14. Необязательные теги разметки HTML5</a></li>
+	<li id="menu-item-5395" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5395"><a href="http://html5book.ru/html5-forms/">1.15. HTML5 формы</a></li>
+</ul>
+</li>
+<li id="menu-item-1861" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1861"><a href="http://html5book.ru/css-css3/">CSS</a>
+<ul class="sub-menu">
+	<li id="menu-item-3695" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-3695"><a href="http://html5book.ru/osnovy-css/">2.1. Основы CSS</a></li>
+	<li id="menu-item-3276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3276"><a href="http://html5book.ru/block-inline-elements/">2.2. Блочные и строчные элементы</a></li>
+	<li id="menu-item-3168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3168"><a href="http://html5book.ru/css-position/">2.3. CSS позиционирование</a></li>
+	<li id="menu-item-1837" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1837"><a href="http://html5book.ru/css-text/">2.4. CSS текст</a>
+	<ul class="sub-menu">
+		<li id="menu-item-6931" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-6931"><a href="http://html5book.ru/css-text/css-text-2/">CSS текст (часть 2)</a></li>
+		<li id="menu-item-6932" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-6932"><a href="http://html5book.ru/css-text/css-text-3/">CSS текст (часть 3)</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1840"><a href="http://html5book.ru/css-shrifty/">2.5. CSS шрифты</a></li>
+	<li id="menu-item-1855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1855"><a href="http://html5book.ru/styling-hyperlinks/">2.6. CSS ссылки</a></li>
+	<li id="menu-item-1836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1836"><a href="http://html5book.ru/css3-tables/">2.7. CSS таблицы</a></li>
+	<li id="menu-item-1835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1835"><a href="http://html5book.ru/css-spiski/">2.8. CSS списки</a></li>
+	<li id="menu-item-2603" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2603"><a href="http://html5book.ru/css-background/">2.9. CSS фон</a></li>
+	<li id="menu-item-2665" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2665"><a href="http://html5book.ru/css-border/">2.10. CSS рамка</a></li>
+	<li id="menu-item-3752" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3752"><a href="http://html5book.ru/css-content/">2.11. CSS content</a></li>
+	<li id="menu-item-1853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1853"><a href="http://html5book.ru/generatory-css/">2.12. CSS генераторы</a></li>
+	<li id="menu-item-1842" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-1842"><a href="http://html5book.ru/css-colors/">2.13. CSS цвета</a></li>
+</ul>
+</li>
+<li id="menu-item-2534" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-2534"><a href="http://html5book.ru/css-css3/">CSS3</a>
+<ul class="sub-menu">
+	<li id="menu-item-2950" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2950"><a href="http://html5book.ru/css3-text/">2.14. CSS3 текст</a></li>
+	<li id="menu-item-2548" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2548"><a href="http://html5book.ru/css3-gradient/">2.15. CSS3 градиент</a></li>
+	<li id="menu-item-3032" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3032"><a href="http://html5book.ru/css3-borders/">2.16. CSS3 рамка</a></li>
+	<li id="menu-item-3076" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3076"><a href="http://html5book.ru/css3-shadows/">2.17. CSS3 тень</a></li>
+	<li id="menu-item-3723" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3723"><a href="http://html5book.ru/css3-transition/">2.18. CSS3 переходы</a></li>
+	<li id="menu-item-3748" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3748"><a href="http://html5book.ru/css3-transform/">2.19. CSS3 трансформации</a></li>
+	<li id="menu-item-3914" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2990 current_page_item menu-item-3914"><a href="http://html5book.ru/css3-animation/">2.20. CSS3 анимация</a></li>
+	<li id="menu-item-5880" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5880"><a href="http://html5book.ru/css3-flexbox/">2.21. CSS3 flexbox</a></li>
+	<li id="menu-item-5989" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5989"><a href="http://html5book.ru/css3-columns/">2.22. CSS3 columns</a></li>
+	<li id="menu-item-6186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6186"><a href="http://html5book.ru/3d-transform/">2.23. CSS3 3D трансформации</a></li>
+	<li id="menu-item-6237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6237"><a href="http://html5book.ru/css3-mediazaprosy/">2.24. CSS3 медиа запросы</a></li>
+	<li id="menu-item-8072" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-8072"><a href="http://html5book.ru/css3-filtry/">2.25. CSS3 фильтры</a></li>
+</ul>
+</li>
+<li id="menu-item-5592" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5592"><a href="http://html5book.ru/javascript-jquery/">JavaScript</a>
+<ul class="sub-menu">
+	<li id="menu-item-5593" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-5593"><a href="http://html5book.ru/osnovy-javascript/">3.1. Основы JavaScript</a></li>
+	<li id="menu-item-5701" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5701"><a href="http://html5book.ru/vyrazheniya-v-javascript/">3.2. Выражения в JavaScript</a></li>
+</ul>
+</li>
+<li id="menu-item-1863" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1863"><a href="http://html5book.ru/javascript-jquery/">jQuery</a>
+<ul class="sub-menu">
+	<li id="menu-item-1851" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-1851"><a href="http://html5book.ru/vvedenie-v-jquery/">3.10. Введение в jQuery</a></li>
+	<li id="menu-item-1854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1854"><a href="http://html5book.ru/metody-jquery/">3.11. Методы jQuery</a>
+	<ul class="sub-menu">
+		<li id="menu-item-6875" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-6875"><a href="http://html5book.ru/metody-jquery/jquery-manipulyacii/">3.11.1. Манипуляции html-элементами</a></li>
+		<li id="menu-item-6874" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6874"><a href="http://html5book.ru/metody-jquery/jquery-svoistva-klassy-atribyti/">3.11.2. Чтение и изменение css-свойств, классов и атрибутов</a></li>
+		<li id="menu-item-6873" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6873"><a href="http://html5book.ru/metody-jquery/jquery-vyborka-elementov/">3.11.3. Обход DOM и выборка html-элементов</a></li>
+		<li id="menu-item-6895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6895"><a href="http://html5book.ru/metody-jquery/jquery-animaciya/">3.11.4. jQuery анимация</a></li>
+		<li id="menu-item-6894" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-6894"><a href="http://html5book.ru/metody-jquery/jquery-metody-window/">3.11.5. Методы объекта window</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1857" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1857"><a href="http://html5book.ru/sobytiya-jquery/">3.12. События jQuery</a></li>
+	<li id="menu-item-4153" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-4153"><a href="http://html5book.ru/jquery-selectors/">3.13. Селекторы jQuery</a></li>
+</ul>
+</li>
+<li id="menu-item-1866" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1866"><a href="http://html5book.ru/web-topography/">Веб-типографика</a>
+<ul class="sub-menu">
+	<li id="menu-item-1850" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-1850"><a href="http://html5book.ru/kakoj-shrift-mne-ispolzovat-pyat-principov-vybora-i-ispolzovaniya-shriftov/">4.1. Пять принципов выбора и использования шрифтов</a></li>
+	<li id="menu-item-1852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1852"><a href="http://html5book.ru/shrift-dlya-sita/">4.2. Выбираем шрифт для сайта</a></li>
+	<li id="menu-item-7976" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-7976"><a href="http://html5book.ru/pravila-veb-tipografiki/">4.3. Правила веб-типографики</a></li>
+</ul>
+</li>
+<li id="menu-item-7796" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7796"><a href="http://html5book.ru/seo/">SEO</a>
+<ul class="sub-menu">
+	<li id="menu-item-7803" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-7803"><a href="http://html5book.ru/ranzhirovanie-google-200-faktorov/">Ранжирование Google: 200 факторов</a></li>
+</ul>
+</li>
+</ul></div></div>		<div id="recent-posts-2" class="sidebar-widget widget_recent_entries">		 <p class="sidebar-headline">Свежие записи</p>		<ul>
+					<li>
+				<a href="http://html5book.ru/mnogourovnevoe-vypadayushee-menu/">Горизонтальное выпадающее многоуровневое меню</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/shpargalka-po-tablicam/">Шпаргалка по работе с таблицами</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/pole-poiska-dlya-sayta/">Поле поиска для сайта. Идеи для оформления</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/adaptivnyy-dizayn-saita/">Адаптивный дизайн сайта</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/oformlenie-tablicy-psevdoklassami/">Оформление таблицы с помощью псевдоклассов</a>
+						</li>
+				</ul>
+		</div>		</aside> <!-- end of sidebar -->
+  </div> <!-- end of main-content -->
+</div> <!-- end of container -->
+<footer id="wrapper-footer">
+  <div id="footer">
+    <div class="footer-widget-area footer-widget-area-1">
+<div id="text-4" class="footer-widget widget_text">			<div class="textwidget"><!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='//www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t44.10;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31' ><\/a>")
+//--></script><!--/LiveInternet--></div>
+		</div>    </div>
+    
+    <div class="footer-widget-area footer-widget-area-2">
+<div id="text-9" class="footer-widget widget_text">			<div class="textwidget">&copy; Запрещено копирование материала без согласия автора</div>
+		</div>    </div>
+   
+    <div class="footer-widget-area footer-widget-area-3">
+<div id="text-7" class="footer-widget widget_text">			<div class="textwidget"><!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=23928760&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/23928760/3_0_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0; position:absolute; left:-9999px;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:23928760,lang:'ru'});return false}catch(e){}"/></a>
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter23928760 = new Ya.Metrika({id:23928760,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/23928760" style="position:absolute; left:-9999px; bottom:0;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter --></div>
+		</div>    </div>
+  </div>
+</footer>  <!-- end of wrapper-footer -->
+<span id="bruteprotect_uptime_check_string" style="display:none;">7ads6x98y</span>        <script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'html5book';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1) {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script'); 
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+        <script type='text/javascript' src='http://html5book.ru/wp-includes/js/comment-reply.min.js?ver=4.4.2'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/themes/papercuts/js/placeholders.js?ver=2.1.0'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/themes/papercuts/js/responsive.js?ver=1.0'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/wp-embed.min.js?ver=4.4.2'></script>
+    
+</body>
+</html>

@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0" />  
+  <title>HTML5 видео</title>  
+  <!--[if lt IE 9]>
+	<script src="http://html5book.ru/wp-content/themes/papercuts/js/html5.js"></script>
+	<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49017436-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<style type='text/css'></style>
+<!-- This site is optimized with the Yoast SEO plugin v3.0.7 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="HTML5 видео - новый стандарт для размещения мультимедийных файлов в сети с оригинальным программным интерфейсом без привлечения подключаемых модулей."/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="http://html5book.ru/html5-video/" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="HTML5 видео" />
+<meta property="og:description" content="HTML5 видео - новый стандарт для размещения мультимедийных файлов в сети с оригинальным программным интерфейсом без привлечения подключаемых модулей." />
+<meta property="og:url" content="http://html5book.ru/html5-video/" />
+<meta property="og:site_name" content="html5book" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/08/html5_video.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/08/video_pleer.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/08/videocont.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/themes/papercuts/images/movavi.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/themes/papercuts/images/video_convert_online.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/themes/papercuts/images/firefogg.png" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента" href="http://html5book.ru/feed/" />
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента комментариев" href="http://html5book.ru/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента комментариев к &laquo;1.13. HTML5 видео&raquo;" href="http://html5book.ru/html5-video/feed/" />
+<link rel='stylesheet' id='crayon-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-idle-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/themes/idle/idle.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-consolas-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/fonts/consolas.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='papercuts-style-css'  href='http://html5book.ru/wp-content/themes/papercuts/style.css?ver=4.4.2' type='text/css' media='all' />
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/html5book.ru\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u041d\u0430\u0436\u043c\u0438\u0442\u0435 %s \u0434\u043b\u044f \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f, %s \u0434\u043b\u044f \u0432\u0441\u0442\u0430\u0432\u043a\u0438","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<link rel='https://api.w.org/' href='http://html5book.ru/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://html5book.ru/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://html5book.ru/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='http://html5book.ru/?p=1387' />
+<link rel="alternate" type="application/json+oembed" href="http://html5book.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5book.ru%2Fhtml5-video%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://html5book.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5book.ru%2Fhtml5-video%2F&#038;format=xml" />
+ 
+
+   
+    <style type="text/css">   
+      #panel_load {
+  		 background:#fff;
+  		 border:1px solid #ccc;
+  		 opacity:1;
+  		 padding:10px;
+  		 position:fixed;
+  		 right: 30px;
+  		 top: 40px;
+  		 color:#555;
+  		 font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
+  		 font-size:12px;
+  		 text-align:center;
+  		 z-index:100;
+  		 
+  		 box-shadow:5px 5px 5px -6px #000;
+  		 -moz-box-shadow:5px 5px 5px -6px #000;
+  		 -webkit-box-shadow:5px 5px 5px -6px #000;
+  		 -khtml-box-shadow:5px 5px 5px -6px #000;
+  		 -o-box-shadow:5px 5px 5px -6px #000;
+      }  
+     </style>  
+    
+    <!--[if IE]>
+<style type="text/css" media="screen">
+#wrapper-header, #wrapper-footer, #top-navigation-wrapper, .header-image-wrapper, .entry-content, .home-list-posts, .post-entry, .sidebar-widget, .sidebar-headline, .footer-signature, #nav-below, #papercuts-post-nav, .search .navigation {
+        behavior: url("http://html5book.ru/wp-content/themes/papercuts/css/pie/PIE.php");
+        zoom: 1;
+}
+</style>
+<![endif]-->
+  
+</head>
+<body class="page page-id-1387 page-template-default" id="wrapper">
+
+<header>  
+ <div class="header-content">
+<a href="http://html5book.ru/">
+<img class="header-logo" src="http://html5book.ru/wp-content/themes/papercuts/images/logo.png"></a>
+  <div class="menu-box-wrapper">
+<div class="menu-top-container"><ul id="nav" class="menu"><li id="menu-item-3827" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3827"><a href="http://html5book.ru/html-html5/">HTML</a></li>
+<li id="menu-item-3871" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3871"><a href="http://html5book.ru/css-css3/">CSS</a></li>
+<li id="menu-item-3975" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3975"><a href="http://html5book.ru/javascript-jquery/">JavaScript</a></li>
+<li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884"><a href="http://html5book.ru/web-topography/">Веб-типографика</a></li>
+<li id="menu-item-5292" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5292"><a href="http://html5book.ru/category/uroki/">Уроки</a></li>
+<li id="menu-item-5951" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5951"><a href="http://html5book.ru/css-spravochnik/">CSS справочник</a></li>
+<li id="menu-item-7807" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7807"><a href="http://html5book.ru/seo/">SEO</a></li>
+</ul></div>  </div>
+    </div>
+</header> <!-- end of wrapper-header -->
+
+<div id="container">
+  <div id="main-content">
+  <div id="content">    <article class="entry-content"> 
+      <div class="entry-content-inner">
+		        <h1 class="content-headline">1.13. HTML5 видео</h1>
+		<!--Ad Injection:top-->
+<div style='margin-bottom:30px;padding-top:0px;padding-bottom:30px;'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ADAPT -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4906567094890032"
+     data-ad-slot="5808407100"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><p><img src="http://html5book.ru/wp-content/uploads/2014/08/html5_video.png" alt="html5_video" width="250" height="250" class="alignleft size-full wp-image-3937" srcset="http://html5book.ru/wp-content/uploads/2014/08/html5_video-150x150.png 150w, http://html5book.ru/wp-content/uploads/2014/08/html5_video.png 250w" sizes="(max-width: 250px) 100vw, 250px" />Раньше, если вы хотели добавить видео на веб-страницу, вам приходилось использовать элемент <kbd>&lt;object&gt;</kbd>, который представлял собой универсальный контейнер для внешних объектов. Подобные приложения были в малой степени интерактивными и слабо взаимодействовали с окружающими их элементами на веб-странице. </p>
+<p>Второй подход заключался в использовании подключаемого модуля браузера, например <b>Silverlight</b> или <b>Flash</b>. И хотя технология <b>Flash</b> позволяла использовать готовый видеоплеер или создавать собственный, но ее использование порождало большое нагромождение html-разметки, а видеофайлы нужно было кодировать в требуемый формат.</p>
+<p><b>HTML5 видео</b> &#8212; новый стандарт для размещения мультимедийных файлов в сети с оригинальным программным интерфейсом без привлечения подключаемых модулей. С помощью элемента <kbd>&lt;video&gt;</kbd> появилась возможность добавлять видеосодержимое на веб-страницы, а также стилизовать внешний вид видеоплеера при помощи css-стилей. </p>
+<figure style="clear:both"><img src="http://html5book.ru/wp-content/uploads/2014/08/video_pleer.png" alt="video_pleer" width="672" height="319" class="alignleft size-full wp-image-2912" srcset="http://html5book.ru/wp-content/uploads/2014/08/video_pleer-300x142.png 300w, http://html5book.ru/wp-content/uploads/2014/08/video_pleer.png 672w" sizes="(max-width: 672px) 100vw, 672px" /></p>
+<figcaption>Рис. 1. Внешний вид видеоплеера в основных браузерах</figcaption>
+</figure>
+<h2 style="clear:both">Как добавить видео на веб-страницу с использованием HTML5</h2>
+<ul class="contents">
+<li style="color:white; background:#ffd300;">Содержание:</li>
+<li><a href="#video">1. Элемент <kbd>&lt;video&gt;</kbd></a></li>
+<li><a href="#embed">2. Встраиваемый интерактивный контент <kbd>&#60;embed&#62;</kbd></a></li>
+<li><a href="#part3">3. Видеокодеки</a></li>
+<li><a href="#part4">4. Видеоконтейнеры</a></li>
+<li><a href="#source">5. Альтернативные медиа-ресурсы <kbd>&lt;source&gt;</kbd></a></li>
+<li><a href="#track">6. Добавление субтитров и заголовков <kbd>&lt;track&gt;</kbd></a></li>
+<li><a href="#video_primer">7. Пример: размещаем видео на сайте</a></li>
+<li><a href="#part8">8. Видеоконвертеры</a></li>
+</ul>
+<h3 id="video">1. Элемент &lt;video&gt;</h3>
+<h4>Поддержка браузерами</h4>
+<blockquote><p>
+<b>IE:</b> 9.0, атрибут muted &#8212; с 10.0<br />
+<b>Firefox:</b> 3.5 базовая поддержка, 15.0 &#8212; полная<br />
+<b>Chrome:</b> 3.0, атрибут muted &#8212; с 30.0<br />
+<b>Safari:</b> 3.1, атрибут muted &#8212; с 5.0<br />
+<b>Opera:</b> 10.5<br />
+<b>iOS Safari:</b> 7.1<br />
+<b>Opera Mini:</b> &#8212;<br />
+<b>Android Browser:</b> 4.1<br />
+<b>Chrome for Android:</b> 44</p></blockquote>
+<p>В простом варианте html-разметка для размещения видеофайла на странице имеет следующий вид:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d03ba185bbb364321202" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;video src="video.ogv" controls&gt;&lt;/video&gt;</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d03ba185bbb364321202-1">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d03ba185bbb364321202-1"><span class="crayon-o">&lt;</span><span class="crayon-e">video </span><span class="crayon-v">src</span><span class="crayon-o">=</span><span class="crayon-s">"video.ogv"</span><span class="crayon-h"> </span><span class="crayon-v">controls</span><span class="crayon-o">&gt;</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">video</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p> </p>
+<p>Атрибут <kbd>controls</kbd> отвечает за появление элементов управления видеоплеером. Вы можете добавить изображение с помощью атрибута <kbd>poster</kbd>, которое браузер будет использовать, пока загружается видео или пока пользователь не нажмет на кнопку воспроизведения, а также задать высоту и ширину видео.</p>
+<p>Как и в случае с аудиофайлами, рекомендуется перечислять в <kbd>&lt;source&gt;</kbd> все форматы, начиная с более предпочтительного. Также нужно указывать MIME-тип для каждого видеофайла.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d03ba185bc5679247628" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;video controls width="400" height="300"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;&lt;!-- MP4 для Safari, IE9, iPhone, iPad, Android, и Windows Phone 7 --&gt;
+  &lt;source src="video.webm" type="video/webm"&gt;&lt;!-- WebM/VP8 для Firefox4, Opera, и Chrome --&gt;
+  &lt;source src="video.ogv" type="video/ogg"&gt;&lt;!-- Ogg/Vorbis для старых версий браузеров Firefox и Opera --&gt;
+    &lt;object data="video.swf" type="application/x-shockwave-flash"&gt;&lt;!-- добавляем видеоконтент для устаревших браузеров, в которых нет поддержки элемента video --&gt;
+      &lt;param name="movie" value="video.swf"&gt;
+    &lt;/object&gt;
+&lt;/video&gt;</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d03ba185bc5679247628-1">1</div><div class="crayon-num" data-line="crayon-56d03ba185bc5679247628-2">2</div><div class="crayon-num" data-line="crayon-56d03ba185bc5679247628-3">3</div><div class="crayon-num" data-line="crayon-56d03ba185bc5679247628-4">4</div><div class="crayon-num" data-line="crayon-56d03ba185bc5679247628-5">5</div><div class="crayon-num" data-line="crayon-56d03ba185bc5679247628-6">6</div><div class="crayon-num" data-line="crayon-56d03ba185bc5679247628-7">7</div><div class="crayon-num" data-line="crayon-56d03ba185bc5679247628-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d03ba185bc5679247628-1"><span class="crayon-o">&lt;</span><span class="crayon-e">video </span><span class="crayon-e">controls </span><span class="crayon-v">width</span><span class="crayon-o">=</span><span class="crayon-s">"400"</span><span class="crayon-h"> </span><span class="crayon-v">height</span><span class="crayon-o">=</span><span class="crayon-s">"300"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bc5679247628-2"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">source </span><span class="crayon-v">src</span><span class="crayon-o">=</span><span class="crayon-s">"video.mp4"</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-o">=</span><span class="crayon-s">"video/mp4"</span><span class="crayon-o">&gt;</span><span class="crayon-o">&lt;</span><span class="crayon-o">!</span><span class="crayon-o">--</span><span class="crayon-h"> </span><span class="crayon-i">MP4</span><span class="crayon-h"> </span>для<span class="crayon-h"> </span><span class="crayon-v">Safari</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">IE9</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">iPhone</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">iPad</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">Android</span><span class="crayon-sy">,</span><span class="crayon-h"> </span>и<span class="crayon-h"> </span><span class="crayon-e">Windows </span><span class="crayon-i">Phone</span><span class="crayon-h"> </span><span class="crayon-cn">7</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bc5679247628-3"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">source </span><span class="crayon-v">src</span><span class="crayon-o">=</span><span class="crayon-s">"video.webm"</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-o">=</span><span class="crayon-s">"video/webm"</span><span class="crayon-o">&gt;</span><span class="crayon-o">&lt;</span><span class="crayon-o">!</span><span class="crayon-o">--</span><span class="crayon-h"> </span><span class="crayon-v">WebM</span><span class="crayon-o">/</span><span class="crayon-i">VP8</span><span class="crayon-h"> </span>для<span class="crayon-h"> </span><span class="crayon-v">Firefox4</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">Opera</span><span class="crayon-sy">,</span><span class="crayon-h"> </span>и<span class="crayon-h"> </span><span class="crayon-v">Chrome</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bc5679247628-4"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">source </span><span class="crayon-v">src</span><span class="crayon-o">=</span><span class="crayon-s">"video.ogv"</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-o">=</span><span class="crayon-s">"video/ogg"</span><span class="crayon-o">&gt;</span><span class="crayon-o">&lt;</span><span class="crayon-o">!</span><span class="crayon-o">--</span><span class="crayon-h"> </span><span class="crayon-v">Ogg</span><span class="crayon-o">/</span><span class="crayon-i">Vorbis</span><span class="crayon-h"> </span>для<span class="crayon-h"> </span>старых<span class="crayon-h"> </span>версий<span class="crayon-h"> </span>браузеров<span class="crayon-h"> </span><span class="crayon-i">Firefox</span><span class="crayon-h"> </span>и<span class="crayon-h"> </span><span class="crayon-v">Opera</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bc5679247628-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-t">object</span><span class="crayon-h"> </span><span class="crayon-v">data</span><span class="crayon-o">=</span><span class="crayon-s">"video.swf"</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-o">=</span><span class="crayon-s">"application/x-shockwave-flash"</span><span class="crayon-o">&gt;</span><span class="crayon-o">&lt;</span><span class="crayon-o">!</span><span class="crayon-o">--</span><span class="crayon-h"> </span>добавляем<span class="crayon-h"> </span>видеоконтент<span class="crayon-h"> </span>для<span class="crayon-h"> </span>устаревших<span class="crayon-h"> </span>браузеров<span class="crayon-sy">,</span><span class="crayon-h"> </span>в<span class="crayon-h"> </span>которых<span class="crayon-h"> </span>нет<span class="crayon-h"> </span>поддержки<span class="crayon-h"> </span>элемента<span class="crayon-h"> </span><span class="crayon-v">video</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bc5679247628-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">param </span><span class="crayon-v">name</span><span class="crayon-o">=</span><span class="crayon-s">"movie"</span><span class="crayon-h"> </span><span class="crayon-v">value</span><span class="crayon-o">=</span><span class="crayon-s">"video.swf"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bc5679247628-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-t">object</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bc5679247628-8"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">video</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0026 seconds] -->
+<p></p>
+<table class="t3">
+<caption>Таблица 1. Атрибуты тега &#60;video&#62;</caption>
+<tr>
+<th style="width:20%">Атрибут</th>
+<th>Описание, принимаемое значение</th>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>autoplay</kbd></td>
+<td>Автоматическое воспроизведение видеоофайла сразу же после загрузки страницы.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>controls</kbd></td>
+<td>Указывает браузеру, что нужно отобразить базовые элементы управления воспроизведением (воспроизведение, пауза, громкость).</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>height</kbd></td>
+<td>Задает высоту окна для отображения видеоданных, возможные значения: <kbd>px</kbd> или <kbd>%</kbd></td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>loop</kbd></td>
+<td>Циклическое воспроизведение видеофайла.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>muted</kbd></td>
+<td>Выключает звук при воспроизведении видеофайла.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>poster</kbd></td>
+<td>URL файла изображения, которое будет отображаться во время загрузки видеофайла или до тех пор, пока пользователь не нажмет на кнопку PLAY. Если атрибут не задан, то будет отображаться первый кадр видеофайла.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>preload</kbd></td>
+<td>Атрибут, отвечающий за предварительную загрузку видеоконтента. Не является обязательным, некоторые браузеры игнорируют его. Возможные значения:<br />
+<kbd>auto</kbd> &#8212; браузер загружает видеофайл полностью, чтобы он был доступен, когда пользователь начнет его воспроизведение.<br />
+<kbd>metadata</kbd> &#8212; браузер загружает первую небольшую часть видеофайла, чтобы определить его основные характеристики.<br />
+<kbd>none</kbd> &#8212; отсутствие автоматической загрузки видеофайла.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>src</kbd></td>
+<td>Содержит абсолютный или относительный URL-адрес видеофайла.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>width</kbd></td>
+<td>Задает ширину окна для отображения видеоданных, возможные значения: <kbd>px</kbd> или <kbd>%</kbd></td>
+</tr>
+</table>
+<h3 id="embed">2. Встраиваемый интерактивный контент</h3>
+<p>Элемент <kbd>&#60;embed&#62;</kbd> определяет контейнер для внешнего приложения или интерактивного содержимого (другими словами, плагина). Большинство браузеров поддерживало данный элемент на протяжении долгого времени. Тем не менее, данный тег не был включен в спецификацию HTML4, его добавили в спецификацию HTML5. С помощью <kbd>&#60;embed&#62;</kbd> на веб-страницы можно добавлять не только видеофайлы, но и векторные изображения в формате <kbd>swf</kbd>:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d03ba185bcb396591515" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;embed src="movie.mov" type="video/quicktime" width="640" height="480"&gt;
+&lt;embed src="helloworld.swf"&gt;</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d03ba185bcb396591515-1">1</div><div class="crayon-num" data-line="crayon-56d03ba185bcb396591515-2">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d03ba185bcb396591515-1"><span class="crayon-o">&lt;</span><span class="crayon-e">embed </span><span class="crayon-v">src</span><span class="crayon-o">=</span><span class="crayon-s">"movie.mov"</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-o">=</span><span class="crayon-s">"video/quicktime"</span><span class="crayon-h"> </span><span class="crayon-v">width</span><span class="crayon-o">=</span><span class="crayon-s">"640"</span><span class="crayon-h"> </span><span class="crayon-v">height</span><span class="crayon-o">=</span><span class="crayon-s">"480"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bcb396591515-2"><span class="crayon-o">&lt;</span><span class="crayon-e">embed </span><span class="crayon-v">src</span><span class="crayon-o">=</span><span class="crayon-s">"helloworld.swf"</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p></p>
+<table class="t3">
+<caption>Таблица 2. Атрибуты тега &#60;embed&#62;</caption>
+<tr>
+<th style="width:20%">Атрибут</th>
+<th>Описание, принимаемое значение</th>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>height</kbd></td>
+<td>Определяет высоту встраиваемого контента в <kbd>px</kbd> или <kbd>%</kbd>.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>src</kbd></td>
+<td>Содержит абсолютный или относительный URL-адрес медиафайла.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>type</kbd></td>
+<td>Определяет MIME-тип  встраиваемого файла.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>width</kbd></td>
+<td>Определяет ширину встраиваемого контента в <kbd>px</kbd> или <kbd>%</kbd>.</td>
+</tr>
+</table>
+<h3 id="part3">3. Видеокодеки</h3>
+<p>При просмотре видео проигрыватель должен его декодировать. Одни проигрыватели используют программное декодирование видеопотока, другие используют аппаратное декодирование.</p>
+<p><em style="color:#E85625; font-weight:900;">Важно!</em> Поскольку каждый браузер поддерживает определенный кодек, поэтому, чтобы обеспечить воспроизведение видео-контента во всех браузерах, видео-файл нужно размещать в нескольких форматах.</p>
+<p><strong class="first">H.264</strong> &#8212; высококачественный кодек от фирмы MPEG, делится на профили для поддержки как устройств с минимальными возможностями, так и устройств высокого разрешения.</p>
+<p><strong class="first">Ogg Theora</strong> &#8212; открытый бесплатный стандарт для видео, качество и производительность несколько ниже стандарта H.264.</p>
+<p><strong class="first">VP8</strong> &#8212; открытый бесплатный кодек, сходный по качеству с H.264. Поддерживается в Firefox, Chrome и Opera.</p>
+<h3 id="part4">4. Видеоконтейнеры</h3>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/08/videocont.png" alt="videocont" width="503" height="410" class="alignleft size-full wp-image-1549" srcset="http://html5book.ru/wp-content/uploads/2014/08/videocont-300x244.png 300w, http://html5book.ru/wp-content/uploads/2014/08/videocont.png 503w" sizes="(max-width: 503px) 100vw, 503px" /></p>
+<figcaption>Рис. 2. Видеоконтейнер</figcaption>
+</figure>
+<p>Любой видеофайл является файловым контейнером, в котором хранятся другие файлы. Аудио- и видеодорожки объединяются для воспроизведения видеоролика. Метаданные содержат информацию о данном видеоролике &#8212; изображение обложки, субтитры и пр. К популярным форматам видеоконтейнеров относятся следующие:</p>
+<p><strong class="first">Ogg</strong> (.ogv, .oga, .ogx, .ogg) &#8212; формат-контейнер с открытым исходным кодом для видеокодека Theora и аудио Vorbis. Работает в Firefox, Chrome и Opera.<br />
+MIME-тип: <kbd>video/ogg</kbd>.</p>
+<p><strong class="first">MPEG 4</strong> (.mp4) &#8212; формат-контейнер для видеокодека H.264 и аудиокодека AAC. Работает в Safari и Chrome. Кодирует видео, в том числе высокой четкости, для полного спектра устройств, таких как iPhone, iPod и iPad.<br />
+MIME-тип: <kbd>video/mp4</kbd>.</p>
+<p><strong class="first">WebM</strong> (.webm) &#8212; формат-контейнер с открытым исходным кодом для видеокодека VP8 от Google и аудиокодека Ogg Vorbis. Работает в Firefox, Chrome, Opera и Adobe Flash Player.<br />
+MIME-тип: <kbd>video/webm</kbd>.</p>
+<p><strong class="first">Audio Video Interleave</strong> (.avi) &#8212; формат предназначен для записи звука и движущихся изображений, соответствует спецификации RIFF.<br />
+MIME-тип: <kbd>video/vnd.avi, video/avi, video/msvideo, video/x-msvideo</kbd>.</p>
+<p><strong class="first">Matroska</strong> (.mkv) &#8212; популярный видеоконтейнер, может содержать видео в формате H.264, VP8 или Theora.<br />
+MIME-тип: <kbd>video/x-matroska, audio/x-matroska</kbd>. </p>
+<p><strong>На данный момент браузеры поддерживают три основных видео формата:</strong></p>
+<table class="t3">
+<tr>
+<th>Формат</th>
+<th style="border-right:1px solid white">Видеокодек</th>
+<th>Аудиокодек</th>
+</tr>
+<tr>
+<td>.mp4</td>
+<td style="text-align:center">H.264</td>
+<td style="text-align:center">AAC</td>
+</tr>
+<tr>
+<td>.ogg/.ogv</td>
+<td style="text-align:center">Theora</td>
+<td style="text-align:center">Vorbis</td>
+</tr>
+<tr>
+<td>.webm</td>
+<td style="text-align:center">VP8</td>
+<td style="text-align:center">Vorbis</td>
+</tr>
+</table>
+<p><strong>Видео в формате .avi на сайте средствами HTML5 не воспроизводится.</strong> Поэтому его необходимо перекодировать в эти три формата с соответствующими видео и аудиокодеками для вывода на сайте. Для этого можно использовать видеоконвертеры, указанные на странице ниже.</p>
+<p>Чтобы убедиться, что веб-браузер умеет обрабатывать видеофайлы, нужно создать файл <kbd>.htaccess</kbd> в папке, где находится веб-страница, определяющая MIME-типы для видео:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d03ba185bd2304365566" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+AddType video/ogg  .ogv
+AddType video/mp4  .mp4
+AddType video/webm  .webm</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d03ba185bd2304365566-1">1</div><div class="crayon-num" data-line="crayon-56d03ba185bd2304365566-2">2</div><div class="crayon-num" data-line="crayon-56d03ba185bd2304365566-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d03ba185bd2304365566-1"><span class="crayon-e">AddType </span><span class="crayon-v">video</span><span class="crayon-o">/</span><span class="crayon-i">ogg</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-e">ogv</span></div><div class="crayon-line" id="crayon-56d03ba185bd2304365566-2"><span class="crayon-e">AddType </span><span class="crayon-v">video</span><span class="crayon-o">/</span><span class="crayon-i">mp4</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-e">mp4</span></div><div class="crayon-line" id="crayon-56d03ba185bd2304365566-3"><span class="crayon-e">AddType </span><span class="crayon-v">video</span><span class="crayon-o">/</span><span class="crayon-i">webm</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-sy">.</span><span class="crayon-v">webm</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p></p>
+<p>Несмотря на то, что HTML5-видео поддерживается современными браузерами, тем не менее для <strong>Internet Explorer (9+)</strong> и <strong>Safari</strong> требуются установленные плагины <strong>Microsoft Media Player</strong> и <strong>Apple QuickTime</strong> соответственно.</p>
+<h3 id="source">5. Альтернативные медиа-ресурсы</h3>
+<p>Элемент <kbd>&lt;source&gt;</kbd> используется для указания нескольких медиа-ресурсов для <kbd>&lt;audio&gt;</kbd> и <kbd>&lt;video&gt;</kbd>. Добавляет альтернативные видео/аудио файлы, которые браузер может выбрать из предложенных на основании поддерживаемого им типа носителя или кодека.</p>
+<table class="t3">
+<caption>Таблица 3. Атрибуты тега &#60;source&#62;</caption>
+<tr>
+<th style="width:20%">Атрибут</th>
+<th>Описание, принимаемое значение</th>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>media</kbd></td>
+<td>Определяет тип медиа-устройства (т.е. для каких устройств оптимизирован файл).</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>src</kbd></td>
+<td>Содержит абсолютный или относительный URL-адрес медиафайла.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>type</kbd></td>
+<td>Определяет MIME-тип медиафайла.</td>
+</tr>
+</table>
+<h3 id="track">6. Добавление субтитров и заголовков</h3>
+<p>Элемент <kbd>&lt;track&gt;</kbd> используется в качестве дочернего элемента <kbd>&lt;audio&gt;</kbd> и <kbd>&lt;video&gt;</kbd>. Добавляет текстовую дорожку для субтитров, заголовков медиафайлов или другой текстовой информации, которая должна быть видна во время воспроизведения медиа-ресурса.</p>
+<table class="t3">
+<caption>Таблица 4. Атрибуты тега &#60;track&#62;</caption>
+<tr>
+<th style="width:20%">Атрибут</th>
+<th>Описание, принимаемое значение</th>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>default</kbd></td>
+<td>Указывает, что данная дорожка воспроизводится по умолчанию. Только один элемент <kbd>&lt;track&gt;</kbd> может содержать данный атрибут.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>kind</kbd></td>
+<td>Указывает тип текстовой дорожки, по умолчанию выводятся субтитры (<kbd>subtitles</kbd>). Принимаемые значения:<br />
+<kbd>captions</kbd> &#8212; перевод диалогов и звуковых эффектов, отображаемый в виде текста поверх видео (для глухих пользователей).<br />
+<kbd>chapters</kbd> &#8212; добавляет названия глав в виде списка для навигации по медиафайлу.<br />
+<kbd>descriptions</kbd> &#8212; добавляет звуковое описание происходящего в видео (для невидящих пользователей).<br />
+<kbd>metadata</kbd> &#8212; метаданные, используемые скриптами, не отображаются для пользователей.<br />
+<kbd>subtitles</kbd> &#8212; текстовое дублирование звуковой дорожки видео, отображается в виде субтитров к видео.
+</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>label</kbd></td>
+<td>Добавляет название дорожки. Если этот атрибут не задан, браузер применит значение по умолчанию.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>src</kbd></td>
+<td>Содержит абсолютный или относительный URL-адрес аудио- или видеофайла.</td>
+</tr>
+<tr>
+<td style="color:#38BAC7"><kbd>srclang</kbd></td>
+<td>Язык воспроизводимой дорожки.</td>
+</tr>
+</table>
+<h3 id="video_primer">7. Пример: размещаем видео на сайте</h3>
+<p><span class="first">1.</span> Декодируем видео в три файла с соответствующими видео и аудиокодеками:<br />
+для <b>.mp4</b> &#8212; H.264/AAC,<br />
+для <b>.webm</b> &#8212; VP8/Vorbis,<br />
+для <b>.ogv</b> &#8212; Theora/Vorbis.<br />
+<span class="first">2.</span> Добавляем поддержку MIME-типов в файл <kbd>.htaccess</kbd>.<br />
+<span class="first">3.</span> Размещаем код для вставки видео на сайт с помощью HTML5-разметки, используя атрибуты для задания видео требуемых параметров:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d03ba185bd8118332265" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;video controls width="660" height="500" poster="http://html5book.ru/video/martynko.png" preload="none"&gt;
+  &lt;source src="http://html5book.ru/video/martynko.mp4" type="video/mp4"&gt;
+  &lt;source src="http://html5book.ru/video/martynko.webm" type="video/webm"&gt;
+  &lt;source src="http://html5book.ru/video/martynko.ogv" type="video/ogg"&gt;
+&lt;/video&gt;</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d03ba185bd8118332265-1">1</div><div class="crayon-num" data-line="crayon-56d03ba185bd8118332265-2">2</div><div class="crayon-num" data-line="crayon-56d03ba185bd8118332265-3">3</div><div class="crayon-num" data-line="crayon-56d03ba185bd8118332265-4">4</div><div class="crayon-num" data-line="crayon-56d03ba185bd8118332265-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d03ba185bd8118332265-1"><span class="crayon-o">&lt;</span><span class="crayon-e">video </span><span class="crayon-e">controls </span><span class="crayon-v">width</span><span class="crayon-o">=</span><span class="crayon-s">"660"</span><span class="crayon-h"> </span><span class="crayon-v">height</span><span class="crayon-o">=</span><span class="crayon-s">"500"</span><span class="crayon-h"> </span><span class="crayon-v">poster</span><span class="crayon-o">=</span><span class="crayon-s">"http://html5book.ru/video/martynko.png"</span><span class="crayon-h"> </span><span class="crayon-v">preload</span><span class="crayon-o">=</span><span class="crayon-s">"none"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bd8118332265-2"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">source </span><span class="crayon-v">src</span><span class="crayon-o">=</span><span class="crayon-s">"http://html5book.ru/video/martynko.mp4"</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-o">=</span><span class="crayon-s">"video/mp4"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bd8118332265-3"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">source </span><span class="crayon-v">src</span><span class="crayon-o">=</span><span class="crayon-s">"http://html5book.ru/video/martynko.webm"</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-o">=</span><span class="crayon-s">"video/webm"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bd8118332265-4"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">source </span><span class="crayon-v">src</span><span class="crayon-o">=</span><span class="crayon-s">"http://html5book.ru/video/martynko.ogv"</span><span class="crayon-h"> </span><span class="crayon-v">type</span><span class="crayon-o">=</span><span class="crayon-s">"video/ogg"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d03ba185bd8118332265-5"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">video</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p></p>
+<p><span class="first">4.</span> Если вы хотите выровнять видеоплеер на странице, нужно обернуть элемент <kbd>&lt;video&gt;</kbd> в контейнер <kbd>&lt;div&gt;</kbd> с присвоенным классом, для которого задаются ширина и высота, соответствующие размерам вашего видео. Далее, с помощью css-свойств можно задать отступы, выравнивание на странице и т.д.</p>
+<p><video controls width="660" height="500" poster="http://html5book.ru/wp-content/themes/papercuts/video/martynko.png" preload="none"><source src="http://html5book.ru/wp-content/themes/papercuts/video/martynko.mp4" type="video/mp4"><source src="http://html5book.ru/wp-content/themes/papercuts/video/martynko.webm" type="video/webm"></video></p>
+<h3 id="part8">8. Видеоконвертеры</h3>
+<ul class="col">
+<li class="article">
+<div class="preview">
+<a href="#"><img src="http://html5book.ru/wp-content/themes/papercuts/images/movavi.png" alt="Movavi"></a></div>
+<div class="article-over">
+<p><strong>Movavi</strong> &#8212; позволяет конвертировать видео и аудио в необходимый вам формат. Сохраняет медиафайлы для проигрывания на мобильных устройствах. &#171;Умные&#187; готовые профили позволяют добиваться максимального качества.</p>
+<p style="text-align:center"><a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://www.movavi.ru/VideoConverter/" class="read-more-button"  target="_blank">Подробнее</a></p>
+</div>
+</li>
+<li class="article">
+<div class="preview">
+<a href="#"><img src="http://html5book.ru/wp-content/themes/papercuts/images/video_convert_online.png" alt="Video_convert"></a></div>
+<div class="article-over">
+<p><strong>ONLINE-CONVERT</strong> &#8212; бесплатный онлайн-конвертер, позволяющий конвертировать любые медиа-файлы из одного формата в другой.</p>
+<p style="text-align:center"><a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://www.online-convert.com/ru?fl=ru" class="read-more-button"  target="_blank">Подробнее</a></p>
+</div>
+</li>
+<li class="article">
+<div class="preview">
+<a href="#"><img src="http://html5book.ru/wp-content/themes/papercuts/images/firefogg.png" alt="Firefogg"></a></div>
+<div class="article-over">
+<p> <strong>Firefogg</strong> &#8212; модуль расширения для Firefox, может создавать видеофайлы <b>Theora</b> и <b>WebM</b>. Работает непосредственно в браузере, но вся работа выполняется локально без обращения к веб-серверу.</p>
+<p style="text-align:center"><a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://firefogg.org/" class="read-more-button"  target="_blank">Подробнее</a></p>
+</div>
+</li>
+</ul>
+<!--Ad Injection:bottom-->
+<div style='clear:both;margin-top:30px;padding-top:30px;padding-bottom:0px;'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ADAPT -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4906567094890032"
+     data-ad-slot="5808407100"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<div id="disqus_thread">
+            <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-29">
+        <div id="dsq-comment-header-29" class="dsq-comment-header">
+            <cite id="dsq-cite-29">
+                <span id="dsq-author-user-29">Giorgio Guitariny</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-29" class="dsq-comment-body">
+            <div id="dsq-comment-message-29" class="dsq-comment-message"><p>как видео встроить в письмо, с возможностью просмотра на &#171;месте&#187;</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-30">
+        <div id="dsq-comment-header-30" class="dsq-comment-header">
+            <cite id="dsq-cite-30">
+                <span id="dsq-author-user-30">Giorgio Guitariny</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-30" class="dsq-comment-body">
+            <div id="dsq-comment-message-30" class="dsq-comment-message"><p>Есть такой код?</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-31">
+        <div id="dsq-comment-header-31" class="dsq-comment-header">
+            <cite id="dsq-cite-31">
+http://html5book.ru                <span id="dsq-author-user-31">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-31" class="dsq-comment-body">
+            <div id="dsq-comment-message-31" class="dsq-comment-message"><p>HTML5 видео имеет ограниченную поддержку почтовыми клиентами, в частности с возможностью просмотра видео в письме (на слое). Подробнее вы можете прочитать в статье <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://habrahabr.ru/company/pechkin/blog/261447/"  rel="nofollow">http://habrahabr.ru/company/pechkin/blog/261447/</a>. </p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-3" id="dsq-comment-71">
+        <div id="dsq-comment-header-71" class="dsq-comment-header">
+            <cite id="dsq-cite-71">
+                <span id="dsq-author-user-71">Giorgio Guitariny</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-71" class="dsq-comment-body">
+            <div id="dsq-comment-message-71" class="dsq-comment-message"><p>спасибо</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-4" id="dsq-comment-72">
+        <div id="dsq-comment-header-72" class="dsq-comment-header">
+            <cite id="dsq-cite-72">
+http://html5book.ru                <span id="dsq-author-user-72">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-72" class="dsq-comment-body">
+            <div id="dsq-comment-message-72" class="dsq-comment-message"><p>Пожалуйста</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-34">
+        <div id="dsq-comment-header-34" class="dsq-comment-header">
+            <cite id="dsq-cite-34">
+                <span id="dsq-author-user-34">MrMarvel [S30]</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-34" class="dsq-comment-body">
+            <div id="dsq-comment-message-34" class="dsq-comment-message"><p>Вопрос я добавляю видео из интернета типа .3gp и ошибка MIME тип &#8212; я написал (в javascript&#8217;е создавал) type = &#8216;video/3gp&#8217; и ему недостаточно помогите я не знаю кодекс 3gp &#8212; например как у .mp4 type = &#8216;video/mp4; codecs=&#187;avc1.42E01E, mp4a.40.2&#8243;&#8216; и всё норм у .mp4! Помогите с .3gp и я писал URL в src!</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-35">
+        <div id="dsq-comment-header-35" class="dsq-comment-header">
+            <cite id="dsq-cite-35">
+http://html5book.ru                <span id="dsq-author-user-35">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-35" class="dsq-comment-body">
+            <div id="dsq-comment-message-35" class="dsq-comment-message"><p>Браузеры поддерживают три основных видео формата &#8212; .mp4, .ogg и .webm. Видео других форматов, добавленное через тег , на сайте отображаться не будет. Формат .3gp &#8212; это формат для мобильных телефонов, для него характерны небольшой размер файла и низкое качество воспроизводимых кадров. Как вариант, можно перекодировать файл в указанные форматы, так как добавление одного формата не обеспечит воспроизведение видео во всех браузерах.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-3" id="dsq-comment-36">
+        <div id="dsq-comment-header-36" class="dsq-comment-header">
+            <cite id="dsq-cite-36">
+                <span id="dsq-author-user-36">MrMarvel [S30]</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-36" class="dsq-comment-body">
+            <div id="dsq-comment-message-36" class="dsq-comment-message"><p>Возможно ли перевести формат с 3gp на например mp4?</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-4" id="dsq-comment-37">
+        <div id="dsq-comment-header-37" class="dsq-comment-header">
+            <cite id="dsq-cite-37">
+http://html5book.ru                <span id="dsq-author-user-37">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-37" class="dsq-comment-body">
+            <div id="dsq-comment-message-37" class="dsq-comment-message"><p>На сайте <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://video.online-convert.com/ru/convert-to-mp4"  rel="nofollow">http://video.online-convert.com/ru/convert-to-mp4</a>. Качество, правда, будет не очень.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-172">
+        <div id="dsq-comment-header-172" class="dsq-comment-header">
+            <cite id="dsq-cite-172">
+                <span id="dsq-author-user-172">Alexander Tichonov</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-172" class="dsq-comment-body">
+            <div id="dsq-comment-message-172" class="dsq-comment-message"><p>Проигрывание видео в обратную сторону возможно? Если да &#8212; буду благодарен за подсказку.)</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-173">
+        <div id="dsq-comment-header-173" class="dsq-comment-header">
+            <cite id="dsq-cite-173">
+http://html5book.ru                <span id="dsq-author-user-173">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-173" class="dsq-comment-body">
+            <div id="dsq-comment-message-173" class="dsq-comment-message"><p>У элемента video есть JavaScript API, с помощью которого можно управлять видеоплеером. Если для свойства playbackRate установить отрицательное значение, то в IE 10 видео будет воспроизводиться в обратном направлении, правда без звука. В других браузерах такой прием не срабатывает.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-3" id="dsq-comment-174">
+        <div id="dsq-comment-header-174" class="dsq-comment-header">
+            <cite id="dsq-cite-174">
+                <span id="dsq-author-user-174">Alexander Tichonov</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-174" class="dsq-comment-body">
+            <div id="dsq-comment-message-174" class="dsq-comment-message"><p>Спасибо за подсказку) Тут звук разумеется и не нужен)</p>
+<p>Значит решения для всех браузеров с поддержкой до IE9 нет?.. Придётся создавать ещё одно подготовленное видео. Не хотелось увеличивать вес.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-4" id="dsq-comment-176">
+        <div id="dsq-comment-header-176" class="dsq-comment-header">
+            <cite id="dsq-cite-176">
+http://html5book.ru                <span id="dsq-author-user-176">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-176" class="dsq-comment-body">
+            <div id="dsq-comment-message-176" class="dsq-comment-message"><p>Пожалуйста) По всей видимости единственный вариант &#8212; два файла. </p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-224">
+        <div id="dsq-comment-header-224" class="dsq-comment-header">
+            <cite id="dsq-cite-224">
+                <span id="dsq-author-user-224">Vlad Chistyakov</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-224" class="dsq-comment-body">
+            <div id="dsq-comment-message-224" class="dsq-comment-message"><p>Вопрос от чайника: а) не понял как решить пункт 2 примера в главе 7: &#171;Добавляем поддержку MIME-типов в файл .htaccess.&#187;  б) Что это за файл? Описание ранее тоже неоднозначно: &#171;Чтобы убедиться, что веб-браузер умеет обрабатывать видеофайлы, нужно создать файл .htaccess в папке, где находится веб-страница, определяющая MIME-типы для видео&#187;</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-226">
+        <div id="dsq-comment-header-226" class="dsq-comment-header">
+            <cite id="dsq-cite-226">
+http://html5book.ru                <span id="dsq-author-user-226">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-226" class="dsq-comment-body">
+            <div id="dsq-comment-message-226" class="dsq-comment-message"><p>1) Видео файлы хранятся на сервере<br />
+2) Чтобы видео передавалось с сервера с коректными MIME-типами в заголовках и соответственно, воспроизводилось в  браузере, нужно добавить их поддержку<br />
+3) .htaccess &#8212; это файл дополнительной конфигурации веб-сервера, это обычный текстовый файл с расширением .htaccess, его можно создать на сервере или загрузить на сервер<br />
+4) Файл .htaccess может быть размещен в корневом каталоге веб-сервера &#8212; в каталоге www. В этом случае директивы (короткие команды) из  .htaccess действуют по всему веб-серверу.<br />
+Также .htaccess может находиться и в конкретном подкаталоге сервера. Тогда директивы, которые указаны в этом файле, «перекрывают» действие директив из «основного» файла, который размещен в каталоге www или в любом каталоге более высокого уровня.<br />
+5)  Веб-страница, определяющая MIME-типы для видео &#8212; это ваша страница сайта, на которой вы разместили html5 video</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+var disqus_url = 'http://html5book.ru/html5-video/';
+var disqus_identifier = '1387 http://html5book.ru/?page_id=1387';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'html5book';
+var disqus_title = "1.13. HTML5 видео";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=1387';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+      </div>
+    </article>
+  </div> <!-- end of content -->
+<aside id="sidebar">
+  <div class="searchform-wrapper">
+ <script>
+  (function() {
+    var cx = '008774849217505016839:j25nz2oka_a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search></div><div id="nav_menu-2" class="sidebar-widget widget_nav_menu"><div class="menu-left-container"><ul id="menu-left" class="menu"><li id="menu-item-1860" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1860"><a href="http://html5book.ru/html-html5/">HTML</a>
+<ul class="sub-menu">
+	<li id="menu-item-2804" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2804"><a href="http://html5book.ru/osnovy-html/">1.1. Основы HTML</a></li>
+	<li id="menu-item-1859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1859"><a href="http://html5book.ru/html-tags/">1.2. HTML теги</a></li>
+	<li id="menu-item-1841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1841"><a href="http://html5book.ru/html-attributes/">1.3. HTML атрибуты</a></li>
+	<li id="menu-item-1847" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1847"><a href="http://html5book.ru/html-text/">1.4. HTML текст</a></li>
+	<li id="menu-item-1845" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1845"><a href="http://html5book.ru/hyperlinks-in-html/">1.5. HTML ссылки</a></li>
+	<li id="menu-item-1843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1843"><a href="http://html5book.ru/images-in-html/">1.6. HTML изображения</a></li>
+	<li id="menu-item-1846" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1846"><a href="http://html5book.ru/html-table/">1.7. HTML таблицы</a></li>
+	<li id="menu-item-1844" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1844"><a href="http://html5book.ru/html-lists/">1.8. HTML списки</a></li>
+	<li id="menu-item-1858" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1858"><a href="http://html5book.ru/specsimvoly-html/">1.9. Спецсимволы HTML</a></li>
+	<li id="menu-item-1856" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-1856"><a href="http://html5book.ru/poleznye-servisy-html/">1.10. HTML генераторы</a></li>
+</ul>
+</li>
+<li id="menu-item-1862" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1862"><a href="http://html5book.ru/html-html5/">HTML5</a>
+<ul class="sub-menu">
+	<li id="menu-item-2838" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2838"><a href="http://html5book.ru/html5-semantic-elements/">1.11. HTML5 семантические элементы</a></li>
+	<li id="menu-item-1848" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1848"><a href="http://html5book.ru/html5-audio/">1.12. HTML5 аудио</a></li>
+	<li id="menu-item-1849" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1387 current_page_item menu-item-1849"><a href="http://html5book.ru/html5-video/">1.13. HTML5 видео</a></li>
+	<li id="menu-item-2011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2011"><a href="http://html5book.ru/neobyazatelnye-tegi-html5/">1.14. Необязательные теги разметки HTML5</a></li>
+	<li id="menu-item-5395" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5395"><a href="http://html5book.ru/html5-forms/">1.15. HTML5 формы</a></li>
+</ul>
+</li>
+<li id="menu-item-1861" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1861"><a href="http://html5book.ru/css-css3/">CSS</a>
+<ul class="sub-menu">
+	<li id="menu-item-3695" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-3695"><a href="http://html5book.ru/osnovy-css/">2.1. Основы CSS</a></li>
+	<li id="menu-item-3276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3276"><a href="http://html5book.ru/block-inline-elements/">2.2. Блочные и строчные элементы</a></li>
+	<li id="menu-item-3168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3168"><a href="http://html5book.ru/css-position/">2.3. CSS позиционирование</a></li>
+	<li id="menu-item-1837" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1837"><a href="http://html5book.ru/css-text/">2.4. CSS текст</a>
+	<ul class="sub-menu">
+		<li id="menu-item-6931" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-6931"><a href="http://html5book.ru/css-text/css-text-2/">CSS текст (часть 2)</a></li>
+		<li id="menu-item-6932" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-6932"><a href="http://html5book.ru/css-text/css-text-3/">CSS текст (часть 3)</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1840"><a href="http://html5book.ru/css-shrifty/">2.5. CSS шрифты</a></li>
+	<li id="menu-item-1855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1855"><a href="http://html5book.ru/styling-hyperlinks/">2.6. CSS ссылки</a></li>
+	<li id="menu-item-1836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1836"><a href="http://html5book.ru/css3-tables/">2.7. CSS таблицы</a></li>
+	<li id="menu-item-1835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1835"><a href="http://html5book.ru/css-spiski/">2.8. CSS списки</a></li>
+	<li id="menu-item-2603" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2603"><a href="http://html5book.ru/css-background/">2.9. CSS фон</a></li>
+	<li id="menu-item-2665" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2665"><a href="http://html5book.ru/css-border/">2.10. CSS рамка</a></li>
+	<li id="menu-item-3752" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3752"><a href="http://html5book.ru/css-content/">2.11. CSS content</a></li>
+	<li id="menu-item-1853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1853"><a href="http://html5book.ru/generatory-css/">2.12. CSS генераторы</a></li>
+	<li id="menu-item-1842" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-1842"><a href="http://html5book.ru/css-colors/">2.13. CSS цвета</a></li>
+</ul>
+</li>
+<li id="menu-item-2534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2534"><a href="http://html5book.ru/css-css3/">CSS3</a>
+<ul class="sub-menu">
+	<li id="menu-item-2950" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2950"><a href="http://html5book.ru/css3-text/">2.14. CSS3 текст</a></li>
+	<li id="menu-item-2548" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2548"><a href="http://html5book.ru/css3-gradient/">2.15. CSS3 градиент</a></li>
+	<li id="menu-item-3032" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3032"><a href="http://html5book.ru/css3-borders/">2.16. CSS3 рамка</a></li>
+	<li id="menu-item-3076" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3076"><a href="http://html5book.ru/css3-shadows/">2.17. CSS3 тень</a></li>
+	<li id="menu-item-3723" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3723"><a href="http://html5book.ru/css3-transition/">2.18. CSS3 переходы</a></li>
+	<li id="menu-item-3748" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3748"><a href="http://html5book.ru/css3-transform/">2.19. CSS3 трансформации</a></li>
+	<li id="menu-item-3914" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3914"><a href="http://html5book.ru/css3-animation/">2.20. CSS3 анимация</a></li>
+	<li id="menu-item-5880" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5880"><a href="http://html5book.ru/css3-flexbox/">2.21. CSS3 flexbox</a></li>
+	<li id="menu-item-5989" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5989"><a href="http://html5book.ru/css3-columns/">2.22. CSS3 columns</a></li>
+	<li id="menu-item-6186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6186"><a href="http://html5book.ru/3d-transform/">2.23. CSS3 3D трансформации</a></li>
+	<li id="menu-item-6237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6237"><a href="http://html5book.ru/css3-mediazaprosy/">2.24. CSS3 медиа запросы</a></li>
+	<li id="menu-item-8072" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-8072"><a href="http://html5book.ru/css3-filtry/">2.25. CSS3 фильтры</a></li>
+</ul>
+</li>
+<li id="menu-item-5592" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5592"><a href="http://html5book.ru/javascript-jquery/">JavaScript</a>
+<ul class="sub-menu">
+	<li id="menu-item-5593" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-5593"><a href="http://html5book.ru/osnovy-javascript/">3.1. Основы JavaScript</a></li>
+	<li id="menu-item-5701" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5701"><a href="http://html5book.ru/vyrazheniya-v-javascript/">3.2. Выражения в JavaScript</a></li>
+</ul>
+</li>
+<li id="menu-item-1863" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1863"><a href="http://html5book.ru/javascript-jquery/">jQuery</a>
+<ul class="sub-menu">
+	<li id="menu-item-1851" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-1851"><a href="http://html5book.ru/vvedenie-v-jquery/">3.10. Введение в jQuery</a></li>
+	<li id="menu-item-1854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1854"><a href="http://html5book.ru/metody-jquery/">3.11. Методы jQuery</a>
+	<ul class="sub-menu">
+		<li id="menu-item-6875" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-6875"><a href="http://html5book.ru/metody-jquery/jquery-manipulyacii/">3.11.1. Манипуляции html-элементами</a></li>
+		<li id="menu-item-6874" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6874"><a href="http://html5book.ru/metody-jquery/jquery-svoistva-klassy-atribyti/">3.11.2. Чтение и изменение css-свойств, классов и атрибутов</a></li>
+		<li id="menu-item-6873" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6873"><a href="http://html5book.ru/metody-jquery/jquery-vyborka-elementov/">3.11.3. Обход DOM и выборка html-элементов</a></li>
+		<li id="menu-item-6895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6895"><a href="http://html5book.ru/metody-jquery/jquery-animaciya/">3.11.4. jQuery анимация</a></li>
+		<li id="menu-item-6894" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-6894"><a href="http://html5book.ru/metody-jquery/jquery-metody-window/">3.11.5. Методы объекта window</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1857" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1857"><a href="http://html5book.ru/sobytiya-jquery/">3.12. События jQuery</a></li>
+	<li id="menu-item-4153" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-4153"><a href="http://html5book.ru/jquery-selectors/">3.13. Селекторы jQuery</a></li>
+</ul>
+</li>
+<li id="menu-item-1866" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1866"><a href="http://html5book.ru/web-topography/">Веб-типографика</a>
+<ul class="sub-menu">
+	<li id="menu-item-1850" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-1850"><a href="http://html5book.ru/kakoj-shrift-mne-ispolzovat-pyat-principov-vybora-i-ispolzovaniya-shriftov/">4.1. Пять принципов выбора и использования шрифтов</a></li>
+	<li id="menu-item-1852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1852"><a href="http://html5book.ru/shrift-dlya-sita/">4.2. Выбираем шрифт для сайта</a></li>
+	<li id="menu-item-7976" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-7976"><a href="http://html5book.ru/pravila-veb-tipografiki/">4.3. Правила веб-типографики</a></li>
+</ul>
+</li>
+<li id="menu-item-7796" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7796"><a href="http://html5book.ru/seo/">SEO</a>
+<ul class="sub-menu">
+	<li id="menu-item-7803" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-7803"><a href="http://html5book.ru/ranzhirovanie-google-200-faktorov/">Ранжирование Google: 200 факторов</a></li>
+</ul>
+</li>
+</ul></div></div>		<div id="recent-posts-2" class="sidebar-widget widget_recent_entries">		 <p class="sidebar-headline">Свежие записи</p>		<ul>
+					<li>
+				<a href="http://html5book.ru/mnogourovnevoe-vypadayushee-menu/">Горизонтальное выпадающее многоуровневое меню</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/shpargalka-po-tablicam/">Шпаргалка по работе с таблицами</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/pole-poiska-dlya-sayta/">Поле поиска для сайта. Идеи для оформления</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/adaptivnyy-dizayn-saita/">Адаптивный дизайн сайта</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/oformlenie-tablicy-psevdoklassami/">Оформление таблицы с помощью псевдоклассов</a>
+						</li>
+				</ul>
+		</div>		</aside> <!-- end of sidebar -->
+  </div> <!-- end of main-content -->
+</div> <!-- end of container -->
+<footer id="wrapper-footer">
+  <div id="footer">
+    <div class="footer-widget-area footer-widget-area-1">
+<div id="text-4" class="footer-widget widget_text">			<div class="textwidget"><!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='//www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t44.10;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31' ><\/a>")
+//--></script><!--/LiveInternet--></div>
+		</div>    </div>
+    
+    <div class="footer-widget-area footer-widget-area-2">
+<div id="text-9" class="footer-widget widget_text">			<div class="textwidget">&copy; Запрещено копирование материала без согласия автора</div>
+		</div>    </div>
+   
+    <div class="footer-widget-area footer-widget-area-3">
+<div id="text-7" class="footer-widget widget_text">			<div class="textwidget"><!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=23928760&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/23928760/3_0_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0; position:absolute; left:-9999px;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:23928760,lang:'ru'});return false}catch(e){}"/></a>
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter23928760 = new Ya.Metrika({id:23928760,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/23928760" style="position:absolute; left:-9999px; bottom:0;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter --></div>
+		</div>    </div>
+  </div>
+</footer>  <!-- end of wrapper-footer -->
+<span id="bruteprotect_uptime_check_string" style="display:none;">7ads6x98y</span>        <script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'html5book';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1) {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script'); 
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+        <script type='text/javascript' src='http://html5book.ru/wp-includes/js/comment-reply.min.js?ver=4.4.2'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/themes/papercuts/js/placeholders.js?ver=2.1.0'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/themes/papercuts/js/responsive.js?ver=1.0'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/wp-embed.min.js?ver=4.4.2'></script>
+    
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+
+</head>
+<body>
+<div id="input0"> </div>
+<ul id="results"> </ul>
+
+<script>
+
+
+// рассматривать сначала  АБСТРАКТ ЗНАКИ   а потом конкретно ['/*', '*/'], ['//', '\n']
+// рассматривать только проблеммы не выявляемые конструктором?
+
+
+//  CSS (можно с анимацией ...)
+
+
+// проверка  ???
+// 1 закрыв сплит перед открыв(отсутств открыв сплита)       - откр в начало,  откр впереди рядом,  убрать закр? 
+// 2      (отсутств закр сплита)               - закр в конец,  закр позади рядом,   убрать закр,           временное изменение иерархии ???
+//  или  нарушение чередования сплитов (prompt?)   
+// ком // в строке перед ком / * * /    нужно предварит поменять местами сплиты                  ( временное изменение иерархии ) +  невидимые или на видимые метки н/р два длин тире(чтото экзотич)   чтобы потом вернуть обратно ?
+// 3 повторные знаки // а также / * и * / в строке   (оставлять крайние?   добавлять противоположные рядом,    или у повторного?   ... )
+//  + возможность одиночного сплита ?? (деление на 2 части?)
+
+//  +++  ??? 
+// внутр некрайн метки - игнор
+// при нарушении - внутр больш заменить.    Или в абстрактнои - перестановка иерархии
+//  скобочное свести к иерархии - именовать каждый уровень скобок?
+// ряд последовательных ф-ции циклом  + apple ?  ???
+
+// ??? 
+// наложение ф-ций (indFunc).   доделать - не разные ф-ции, а разные аргументы той же ф-ции.  ???
+// + сделать - в разных ветках разн аргументы ф-ции хоть и таже метка.     разный оттенок?
+//  ??  ф-цию проверки совпадения цветов в выдаче (в разных опциях) ... ...
+
+
+
+
+
+
+// входные данные
+var myTest = '<111 ввв <AAA  222 BBB   ццц(( 333))   444      /*      //666 (( 777)) ййй 888\n  999*/       000 //   aaa\n kkk        /*bbb  ccc (( ddd)) eee //fff(( ddd)) kkk  \nggg(( ddd)) */        hhh// iii \njjjввв'  
+
+///////////////////////////////////////////////////////////////////////////////////////
+//1 option ////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+// ??  [/[6]/]  добавить помимо сплитов рег выраж ??
+//  ?? попытка - вместо конкретного сплита  регул выраж.
+/*var ttt = 'q7we 123333  qw1e';
+var regex = /\d+/g;
+// alert (getClassOSC(ttt))
+// alert (ttt.match(regex) )
+// alert (ttt.indexOf('we'))
+*/
+
+
+
+
+
+
+var splity = [ ['/*', '*/'] , ['//', '\n'], ['((', '))']]; // нач сплиты. ?? сделать проверку повторений сплитов ...  // ?? если один сплит пустой '' - какое то применение одного сплита (1 от начала строки, 2 до конца строки) (но если несколько сплитов используют \n - возможна ошибка? как то возвращать  \n? )
+var rezspl = [ ['&cup;', '&cap;'] , ['&larr;', '&rarr;'], ['&there4;', '&equiv;']]; // кон сплиты
+// по типу сплитов -   (0) / 1 / ...   как в исходном / без сплитов / rezspl
+//                     (0) / ...       как есть / без пробелов  
+var look = [0, 1];       
+
+var maxI = []; // используется в markCSS      j, k  пока? не использую
+
+//  ?????     работа с функциями
+var optionFunc = [[checkCyrOSC, checkDblSpaceOSC], [], []];   // ??  сделать ряд ф-ций ...
+var argumFunc = [['gold', 'pink'], [], []]; 
+
+
+
+
+
+//1                     Ф-ЦИЯ ОБРАБОТКИ   +  УСТАНОВКИ МЕТОК                         
+function splitCodeOSC (code, splity, look) { 
+  var codeStr = code + '';    
+  codeStr = checkSymbolOSC(codeStr);  // замена проблемных знаков
+  var arrStr = [codeStr];
+  
+  //                   ДОПОЛН   ф-ция для установок меток                   
+  function funcMark(str, i, m) {  
+	return '<span id="spl_' +i+m + '">' + str + '</span>';  //   j, k  пока? не использую
+  };
+
+  //                   РЕКУРСИВНАЯ   ф-ция                                  
+  function splitPart (arrStr, splity, i) {
+	if(!rezspl[i]){rezspl[i] = ['-', '-']}// умолчание при отсутствии
+	if(!rezspl[i][1]){rezspl[i][1] = '-'}// умолчание  ?
+	if(!rezspl[i][0]){rezspl[i][0] = '-'}// умолчание  ?
+	if(!look[0]){rezspl = splity};   // умолч. если look[0] нет или 0, то сплиты результа как в исходном
+	if(look[0] == 1){rezspl[i][0] = ''; rezspl[i][1] = '';} // если look[0] = 1 результ без сплитов
+
+	for (var j=0; j < arrStr.length; j++) {
+	  var ind0 = arrStr[j].indexOf(splity[i][0]); // индикатор отсутствия сплита (продолж для ошибок) ??
+	  arrStr[j] = arrStr[j].split(splity[i][0]);
+	  for (var k=0; k < arrStr[j].length; k++) { 
+		var ind1 = arrStr[j][k].indexOf(splity[i][1]); // индикатор отсутствия сплита   ??
+		arrStr[j][k] = arrStr[j][k].split(splity[i][1]);
+
+		if(splity[i+1]){splitPart (arrStr[j][k], splity, i+1);}	// рекурсия	
+		 
+		// маркировка и ф-ции             // j, k  пока? не использую
+		//  для сплитов более сложн типа возможно  m больше 2 ?
+		for (var m=0; m< arrStr[j][k].length; m++) {
+		  if(~ind0){
+			var oneTwo = m;
+			if(arrStr[j][k].length == 1) oneTwo = 1; // случай переднего (одинарного) блока
+			arrStr[j][k][m] = funcMark(arrStr[j][k][m], i, oneTwo)
+			if(optionFunc[i]&&optionFunc[i][oneTwo]){arrStr[j][k][m] = optionFunc[i][oneTwo](arrStr[j][k][m], argumFunc[i][m])}
+		  }
+		}		
+
+	  // обратное соединение 
+	  arrStr[j][k] = arrStr[j][k].join(rezspl[i][1]);
+	  }
+	arrStr[j] = arrStr[j].join(rezspl[i][0]);
+	}
+  if(maxI[0] < i || !maxI[0]){maxI[0] = i} // вытаскиваю макс уровеннь i для CSS (j, k  пока? не использую)
+  }
+  splitPart (arrStr, splity, 0);	
+
+
+// ВЫВОД  
+  // document.write(arrStr);    document.write("<br>");
+  preOSC(arrStr, look[1])//как есть или без лишн пробелов
+  preOSC(codeStr)//как есть 
+ //alert (arrStr) 
+  return;
+}
+splitCodeOSC (myTest, splity, look)
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+//2 option ////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+var optionCSS = [['background-color: Yellow; ', 'color: Yellow;'], ['background-color: Blue;', 'color: Blue;'],  ['background-color: Red;', /*'text-shadow: black 1mm 1mm 1px;'*/]  , ,  [,]  ];   
+// варианты: background-image  // text-shadow  // color
+// варианты:  linear-gradient(to top, #ff0, #00efef) // red 1mm 1mm 1px //     text-transform: uppercase;
+var addRez = ''; // добавочное св-во для всех.     'text-shadow: black 1mm 1mm 1px;'
+
+
+
+
+
+//2        Ф-ЦИЯ ГЕНЕРИРОВАНИЯ CSS  (ориентировано на маркировку цветом)
+function markCSS() {
+  var inoutStr, inoutRez = '<style> ';
+  for (var i=0; i <= maxI[0]; i++) {
+	if(!optionCSS[i]){break};
+	for (var m=0; m< optionCSS[i].length; m++) {
+	  if(optionCSS[i][m]){
+		// формирование CSS 
+		inoutStr = ' #spl_' + i + m + '{' + optionCSS[i][m] + addRez + '}';
+		inoutRez  += inoutStr;
+	  }
+	}
+  }
+  inoutRez += ' </style>'; // завершение формирования CSS
+  
+  // alert (inoutRez)
+  document.write(inoutRez);  // выдача
+  return ;
+}
+markCSS();
+
+
+
+
+</script>
+</body>
+</html>

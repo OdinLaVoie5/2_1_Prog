@@ -1,0 +1,351 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+</head>
+
+<body>
+<ul id="results"> </ul>
+
+
+
+
+<script>
+// length         push unshift  pop shift   concat  join  toString      sort   
+
+// Accessing an Array’s Elements
+var dinosaurs = ["T-Rex", "Velociraptor", "Stegosaurus","Triceratops",
+"Brachiosaurus", "Pteranodon", "Apatosaurus", "Diplodocus", "Compsognathus"];
+document.write(dinosaurs[2]);      document.write("<br>");
+
+// Setting or Changing Elements in an Array
+dinosaurs[0] = "Tyrannosaurus_Rex";
+document.write(dinosaurs); document.write("<br>");
+
+var din = [];
+din[0] = "T";
+din[1] = "V";
+din[2] = "S";
+din[3] = "Tr";
+din[4] = "B";
+din[9] = "Bl";
+document.write(din);    document.write("<br>");
+console.log(din);
+
+// Mixing Data Types in an Array
+var dinosaursAndNumbers = [3, "dinosaurs", ["triceratops", "stegosaurus", 3627.5], 10];
+document.write(dinosaursAndNumbers[2][0]);    document.write(" ");
+
+// Finding the Length of an Array                ///////////////   ##length  /////////////////
+document.write(dinosaursAndNumbers.length);    document.write(" ");
+document.write(dinosaursAndNumbers[dinosaursAndNumbers.length-1]);    document.write("<br>");
+
+// Adding Elements to an Array        ///////////////   ##push  ##unshift   /////////////////
+var animals = [];
+animals.push("Cat");
+animals.push("Dog");
+animals.push("Llama");
+document.write(animals);    document.write("<br>");
+
+animals.unshift("Monkey")
+document.write(animals);    document.write("<br>");
+
+// Removing Elements from an Array         ///////////////  ##pop()  ##shift()  /////////////////
+document.write(animals.pop());    document.write("---");
+document.write(animals);    document.write("<br>");
+
+document.write(animals.shift());    document.write("---");
+document.write(animals);                document.write("<br>"); document.write("<br>");
+
+
+// Adding Arrays            ///////////////  !!  ##concat  /////////////////
+var furryAnimals = ["Alpaca", "Ring-tailed Lemur", "Yeti"];
+var scalyAnimals = ["Boa Constrictor", "Godzilla"];
+var furryAndScalyAnimals = furryAnimals.concat(scalyAnimals);
+
+document.write(furryAndScalyAnimals);    document.write("<br>");
+document.write(furryAnimals );    document.write("<br>");
+document.write(scalyAnimals );    document.write("<br>");
+
+
+// Finding the Index of an Element in an Array          
+                   ///////////////  ##indexOf(element)  /////////////////
+var colors = ["red", "green", "blue", "green"];
+document.write(colors.indexOf("green") );    document.write(" ");
+document.write(colors.lastIndexOf  ("green") );    document.write("<br>");
+
+
+
+
+
+
+
+var arr3 = new Array(1,2,3,4,5);
+document.write("<br>"+arr3.toString()+" "+arr3)    //   массив в строку .
+
+
+//   ##DOM  !!
+var elements = []; //Массив, в который скопируем ссылки на объекты страницы
+var i;
+for (i=0; i<document.all.length; i++)
+elements[i] = document.all(i);
+// document.write (elements);
+
+
+
+////  ##sort - встроеный метод javascript для массивов ( сортировка )(см справочники)
+function compareNumbers( value1 , value2 ) { return value1 - value2 ; } 
+/*function compareNumbers(num1, num2) {
+if (num1 > num2) {
+return 1;
+} else if (num1 === num2) {
+return 0;
+} else {
+return -1;
+}
+}
+*/
+var numbersArray = [60, 50, 62, 58, 54, 54];
+numbersArray.sort(compareNumbers);
+document.write('<br>'+numbersArray+'<br>'+'<br>');
+
+
+
+
+
+
+// примеры
+//// ##push построение массива без пропусков  !!
+// сравнение элементов массива
+// массив в список,          размер массива, max элемент, номер максимума. 
+
+var scores = [60, 50, 69, 58, 54, 54, 58, 50, 52, 54, 48, 69,
+34, 55, 51, 52, 44, 51, 69, 64, 66, 55, 52, 61,
+46, 31, 57, 52, 44, 18, 41, 53, 55, 69, 51, 44];
+
+var costs = [.25, .23, .26, .25, .25, .25, .33, .31, .26, .29, 
+.27, .22, .31, .25, .25, .33, .21, .25, .24, .25, 
+.28, .25, .24, .22,.20, .25, .30, .25, .24, .25,
+.25, .25, .24, .22, .26, .29];
+
+
+function printAndGetHighScore(scores) {
+var highScore = 0;
+var output;
+for (var i = 0; i < scores.length; i++) {
+output = "Bubble solution #" + i + " score: " + scores[i] +' costs: '+ costs[i] + "<br>";
+document.write(output);
+if (scores[i] > highScore) {
+highScore = scores[i];
+}
+}
+return highScore;
+}
+
+function getBestResults(scores, highScore) {
+var bestSolutions = [];
+for (var i = 0; i < scores.length; i++) {
+if (scores[i] == highScore) {
+bestSolutions.push(i);
+}
+}
+return bestSolutions;
+}
+
+
+function getMostCostEffectiveSolution(scores, costs, highscore) {
+var cost = 100;
+var index = [];
+for (var i = 0; i < scores.length; i++) {
+if (scores[i] == highScore && costs [i] <= cost) {
+	if (costs [i] < cost) {index = [], cost = costs [i];}
+index.push (i) 
+ 	
+}
+}
+return index;
+}
+
+
+
+var highScore = printAndGetHighScore(scores);
+document.write("<br>"+"Bubbles tests: " + scores.length + "<br>");
+document.write("Highest bubble score: " + highScore + "<br>");
+
+var bestSolutions = getBestResults(scores, highScore);
+document.write("Solutions with the highest score: " + bestSolutions + "<br>" + "<br>");
+
+var mostCostEffective = getMostCostEffectiveSolution(scores, costs, highScore);
+document.write("Bubble Solution #" + mostCostEffective + " is the most cost effective");
+
+
+
+
+
+
+
+
+
+/// массив в список,          размер массива, max элемент, номер максимума.  первоначально
+
+var masiv = [34, 50, 60, 61, 54, 54, 58, 50, 52, 54, 
+48, 69, 34, 55, 51, 69, 44, 51, 69, 64, 
+66, 55, 52, 63,46, 31, 57, 52, 44, 18, 
+41, 53, 55, 69, 51, 44];
+
+
+pos=[]; 
+var max=0;
+for (var i = 0; i < masiv.length; i++) {
+  var output = "Проба #" + i + "____ " + "результат: " + masiv[i];
+  document.write(output + "<br>"); 
+  if (masiv[i]>max) {max=masiv[i]; 
+	}   	
+  }
+ 
+for (var i = 0; i < masiv.length; i++) {
+  if (masiv[i]==max) {pos.push(i)}   	
+  }
+    
+document.write("<br>" +masiv.length  + "_____" + max + "_____"   + pos);
+
+
+
+
+
+
+/// массив в список,       размер массива, max элемент, номер максимума.  (мой вариант)
+
+var scores = [34, 50, 60, 61, 54, 54, 58, 50, 52, 54, 
+48, 69, 34, 55, 51, 69, 44, 51, 69, 64, 
+66, 55, 52, 63,46, 31, 57, 52, 44, 18, 
+41, 53, 55, 69, 51, 44];
+
+
+
+function listPlus(masiv) {
+var max=masiv[0];
+pos=[];
+for (var i = 0; i < masiv.length; i++) {
+  var output = "Проба #" + i + "____ " + "результат: " + masiv[i];
+  document.write(output + "<br>");    
+	
+	if (masiv[i]>=max) {if (masiv[i]>max) {pos=[], max=masiv[i]; 
+	} pos.push(i) } 
+	
+  }
+document.write("<br>" +masiv.length  + "_____" + max + "_____"   + pos);
+}
+
+
+listPlus (scores);
+
+
+
+
+
+
+
+
+
+
+///      ##массивы
+// Ассоциативные массивы    слева от двоеточия (:) указывается его ключ, а справа — содержимое.
+balls = {"гольф": "Мячи для гольфа, 6",
+"теннис": "Мячи для тенниса, 3",
+"футбол": "Футбольный мяч, 1",
+"пинг-понг": "Мячи для пинг-понга, 12 шт."}
+for (ball in balls)             // !!  (  ##цикл for in   перебор ключей в массиве)
+document.write(ball + " = " + balls[ball] + "<br>")
+document.write(balls['футбол'])
+
+
+
+
+//   ##проект    сделать шашки
+//  Создание многомерного числового массива (my и не только числового)
+checkerboard = Array(
+Array(' ', '&#9786;', ' ', '&#9786;', ' ', '&#9786;', ' ', '&#9786;'),
+Array('&#9786;', ' ', '&#9786;', ' ', '&#9786;', ' ', '&#9786;', ' '),
+Array(' ', '&#9786;', ' ', '&#9786;', ' ', '&#9786;', ' ', '&#9786;'),
+Array(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '),
+Array(' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '),
+Array('&#9787;', ' ', '&#9787;', ' ', '&#9787;', ' ', '&#9787;', ' '),
+Array(' ', '&#9787;', ' ', '&#9787;', ' ', '&#9787;', ' ', '&#9787;'),
+Array('&#9787;', ' ', '&#9787;', ' ', '&#9787;', ' ', '&#9787;', ' '))
+document.write("<pre>")     // без этого удалит пробелы   !!!
+//  ##проект  всё изменить,   создать в html таблицу и заполнить её шашками ... ... или canvas ?
+for (j = 0 ; j < 8 ; ++j)
+	{
+	for (k = 0 ; k < 8 ; ++k)
+		document.write(checkerboard[j][k] + " ")
+	document.write("<br>")
+}
+document.write("</pre>")
+
+
+
+
+fruit = ["Банан", "Виноград"]
+veg = ["Морковь", "Капуста"]
+document.write(fruit.concat(veg))
+	document.write("<br><br>")
+
+
+// Использование метода  ##forEach
+pets = ["Кошка", "Собака", "Кролик", "Хомяк"]
+pets.forEach(output1) //  ??? если output  пишет ошибка
+function output1(element, index, array){
+  document.write("Элемент с индексом " + index + " содержит значение " +
+  element + "<br>")
+}
+	document.write("<br>")
+
+
+// Использование методов push и pop
+sports = ["Футбол", "Теннис", "Бейсбол"]
+document.write("Изначально = " + sports + "<br>")
+sports.push("Hockey")
+document.write("После вставки = " + sports + "<br>")
+removed = sports.pop()
+document.write("После удаления = " + sports + "<br>")
+document.write("Удаленный элемент = " + removed + "<br>")
+
+
+	document.write("<br>")
+
+
+// Использование метода  ##sort
+// Сортировка по алфавиту
+sports = ["Футбол", "Теннис", "Бейсбол", "Хоккей"]
+sports.sort()
+document.write(sports + "<br>")
+// Сортировка по алфавиту в обратном порядке
+sports = ["Футбол", "Теннис", "Бейсбол", "Хоккей"]
+sports.sort().reverse()
+document.write(sports + "<br>")
+// Сортировка чисел по возрастанию
+numbers = [7, 23, 6, 74]
+numbers.sort(function(a,b){return a - b})
+document.write(numbers + "<br>")
+numbers = [7, 23, 6, 74]
+numbers.sort()
+document.write(numbers + "<br>")
+// Сортировка чисел по убыванию
+numbers = [7, 23, 6, 74]
+numbers.sort(function(a,b){return b - a})
+document.write(numbers + "<br>" + "<br>")
+
+
+
+
+
+</script>
+
+<script src="array.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>Документ без названия</title>
+</head>
+
+<body>
+
+
+
+	<canvas id="mycanvas" width=640, height=480></canvas>
+	<canvas id="canvas" width=640, height=480></canvas>
+
+
+
+	<script>
+
+		//  дерево !!!!
+
+		var canvas = document.getElementById('mycanvas');
+		var ctx = canvas.getContext('2d');
+		ctx.strokeRect(0, 0, 640, 480);
+		var canvas = document.getElementById('canvas');  // MY вторая canvas
+		var nnn = canvas.getContext('2d');
+		nnn.strokeRect(0, 0, 640, 480);
+
+		var drawTree = function (ctx, startX, startY, length, angle, depth, branchWidth) {
+			var rand = Math.random, newLength, newAngle, newDepth, maxBranch = 3, endX, endY, maxAngle = 2 * Math.PI / 4, subBranches, lenShrink;    // переменные через запятую
+			// Рисуем ветку, склоняющуюся влево или вправо (в зависимости от угла). 							
+			ctx.beginPath();
+			ctx.moveTo(startX, startY);
+			endX = startX + length * Math.cos(angle);
+			endY = startY + length * Math.sin(angle);
+			ctx.lineCap = 'round';          // !!   закругление концов линий. можно и без этого 
+
+			ctx.lineWidth = branchWidth;
+			ctx.lineTo(endX, endY);
+			// Если мы находимся близко к кончикам веток, окрашиваем их зеленым, как будто там есть листики.
+			if (depth <= 2) {
+				ctx.strokeStyle = 'rgb(' + Math.floor(Math.random() * 150 + 20) + ',' + Math.floor(Math.random() * 190 + 30) + ',' + 0 + ')';       // !!    ##MY   ##вариант 1
+				//		ctx.strokeStyle = 'rgb(0,' + (((rand() * 64) + 128) >> 0) + ',0)';       // !!!   ##вариант 2  указ цвета сборной строкой        ?? как работает >> ?
+			}
+			// В противном случае выбираем случайный оттенок коричневого цвета.	
+			else {
+				//		ctx.strokeStyle = 'rgb(' + (((rand() * 64) + 64) >> 0) + ',50,25)';
+				ctx.strokeStyle = 'rgb(' + Math.floor(Math.random() * 70 + 10) + ',' + Math.floor(Math.random() * 10) + ',' + 0 + ')';       //   MY  
+
+			}
+			ctx.stroke();
+			// Снижаем уровень рекурсии ветки.	
+			newDepth = depth - 1;
+			// Если уровень рекурсии достиг нуля, то ветка больше не растет.	
+			if (!newDepth) {
+				return;
+			}
+			// Заставляем данную ветку пустить случайное количество  мелких веточек (максимум 3). Добавляем несколько   случайных значений длины, ширины, а также дополнительные углы,     чтобы картинка выглядела более естественной.	
+			subBranches = (rand() * (maxBranch - 1)) + 1;
+			// Уменьшаем ширину новых веток.	
+			branchWidth *= 0.7;
+			// Рекурсивно вызываем функцию drawTree для новых веток с новыми значениями.	
+			for (var i = 0; i < subBranches; i++) {
+				newAngle = angle + rand() * maxAngle - maxAngle * 0.5;
+				if (endX > 400 && endY > 350) { newAngle -= (rand() * Math.PI / 6 + Math.PI / 8) }//  ##MY можно удалить    подстрижено снизу    константы поменять на переменные от размера 
+				else if (endX < 240 && endY > 350) { newAngle += rand() * Math.PI / 6 + Math.PI / 8 }; //  ##MY можно удалить
+				newLength = length * (0.7 + rand() * 0.3);
+				drawTree(ctx, endX, endY, newLength, newAngle, newDepth, branchWidth);        // !!!!  вызов ф-цией самой себя с новыми данными- рекурсия
+			}
+		};
+
+
+
+
+		drawTree(ctx, 320, 450, 60, -6 * Math.PI / 13, 14, 18)         // вызов ф-ции
+// вместо ctx  можно др canvas nnn
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+
+
+
+</body>
+
+</html>

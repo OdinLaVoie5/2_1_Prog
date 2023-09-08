@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<title>npepbmaHne действий no yMon4aHHio</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+
+
+<script type="text/javascript">
+function f_test() {
+var p = /^[a-z0-9_\.\-]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/i;
+// Получаем значение поля email
+var email = document.forms[0].email.value;
+if (p.test(email)) {
+if (window.confirm("Отправить данные формы?")) {
+return true; // Отправляем
+}
+else return false; // Прерываем
+}
+else {
+window.alert("E-mail введен неправильно");
+return false; // Прерываем
+}
+}
+function f_event(e) {
+e = e||window.event;
+if (e.preventDefault) e.preventDefault();
+else e.returnValue = false;
+window.alert("Перехода по ссылке не будет!");
+}
+</script>
+
+
+
+</head>
+<body>
+
+
+<form action="file.php" method="GET" onsubmit="return f_test();">
+<div>
+E-mail:<br>
+<input type="text" name="email"xbr>
+<input type="submit" value="Отправить">
+</div>
+</form>
+<p>
+<a href="file.html" onclick="window.alert(' Перехода по ссылке не будет!');return false;">Нажмите для перехода по ссылке</a><br><br>
+<a href="file.html" onclick="f_event(event);">
+Нажмите для перехода по ссылке</a>
+</р>
+
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+
+<style>
+body {
+	filter:opacity(0.3);
+}
+</style>
+
+</head>
+
+<body>
+<ul id="results"> </ul>
+
+<div class="samurai ninja"></div>
+<div class="ninja samurai"></div> <div></div>
+<span class="samurai ninja ronin"></span>
+
+<script src="regexp.js"></script>
+
+
+
+
+<script>
+
+
+
+//?/     выражения      !!  И литералы, и переменные относятся к типам выражений, поскольку они возвращают значение.
+// !! (выражение возвращает значение) ((в отличии от команд ?))
+document.write("a: " + (42 > 3) + "<br>")   
+document.write("b: " + (91 < 4) + "<br>")
+document.write("c: " + (8 == 2) + "<br>")
+document.write("d: " + (4 < 17) + "<br>")
+document.write(" MY : " + typeof(42 > 3) + "<br>")  
+document.write(" MY : " + typeof typeof(42 > 3) + "<br>") 
+
+document.write(typeof false + " ");   document.write(typeof (42 > 3) + "<br>")
+  
+if (1 == true) document.write('true' + "<br>" + "<br>") // Истина
+  
+
+//  !!! Пять типов литералов
+myname = "Peter"
+myage = 24
+document.write("a: " + 42 + "<br>") // Числовой литерал
+document.write("b: " + "Hi" + "<br>") // Строковый литерал
+document.write("c: " + true + "<br>") // Литерал константы
+document.write("d: " + myname + "<br>") // Литерал строковой переменной
+document.write("e: " + myage + "<hr>") // Литерал числовой переменной
+
+
+
+
+
+
+
+//  спец знаки 
+// var bbb = '\f ' + '\\' + ' \'' + ' \"' + " ffgggghh";   alert (bbb);
+
+
+
+
+
+//// ++ #метасимволы
+document.write("<br>")
+var amounts = "30.25,120.00,45.09,200.10";
+var amtArray = amounts.split(/\.\d{2},?/);
+document.write(amtArray)
+
+
+
+// ##test  и  ##replace
+document.write("<br>")
+document.write(/cats/i.test("Cats are fun. I like cats."))    //  Поиск должен быть глобальным (/g), чтобы найти все экземпляры этого слова, и нечувствительным к регистру букв (/i), чтобы найти слова, начинающиеся с большой буквы    
+
+document.write("<br>")
+document.write("Cats are fun. I like cats.".replace(/cats/gi,"dogs"))
+
+document.write("<hr>")
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+ 

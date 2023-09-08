@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>nindja</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+
+
+</head>
+<body>
+<ul id="escape"> </ul>
+<ul id="results"> </ul>
+
+
+
+
+<script>
+if (window) {
+var x = 213;
+}
+assert (true, x) ;  ///////////////////////////
+
+// 1  !!!  x определено хоть и за скобками  В JavaScript области действия определяются функциями, а не кодовыми блоками . Область действия объявления , сделанного в пределах кодового блока, не оканчивается вместе с этим блоком, как это происходит в других языках программирования.
+
+
+
+
+
+//// 2   ##рекурсия   в ф-ции
+function chirp(n) {
+	return n>1 ? chirp(n - 1)+ "-тук"  : "тук";  // !!  по формуле n - 1 видно, что аргумент рано или поздно выдет за пределы условия  n>1, а значит рекурсия сойдётся (не будет бесконечной)  
+}
+assert (chirp , chirp(7) ) ;////////////////////////////
+
+
+/// 3   в методе
+var ninja = {
+chirp : function ( n ){
+return n > 1 ? this.chirp ( n - 1 )+ "-тук"  : "тук";   // ???  вместо this.chirp можно arguments.callee (свойство неявного параметра ф-ции arguments - ссыль на исполняемую ф-цию) (но это ещё не утверждено в языке)
+}
+};
+assert (true , ninja.chirp(3) ) ; //////////////////////////////
+
+ninja = {} ;     //  объект обнуляется
+
+
+// 4  !!  здесь в объекте метод определяется, ссылаясь на метод др объекта (см 3)
+//  и хотя ninja обнуляется,  его метод остался и работает в контексте samurai. (объявленные ф-ции не исчезают ??? )
+var samurai = {chirp: this.chirp};   //  ???   this.chirp заменить на chirp - всё равно работает. 
+assert (true , samurai.chirp(4) ) ;  ////////////////////////////////
+
+
+
+
+//  5 !! именованный метод
+var ninja = {
+chirp : function signal ( n ){    //  именнованный или нет - ни всё ли равно ???
+return n > 1 ? signal ( n - 1 )+ "-тюк"  : "тюк"; 
+}
+};
+assert (true , ninja.chirp(5) ) ;  //////////////////////////
+
+
+
+//   6    7    
+var ninja = function myNinja ( ) {
+assert ( ninja == myNinja,"эквив") ;  //6///////////////////////
+}
+ninja() ;
+assert ( typeof myNinja == "undefined" ,"неопред") ;  //7///// ф-ция неопределена за пределами  ninja?
+
+
+
+//  8
+var obj = {} ;
+var fn = function ( ) {} ;
+assert ( obj && fn , "объект и функция" ) ;  //8////////////////
+
+
+
+
+
+//  9  10 !!!!  Сохранение однозначных функций в коллекции    ##Запоминание
+var store = {
+  nextId : 1 ,
+  cache : {} ,
+  add : function ( fn ) {
+	if ( !fn.id ) {          // если у ф-ции нет id, то оно назначается
+	  fn.id = store.nextId++ ;
+	  return !!( store.cache [ fn.id ] = fn); // ф-ция в кеш.  возврат true.  !!
+	}
+  }
+};
+
+assert ( store.add (ninja), "СОХР ОДНОЗНАЧ Ф-ЦИЙ В КОЛЛЕКЦИИ" ) ;  //9/////////////////
+assert ( store.add (ninja), "уже есть в коллекции" ) ;    //10////////////////
+
+
+
+
+///  11 12    !!!!  Самозапоминающиеся функции     ##Запоминание
+function isPrime (value) { 
+  if (!isPrime.answers)  isPrime.answers = {} ;    // если кеша нет - создать
+  if (isPrime.answers[value] != null) {       // если в кеше есть - вернуть
+  	return isPrime.answers[value];
+  } 
+  var prime = value != 1 ; // единица не может быть простым числом
+  for ( var i = 2 ; i < value ; i++ ) {
+	if ( value % i == 0 ) {  // если делиться хоть на одно - число непростое
+	  prime = false ;
+	  break ;
+	}
+  }
+  return isPrime.answers[value] = prime ;
+}
+isPrime(3)
+assert ( isPrime(5) && isPrime.answers[3], "простое число /// есть в кеше" );   //11///////////
+assert ( isPrime(16) ||  isPrime.answers[11], "не простое число  /// нет в кеше" );  //12//////////
+
+
+
+//  13  (см 11 12)  !!!  ##Запоминание элементов модели  ##DOM    (не используется ли в библио?)
+function getElements ( name ) {
+  if ( !getElements.cache ) getElements.cache = {};
+  return getElements.cache[ name ] =
+  getElements.cache[ name ] ||
+  document.getElementsByTagName ( name ) ;
+}
+getElements ( 'ul' )
+assert ( true, getElements.cache['ul'][0].id +' '+ getElements.cache['ul'][1].id);  //13/////////// 
+
+
+
+
+//  ??   Обход списка аргументов переменной длины
+function merge (root) {
+	for (var i = 1; i < arguments.length; i++ ) { // элемент 0 пропускаем.
+		for ( var key in arguments [ i ] ) {
+		root[key] = arguments[i][key] ;
+		}
+	}
+	return root;
+}
+var merged = merge (
+{name:"Batou" } ,{n:"B" } ,{a:"a" } ,{m:"t" } ,{e:"o" } , {city:"Niihama"} );
+//  assert (1,merged.name + ' ' +  merged.city);  
+//  !!!  возможность доступа и обхода коллекции arguments является эффективным механизмом для создания сложных и логически развитых методов. С помощью такого механизма можно проверять аргументы , передаваемые любой функции , чтобы гибко оперировать ими, даже если заранее неизвестно, что именно должно быть передано функции . В таких библиотеках, как  ##jQueгy UI ,   !!!  ??  перегрузка функций применяется довольно широко.
+
+
+//  ?? не работает. обновить jQueгy?     $("#myDialog").dialog({caption:"This is а dialog"}); $("#myDialog").dialog("open");
+
+// см onenote Перегрузка функций  !!
+
+
+
+
+
+//  конфликт с 11
+////////           Метод    ##запоминания для функций  + см следущ  
+/*
+Function.prototype.memoized = function(key){
+	this._values = this._values || {};
+	return this._values[key] !== undefined ?
+		this._values[key] :
+		this._values[key] = this.apply(this, arguments);
+};
+function isPrime(num) {
+	var prime = num != 1;
+	for (var i = 2; i < num; i++) {
+		if (num % i == 0) {
+			prime = false;
+			break;
+		}
+	}
+	return prime;
+}
+assert (isPrime.memoized (5), "The function works; 5 is prime.");
+assert(isPrime._values[5], "The answer has been cached.");
+*/
+
+
+
+//   см 11
+////////            Способ   ##запоминания функций с помощью   ##замыкания
+Function.prototype.memoized = function(key){
+	this._values = this._values || {};
+	return this._values[key] !== undefined ?
+	this._values[key] :
+	this._values[key] = this.apply(this, arguments);
+};
+Function.prototype.memoize = function(){
+	var fn = this;    // !!!  частый приём- сохр объекта или его метода в переменной для его доступности в замыкании
+	return function(){
+		return fn.memoized.apply( fn, arguments );
+	};
+};
+var isPrime = (function(num) {
+	var prime = num != 1;
+	for (var i = 2; i < num; i++) {
+		if (num % i == 0) {
+			prime = false;
+			break;
+		}
+	}
+	return prime;
+}).memoize();
+assert(isPrime(17),"17 is prime"); 
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+/*PLEASE DO NOT REMOVE THIS TEXT*/
+/*AUTHOR WWW.WEBMAJSTOR.ORG*/
+/*CSS LAYOUT BY SYNESTETIC WD TEAM*/
+/*VALID CSS CODE */
+
+* {
+   padding:0;
+   margin:0;
+	}
+ul {
+    padding-left:1em;
+    margin-left:0;
+}
+
+h2{
+	 font-family: Tahoma;
+	 font-size: 16px;
+	 font-weight: bold;
+	
+	 }
+body {background-image: url(images/back.gif);
+background-repeat: repeat-x;
+	text-align: center;
+	margin: 0 0 0 0;
+	font-family: Tahoma;
+	font-size: 11px;
+	color: black;
+	
+	}
+div#wrapper {
+background-color: transparent;
+vertical-align: middle;
+    width: 861px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+	 font-family: Arial;
+	font-size: 11px;
+	color: gray;
+	text-align: left; 
+	voice-family: "\"}\"";
+  voice-family: inherit;
+		 }
+
+div#header{float:left;
+	background-image: url(images/head.gif) ;
+	background-repeat: no-repeat;
+	width: 861px;
+	height: 146px;
+	}
+div#nav{float:left;
+	background-image: url(images/nav.gif);
+	background-repeat: no-repeat;
+	width: 861px;
+	height: 43px;
+	}
+div#body{float:left;
+	background-image: url(images/body.gif);
+	background-repeat: no-repeat;
+	width: 537px;
+	height: 473px;
+	
+	}
+div#feat {float:right;
+		background-image: url(images/featured.gif);
+		background-repeat:  no-repeat;
+		width:324px;
+		height: 75px;
+	}
+	
+div#box1{ float: right;
+	background-image: url(images/box-1.gif);
+	background-repeat: no-repeat;
+	width: 324px;
+	height: 90px;
+	
+}
+
+div#box2{ float:left;
+	background-image: url(images/box2.gif);
+	background-repeat: no-repeat;
+	width: 324px;
+	height: 96px;
+	
+}
+div#box3{ float:left;
+	background-image: url(images/box3.gif);
+	background-repeat: no-repeat;
+	width: 324px;
+	height: 98px;
+	
+}
+div#box4{ float:left;
+	background-image: url(images/box4.gif);
+	background-repeat: no-repeat;
+	width: 324px;
+	height: 114px;
+	
+
+	
+}
+
+div#footer{ float:left;
+	background-color: #3E3E3E;
+	width: 861px;
+	height: 25px;
+	bottom:0px;
+	margin-bottom: 0;
+		}
+
+.footer p{
+			padding-left: 10px;
+			padding-top: 5px;
+		}
+	
+	.footer_textL { text-align: right;
+			padding-right: 10px;
+			padding-top: 5px;
+			margin-top: -18px;
+			color: lime;
+		}
+	
+.body p {
+	padding: 0 30px 20px 20px;
+	font-size:80%;
+	color: black;
+	margin-top:15px;
+}
+.body h4 {
+	padding:280px 0 0 20px;
+	font-size:100%;
+	color: black;
+}
+
+.box1 p{
+	padding-left:110px;
+	padding-top: 4px;
+	padding-right:20px;
+	padding-bottom:0;
+	font-size:80%;
+	color: gray;
+	text-align: left;
+	
+}
+.box1_p1 {
+	padding-left: 250px;
+	padding-right:15px;
+	font-size:90%;
+	color: black;
+	margin-top: 0;
+	}
+	.box1_p1 a:link{
+	font-size:90%;
+	color: black;
+	margin-top: -10px;
+}	
+.box1_p1 a:hover{
+	font-size:90%;
+	color: fuchsia;
+	margin-top: -10px;
+}
+
+.box2 p{
+	padding-left:110px;
+	padding-top: 7px;
+	padding-right:20px;
+	padding-bottom:0;
+	font-size:80%;
+	color: gray;
+	text-align: left;
+}
+.box2_p1 {
+	padding-left: 250px;
+	padding-right:15px;
+	font-size:90%;
+	color: black;
+	margin-top: 0}
+	
+.box2_p1 a:link{
+	font-size:90%;
+	color: black;
+	margin-top: -10px;
+}	
+.box2_p1 a:hover{
+	font-size:90%;
+	color: fuchsia;
+	margin-top: -10px;
+}
+.box3 p{
+	padding-left:110px;
+	padding-top: 7px;
+	padding-right:20px;
+	padding-bottom:0;
+	font-size:80%;
+	color: gray;
+	text-align: left;
+}
+.box3_p1 {
+	padding-left: 250px;
+	padding-right:15px;
+	font-size:90%;
+	color: black;
+	margin-top: 0;
+	}
+.box3_p1 a:link{
+	font-size:90%;
+	color: black;
+	margin-top: -10px;
+}	
+.box3_p1 a:hover{
+	font-size:90%;
+	color: fuchsia;
+	margin-top: -10px;
+}
+.box4 p{
+	padding-left:110px;
+	padding-top: 7px;
+	padding-right:20px;
+	padding-bottom:0;
+	font-size:80%;
+	color: gray;
+	text-align: left;
+}
+.box4_p1 {
+	padding-left: 250px;
+	padding-bottom: 12px;
+	padding-right:15px;
+	font-size:90%;
+	color: black;
+	margin-top: 0;
+	}
+.box4_p1 a:link{
+	font-size:90%;
+	color: black;
+	margin-top: -10px;
+}	
+.box4_p1 a:hover{
+	font-size:90%;
+	color: fuchsia;
+	margin-top: -10px;
+}
+/*navigacija*/
+
+#navPyra {
+        margin-top: 15px;
+		  padding: 0 0 20px 10px;
+     	  text-decoration: none;
+		  width: 861px;
+}
+
+#navPyra li {
+        margin: 0;
+        padding: 0;
+        display: inline;
+        list-style-type: none;
+		  text-decoration: none;
+}
+
+#navPyra a:link, #navPyra a:visited {
+        float: left;
+        font-size: 10px;
+        line-height: 14px;
+        font-weight: bold;
+        padding: 0 12px 6px 12px;
+        text-decoration: none;
+        color: white;
+}
+
+#navPyra a:link.active, #navPyra a:visited.active, #navPyra a:hover {
+        color: #000;
+        }
+		  
+		  /*form search*/
+		  
+#topBar form {
+    float:left;
+    width:23.5em;
+    text-align:right;
+	 margin-left: 25px;
+	 margin-top:-2px;
+	 display: inline;
+}   
+
+#advBar {
+    background:#FFF3AC;
+    clear:right; 
+}
+
+#topBar form {  float:right;
+    width:22.5em;
+    text-align:right;
+    margin-right:25px;
+    line-height:.7em; 
+	
+}
+#topBar input {
+    font-size:.8em;
+}
+
+/* login form*/
+#loginform {float: right;
+width:250px;
+margin:auto;
+margin-top: 20px;
+margin-right: 15px;
+color: blue;
+}
+#loginform fieldset{
+padding:1px;
+}
+#loginform legend{
+font-weight:bold;
+font-size:9pt;
+}
+#loginform label{
+display:block;
+height:20px;
+background-color:transparent;
+padding:2px 9px 0;
+color: black;
+}
+#loginform input {
+margin-right:6px;
+border:1px solid #999999;
+float:right;
+clear:right;
+background:#CCCCCC;
+}
+#loginform input:focus,#loginform input:hover {
+border:1px solid #333333;
+}
+.error{
+color:red;
+font-weight:bold;
+}
+
+a:link{
+	color:gray;
+	text-decoration: none;
+}
+a:visited {
+	color: gray; text-decoration: none;
+}
+a:focus {color: #00FF00}  /* focused link */
+
+a:hover{
+	color: white; text-decoration: underline;
+}
+a:active {
+	color: gray; text-decoration: none;
+}

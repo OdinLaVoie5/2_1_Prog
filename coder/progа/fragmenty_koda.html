@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>111 фрагменты кода тутошние</title>
+<script src='../JAVASCRIPT/OSC.js'></script>
+<script src="../JAVASCRIPT/jquery.js"></script>
+</head>
+
+<body>
+<ul id="results"> </ul>
+
+<!-- иерархическая навигация -->
+<div id="breadcrumbs">
+<a href="#">Lorem</a> &gt; <a href="#">Ipsum</a> &gt; <a href="#">Dolar</a> &gt; Amit
+</div>
+
+<!-- нижние колонтитулы 1 -->
+<div style="background-color:#cccccc;">
+<p><a href="#">Lorum</a> | <a href="#">Ipsum</a> | <a href="#">Dolar</a> | <a href="#">Sic Amet</a> | <a href="#">Consectetur</a></p>
+<p style="font-size: 0.6em">©2008 Lorem Ipsum Dolar <a href="#">Sic Amet</a> &#149; <a href="#">Consectetur</a></p>
+</div>
+
+<!-- нижние колонтитулы 2 -->
+<div style="text-align: center; border-top: 2px solid #999; margin-top: 1em;">
+<p><a href="#">Lorum</a> • <a href="#">Ipsum</a> • <a href="#">Dolar</a> • <a href="#">Sic Amet</a> • <a href="#">Consectetur</a></p>
+<p style="font-size: 0.6em;">©2008 Lorem Ipsum Dolar Lorem ipsum dolor sit amet, consetetur  sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et   dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam </p>
+</div>
+
+
+
+<input type="button" value="Close Window" onClick="self.close();" onKeyPress="self.close();">
+
+<input type="text" name="textfield" value="Your message" onFocus="if(this.value=='Your message')this.value='';">
+
+<script>
+// пузырьковая ##сортировка    ##sort
+function bubbleSort(theArray){
+  var i, j;
+  for (i = theArray.length - 1; i >= 0; i--) {
+    for (j = 0; j <= i; j++) {
+      if (theArray[j+1] < theArray[j]) {
+        var temp = theArray[j];
+        theArray[j] = theArray[j+1];
+        theArray[j+1] = temp;
+      }
+    }
+  }return theArray;
+}
+
+theArray = [1,4,2,8,4,6,77,234,2,56,32,4];
+document.write(bubbleSort(theArray));
+document.write("<br>");
+
+/*  //  my проще
+document.write(theArray.sort(function (a, b) { return (a - b)} ) );
+document.write("<br>");
+*/
+
+
+
+
+/*
+//  my  
+function myFunc (massiv) {
+  for (var i=massiv.length-1; i>=0; i--) {
+	for (var j=0; j<=i; j++) {
+	  if(massiv[j+1] < massiv[j]){
+		 var tempVal =  massiv[j];
+		 massiv[j] = massiv[j+1];
+		 massiv[j+1] = tempVal;
+	  }
+	}
+  }	return (massiv);
+}
+document.write(myFunc ([1, 11, 3, 666, 23, 235, 5, 1, 22, 9]));
+document.write("<br>");
+*/
+
+
+
+// число слов 
+ function howManyWords(inputString)
+{
+  return inputString.split(' ').length;
+}
+
+inputString = "ааа ааа ппп sss";
+document.write(howManyWords(inputString));
+document.write("<br>");
+
+
+
+
+//===========================================================
+// ##фрагменты 
+//  поиск (перевод десятиричной в 16-ти)       ##матем
+function decToHex(dec)
+{
+  var hexStr = "0123456789ABCDEF";
+  var low = dec % 16;
+  var high = (dec - low)/16;
+  hex = "" + hexStr.charAt(high) + hexStr.charAt(low);
+  return hex;
+}
+
+// и наоборот    перевод 16-ти в десятиричную
+function hexToDec(hex) { return parseInt(hex,16); }
+document.write(hexToDec('1A'));
+document.write("<br><br>");
+
+
+
+//  случайное число    матем
+function randomNumber(limit){
+  return Math.floor(Math.random()*limit);
+}
+// * Dependencies * 
+// this function requires the following snippets:
+// JavaScript/Randomizers/randomNumber
+// JavaScript/conversions/base_conversion/decToHex
+
+
+//  случайный ##цвет фона    
+function randomBgColor()
+{
+  var r,g,b;
+  r = decToHex(randomNumber(256)-1);
+  g = decToHex(randomNumber(256)-1);
+  b = decToHex(randomNumber(256)-1);
+document.bgColor = '#' + r + g + b;
+document.write('#' + r + g + b +' ' + 'цвет фона');
+document.write("<br><br>");
+}
+
+randomBgColor()
+//=====================================================================
+
+
+
+
+
+
+// переносить по строкам
+function wrapString(inputString,wrapLength,delimiter)
+{
+  if (!delimiter) delimiter = '\n';
+  if (!wrapLength) wrapLength = inputString.length;
+  var buildString = '';
+  for (i=0; i < inputString.length; i+=wrapLength) {
+    buildString += inputString.slice(i,i+wrapLength) + delimiter;
+  }
+  return buildString.slice(0,(buildString.length - delimiter.length));
+}
+
+document.write('КоГдамеНятЫпоЗовёшьКоГдамеНятЫпоЗовёшьКоГдамеНятЫпоЗовёшьКоГдамеНятЫ');
+document.write("<br>");
+document.write(wrapString('КоГдамеНятЫпоЗовёшьКоГдамеНятЫпоЗовёшьКоГдамеНятЫпоЗовёшьКоГдамеНятЫпоЗо', 15));
+document.write("<br>");
+
+
+
+
+
+
+
+</script>
+
+
+
+<script src="fragm.js"></script>
+</body>
+</html>

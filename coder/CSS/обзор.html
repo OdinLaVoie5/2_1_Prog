@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="обзор.css" rel="stylesheet" type="text/css">
+<title>Когда меня ты позовёшь ... </title>
+
+
+
+
+
+<script>     //  анима цвет фона (background)   проще в CSS но здесь кол-во цвета не огранич
+var bgrounds=new Array(  // вариант
+  "Red",               //  назначить картинки вместо цветов н/р img.gif
+  "Orange",
+  "Green");
+function changeColor() {  // вариант1 случ цвет
+  var rez = (Math.random()*(256-200)+200^0).toString(16); // сдвинул в светлые тона.
+  if(rez.length<2) rez = 'F'+ rez;      //  если короткое число - удлиняет.
+  return rez ;
+}
+function changeBg() {
+// var ind =Math.floor(bgrounds.length*Math.random());  // вариант
+ var ind= '#' + changeColor() +changeColor()+ changeColor();    // вариант1 my случ цвет
+ document.body.style.background = ind;              // вариант   bgrounds[i];
+ setTimeout('changeBg()', 3000)   //  увеличить
+}
+</script>
+
+</head>
+<body onLoad="setTimeout('changeBg()',1000)">
+<!--<body   onLoad="setTimeout('changeBg()',1000)">  относится к скрипту выше -->
+
+
+
+
+
+
+
+<script>  
+//  !!!!!  анима заголовка  ##title
+var tit = document.title;
+var c = 0;
+
+function writetitle() {
+  document.title = tit.substring(0,c);
+  if(c==tit.length) {
+    c = 0;setTimeout("writetitle()", 3000)
+  } else {
+    c++;
+    setTimeout("writetitle()", 200)
+  }
+}
+writetitle()
+</script>
+
+
+
+
+
+
+<button class="menu-toggle"></button>
+<style>
+.menu-toggle:before { 
+ content: "≡";   
+ /* или  content: "\2261";   гамбургер 
+  ??? сделать выпадающее меню    
+ */
+  font: 3em "arial"; 
+}
+</style>
+
+
+
+
+
+<h1>Some text</h1>
+<h2>Some text</h2>
+<p></p><p></p><p></p>
+
+
+<blockquote>Some text</blockquote>
+
+<h2>Title</h2>
+    <p>Some text</p>
+    <p>Some text</p>
+    <p>Some text</p>
+<h2>Title</h2>
+    <p>Some text</p>
+    <p>Some text</p>
+
+
+<div>
+<p></p><p></p><p></p><p></p>
+</div>
+
+
+<div class="container clearfix">
+<div class="floatbox">
+</div>
+</div>
+
+
+<UL>
+    <LI>Africa</LI>
+    <LI>Antarctica</LI>
+    <LI>Asia</LI>
+    <LI>Australia</LI>
+    <LI>Europe</LI>
+    <LI>North America</LI>
+    <LI>South America</LI>
+</UL>
+
+
+
+<div class="wrap">
+<div class="white">
+</div>
+</div>
+
+<div id="mymy"  style="border: 8px solid transparent" > 1111111111111111
+</div>
+
+
+
+<script> 
+// my  клик и клик
+var mymy = document.getElementById("mymy");
+var flag=0;
+mymy.onclick = function mymymy() {
+	if(flag){mymy.style.border = "8px solid transparent"; mymy.style.outline = "8px solid red"}
+	else {mymy.style.border = "8px solid green"};
+	flag++; flag%=2
+	};
+
+</script>
+
+
+
+</body>
+</html>

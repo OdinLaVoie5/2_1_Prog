@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+<script src='KIR_LAT_POLIGON.js'></script>
+<!-- ///////////////////    ссыль на внутренюю проверку кода-->
+
+<!-- <script src='!start\func.js'></script>-->
+<!-- ///////////////////    ссыль на внешнюю проверку кода-->
+
+
+</head>
+<body>
+<div id="input0"> </div>
+<ul id="results"> </ul>
+
+<script>
+
+
+
+
+//_________________________________________________________________________
+	// 1 //     вставить CHECKEDCODE (внутреняя проверка)    
+// аргум 2 -  по умолч не работать/работать с коммент      0/1 
+// аргум 3 -  по умолч не убирать/убрать дв пробелы/тоже не трогая нач строки ??? сделать отдельн ф-цию    0/1/2 
+// checkCodeOSC (CHECKEDCODE, 0, 0, 'gold')        
+
+
+//_________________________________________________________________________
+	// 2 //     или имя кода из  внешнего скрипта
+// checkCodeOSC (doMarkBigOSC, 1, 1)  
+ 
+ 
+ 
+//_________________________________________________________________________
+	// 3 //             частные ф-ции
+//  preOSC (      /*func*/ checkBigCommentOSC     (checkSymbolOSC(CHECKEDCODE)))
+
+
+
+//  ФУНК ЗНАКИ       / "&#47;"    \ "&#92;"   * "&#42;"  " "&#34;"   ' "&#39;"
+
+// поиск ф-ций
+// document.write(searchFunctionOSC (CHECKEDCODE).join("<br>") +"<br>" + "<br>"  ) 
+
+
+
+
+
+
+
+
+
+
+
+
+//_________________________________________________________________________
+	// 4 //            МАРКИРОВКА ... ...
+// preOSC checkSymbolOSC     getMarkingTextOSC \ doMarkBigOSC \ (getMarkSmallOSC) \ dotMarkSmallOSC
+
+
+/////  ДОПОЛНИТ Ф-ЦИЯ
+preOSC(f_rand ("qweкенu"))
+
+
+/////  ПОДСВЕТКА 
+// var prop1 = {"str":"wWUIwwwWRTIJWwwwWP",  "clr":"lightblue", "f_2":f_rand}
+// var prop1 = {"str":"wWUIwwwWRTIJWwwwWP",  "tegPaar":["<mark style='color:", "'>", "</mark>"],  "clr":"lightgreen", "f_2":f_rand}
+//                                     prop1 (str  tegPaar  clr  f_2 ) 
+var prop1 = {"str":"wWUIwwRTIJWw",   "tegPaar":["<span style='opacity:","'>","</span>"],  "clr":"0.2", "f_2":f_rand} // можно теги "" если нужно только f_2
+preOSC(f_clr (prop1))
+
+
+
+/////  ПОДСВЕТКА КИРИЛИЦЫ     + взять вышележащие вводные.
+// var prop1 = {"str":"wWUIwwwWRTIJWwwwWP",  "clr":"yellow",  "f_2":f_rand};
+// var prop1="";
+// var prop1 = ["clr","lightblue","clr","lightblue"];
+var prop1 = {"clr":"lightblue"};
+///                             propSmall  (str,  regStr,  f_1,  InOut),           prop1 (clr,  f_2)      
+var propSmall = {"str":"сссwЦГШw,,wРКw.,wШ",  "f_1":f_clr,    "prop1":prop1}
+// var propSmall = {"str":"сссwЦГШw,,wРКw.,wШ",  "f_1":f_clrRRR,    "prop1":prop1}
+// var propSmall = {"str":"сссwЦГШw,,wРКw.,wШ",  "f_1":f_rand,    "prop1":prop1}// др ф-ция + prop1=""
+// var propSmall = {"str":"сссwЦГШw,,wРКw.,wШ",  "f_1":f_random,    "prop1":prop1} // др ф-ция
+// var propSmall = {"str":"wЦГШw,,wРКw.,wШ",  "f_1":f_clr,  "InOut":1,   "prop1":prop1}
+// var propSmall = {"str":"wЦГШ,,wwwЦК.,ЕШОЦ.wwwЦЗ.",  "regStr":"[.,]",  "f_1":f_clr,  "prop1":prop1}
+// var propSmall = {"str":"wЦГШwwwЦКЕШОЦwwwЦЗ",  "f_1":f_clr}
+// var propSmall = {"str":"wЦГШwwwЦКЕШОЦwwwЦЗ"}
+preOSC (doMarkSmallOSC (propSmall) )  
+
+
+
+
+/////  ВЫДЕЛЕНИЕ НУЖНОГО ТИПА ТЕКСТА     + подсветка кирилицы ...     можно взять вышележащие вводные.
+var propSmall5 = {  "f_1":f_clr,   "prop1":{"clr":"yellow"}}
+var propSmall0 = {  "f_1":f_clr,   "prop1":{"tegPaar":["<b><span style='border:solid thick rgb(0,255,102);color:", "'>", "</span></b>"], "clr":"violet"}}
+var propSmall4 = {  "f_1":f_clr,   "prop1":{"tegPaar":["<b><span style=' border:solid thick ", "'>", "</span></b>"], "clr":"deeppink"}}
+ var propSmall1 = {  "f_1":f_clr,   "prop1":{"tegPaar":["<span style='color:", "'>", "</span>"], "clr":"orange" }}
+var propSmall2 = {  "f_1":f_clr,   "prop1":{"clr":"lightgreen"}}
+var propSmall3 = {  "f_1":f_clr,   "prop1":{"tegPaar":["<i><span style='color:", "'>", "</span></i>"], "clr":"orange"}}
+// var propSmall5 = {  "f_1":f_clr,   "prop1":{"clr":"deeppink"}}
+/////  выделение нужного типа текста   и его изменение (вырез, подсветка ...)
+///                 propBig  (text,  arr,  InOut,  arrFunc),       propSmall (f_1)     prop1 (clr,  f_2) 
+var propBig = {"text":CHECKEDCODE, "arr":[0,1,2,3,4,5], "InOut":0, "arrFunc":[doMarkSmallOSC,doMarkSmallOSC,doMarkSmallOSC,doMarkSmallOSC,doMarkSmallOSC,doMarkSmallOSC],    "propSmall":[propSmall5,propSmall0,propSmall4,propSmall1,propSmall2,propSmall3]  }
+preOSC (doMarkBigOSC (propBig))
+
+
+
+
+
+
+///// 1 код без коментов ////////////////////////////////////////////////////
+var propBig = {"text":CHECKEDCODE}
+preOSC ("1<br>"+doMarkBigOSC (propBig))
+
+///// 2 код с подсветкой коментов (arr можно не указ- по умолч [1,2]) ////////
+var propBig = {"text":CHECKEDCODE,  "arrFunc":doMarkSmallOSC}
+preOSC ("2<br>"+doMarkBigOSC (propBig))
+
+///// 3 обработка основного кода (проверка на кирилицу) //////////////////////////////
+var propBig = {"text":CHECKEDCODE, "arr":[0], "arrFunc":doMarkSmallOSC,    "propSmall":propSmall2 }
+preOSC ("3<br>"+doMarkBigOSC (propBig))
+
+///// 3+ немного бреда (выбор всего осн текста "regStr":"."  и перемеш "f_2":f_rand) ///////////
+var propSmall0 = {  "f_1":f_clr,  "regStr":".",   "prop1":{"tegPaar":["<b><span style='color:", "'>", "</span></b>"], "clr":"blue", "f_2":f_rand}}
+var propBig = {"text":CHECKEDCODE, "arr":[0], "arrFunc":doMarkSmallOSC,   "propSmall":propSmall0 }
+preOSC ("3+<br>"+doMarkBigOSC (propBig))
+
+///// 4 вырезанные из кода области (проверка на кирилицу) //////////////////////////////
+var propBig = {"text":CHECKEDCODE, "InOut":1, "arrFunc":doMarkSmallOSC}
+preOSC ("4<br>"+doMarkBigOSC (propBig)) 
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////
+/////  удобный вывод маркировки текста
+var disp = infoMarkBigOSC(CHECKEDCODE);
+document.write ( "||обычн||  " + disp[0] +"<br>||BIG|| " + disp[1]   + "<br>||STR|| " + disp[2]  + "<br>||REG|| " + disp[3]  + "<br>||Quo'|| " + disp[4]  + "<br>||QUO\"|| " + disp[5] + "<br>")
+
+
+///// простой   удобный вывод маркировки кирилицы.
+var disp = infoMarkSmallOSC("wЦЦЦwwwЦЦЦЦЦЦwwwЦЦ");
+document.write ("<br>" + "wЦЦЦwwwЦЦЦЦЦЦwwwЦЦ " + disp + "<br>")
+
+
+
+// ?????  не получилось ф-цию создающую ф-ции f с разн цветами
+//  ?????  вторичный прогон (текст с тегами) preOSC(doMarkBigOSC(tmpChoice,[3], 0))  [1,2,3,4,5]
+
+
+
+</script>
+</body>
+</html>

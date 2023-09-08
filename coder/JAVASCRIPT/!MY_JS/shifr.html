@@ -1,0 +1,48 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+<title></title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+<meta charset="UTF-8">
+</head>
+<body>
+
+
+<form onsubmit="return false">
+<p>Код Цезаря     + см   кодир-декодир</p>
+<!-- ?? кнопки в таблицу чтобы ровно -->
+<button class="shifr" id="zesar" style="color:Red">Zesar</button>
+<button class="shifr" id="12"> 2 </button>
+<button class="shifr"> 3  </button>           
+<input type="number" value="5" max="31" style="width:40px"  id="kluch" /> <p></p>
+
+<button class="deshifr" id="dezesar" style="color:Red"> Dezesar</button>
+<button class="deshifr" id="22"> 2 </button>
+<button class="deshifr" id="23"> 3 </button>
+<input type="number" value="5" max="31" style="width:40px"  id="dekluch"   /> <p></p>
+
+
+
+<textarea cols="80" rows="5" id="input1"></textarea><p></p>
+<input type="button" value="Encode" onclick="doEncode(this, kakshifr)" />
+<input type="button" value="Round Trip" onclick="doRoundTrip(this)" /><p></p>
+
+<textarea cols="80" rows="5" id="input2"></textarea><p></p>
+<input type="button" value="Decode" onclick="doDecode(this, kakDeshifr, dekluch)" />
+<p></p>
+
+<textarea cols="80" rows="5" id="output"></textarea><p></p>
+
+</form>
+
+
+
+
+
+
+
+<script src="shifr.js"></script>
+</body>
+</html>
+ 

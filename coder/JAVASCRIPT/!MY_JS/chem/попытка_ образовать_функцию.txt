@@ -1,0 +1,17 @@
+	var s = 0;
+	var arrRezSmall = [];
+	
+	if (document.getElementById(fin)){
+		var rowFin = document.getElementById(fin);
+		while (rowFin){
+			var ser = rowFin.outerHTML; 
+			ser = ser.replace(/id=\"\w+\"/,"id='"+s+"'"); // id заменяем
+			ser = ser.replace(/class=\"\w+\"/,"class='"+s+"'"); // ??? class тоже заменяем
+			arrRezSmall.unshift(ser);
+			rowFin.firstChild.style.backgroundColor = colorPreFin;
+			rowFin = document.getElementById(rowFin.className);
+			s++;
+		};
+		document.getElementById(fin).firstChild.style.backgroundColor = colorFin;	// подсветка результата
+	}
+	document.getElementById("textsmall").innerHTML = arrRezSmall.join("")+ "<tr style='height:8px;'> &nbsp; </tr>"//  + "<br>";

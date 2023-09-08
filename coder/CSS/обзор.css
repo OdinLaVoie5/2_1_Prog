@@ -1,0 +1,174 @@
+﻿/*==================== ##content ##before  ##after ================================*/
+
+h1 { 
+font-family: 'Niconne', cursive; 
+font-size: 30px; 
+color: #e12527; 
+}
+h1:before, h1:after { 
+content: "\2744" "\274A" "\274B";               /* !! ???   код  ##символ */
+display: inline-block; 
+font-size: 30px; 
+color: #38afaa; 
+-webkit-animation: my 4s infinite alternate; 
+animation: my 4s infinite alternate; 
+}
+h1:before { 
+margin-right: 0.5em;
+}
+h1:after { 
+margin-left: 0.5em; 
+}
+@-webkit-keyframes my {
+    0%   {color: #2e2f92;}
+    25%  {color: #38afaa;}
+    50%  {color: #5b59a7;}
+    75%  {color: #f7b21c;}
+    100% {color: #e12527;}
+ }
+@keyframes my {
+    0%   {color: #2e2f92;}
+    25%  {color: #38afaa;}
+    50%  {color: #5b59a7;}
+    75%  {color: #f7b21c;}
+    100% {color: #e12527;}
+ }
+
+
+
+/* ================================ */
+h2:after { 
+content: url(bd.gif);               /* !! изображ */
+display: inline-block;
+margin-left: 10px; 
+}
+/* ================================ */
+
+
+
+
+blockquote {                      /* Добавление  символа */
+  quotes: "\2039" "\203A";
+  font-size: 30px;
+  font-family: 'Sigmar One', cursive;
+}
+blockquote:before {
+  content: open-quote;
+  color: mediumvioletred;
+  margin-right: 10px;
+}
+  blockquote:after  {
+  content: close-quote;
+  color: mediumvioletred;
+  margin-left: 10px;
+}
+
+
+
+/* ===============  !!!  ##counter автоматическая ##нумерация   ================= */
+
+body {
+  counter-reset: h2;/*   создаем счетчик для любого заголовка h2*/
+  } 
+h2 {
+  counter-reset: p; /*создаем счетчик для абзацев р так, чтобы в каждой группе абзацев нумерация шла от номера заголовка*/
+  color: #0ba7e2;
+  }
+h2:before {
+  content: "Part " counter(h2) ". "; /*добавляем в начале каждого заголовка текст с пробелом, текущее значение счетчика и снова текст (в данном случае точку и пробел)*/
+  counter-increment: h2; /*задаем увеличение нумерации, при каждом появлении элемента h2 счетчик будет увеличиваться на единицу*/}
+p {
+color: #3b4849;
+  }
+p:before {
+  margin-left: 30px;
+  content: counter(h2) "." counter(p) '. ';/*добавляем в начале каждого абзаца значение счетчика h2, текст (в данном случае точка), счетчик абзацев и снова текст (точку с пробелом)*/
+  counter-increment: p; /*задаем увеличение нумерации на единицу*/
+  }
+
+
+/* !! Очистить стили браузеров для всех элементов можно при помощи универсального селектора:
+* {
+ margin: 0;
+ padding: 0;
+ }
+ */
+ 
+ 
+ 
+ 
+ /* ===============    ##float  ##clear   ================= */
+/*( !! приём для того, чтобы родит блок не был меньше дочернего- класс clearfix + after ...)*/
+ .container {
+padding: 1em;
+background: #e7e6d4;
+border: 5px dashed #645a4e;
+border-style: solid dotted none ridge;  /* !!  ##border-style  */
+}
+.floatbox {
+float: left;
+width: 300px;
+height: 150px;
+margin-right: 1em;
+padding: 0 1em;
+background: #fff;
+border: 3px dashed #666666;
+}
+.clearfix:after {
+content: "";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}
+
+
+
+
+/*=============== вертикаль список в горинонталь ============*/
+ul {
+overflow: auto;
+height: 1%;
+}
+li {
+float: left;
+margin-right:30px;
+}
+
+
+
+
+/*====  !!  если у родителя значение position установлено как static или родителя нет, то отсчет положения ведется от верхнего края окна браузера.
+Если у родителя значение position задано как relative / fixed / absolute, то отсчет положения элемента ведется от края родительского элемента.
+=====*/
+.wrap {
+padding: 10px;
+height: 150px;
+position: relative;
+background: #e7e6d4;
+text-align: right;
+border: 3px dashed #645a4e;
+}
+.white {
+position: absolute;
+width: 200px;
+top: 10px;
+left: 10px;
+padding: 10px;
+background: #fff;
+border: 3px dashed #312a22;
+}
+
+div {
+	z-index:88;
+}
+#mymy {
+	position:relative;
+	z-index:99;
+	top: -10px;
+}
+
+
+
+
+

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+</head>
+
+<body>
+
+
+
+<script>
+//// палиндром (1 слово)         дубль - расширяя встроенный объект.     
+String.prototype.palindrome = function() {
+var len = this.length-1;
+for (var i = 0; i <= len; i++) {
+if (this.charAt(i) !== this.charAt(len-i)) {
+return false;
+}
+if (i === (len-i)) {
+return true;
+}
+}
+return true;
+};
+//   Продвинутое решение  String.prototype.palindrome = function() { var r = this.split("").reverse().join("");    return (r === this.valueOf());   }
+//   MY  String.prototype.palindrome = function() { var r = this.join(" ").split("").reverse().join("");    return (r === this.valueOf());   }
+
+
+// тест 
+var phrases = ["eve", "kayak", "mom", "wow", "Not a palindrome"];
+for (var i = 0; i < phrases.length; i++) {
+var phrase = phrases[i];
+if (phrase.palindrome()) {
+document.write("'" + phrase + "' is a palindrome");
+} else {
+document.write("'" + phrase + "' is NOT a palindrome");
+}
+}
+document.write("<hr>");
+
+
+
+
+// !!!!!  ##MY палиндром             много слов 
+String.prototype.palindrome = function() {
+	var direkt=this.toLowerCase().split(/[\s-"',!?]/).join("");   
+	var revers = direkt.split("").reverse().join("");    
+	return (revers === direkt);   
+}
+// тест 
+var phrases = ["kayak mom ,  wow mom kayak", "Ищи-себе,  нищий, ищи - небесищи!", "Not a palindrome"];
+for (var i = 0; i < phrases.length; i++) {
+var phrase = phrases[i];
+if (phrase.palindrome()) {
+document.write('да///');
+} else {
+document.write("нет///");
+}
+}
+document.write("<hr>");
+
+
+
+
+
+
+// !!! из ниндзя  палиндром     ??? не доработано  см выше    ##рекурсия
+function isPalindrome ( text ) {
+  if(typeof text == undefined)return false ;
+  if ( text.length <= 1 ) return true ;
+  if ( text.charAt ( 0 ) != text.charAt ( text.length - 1 ) ) return false ;
+  return isPalindrome ( text.substr (1 , text.length - 2 ) ) ;        // рекурсия
+}
+
+// тест 
+var r; 
+var phrases = [r, "kayak mom wow mom kayak", "ищи себе нищийищин ебес ищи", "Not a palindrome"];
+for (var i = 0; i < phrases.length; i++) {
+  if(phrases[i]!==undefined){         //   ##проверка на неопределённость
+	var phrase = phrases[i];
+	if (isPalindrome(phrase)) {
+	document.write('да///');
+	} else {
+	document.write("нет///");
+	}
+  }else  document.write("неопред///");
+}
+
+</script>
+
+</body>
+</html>

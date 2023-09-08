@@ -1,0 +1,135 @@
+
+mark {
+	background-color: #FFFFCC;
+}   
+#try {
+	font-family: Georgia, "Times New Roman", Times, serif, Geneva, sans-serif;
+	font-size: 14px;
+	font-style: italic;
+	line-height: normal;
+	font-weight: bolder;
+	font-variant: normal;
+	margin: 15px;
+	padding: 5px;
+	text-decoration: underline;
+	background-color: #9FFF9F;
+	width:300px;
+	float: left;
+	border-top-style: double;
+	border-right-style: double;
+	border-bottom-style: double;
+	border-left-style: double;
+	cursor: crosshair;
+}
+#try:hover {
+	color: #F06;
+}
+#try2 {
+	float:right;
+	width:300px;
+}
+#try3 {
+	clear:both;
+	height:200px;
+}
+
+input:focus:invalid {
+ background-color: #A066FF;
+}
+input:valid {
+ background-color: #F7F0F0;}
+input:required {
+ border: 2px solid #ED8189;
+}
+progress{width: 380px; }
+meter{border: 0px solid #000; width: 380px; 
+}
+
+
+
+
+
+@charset "utf-8";
+/* Простой «резиновый» носитель
+   Примечание. Для «резинового» носителя требуется удалить атрибуты высоты и ширины из HTML
+   http://www.alistapart.com/articles/fluid-images/   ??? 
+*/
+img, object, embed, video {
+	max-width: 100%;
+}
+/* IE6 не поддерживает атрибут max-width, поэтому по умолчанию используется ширина 100 % */
+.ie6 img {
+	width:100%;
+}
+
+/*
+	Свойства Dreamweaver Fluid Grid
+	----------------------------------
+	dw-num-cols-mobile:		5;
+	dw-num-cols-tablet:		8;
+	dw-num-cols-desktop:	10;
+	dw-gutter-percentage:	25;
+	
+	Вдохновлено книгой «Отзывчивый веб-дизайн» (Responsive Web Design) Итана Маркота (Ethan Marcote) 
+	http://www.alistapart.com/articles/responsive-web-design
+	
+	и системой Golden Grid Джони Корпи (Joni Korpi)
+	http://goldengridsystem.com/
+*/
+
+/* Мобильный макет: 480 пикс. и меньше. */
+
+.gridContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 87.36%;
+	padding-left: 1.82%;
+	padding-right: 1.82%;
+}
+#LayoutDiv1 {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+
+
+
+/* Макет для планшета: 481–768 пикс. Наследует стили от мобильного макета. */
+
+@media only screen and (min-width: 481px) {
+.gridContainer {
+	width: 90.675%;
+	padding-left: 1.1625%;
+	padding-right: 1.1625%;
+}
+#LayoutDiv1 {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+
+
+/* Макет для настольного компьютера: 769–1232 пикс. (максимум). Наследует стили от мобильного макета и макета для планшета. */
+
+@media only screen and (min-width: 769px) {
+.gridContainer {
+	width: 88.2%;
+	max-width: 1232px;
+	padding-left: 0.9%;
+	padding-right: 0.9%;
+	margin: auto;
+}
+#LayoutDiv1 {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+}

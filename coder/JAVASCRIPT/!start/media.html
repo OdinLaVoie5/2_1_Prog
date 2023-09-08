@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+</head>
+
+<body>
+<ul id="results"> </ul>
+
+<audio id='myaudio'>
+  <source src='audio.m4a' type='audio/aac' />
+  <source src='audio.mp3' type='audio/mp3' />
+  <source src='audio.ogg' type='audio/ogg' />
+</audio>
+
+<!--здесь вместо control свои кнопки-->
+<button onclick='playaudio()'>Play Audio</button>
+<button onclick='pauseaudio()'>Pause Audio</button>
+
+<script>
+function playaudio()
+{
+O('myaudio').play()
+}
+function pauseaudio()
+{
+O('myaudio').pause()
+}
+</script>
+
+
+
+
+<video id='myvideo'width='560' height='320'>
+  <source src='movie.mp4' type='video/mp4' />
+  <source src='movie.webm' type='video/webm' />
+  <source src='movie.ogv' type='video/ogg' />
+</video>
+<br />
+
+<button onclick='playvideo()'>Play Video</button>
+<button onclick='pausevideo()'>Pause Video</button>
+<p id="clock"></p>
+<script>
+function playvideo()
+{
+O('myvideo').play()
+}
+function pausevideo()
+{
+O('myvideo').pause()
+}
+
+
+</script>
+
+<!--
+flash если надо
+<video width='560' height='320' controls>
+  <object width='560' height='320'
+type='application/x-shockwave-flash'
+data='flowplayer.swf'>
+    <param name='movie' value='flowplayer.swf'>
+    <param name='flashvars'
+value='config={"clip": {
+"url": "http://tinyurl.com/html5video-mp4",
+"autoPlay":false, "autoBuffering":true}}'>
+  </object>
+  <source src='movie.mp4' type='video/mp4'>
+  <source src='movie.webm' type='video/webm'>
+  <source src='movie.ogv' type='video/ogg'>
+</video>-->
+</body>
+</html>

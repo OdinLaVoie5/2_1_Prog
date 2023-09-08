@@ -1,0 +1,94 @@
+﻿/*    ##list-style-type   + list-style-image*/
+ul {
+list-style-type: none;
+}
+
+/*серёдка*/
+article ul {
+border: 1px solid #A8ABAF;
+border-radius:10px;
+background-color:#FFFFFF;
+width: 300px;
+margin: 10px auto;                  /* !!!  auto  центровка*/
+}
+article li {
+	line-height: 44px;
+	border-bottom: 1px solid #A8ABAE;
+	padding: 0 10px;
+}
+article li:last-of-type {
+border-bottom: none;
+}
+
+
+                 /*кнопки стиля карамель?    ##шаблон background-image: linear-gradient(to top, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0)); 	background-size:100% 50%;  	background-repeat:no-repeat;*/
+header li {
+	border: 1px solid #A8ABAE;
+	padding: 4px 10px;  
+	border-radius:10px;
+	background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.4));
+}
+.cancel {
+	background-color: #4A6C9B;
+	float:left;
+}
+.done {
+	background-color: #2463DE;
+	float:right;
+}
+
+
+
+            /*верхняя панель*/
+header {
+padding: 7px 10px;
+background-color: #6D84A2;
+display: block;
+height: 45px;
+-webkit-box-sizing: border-box;
+line-height: 30px;
+border-bottom: 1px solid #2C3542;
+border-top: 1px solid #CDD5DF;
+background-image: linear-gradient(rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0));
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
+}
+
+
+          /* общий фон */
+body {
+	background-image:repeating-linear-gradient(to right,#C5CCD4 0,#C5CCD4 5px, #CBD2D8 5px, #CBD2D8 7px); 
+}
+
+
+
+/*     моя временная кнопка   */
+.bottom { background-color: #4A6C9B; 
+	background-image: linear-gradient(to top, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4)); 
+	background-size: 100% 50%; 
+	background-repeat: no-repeat; 
+	color: #FFFFFF; 
+	border: 1px solid #2F353E; 
+	border-color: #2F353E #375073 #375073; 
+	border-radius: 4px; 
+	text-decoration: none;   
+	font-family: Helvetica; font-size: 12px; font-weight: bold; 
+	height: 30px; 
+	padding: 0 10px;  	
+	text-shadow:  0 -1px 0 rgba(0, 0, 0, 0.6);
+	overflow: hidden; 
+	max-width: 80px; 
+	white-space: nowrap; 
+	text-overflow: ellipsis; 
+	box-shadow: 2px 2px 2px rgba(0,0,255, 1), inset 2px 2px 2px rgba(0,0,255,1);	
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+
+

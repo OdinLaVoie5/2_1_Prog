@@ -1,0 +1,96 @@
+div {
+	height: 40px; 	width:700px;
+	}
+
+
+
+
+
+
+/* ========== !!!    ##шаблон (( КЛИК НА ОДНО - ДЕЙСТВИЕ С ДРУГИМ! ))  ==========*/
+input[type="checkbox"]:not(:checked)~input{
+	display:none; 
+}
+
+ 
+ 
+
+
+/* ==========  ФИГУРА (треугольник)     выноска  + стиль  ==============
+  (как?  - широкая, в некотор местах прозрач border )    */
+
+#aaa {
+	background-color:#000000;
+	position:relative;
+	color:#FFFFFF;
+	padding:15px 25px;
+	width:300px;
+	font:16px bold  "Arial Black", Gadget, sans-serif;
+}
+#aaa:after {
+	border:15px solid;
+	border-color: #000000 transparent transparent;
+	top:100%; left:15px;
+	position:absolute;
+	content:'';
+}	     
+
+
+
+              /*  далее    ##MY    ......*/
+#ссс {
+	background-color:#FFFF99;
+	color:#00FF00;
+	padding:25px 25px;
+	margin:10px 10px;
+	width:300px; 
+	border-radius:30px;
+	font:16px bold  "Arial Black", Gadget, sans-serif;
+}
+	              /*       зелёные зубцы      */
+p#bbb {
+	position:relative;
+	top:110px; 
+}
+#bbb span{
+	border:50px solid;
+	border-color: #00FF00 transparent transparent;
+}	
+
+p#ddd {
+	position:relative;
+	top:-100px; 
+	float:right;
+}
+#ddd span{
+	border:50px solid;
+	border-color:  transparent #00FF00 transparent #FF6699 ;
+	border-width:50px; 
+}	
+
+
+
+
+
+
+/* ===  border +++  !!  box-sizing (чтобы граница не выходила наружу) =====*/
+#eee {
+	float:right;
+	outline: 10px solid #66FF00;
+	border: 10px solid #9900FF;
+	width:100%;
+	padding-left:30px; margin-bottom:20px;
+	-webkit-box-sizing:border-box;
+}
+
+
+
+
+
+#ggg {
+	clear:right;
+	background-color:#0033FF;
+	width:500px;     height:70px;
+	padding:50px;
+	-webkit-border-radius: 120px/80px;
+	}

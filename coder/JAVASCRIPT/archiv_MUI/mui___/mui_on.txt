@@ -1,0 +1,225 @@
+	var arrAssocColorDiff = [];  др принцип подсветки
+
+
+
+
+
+	if (flagRepeatLewel) arrRez.sort(function comp(a, b){
+		if (a[2]+a[11]>b[2]+b[11]) return 1;
+		else if (a[2]+a[11]<b[2]+b[11]) return -1;
+		else return 0;
+		}
+) // ???
+
+
+
+
+
+
+   
+
+
+var ddd = "fff.fffffff,fff".split("." || ",")
+// alert (ddd)
+
+
+	// +++  elem.closest('ul > li:last‐child')  parentElement     +parentNode   .rows   .className
+
+
+
+
+
+
+
+================================================================================================
+/*function UU (word){
+	var temp =[];
+	for (var m=0; m < word.length-1; m++) {   /////////////////  правило UU
+		if (word[m] == "U" && word[m+1] == "U") { 
+			var wordAfter = word.slice(0, m) + word.slice(m+2);
+			temp[m] = wordAfter;
+		}
+	}
+	return temp;
+}
+*/ // начальный вариант
+
+
+
+	// вариант см выше ??? /// + малый вывод  ///////  ???
+	/*	var arrRezSmall = [];
+	if (document.getElementById(fin)){
+		var rowFin = document.getElementById(fin);
+		while (rowFin){
+			var ser = rowFin.innerHTML;
+			arrRezSmall.unshift(ser);  
+			rowFin.firstChild.style.backgroundColor = "Yellow";
+			rowFin = document.getElementById(rowFin.className);
+		};
+		document.getElementById(fin).firstChild.style.backgroundColor = "Orange";	// подсветка результата
+	}
+	*/	//document.getElementById("textsmall").innerHTML = arrRezSmall.join("<br>");// ?????  
+	
+
+
+
+
+	// 1 СОРТИРОВКА    при повторах на уровне   (чтобы повторы рядом)
+	if (flagRepeatLewel) {arrRez.sort(function comp(a, b){
+		var tmp = 0;
+		if(a[11]>b[11]) tmp = 1
+		else if(a[11]<b[11]) tmp = -1;
+		return (a[2]-b[2])+ tmp;}) 
+	}
+
+================================================================================================
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+// кусочки из других концепций
+
+/*///// Малый вывод  ////////////
+function dispSmall (waysFin, arrDekor, typeDekor){
+	var str = "", con="", numAll="", numI="";
+	var clr0 = "<span style='color:Red'>", clr1 = "</span>";
+	var tmpNum = waysFin.length+"";
+	var elem = document.getElementById("disp0");
+	
+	if (waysFin[0]=="idiot"){ // если на входе уже дано искомое выражение.
+		elem.innerHTML = "На входе уже дано искомое выражение."; 
+		return;
+	};
+	if (!waysFin[0]){ // если нет вывода
+		elem.innerHTML = "Нет вывода."; 
+		return;
+	};
+	if (~typeDekor.indexOf("s")){ // вывод без прикрас
+		alert (waysFin); 
+		return;
+	};
+	for (var i=0; i < waysFin.length; i++) { 
+		//// нумерация ////
+		str += i+1;
+		numAll = (waysFin.length+"").length; //выравнивание
+		numI = (i+1+"").length;
+		var tmp 
+		for (var t=0; t < numAll-numI; t++) {str += "&nbsp;"}; // 		
+		//// отметка точки приложения ф-ции ////
+		var word = waysFin[i][0], punkt0 = waysFin[i][2],  punkt1 = punkt0 + waysFin[i][1].length;
+		waysFin[i][0] = word.slice(0,punkt0) + clr0 +  word.slice(punkt0,punkt1) + clr1 + word.slice(punkt1);
+		//// вставка декора //// 
+		out: for (var j=0; j < waysFin[i].length; j++) {
+			for (var k=0; k < typeDekor.length; k++) {
+				var ser = typeDekor[k];
+				//if (typeof ser != "number") continue; // не нужно.  игнор пропуска !!! my 
+				if(j===ser) continue out; // пропуск ненужных рядов
+			}str += "<nobr>"   // строчки без переносов
+			str += arrDekor[j][0] + waysFin[i][j] + arrDekor[j][1]
+		}
+		str += "<br>";
+	} 
+	for (var t=0; t < numAll+1; t++) {str += "&nbsp;"}; // 		
+	str +=fin + "<br>"+ "<br>";
+	
+	//// окончания заголовка ////  в отдельную ф-цию ???
+	if (tmpNum[tmpNum.length-2]==1 || /[567890]/.test(tmpNum[tmpNum.length-1])) {con="й"}
+	else if (tmpNum[tmpNum.length-1]==1){con="ю"}
+	else {con="и"};
+	//else if (waysFin.length==1)
+	elem.innerHTML = "Выводится за " + waysFin.length + " операци"+ con+"<br>"+ "<br>"; // ??? окончания 
+	elem.innerHTML += str;
+}
+*/
+
+
+
+
+/*	var arrDekor = [["&nbsp;",""],["<span style='color:LightGreen'> =", "=> </span>"],[""," "],["",""]]; //  вставки декора    ?? + анимация?
+	var typeDekor = [2, 3]; // указать какой столб пропустить через зпт 0,1,2,3.  
+	//,"s" - simple вывод без прикрас
+	// показ цепью ???
+*/
+/*var finTemp = fin;*/  // ?? расширение - массив финишных слов?  или меняющееся fin по какойто ф-ции?
+// hashlewel[acts] ??
+
+/*	//// окончания заголовка ////  в отдельную ф-цию ??
+	if (tmpNum[tmpNum.length-2]==1 || /[567890]/.test(tmpNum[tmpNum.length-1])) {con="й"}
+	else if (tmpNum[tmpNum.length-1]==1){con="ю"}
+	else {con="и"};
+	//else if (waysFin.length==1)
+	elem.innerHTML = "Выводится за " + waysFin.length + " операци"+ con+"<br>"+ "<br>"; // ?? окончания
+	elem.innerHTML += str;
+*/
+/*dispSmall(ways[fin],4,1);*/ ///// на дисплей. 4-х звеная цепь, с накладкой 1 эл. ??
+/*function dispSmall (waysFin, chain, imposit){
+	var str ="", num=0;
+	var elem = document.getElementById("disp0");
+	
+	if (waysFin){
+		num = (waysFin.length-imposit)/(chain-imposit);  
+		// число операций
+		
+		for (var i=0; i <= num; i++) {
+			str += waysFin[3*i];
+			waysFin[3*i+1]?str += "&nbsp;"+ "<span style='color:rgb(150,230,150)'>" + "=" +	waysFin[3*i+1]:"";
+			waysFin[3*i+2]?str += "_" +	waysFin[3*i+2] + "&rArr;" +	"</span>" + " ":"";
+		};
+	
+		elem.innerHTML = "Выводится за " + num + " операций:"+ "<br>";
+		elem.innerHTML += str+ "<br>";
+	}
+	else  elem.innerHTML = "Нет вывода"+ "<br>";
+}
+*/
+//  ???   getElementsByName   < ... name>
+/*var ddd = document.getElementsByName("aaa");
+ddd[0].style.color = "Yellow"*/
+
+
+
+
+
+
+
+//  недодел,   плохо знаю рег выраж
+
+function allIndexGruppOSC___(str, symb, numb) {
+	var arrPosition = [], arrLength = [],       pos = -symb.length, prepos; ////////symb.length или 1 ?
+	var str = str+"", symb = symb+"",         symbStr = "";
+	if (!numb) {var numb = 2}  // умолчание
+	else if (typeof numb != "number") numb = numb.length; // при передаче шаблона my.
+
+	var tmp = symb + "{" + numb + "," + str.length + "}"; // образование регулярного выражения строкай !!!
+	var patern = new RegExp (tmp, "g")
+
+	var arrGrupp = str.match(patern);    
+
+	
+	arrGrupp.sort(function (a, b) {return b.length-a.length;} );  // отсортировал по длине, чтобы сначала обработались большие группы, а не возможно пересекающиеся с большими маленькие.
+		alert (arrGrupp)
+
+	
+	// arrPosition[]
+	
+
+
+	
+	return [arrPosition, arrLength];
+}
+alert (allIndexGruppOSC___("MUUUUUnUUUUbUnUUUU", "U", 2))
+//
+
+
+
+
+
+
+
+
+
+toString
+alert( [1, 2] ); // toString для массивов выводит список элементов "1,2"
+alert( new Date ); // toString для дат выводит дату в виде строки
+alert( function() {} ); // toString для функции выводит её код         !!!

@@ -1,0 +1,34 @@
+/*  !!!    flex order ...   
+если экран < 600px -  обычная компановка         директивы */
+
+@media screen and (min-width: 600px) {
+  article {
+	display: flex;
+    flex-direction: row;
+  }
+  article>* {
+    flex:1;
+  }
+  aside {
+	 order:-1;
+	  }
+  article>div {
+    flex:3;
+  }
+}
+
+
+
+
+/* =========================   COLUMN   ?? =======================
+.aaa, .ccc, .ddd{
+	-moz-column-count: 6;
+	-moz-column-width: 240px;
+	-moz-column-rule: 1px inset #000000;
+	-moz-column-gap: 40px;
+	-moz-column-rule-width: 10px;
+*/
+
+.aaa, .ccc, .ddd {
+	-moz-columns: 240px 3;
+}

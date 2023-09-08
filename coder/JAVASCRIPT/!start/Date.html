@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+</head>
+
+<body>
+<ul id="results"> </ul>
+ 
+<script>
+
+   // примеры
+// ПРИВЕТСТВИЕ в зависимости от времени суток.
+var date = new Date;
+if (date.getHours() < 8 || date.getHours() > 22)
+document.write("<P align = right><FONT color = black><I>Не спится?</I></FONT></P>");
+else if (date.getHours() < 11)             // !! ((при совпадении первого условия остальные не рассматриваются?))
+document.write ("<P align = right><FONT color = blue><I>Доброе утро </I></FONT></P>");
+else if (date.getHours() < 17)
+document.write ("<P align = right><FONT color = red><I>Добрый день</I></FONT></P>");
+else document.write ("<P align = right><FONT color = green><I>Добрый вечер</I></FONT></P>");
+
+
+
+</script>
+
+
+
+<script src="date.js"></script>
+</body>
+</html>

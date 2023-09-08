@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="../jquery.js"></script>
+<script src="../osc.js"></script>
+</head>
+
+<body>
+<ul id="results"> </ul>
+
+
+
+
+<script>
+//  ##typeof    ##var
+var вася =5 // !!  переменные кирилицей не принято, но не ошибка
+/*alert(вася);*/
+
+///   ##типы переменных  
+////  1 2 3   typeof  определение типа переменной
+var test1 = "abcdef";
+var test2 = 123;
+var test3 = true;
+var test4 = {};
+var test5 = [];
+
+var test6 = {"abcdef": 123};
+var test7 = ["abcdef", 123];
+function test8(){return "abcdef"};
+var test9;
+var test10 = null;                  // null - объект !!  но всёхе это отдельный тип   (казусы  null)
+
+assert(1, typeof test1 + " " + typeof test2  + " " + typeof test3  + " " + typeof test4  + " " + typeof test5);
+assert(1, typeof test6  + " " + typeof test7  + " " + typeof test8  + " // " + typeof test9  + " " + typeof test10+ " !"  );
+assert(1 , (1/0)+ "--" + typeof (1/0)+ " // " + (0/0)+ "--" + typeof (0/0)  );
+
+
+////  4 5  ##NaN численное но невыразимое.  NaN не равно NaN(самой себе)  (см ф-ция isNaN  + isReallyNaNOSC в OSC)
+var a = 0/0;
+var b = "food" * 1000;
+var c = Math.sqrt(-9);
+assert(1, a +" "+ b +" " + c);
+assert(a==b || a==c || a==a  , "NaN == NaN ");
+
+	 
+
+//// (5 типов)  0, null, indefined, NaN, ""  !!  псевдоложь. остальное псевдоистина 
+// (объекты - всегда псевдоистина)  !!
+
+// пример
+/*function lieDetectorTest() {
+  var lies = 0;
+var stolenDiamond = { };
+  if (stolenDiamond) {
+	  document.write(" You stole the diamond ");
+	  lies++;
+  }
+  var car = {keysInPocket: null};
+  if (car.keysInPocket) {
+	  document.write(" Uh oh, guess you stole the car! ");
+	  lies++;
+  }
+  if (car.emptyGasTank) {
+	  document.write(" You drove the car after you stole it! ");
+	  lies++;
+  }
+var foundYouAtTheCrimeScene = [ ];
+  if (foundYouAtTheCrimeScene) {
+	  document.write(" A sure sign of guilt ");
+	  lies++;
+  }
+  if (foundYouAtTheCrimeScene[0]) {
+	  document.write(" Caught with a stolen item! ");
+	  lies++;
+  }
+  var yourName = " ";
+  if (yourName) {
+	  document.write(" Guess you lied about your name ");
+	  lies++;
+  }
+  return lies;
+}
+var numberOfLies = lieDetectorTest();
+document.write("You told " + numberOfLies + " lies!");
+document.write("<hr>")
+document.write("<hr>")*/
+
+
+	 
+	 
+	   
+//  ##преобразования типов     автоперевод текста в число  и наоборот
+assert(99 == "99", '99 == "99"');                       //6////////////////  
+assert(99 === "99", '99 === "99"');                     //7////////////////  
+/*assert(1,'"321"*1 ' + "--" + typeof ("321"*1));// Превращение 'n' в число */
+// Превращение 'n' в число   !!  унарный плюс
+assert(1,'+"321"' + "--" + typeof (+"321"));            //8////////////////  
+
+/*alert( +" .12" ); // .12
+alert( +" \n34 \n" ); // 34, перевод строки \n является пробельным символом
+alert( +"" ); // 0, пустая строка становится нулем
+alert( +"1 2" ); // NaN, пробел посередине числа . ошибка
+*/
+
+assert(1,'321+"" ' + "--" + typeof (321+""));           //9////////////////  
+var apples = "2"; var oranges = "3"; 
+// kkk   alert( +apples + +oranges )//  5
+
+
+//   ##boolean
+assert(0 == false, "0 == false");                     //10//////////////// 
+assert(("false" == false),' "false" и false');        //11//////////////// 
+
+
+
+
+document.write("<hr>")
+
+
+
+
+
+
+///     #typeof  #isNaN    #проверка на тип (число), (NaN) 
+//  !!!  ##NaN и ##Infinity - относятся к числовому типу.
+
+ someVal = Math.sqrt(-5); 
+if (typeof someVal == "number") {
+	 // kkk    alert('number')   OK, operate on the value numerically
+}else {alert("No number")}
+
+
+
+
+
+
+
+
+
+
+//   ##let контекстные переменные ???
+
+/*
+// for(let x = 1; x <= n; x++) {alert x}; // ???
+let x=1, y=2;
+let (x=x+1,y=x+2) { // Отметьте, что здесь выполняется сокрытие переменных
+console.log(x+y); // Выведет 5
+};
+console.log(x+y); // Выведет 3
+*/
+
+
+// ##Присваивание с разложением 
+let [x,y,z] = [1,2,5]; // То же, что и let x=1, y=2
+[x,y] = [x+1,y+1]; // То же, что и x = x + 1, y = y+1
+[x,y] = [y,x]; // Обмен значений двух переменных
+console.log([x,y,z]); // Выведет [3,2]
+
+let [one, [twoA, twoB]] = [1, [2,2.5], 3]; // one=1, twoA=2, twoB=2.5
+// в браузе alert (twoB)
+// let transparent = {r:0.0, g:0.0, b:0.0, a:1.0}; // Цвет в формате RGBA
+// let {r:red, g:green, b:blue} = transparent; // red=0.0,green=0.0,blue=0.0
+ 
+//  ##const
+const pi = 3.14; // Определить константу и дать ей значение.
+//pi = 4;  Любые последующие операции присваивания игнорируются.
+//const pi = 4;  Повторное объявление константы считается ошибкой.
+//var pi = 4;  Это тоже ошибка.
+// в браузе   alert (pi)
+
+
+
+
+
+
+
+
+
+var myVal = Math.sqrt(-5);
+if (isNaN(myVal)) {
+    // kkk   alert("NaN");
+} else {
+    // OK, operate on the value numerically
+}
+//kkk    alert( NaN + 1 ); // NaN
+//kkk      alert( isNaN ('1')); // false   преобразуется в число
+//kkk      alert( isNaN (-3/0)); //  false    бесконечность тоже число
+   
+//kkk   alert( Infinity > 1234567890 ); // true
+//kkk   alert( Infinity + 5 == Infinity ); // true
+//kkk   alert( 1e309-1e308 ); // Infinity   !!    1e308 ещё число
+//kkk   alert( 1e309+1e309 ); //  NaN
+//kkk   alert(isFinite(-3/0)) //  !!
+
+//============================================================================
+
+
+
+
+
+
+
+
+
+
+///  переменные области видимости
+function test()
+{
+a1 = 123     //   Глобальная область видимости
+var b1 = 456 // Локальная область видимости
+if (a1 == 123) var c1 = 789 // Локальная область видимости
+}
+
+/// и проверка области видимости переменных
+test()
+if (typeof a1 != 'undefined') document.write('a1 = "' + a1 + '"<br>')
+if (typeof b1 != 'undefined') document.write('b1 = "' + b1 + '"<br>')
+if (typeof c1 != 'undefined') document.write('c1 = "' + c1 + '"<br>')
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<script src="var.js"></script>
+</body>
+</html>

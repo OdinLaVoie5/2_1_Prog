@@ -1,0 +1,39 @@
+ <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+
+</head>
+<body>
+
+
+<script>
+var win = open('/', 'test', 'width=300,height=300')
+function getAttention(win) {
+if (win.closed) {
+alert( "Окно закрыто, привлечь внимание к нему нельзя" );
+return;
+}
+win.focus();
+var i = 0;
+var show = ['************', win.document.title];
+var focusTimer = setInterval(function() {
+if (win.closed) {
+clearInterval(focusTimer);
+return;
+}
+win.document.title = show[i++ % 2];
+}, 1000);
+win.onmousemove = function() {
+clearInterval(focusTimer);
+win.document.title = show[1];
+win.onmousemove = null;
+}
+}
+</script>
+
+<input type="button" onclick="getAttention(win)" value="getAttention(win)">
+
+</body>
+</html>

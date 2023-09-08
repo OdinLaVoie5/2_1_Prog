@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<link href="333.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+
+<header> 
+ссыли 
+<a href="#input">INPUT</a>  
+<a href="#button">BUTTON </a> 
+<a href="#dialoq">DIALOQ </a> 
+<a href="#menu">MENU </a> 
+</header>
+
+
+                <!--  FORM  форма  -->
+<FORM id="form" action="../my_probe/111.html" method="get" enctype="text/plain">  
+<FIELDSET>
+<LEGEND><b><mark>FORM FIELDSET LEGEND INPUT</mark> форма </b></LEGEND>  
+<p></p>
+<input type="button"  value ="BUTTON"/>
+<input  type="password" id="IN2" value="11111" required>
+</FIELDSET>
+</FORM>
+<hr> 
+
+
+
+
+
+
+                <!--  INPUT  ВВОД  -->
+
+<h3 id="input">INPUT  ВВОД </h3>
+ <p> Поле для ввода пароля
+<input name="aaa" type="password" id="IN1" value="11111" required>
+времени ??:
+  <input type="time" min="17:00" max="22:00" required>
+
+<p> электронной почты    
+<input type="email">
+URL-адреса       
+<input type="url">
+
+<p> числовых данных (элемента-счетчика).
+<input type="number">
+<label for="cost"> Тоже, но с шагом step и ограничением min max </label>
+<input type="number" min="5" max="100" step="5" name="cost" id="cost"/>
+
+
+<p> ввод даты. Поддерживаются типы date, month и week. 
+<input type="date">
+<p>ввод даты со временем. Поддерживаются типы datetime,datetime-local и time.<input type="datetime">
+
+<p>ввод ключевых слов поиска. 
+<input type="search">
+
+
+<p><p> передача фокуса конкретному элементу формы. 
+<input type="text" autofocus>
+автоматическое включение текста в поле формы.
+<input type="email" placeholder="me@example.com">
+<p>Блокировка отправки страницы, если поле осталось незаполненным. (т.е. обязательные поля)
+<input type="email" required>
+<p>Блокировка отправки страницы, если содержимое поля не соответствует
+заданному образцу. 
+<input pattern="/^(\s*|\d+)$/">           
+
+
+
+
+		    	<!--   выбор  -->
+<hr> 
+<h4> INPUT ВЫБОР  </h4>
+ 
+<p>Ползунок. 
+<input type="range">
+
+checkbox
+<input type="checkbox"  value = "" checked>
+
+radio
+<input type="radio" name="type_radio" value="1" checked>  
+<input type="radio" name="type_radio" value="2">
+
+<p> файл
+<INPUT type = "file">
+выбор цвета. 
+<input type="color">
+
+
+<p>   
+<INPUT TYPE="submit" VALUE="submit">  
+<INPUT type = "reset" value = "Сброс значений полей">
+<input type="button"  value ="кнопка"/>
+кнопка картинка
+<INPUT type = "image" src="image/aaa.png"> 
+
+<hr>  
+
+   
+   
+   
+               <!--   BUTTON  кнопка   -->
+<h4 id="button"> BUTTON  кнопка  </h4>
+<!--  Атрибуты type для задания типа кнопки: submit (отправка формы при нажатии), reset (сброс значений элементов управления формы при нажатии) или button (пользовательская кнопка, связываемая со сценарием).-->
+<p> <BUTTON type="submit">SUBMIT!</BUTTON>
+<BUTTON type="reset">RESET!</BUTTON>
+<BUTTON type="button">BUTTON </BUTTON>
+<BUTTON>(всё что угодно становится кнопкой, но не гссылка?)</BUTTON>
+<hr>  
+
+   
+   
+   
+   
+   			   <!-- DIALOQ  диалог + окна -->
+<h3 id="dialoq"> DIALOQ (семантика?) диалог + окна  </h3>
+   <dialoq id="loqin" draggable="true">
+<p>You need to bе logged in to post а comment</p>
+<button>Log In</button>
+<button>No thanks</button>
+<dialoq/>
+<hr> 
+
+
+
+
+
+
+   			   <!-- MENU  -->
+<h3 id="menu"> меню <mark> SELECT OPTGROUP OPTION  </mark></h3>
+size = 1
+<SELECT name = "menu1">
+<OPTGROUP label = "Группа1">
+<OPTION value = "1.1.1">Пункт 1.1
+<OPTION value = "1.1.2">Пункт 1.2
+<OPTION value = "1.1.3">Пункт 1.3
+</OPTGROUP>
+<OPTGROUP label = "Группа2">
+<OPTION value = "1.2.1">Пункт 2.1
+<OPTION value = "1.2.2">Пункт 2.2
+<OPTION value = "1.2.3">Пункт 2.3
+</OPTGROUP>
+</SELECT>
+size = 4
+<SELECT name = "menu2" size = "4">
+<OPTGROUP label = "Группа1">
+<OPTION value = "2.1.1">Пункт 1.1
+<OPTION value = "2.1.2">Пункт 1.2
+<OPTION value = "2.1.3">Пункт 1.3
+</OPTGROUP>
+<OPTGROUP label = "Группа2">
+<OPTION value = "2.2.1">Пункт 2.1
+<OPTION value = "2.2.2">Пункт 2.2
+<OPTION value = "2.2.3">Пункт 2.3
+</OPTGROUP>
+</SELECT>
+
+
+
+</body>
+</html>

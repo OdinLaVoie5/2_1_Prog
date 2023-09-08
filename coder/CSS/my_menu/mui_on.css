@@ -1,0 +1,118 @@
+﻿body {
+	background-color: Lightgrey;
+}
+
+#bigdiv {
+	position: fixed;
+	right: 0px;
+	top: -3px;
+}
+.optionpanel {
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+	right: 0px;
+	top: 0px;
+	width: 480px;
+	background-color: rgb(240,240,240);
+	border-collapse: collapse;
+}
+.optionpanel tr:last-child {
+	height: 65px;
+	vertical-align: bottom;
+}
+.optionpanel tr:first-child {
+	height: 45px;
+	vertical-align: bottom;
+}
+.optionpanel td {
+	padding-left: 15px;
+}
+.optionpanel td:first-child {
+	width: 220px;
+}
+.optionpanel td:nth-child(2) {
+	width: 200px;
+}
+
+
+#option0 {
+	margin-top:15px;
+	height: 220px;
+	top: -1500px;
+}
+#option1 {
+	height: 170px;
+	top: -1500px;
+}
+#option2 {
+	height: 200px;
+	top: -1500px;
+}
+#option3 {
+	height: 330px;
+	right: 485px;
+	top: -1500px;
+}
+
+
+
+.smallUser {
+	width: 38px;
+}
+#butcheck {
+	color: rgb(240,0,0);
+}
+#butadd0 {
+	width: 100px;
+}
+.resetIt {
+	display: none;
+}
+#gamburg {
+	position: absolute;
+	float: right;
+	padding: 0px;
+	margin: 0px;
+	right: 0px;
+	top: 3px;
+	z-index: 100;
+	font: 2em "arial";
+	text-align: center;
+	background-color: rgb(200,200,200);
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+#gamburg:hover {
+	background-color: rgb(210,220,230);
+}
+#menuTitleOut {
+	visibility: visible;
+	height: 30px;
+	width: 480px;
+}
+#menuTitleOut img {
+	height: 40px;
+	float: left;
+	margin-top: 2px; 
+}
+#menuTitle {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+	padding-top: 12px;
+	background-color: rgb(240,240,240);
+	border-bottom: solid rgb(200,200,200);
+	cursor: pointer;
+	height: 30px;
+}
+#menuTitle:hover {
+	background-color: rgb(210,220,230);
+}
+
+
+
+
+

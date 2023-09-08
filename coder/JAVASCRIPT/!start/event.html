@@ -1,0 +1,564 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+
+<style>
+#ball {
+	position: relative;
+	height: 80px;
+	width: 80px;
+	background-color: #00FF00;
+	border-radius: 40px;
+}
+</style>
+
+</head>
+
+<body>
+<ul id="results"> </ul>
+Текущее время: <span id='time'>00:00:00</span><br />
+<table><tbody></tbody></table>
+
+
+
+
+
+
+
+
+<br><hr>
+<p onclick="window.alert('Событие onclick - Абзац');"> Щелкните мышью <span style="color: red" id="txt">здесь</span> </p>
+
+<script type="text/javascript">
+////////////////////////////////////////////////////////////////////////////////////////
+//  ##события  всплывание (к родителю) их ОТМЕНА
+document.getElementById("txt").onclick = function(e) {
+e = e||window.event;
+window.alert('Вы кликнули на слове "здесь"');
+// this - это ссылка на элемент, вызвавший событие
+this.innerHTML += " новый текст";
+// Прерывание всплывания событий
+if (e.stopPropagation) e.stopPropagation();
+else e.cancelBubble = true;
+}
+</script>
+
+
+
+<div>
+<span id="span1">(span1 <span id="span2">Щелкните здесь (span2)) </span></span>
+</div>
+<script type="text/javascript">
+////////////////////////////////////////////////////////////////////////////////////////
+// перехват события родителем (true/false)
+function f_click(e) { // e - ссылка на объект event
+window.alert ( "Элемент " + this.getAttribute ("id") +
+". Событие возникло в " + e.target.getAttribute("id") ) ;
+}
+if (document.addEventListener) { // В IE не работает
+var spanl = document .getElementById ("spanl") ;
+var span2 = document .getElementById ("span2") ;
+span1.addEventListener ("click", f_click, true); // false
+span2.addEventListener ("click", f_click, false);
+}
+</script>
+
+
+
+
+<br>
+<input type="button" id="btnl" value="Кнопка1">
+<input type="button" id="btn2" value="Кнопка2">
+<script type="text/javascript">
+
+// обработчик 2  здесь сработает только 1 раз
+function f_click1(e) { // e - ссыпка на объект event
+// Сработает при каждом щелчке на любой кнопке
+window.alert("Обработчик 1. Кнопка " + e.target.getAttribute("id"));
+}
+function f_click2() { // Сработает только 1 раз
+window.alert("Обработчик 2");
+// Удаление обработчика
+this.removeEventListener("click", f_click2, false); // ??? удалил себя? 
+}
+if (document.addEventListener) { // В IE не работает
+var tags = document.getElementsByTagName("input");
+for (var i=0, len=tags.length; i<len; i++) {
+if (tags[i].type=="button")
+tags[i].addEventListener("click", f_click1, false);
+}
+var elem = document.getElementById("btnl");
+elem.addEventListener("click", f_click2, false);
+}
+</script>
+
+
+
+<script type="text/javascript">
+//  !!! отмена действия события по умолчанию 
+
+function f_print(Str, e) {
+window.alert(Str);
+e = e||window.event;
+if (e.preventDefault) e.preventDefault();
+else e.returnVaiue = false;
+}
+</script>
+
+<p> <a href="file.html" onclick="f_print('Перехода по ссылке не будет!', event);">
+Нажмите для перехода по ссылке</a><br>
+<a href="file.html" onclick="window.alert('Перехода по ссылке не будет!'); return false;">Нажмите для перехода по ссылке</a></p>
+
+
+
+
+
+
+
+<br><hr> 
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  !!  ((события в тегах)) -->
+<P onclick = "alert('Не давите на меня!!!')">клик НЕЕЕЕЕТ! </P>
+<P ondblclick = "alert('Лучше нажимайте на соседний абзац.')" >даблклик ДААААА! </P>
+
+<p id=code1> </p>
+
+<img id="map" src="map.jpg" width="100" height="100"/>
+<span id="coords">наведение курсора мыши </span>
+<img src="map.jpg" width="100" height="100" id="mapMY" />
+<span id="coordsMY">клик </span>
+<hr /> <hr /> 
+
+<p id="display">    </p>
+<div id="ball" style="position:relative"></div>
+
+
+<script src="event.js"></script>
+
+<script>
+
+/// ##ошибка  Использование события  ##onerror       message, url, line встроено в брауз? 
+
+/*onerror = errorHandler;
+document.writ("Добро пожаловать на этот сайт!") // Преднамеренная ошибка
+function errorHandler(message, url, line)
+{
+out = "К сожалению, обнаружена ошибка.\n\n";
+out += "Ошибка: " + message + "\n";
+out += "URL: " + url + "\n";
+out += "Строка: " + line + "\n\n";
+out += "Щелкните на кнопке OK для продолжения работы.\n\n";
+alert(out);
+return true;
+}
+*/
+
+// или пример
+/*window.onerror = function(message, url, lineNumber) {
+alert("Поймана ошибка, выпавшая в глобальную область!\n" +
+"Сообщение: " + message + "\n(" + url + ":" + lineNumber + ")");
+};
+function readData() {
+error(); // ой, что‐то не так
+}
+readData();
+*/
+
+
+// ##try  ##catch      здесь e в catch объект ошибки (+ name, message, stack ?)
+/*try {
+alert( 'try' );
+if (confirm('Сгенерировать ошибку?')) BAD_CODE();
+} catch (e) {
+alert( 'catch' );
+} finally {
+alert( 'finally' );
+}
+*/
+
+/*try {
+  alert('Начало блока try'); 
+  lalala; // ошибка, переменная не определена!  ##ReferenceError
+  alert('Конец блока try');  //  игнор,  переход в catch
+}catch(e) {
+  alert('Ошибка ' + e.name + ":" + e.message + "\n" + e.stack); // (3) <‐‐
+}
+alert("Потом код продолжит выполнение...");
+*/
+
+
+/*var data = "Has Error"; // в данных ошибка ##SyntaxError
+try {
+  var user = JSON.parse(data); // <‐‐ ошибка при выполнении
+  alert( user.name ); // не сработает
+}catch (e) {
+// ...выполнится catch
+  alert( "Извините, в данных ошибка, мы попробуем получить их ещё раз" );
+  alert( e.name );
+  alert( e.message );
+  alert( e.stack );
+}
+*/
+
+
+// my внутр - здесь для синтакс ошибок,  внеш - все остальные.
+/*function readData() {
+  var data = '{ "name": "Вася", "age": 30 }';
+  try {
+	throw new SyntaxError("Ошибка в данных");
+  } catch (e) {
+	if (e.name != 'SyntaxError') {
+	  throw e; // !!  пробрасываем
+	}
+	else { alert( "Поймал во внутр catch: " + e )}
+  }
+	blabla(); // ошибка!
+}
+try {
+  readData();
+} catch (e) {
+  alert( "Поймал во внешнем catch: " + e ); // ловим
+}
+*/
+
+
+// !!! Блок finally срабатывает при любом выходе из try..catch, в том числе и return.
+/*function func() {
+try {
+// сразу вернуть значение
+return 1;
+} catch (e) {
+//  ... 
+} finally {
+alert( 'finally' );
+}
+}
+alert( func() ); // сначала finally, потом 1
+*/
+
+
+//  пример калькуль
+/*function calcEval() {
+  var calc, rezCalc;
+  while (true) {
+	calc = prompt ('введите выражение', '2+2');
+	if(calc == null){break;}
+	try {
+	  rezCalc = eval(calc);
+	  if (isNaN (rezCalc)) {
+		throw new Error("Результат неопределён");
+	  }
+	  alert (rezCalc);
+	} catch (e) {
+	  alert('Ошибка. Повторите ввод'); 
+	}
+  }
+}
+
+calcEval();
+*/
+
+
+
+
+
+
+
+
+
+////  ##onload   вкл функцию после загрузки    традиционно window.onload = init 
+/*
+window.onload = pageLoadedHandler;
+function pageLoadedHandler() {
+alert("I'm alive!");
+}
+*/
+
+///////////    ##onmousemove  наведение курсора мыши   см  MAP  !!!    
+//  eventObj = ##event = e    этот объект,   
+// eventObj.clientX;  eventObj.clientY; координаты курсора
+//  !!!  + см  image_blur.html   
+// 		clientX, clientY: 
+/*		смещение (в пикселах) указателя мыши от левого (и верхнего) края окна браузера.
+		screenX, screenY: 
+		смещение (в px) указателя мыши от левого (и верхнего) края пользовательского экрана.
+		pageX, pageY: 
+*/
+window.onload = init;
+function init() {
+var map1 = document.getElementById("mapMY");
+map1.onclick = showCoords1;  
+var map = document.getElementById("map");
+map.onmousemove = showCoords;  
+}
+
+function showCoords(eventObj) {
+var map = document.getElementById("coords");
+var x = eventObj.offsetX;
+var y = eventObj.offsetY;
+map.innerHTML = " курсор: "
++ x + ", " + y;
+}
+
+//   ##onclick    координаты по клику     ##события
+function showCoords1(eventObj) {
+var map = document.getElementById("coordsMY");
+var x = eventObj.offsetX;
+var y = eventObj.offsetY;
+map.innerHTML = " клик: " + x + ", " + y;
+}
+
+
+
+// ##onresize   
+function resize() {
+var element = document.getElementById("display");
+element.innerHTML = element.innerHTML + " прывэт!";
+}
+window.onresize = resize;
+
+
+
+
+///////   ##setTimeout (,)  таймер пауза     
+
+/*var planet = document.getElementById("code1");
+function a1 () {planet.innerHTML = "+++++++++++++++++++++++++++++++";}
+function a2 () {planet.innerHTML = "-------------------------------";}
+
+var eee = setTimeout(a1, 1000);
+var eeee = setTimeout(a2, 2000);
+
+alert (eee)
+alert (eeee)
+*/
+
+
+////  ##цикл + таймер    сообщение
+/*
+function timerHandler() { 
+alert("Я таймер");
+}
+for (var i=0; i<4; i++) {
+ setTimeout(timerHandler,(2000*i*i)+200);     //  
+}
+*/
+
+
+
+ ///   ##setTimeout
+// my если просто alert("привет!") выполнится без паузы, приходится спрятать в ф-цию !!! или кавычки
+// неправильно   setTimeout(alert('0 привет!'), 22000);  setTimeout(nnn(), 22000);
+/*
+// правильно
+setTimeout(function() {alert("2 привет!");}, 2000);
+setTimeout(sss, 2000);                 
+setTimeout("alert('4 привет!')", 2000);   //  !!
+setTimeout("nnn()", 4000);
+
+function sss() {alert('3 привет!')}
+function nnn() {alert('1 привет!')}
+*/
+
+///   !!! циклическое повторение (аналогично setInterval? ) (my)  c помощью самовызова ф-ции       но момент вызова можно выставить с помощью выражения (а не линейно как у setInterval)   см onenote Два способа.          
+/*
+var ser = 1;
+setTimeout(dothis, 4000)  // my вариант  dothis()   но нет паузы перед первым показом 
+function dothis()
+{
+if(ser==5){return (alert('Я вас раздразил!'))} // оборвал бесконечн цикл
+setTimeout(dothis, 2000/(ser*ser))
+alert('Я вас раздражаю!')
+ser++;
+}
+*/
+
+
+///   ##setInterval     !!!  ##часы     Текущее время
+var handle = setInterval("showtime(O('time'))", 1000)
+function showtime(object){
+  var date = new Date()
+  object.innerHTML = date.toTimeString().substr(0,8) // вариант date.toUTCString()
+}
+
+// вариант с console.log();
+function Clock(optio) {
+this._template = optio;
+}
+Clock.prototype._render = function render() {
+var date = new Date();
+var hours = date.getHours();
+if (hours < 10) hours = '0' + hours;
+var min = date.getMinutes();
+if (min < 10) min = '0' + min;
+var sec = date.getSeconds();
+if (sec < 10) sec = '0' + sec;
+var output = this._template.replace('h', hours).replace('m', min).replace('s', sec);
+console.log(output);
+};
+Clock.prototype.stopit = function() {
+clearInterval(this._timer);
+};
+Clock.prototype.start = function() {
+this._render();
+var self = this;
+this._timer = setInterval(function() {
+self._render();
+}, 1000);
+};
+
+var clock = new Clock('h-m-s');
+// clock.start();
+
+function ClockExt() {   // расширение Clock   наследование
+Clock.apply(this, arguments);
+// 	this._template = optio;
+}
+ClockExt.prototype = Object.create(Clock.prototype);
+ClockExt.prototype.constructor = ClockExt;
+
+ClockExt.prototype.start = function(precision) {
+var precision = precision || 1000;
+this._render();
+var self = this;
+this._timer = setInterval(function() {
+self._render();
+}, precision);
+};
+var clockext = new ClockExt('h-m-s');
+clockext.start(3000);
+
+
+
+////////////////////////// ВКЛ и ВЫКЛ таймера (по условию) /////////////////
+var k = 0;
+var tick = true;
+function ticker() {
+if (tick) {
+console.log("Tick");
+tick = false;
+} else {
+console.log("Tock"+k);
+tick = true;
+k++
+}
+if (k==8) {clearInterval(t)};
+}
+var t = setInterval(ticker, 1000);
+
+
+
+
+//  останов setInterval по таймеру  !!!  можно остановить один таймер по другому
+// setTimeout("clearInterval(handle)", 10000)
+
+
+
+
+/*// !!!   неявно id таймера 
+var timerId = setTimeout(function() { alert(1) }, 1000);
+alert(timerId); // число ‐ идентификатор таймера
+clearTimeout(timerId);
+alert(timerId); // всё ещё число, оно не обнуляется после отмен
+*/
+
+
+
+
+
+// my
+/*function printNumbersTimeout() {
+  var i = 1;
+  setTimeout(function tick() {
+	console.log(i);
+	timerId = setTimeout(tick, 100);
+  if(i == 5){clearTimeout (timerId)};
+  i++; 
+  }, 100);
+}
+printNumbersTimeout();*/
+
+function printNumbersTimeout20_100() {
+var i = 1;
+var timerId = setTimeout(function go() {
+console.log(i);
+if (i < 5) setTimeout(go, 100);
+i++;
+}, 100);
+}
+// вызов
+printNumbersTimeout20_100();
+
+
+/*function printNumbersInterval() {
+  var i = 1;
+  timerId = setInterval(function () {
+	alert(i++);
+	if(i > 5){clearInterval(timerId)};
+  }, 100);
+}
+printNumbersInterval();
+*/
+
+
+// пример
+/*function Runner() {
+  this.steps = 0;
+  this.step = function() {
+	this.doSomethingHeavy();
+	this.steps++;
+  };
+  function fib(n) {
+	return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+  }
+  this.doSomethingHeavy = function() {
+	for (var i = 0; i < 25; i++) {
+	this[i] = fib(i);
+	}
+  };
+}
+var runner1 = new Runner();
+var runner2 = new Runner();
+// запускаем бегунов
+var t1 = setInterval(function() {
+  runner1.step();
+  }, 15);
+var t2 = setTimeout(function goo() {
+  runner2.step();
+  t2 = setTimeout(goo, 15);
+  }, 15);
+// кто сделает больше шагов?
+setTimeout(function() {
+clearInterval(t1);
+clearTimeout(t2);
+alert( runner1.steps );
+alert( runner2.steps );
+}, 5000);*/
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

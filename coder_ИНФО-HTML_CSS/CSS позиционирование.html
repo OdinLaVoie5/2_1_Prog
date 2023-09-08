@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0" />  
+  <title>CSS позиционирование</title>  
+  <!--[if lt IE 9]>
+	<script src="http://html5book.ru/wp-content/themes/papercuts/js/html5.js"></script>
+	<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49017436-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<style type='text/css'></style>
+<!-- This site is optimized with the Yoast SEO plugin v3.0.7 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="CSS позиционирование управляет местоположением элементов на странице. Изменять положение элементов можно с помощью следующих CSS-свойств: position, float и clear"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="http://html5book.ru/css-position/" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="CSS позиционирование" />
+<meta property="og:description" content="CSS позиционирование управляет местоположением элементов на странице. Изменять положение элементов можно с помощью следующих CSS-свойств: position, float и clear" />
+<meta property="og:url" content="http://html5book.ru/css-position/" />
+<meta property="og:site_name" content="html5book" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/position-css.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/position.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/float.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/float1.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/float2.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/ul-overflow.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/11/relative-absolute.png" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента" href="http://html5book.ru/feed/" />
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента комментариев" href="http://html5book.ru/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента комментариев к &laquo;2.3. CSS позиционирование&raquo;" href="http://html5book.ru/css-position/feed/" />
+<link rel='stylesheet' id='crayon-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-idle-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/themes/idle/idle.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-consolas-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/fonts/consolas.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='papercuts-style-css'  href='http://html5book.ru/wp-content/themes/papercuts/style.css?ver=4.4.2' type='text/css' media='all' />
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/html5book.ru\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u041d\u0430\u0436\u043c\u0438\u0442\u0435 %s \u0434\u043b\u044f \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f, %s \u0434\u043b\u044f \u0432\u0441\u0442\u0430\u0432\u043a\u0438","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<link rel='https://api.w.org/' href='http://html5book.ru/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://html5book.ru/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://html5book.ru/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='http://html5book.ru/?p=1771' />
+<link rel="alternate" type="application/json+oembed" href="http://html5book.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5book.ru%2Fcss-position%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://html5book.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5book.ru%2Fcss-position%2F&#038;format=xml" />
+ 
+
+   
+    <style type="text/css">   
+      #panel_load {
+  		 background:#fff;
+  		 border:1px solid #ccc;
+  		 opacity:1;
+  		 padding:10px;
+  		 position:fixed;
+  		 right: 30px;
+  		 top: 40px;
+  		 color:#555;
+  		 font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
+  		 font-size:12px;
+  		 text-align:center;
+  		 z-index:100;
+  		 
+  		 box-shadow:5px 5px 5px -6px #000;
+  		 -moz-box-shadow:5px 5px 5px -6px #000;
+  		 -webkit-box-shadow:5px 5px 5px -6px #000;
+  		 -khtml-box-shadow:5px 5px 5px -6px #000;
+  		 -o-box-shadow:5px 5px 5px -6px #000;
+      }  
+     </style>  
+    
+    <!--[if IE]>
+<style type="text/css" media="screen">
+#wrapper-header, #wrapper-footer, #top-navigation-wrapper, .header-image-wrapper, .entry-content, .home-list-posts, .post-entry, .sidebar-widget, .sidebar-headline, .footer-signature, #nav-below, #papercuts-post-nav, .search .navigation {
+        behavior: url("http://html5book.ru/wp-content/themes/papercuts/css/pie/PIE.php");
+        zoom: 1;
+}
+</style>
+<![endif]-->
+  
+</head>
+<body class="page page-id-1771 page-template-default" id="wrapper">
+
+<header>  
+ <div class="header-content">
+<a href="http://html5book.ru/">
+<img class="header-logo" src="http://html5book.ru/wp-content/themes/papercuts/images/logo.png"></a>
+  <div class="menu-box-wrapper">
+<div class="menu-top-container"><ul id="nav" class="menu"><li id="menu-item-3827" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3827"><a href="http://html5book.ru/html-html5/">HTML</a></li>
+<li id="menu-item-3871" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3871"><a href="http://html5book.ru/css-css3/">CSS</a></li>
+<li id="menu-item-3975" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3975"><a href="http://html5book.ru/javascript-jquery/">JavaScript</a></li>
+<li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884"><a href="http://html5book.ru/web-topography/">Веб-типографика</a></li>
+<li id="menu-item-5292" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5292"><a href="http://html5book.ru/category/uroki/">Уроки</a></li>
+<li id="menu-item-5951" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5951"><a href="http://html5book.ru/css-spravochnik/">CSS справочник</a></li>
+<li id="menu-item-7807" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7807"><a href="http://html5book.ru/seo/">SEO</a></li>
+</ul></div>  </div>
+    </div>
+</header> <!-- end of wrapper-header -->
+
+<div id="container">
+  <div id="main-content">
+  <div id="content">    <article class="entry-content"> 
+      <div class="entry-content-inner">
+		        <h1 class="content-headline">2.3. CSS позиционирование</h1>
+		<!--Ad Injection:top-->
+<div style='margin-bottom:30px;padding-top:0px;padding-bottom:30px;'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ADAPT -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4906567094890032"
+     data-ad-slot="5808407100"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><p><img src="http://html5book.ru/wp-content/uploads/2014/11/position-css.png" alt="position-css" width="250" height="250" class="alignleft"><br />
+CSS позиционирование управляет местоположением элементов на странице. Изменять положение элементов на странице можно с помощью css-свойств <kbd>position</kbd> и <kbd>float</kbd>.</p>
+<h2 style="clear:both">Позиционирование элементов веб-страницы</h2>
+<ul class="contents">
+<li style="color:white; background:#84cd1b;">Содержание:</li>
+<li><a href="#position">1. Позиционирование элементов на странице с помощью свойства <kbd>position</kbd></a></li>
+<li><a href="#float">2. Обтекание элементов на странице с помощью свойства <kbd>float</kbd></a></li>
+<li><a href="#clear">2.1. Отмена обтекания элементов с помощью свойства <kbd>clear</kbd></a></li>
+<li><a href="#part3">2.2. Очистка потока стилями при помощи класса <kbd>clearfix</kbd> и псевдокласса <kbd>:after</kbd></a></li>
+<li><a href="#part4">2.3. Легкий способ очистки потока</a></li>
+<li><a href="#part5">3. Позиционирование внутри элемента</a></li>
+<li><a href="#part6">4. Проблемы позиционирования</a></li>
+</ul>
+<h3 style="clear:left" id="position">1. Позиционирование элементов на странице с помощью свойства position</h3>
+<p>Свойство <kbd>position</kbd> определяет порядок, в соответствии с которым выбранный элемент отображается на веб-странице. По умолчанию все элементы располагаются последовательно один за другим в том порядке, в котором они определены в html-документе (<kbd>{position: static}</kbd>). Свойство не наследуется.</p>
+<p><strong>Блочный элемент</strong> (<kbd>p, div, h1</kbd> и др.) занимает 100% ширины родительского элемента (по умолчанию &#8212; <kbd>body</kbd>). Поэтому блочные элементы отображаются один под другим в соответствии с разметкой страницы.</p>
+<p><strong>Строчный элемент</strong> (<kbd>em, strong, span</kbd> и др.) занимает ширину, которая соответствует ширине содержимого внутри него. Поэтому строчные элементы отображаются рядом друг с другом.</p>
+<p>Свойство <kbd>position</kbd> вместе со значениями <kbd>top, right, bottom</kbd> и <kbd>left</kbd> отображает элемент с нарушением обычного порядка, смещая его на заданное расстояние. При позиционировании элементов можно использовать как положительные, так и отрицательные значения.</p>
+<table class="t1">
+<tr>
+<th colspan="2">position</th>
+</tr>
+<tr>
+<td>Значение:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>static</kbd></td>
+<td>Значение по умолчанию. Элементы отображаются последовательно один за другим в том порядке, в котором они определены в html-документе.</td>
+</tr>
+<tr>
+<td><kbd>relative</kbd></td>
+<td>Позволяет смещать элемент относительно его текущего положения в структуре html-документа вверх, вправо, вниз или влево (зависит от того, какое задано значение: <kbd>top / right / bottom / left</kbd>). Остальные элементы размещены на странице относительно его первоначального положения, без смещения.</td>
+</tr>
+<tr>
+<td><kbd>absolute</kbd></td>
+<td>Можно задавать только для блочных (<kbd>display: block</kbd>) и строчно-блочных (<kbd>display: inline-block</kbd>) элементов.<br />
+Позиция элемента смещается относительно родительского элемента вверх, вправо, вниз или влево (зависит от того, какое задано значение: <kbd>top / right / bottom / left</kbd>), при этом нарушается порядок отображения элементов.<br />
+Элементы, следующие за ним, могут попасть под него.<br />
+На положение также влияет значение свойства <kbd>position</kbd> родительского элемента.<br />
+Так, если у родителя значение <kbd>position</kbd> установлено как <kbd>static</kbd> или родителя нет, то отсчет положения ведется от верхнего края окна браузера.<br />
+Если у родителя значение <kbd>position</kbd> задано как <kbd>relative / fixed / absolute</kbd>, то отсчет положения элемента ведется от края родительского элемента.<br />
+Можно вкладывать один блок с <kbd>position: absolute</kbd> в другой блок с <kbd>position: absolute</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>fixed</kbd></td>
+<td>Позволяет зафиксировать элемент в нужном месте страницы. При прокрутке страницы положение элемента на странице не меняется. Элемент можно сместить вверх, вправо, вниз или влево (в зависимости от заданного значения: <kbd>top / right / bottom / left</kbd>).</td>
+</tr>
+</table>
+<h4 id="bottom-prop">1.1. Свойство bottom</h4>
+<p>Свойство устанавливает смещение между нижним внешним краем поля позиционированного элемента и нижним краем блока-контейнера. Применяется к элементам, для которых свойство <kbd>position</kbd> не равно <kbd>static</kbd>. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">bottom</th>
+</tr>
+<tr>
+<td>Значение:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>auto</kbd></td>
+<td>Значение по умолчанию. Вычисляемое значение свойства равно нулю.</td>
+</tr>
+<tr>
+<td>длина</td>
+<td>Смещение задается в единицах длины.</td>
+</tr>
+<tr>
+<td><kbd>%</kbd></td>
+<td>Процентные значения вычисляются относительно высоты блока-контейнера.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение от родительского элемента.</td>
+</tr>
+</table>
+<h4 id="left-prop">1.2. Свойство left</h4>
+<p>Свойство устанавливает смещение между левым внешним краем поля позиционированного элемента и левым краем блока-контейнера. Применяется к элементам, для которых свойство <kbd>position</kbd> не равно <kbd>static</kbd>. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">left</th>
+</tr>
+<tr>
+<td>Значение:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>auto</kbd></td>
+<td>Значение по умолчанию. Для элементов с <kbd>position: relative</kbd> значение свойства <kbd>left</kbd> всегда эквивалентно значению свойства <kbd>right</kbd>.</td>
+</tr>
+<tr>
+<td>длина</td>
+<td>Смещение задается в единицах длины.</td>
+</tr>
+<tr>
+<td><kbd>%</kbd></td>
+<td>Процентные значения вычисляются относительно высоты блока-контейнера.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение от родительского элемента.</td>
+</tr>
+</table>
+<h4 id="right-prop">1.3. Свойство right</h4>
+<p>Свойство устанавливает смещение между внешним краем правого поля позиционированного элемента и правым краем его блока-контейнера. Применяется к элементам, для которых свойство <kbd>position</kbd> не равно <kbd>static</kbd>. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">right</th>
+</tr>
+<tr>
+<td>Значение:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>auto</kbd></td>
+<td>Значение по умолчанию. Для элементов с <kbd>position: relative</kbd> значение свойства <kbd>left</kbd> всегда эквивалентно значению свойства <kbd>right</kbd>.</td>
+</tr>
+<tr>
+<td>длина</td>
+<td>Смещение задается в единицах длины.</td>
+</tr>
+<tr>
+<td><kbd>%</kbd></td>
+<td>Процентные значения вычисляются относительно высоты блока-контейнера.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение от родительского элемента.</td>
+</tr>
+</table>
+<h4 id="top-prop">1.4. Свойство top</h4>
+<p>Свойство устанавливает смещение между внешним краем верхнего поля позиционированного элемента и верхним краем его блока-контейнера. Применяется к элементам, для которых свойство <kbd>position</kbd> не равно <kbd>static</kbd>. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">top</th>
+</tr>
+<tr>
+<td>Значение:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>auto</kbd></td>
+<td>Значение по умолчанию. Для элементов с <kbd>position: relative</kbd> значения свойств <kbd>top</kbd> и <kbd>bottom</kbd>, равные <kbd>auto</kbd>, будут вычисляться в ноль.</td>
+</tr>
+<tr>
+<td>длина</td>
+<td>Смещение задается в единицах длины.</td>
+</tr>
+<tr>
+<td><kbd>%</kbd></td>
+<td>Процентные значения вычисляются относительно высоты блока-контейнера.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение от родительского элемента.</td>
+</tr>
+</table>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/position.png" alt="position" width="624" height="400" class="alignleft size-full wp-image-3151" srcset="http://html5book.ru/wp-content/uploads/2014/11/position-300x192.png 300w, http://html5book.ru/wp-content/uploads/2014/11/position.png 624w" sizes="(max-width: 624px) 100vw, 624px" /></p>
+<figcaption style="clear:both">Рис. 1. Разница между абсолютным и относительным позиционированием</figcaption>
+</figure>
+<h3 id="float">2. Обтекание элементов на странице с помощью свойства float</h3>
+<p>В обычном порядке блочные элементы отображаются, начиная с верхнего края окна браузера по направлению к нижнему краю. </p>
+<p>Свойство <kbd>float</kbd> позволяет перемещать любой элемент в нужное место, выравнивая его по левому или правому краю веб-страницы или содержащего его элемента-контейнера. При этом остальные блочные элементы будут его игнорировать, а строчные элементы будут смещаться вправо или влево, освобождая для него пространство и обтекая его. </p>
+<p>Плавающий блок принимает размеры своего содержимого с учетом внутренних отступов и рамок блока. Верхние и нижние отступы <kbd>margin</kbd> плавающих элементов не схлопываются.</p>
+<p>Свойство не наследуется.</p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/float.png" alt="float" width="680" height="425" class="alignleft size-full wp-image-3154" srcset="http://html5book.ru/wp-content/uploads/2014/11/float-300x187.png 300w, http://html5book.ru/wp-content/uploads/2014/11/float.png 680w" sizes="(max-width: 680px) 100vw, 680px" /></p>
+<figcaption style="clear:both">Рис. 2. Обтекание элементов</figcaption>
+</figure>
+<p>Свойство <kbd>float</kbd> применяется как к блочным элементам, так и к строчным элементам. В качестве значений указывается одно из трех: <kbd>float: left / right / none</kbd>.</p>
+<p>При использовании свойства <kbd>float</kbd> для блочных элементов обязательно задавать ширину. Тем самым браузер создаст место для другого содержимого. Но если совокупная ширина всех столбцов окажется меньше доступного места, то последний элемент спустится вниз.</p>
+<p>При этом вертикальные отступы (<kbd>margin</kbd>) обтекаемых элементов не схлопываются с отступами соседних элементов, в отличие от обычных блочных элементов.</p>
+<p>Чтобы предотвратить смещение следующего элемента, для отмены правил обтекания применяют свойство <kbd>clear</kbd> и одно из его значений: <kbd>left / right / both</kbd>.</p>
+<p>Значение <kbd>float: none;</kbd> отменяет любое перемещение, применяется <b>только в отношении элемента, для которого уже установлено обтекание</b>. Например, для элемента задан стилевой класс со значением <kbd>float: left;</kbd>. Вы хотите отменить это обтекание на определенной странице вашего сайта, для чего вы задаете этому элементу специфичный селектор с <kbd>float: none;</kbd>.</p>
+<p>Правило <kbd>{overflow: hidden;}</kbd> предотвращает отображение фона или границ под плавающими элементами.</p>
+<h4 id="clear">2.1. Отмена обтекания элементов с помощью свойства clear</h4>
+<p>Свойство определяет, как будет располагаться элемент, идущий следом за плавающим элементом. Свойство отменяет обтекание с одной или обоих сторон элемента, установленное свойством <kbd>float</kbd>. Принимает следующие значения: <kbd>clear: left;</kbd>, <kbd>clear: right;</kbd>, <kbd>clear: both;</kbd>, <kbd>clear: none;</kbd> и <kbd>clear: inherit;</kbd>.</p>
+<table class="t1">
+<tr>
+<th colspan="2">clear</th>
+</tr>
+<tr>
+<td>Значение:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>left</kbd></td>
+<td>Отменяет обтекание по левой стороне, смещая элемент вниз. Правое обтекание остается в силе.</td>
+</tr>
+<tr>
+<td><kbd>right</kbd></td>
+<td>Отменяет обтекание по правой стороне, смещая элемент вниз. Левое обтекание остается в силе.</td>
+</tr>
+<tr>
+<td><kbd>both</kbd></td>
+<td>Отменяет обтекание с обеих сторон элемента, смещая его вниз.</td>
+</tr>
+<tr>
+<td><kbd>none</kbd></td>
+<td>Отменяет очистку обтекания, установленное для элементов одной группы.</td>
+</tr>
+<tr>
+<td><kbd>inherit</kbd></td>
+<td>Наследует значение от родительского элемента.</td>
+</tr>
+</table>
+<h4 id="part3">2.2. Очистка потока стилями при помощи класса clearfix и псевдокласса :after</h4>
+<p>Предположим, имеется блок-контейнер, для которого не заданы ширина и высота. Внутри него помещен плавающий блок с заданными размерами.</p>
+<p>Код HTML:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0450594b74801798287" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;div class="container"&gt;
+    &lt;div class="floatbox"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0450594b74801798287-1">1</div><div class="crayon-num" data-line="crayon-56d0450594b74801798287-2">2</div><div class="crayon-num" data-line="crayon-56d0450594b74801798287-3">3</div><div class="crayon-num" data-line="crayon-56d0450594b74801798287-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0450594b74801798287-1"><span class="crayon-o">&lt;</span><span class="crayon-e">div </span><span class="crayon-t">class</span><span class="crayon-o">=</span><span class="crayon-s">"container"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d0450594b74801798287-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-e">div </span><span class="crayon-t">class</span><span class="crayon-o">=</span><span class="crayon-s">"floatbox"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d0450594b74801798287-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">div</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d0450594b74801798287-4"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">div</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+<p></p>
+<p>Код CSS:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0450594b7d249319148" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+.container {
+padding: 1em;
+background: #e7e6d4;
+border: 3px dashed #645a4e;
+}
+.floatbox {
+float: left;
+width: 300px;
+height: 150px;
+margin-right: 1em;
+padding: 0 1em;
+background: #fff;
+border: 3px dashed #666666;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-1">1</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-2">2</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-3">3</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-4">4</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-5">5</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-6">6</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-7">7</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-8">8</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-9">9</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-10">10</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-11">11</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-12">12</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-13">13</div><div class="crayon-num" data-line="crayon-56d0450594b7d249319148-14">14</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0450594b7d249319148-1"><span class="crayon-k ">.container </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-2"><span class="crayon-e ">padding</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">1em</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-3"><span class="crayon-e ">background</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#e7e6d4</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-4"><span class="crayon-e ">border</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3px</span><span class="crayon-h"> </span><span class="crayon-i ">dashed</span><span class="crayon-h"> </span><span class="crayon-i ">#645a4e</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-5"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-6"><span class="crayon-k ">.floatbox </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-7"><span class="crayon-e ">float</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">left</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-8"><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">300px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-9"><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">150px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-10"><span class="crayon-e ">margin-right</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">1em</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-11"><span class="crayon-e ">padding</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">1em</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-12"><span class="crayon-e ">background</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#fff</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-13"><span class="crayon-e ">border</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3px</span><span class="crayon-h"> </span><span class="crayon-i ">dashed</span><span class="crayon-h"> </span><span class="crayon-i ">#666666</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b7d249319148-14"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/float1.png" alt="float1" width="682" height="185" class="alignleft size-full wp-image-3112" srcset="http://html5book.ru/wp-content/uploads/2014/11/float1-300x81.png 300w, http://html5book.ru/wp-content/uploads/2014/11/float1.png 682w" sizes="(max-width: 682px) 100vw, 682px" /></p>
+<figcaption style="clear:both">Рис. 3. &#171;Эффект схлопывания&#187; блока-контейнера</figcaption>
+</figure>
+<p><b>Решение проблемы:</b><br />
+Создаем класс <kbd>.clearfix</kbd> и в сочетании с псевдоклассом <kbd>:after</kbd> применяем его к блоку-контейнеру.</p>
+<p>Код HTML:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0450594b81156730211" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;div class="container clearfix"&gt;
+&lt;div class="floatbox"&gt;
+&lt;/div&gt;
+&lt;/div&gt;</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0450594b81156730211-1">1</div><div class="crayon-num" data-line="crayon-56d0450594b81156730211-2">2</div><div class="crayon-num" data-line="crayon-56d0450594b81156730211-3">3</div><div class="crayon-num" data-line="crayon-56d0450594b81156730211-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0450594b81156730211-1"><span class="crayon-o">&lt;</span><span class="crayon-e">div </span><span class="crayon-t">class</span><span class="crayon-o">=</span><span class="crayon-s">"container clearfix"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d0450594b81156730211-2"><span class="crayon-o">&lt;</span><span class="crayon-e">div </span><span class="crayon-t">class</span><span class="crayon-o">=</span><span class="crayon-s">"floatbox"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d0450594b81156730211-3"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">div</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d0450594b81156730211-4"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">div</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p></p>
+<p>Код CSS:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0450594b84867681093" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+.container {
+padding: 1em;
+background: #e7e6d4;
+border: 3px dashed #645a4e;
+}
+.floatbox {
+float: left;
+width: 300px;
+height: 150px;
+margin-right: 1em;
+padding: 0 1em;
+background: #fff;
+border: 3px dashed #666666;
+}
+.clearfix:after {
+content: "";
+display: block;
+height: 0;
+clear: both;
+visibility: hidden;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0450594b84867681093-1">1</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-2">2</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-3">3</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-4">4</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-5">5</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-6">6</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-7">7</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-8">8</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-9">9</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-10">10</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-11">11</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-12">12</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-13">13</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-14">14</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-15">15</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-16">16</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-17">17</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-18">18</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-19">19</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-20">20</div><div class="crayon-num" data-line="crayon-56d0450594b84867681093-21">21</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0450594b84867681093-1"><span class="crayon-k ">.container </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-2"><span class="crayon-e ">padding</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">1em</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-3"><span class="crayon-e ">background</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#e7e6d4</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-4"><span class="crayon-e ">border</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3px</span><span class="crayon-h"> </span><span class="crayon-i ">dashed</span><span class="crayon-h"> </span><span class="crayon-i ">#645a4e</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-5"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-6"><span class="crayon-k ">.floatbox </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-7"><span class="crayon-e ">float</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">left</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-8"><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">300px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-9"><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">150px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-10"><span class="crayon-e ">margin-right</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">1em</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-11"><span class="crayon-e ">padding</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">1em</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-12"><span class="crayon-e ">background</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#fff</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-13"><span class="crayon-e ">border</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3px</span><span class="crayon-h"> </span><span class="crayon-i ">dashed</span><span class="crayon-h"> </span><span class="crayon-i ">#666666</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-14"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-15"><span class="crayon-k ">.clearfix:after </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-16"><span class="crayon-e ">content</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-s">""</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-17"><span class="crayon-e ">display</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">block</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-18"><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-19"><span class="crayon-e ">clear</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">both</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-20"><span class="crayon-e ">visibility</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">hidden</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b84867681093-21"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0012 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/float2.png" alt="float2" width="680" height="207" class="alignleft size-full wp-image-3114" srcset="http://html5book.ru/wp-content/uploads/2014/11/float2-300x91.png 300w, http://html5book.ru/wp-content/uploads/2014/11/float2.png 680w" sizes="(max-width: 680px) 100vw, 680px" /></p>
+<figcaption>Рис. 4. Применение &#171;очищающего&#187; метода для блока-контейнера, содержащего плавающий элемент </figcaption>
+</figure>
+<h4 id="part4">2.3. Легкий способ очистки потока</h4>
+<p>Существует еще один прием очистки потока для элемента, содержащего плавающие элементы, например, для маркированного горизонтального списка:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0450594b87478462482" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+ul {
+overflow: auto;
+height: 1%;
+}
+li {
+float: left;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0450594b87478462482-1">1</div><div class="crayon-num" data-line="crayon-56d0450594b87478462482-2">2</div><div class="crayon-num" data-line="crayon-56d0450594b87478462482-3">3</div><div class="crayon-num" data-line="crayon-56d0450594b87478462482-4">4</div><div class="crayon-num" data-line="crayon-56d0450594b87478462482-5">5</div><div class="crayon-num" data-line="crayon-56d0450594b87478462482-6">6</div><div class="crayon-num" data-line="crayon-56d0450594b87478462482-7">7</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0450594b87478462482-1"><span class="crayon-k ">ul </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0450594b87478462482-2"><span class="crayon-e ">overflow</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">auto</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b87478462482-3"><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">1%</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b87478462482-4"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0450594b87478462482-5"><span class="crayon-k ">li </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0450594b87478462482-6"><span class="crayon-e ">float</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">left</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b87478462482-7"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p> </p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/ul-overflow.png" alt="ul-overflow" width="660" height="103" class="alignleft size-full wp-image-6287" srcset="http://html5book.ru/wp-content/uploads/2014/11/ul-overflow-300x47.png 300w, http://html5book.ru/wp-content/uploads/2014/11/ul-overflow.png 660w" sizes="(max-width: 660px) 100vw, 660px" /><br />
+<figcaption>Рис. 5. Очистка потока горизонтального списка</figcaption>
+</figure>
+<h3 id="part5">3. Позиционирование внутри элемента</h3>
+<p>Если нужно неподвижно зафиксировать элемент в родительском блоке, то следует применить следующую конструкцию:</p>
+<p>Код HTML:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0450594b8a640286112" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+&lt;div class="wrap"&gt;
+&lt;div class="white"&gt;
+&lt;/div&gt;
+&lt;/div&gt;</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0450594b8a640286112-1">1</div><div class="crayon-num" data-line="crayon-56d0450594b8a640286112-2">2</div><div class="crayon-num" data-line="crayon-56d0450594b8a640286112-3">3</div><div class="crayon-num" data-line="crayon-56d0450594b8a640286112-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0450594b8a640286112-1"><span class="crayon-o">&lt;</span><span class="crayon-e">div </span><span class="crayon-t">class</span><span class="crayon-o">=</span><span class="crayon-s">"wrap"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d0450594b8a640286112-2"><span class="crayon-o">&lt;</span><span class="crayon-e">div </span><span class="crayon-t">class</span><span class="crayon-o">=</span><span class="crayon-s">"white"</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d0450594b8a640286112-3"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">div</span><span class="crayon-o">&gt;</span></div><div class="crayon-line" id="crayon-56d0450594b8a640286112-4"><span class="crayon-o">&lt;</span><span class="crayon-o">/</span><span class="crayon-v">div</span><span class="crayon-o">&gt;</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p></p>
+<p>Код CSS:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d0450594b8c789337922" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+.wrap {
+padding: 10px;
+height: 150px;
+position: relative;
+background: #e7e6d4;
+text-align: right;
+border: 3px dashed #645a4e;
+}
+.white {
+position: absolute; 
+width: 200px;
+top: 10px; 
+left: 10px;
+padding: 10px;
+background: #fff; 
+border: 3px dashed #312a22;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-1">1</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-2">2</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-3">3</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-4">4</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-5">5</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-6">6</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-7">7</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-8">8</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-9">9</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-10">10</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-11">11</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-12">12</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-13">13</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-14">14</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-15">15</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-16">16</div><div class="crayon-num" data-line="crayon-56d0450594b8c789337922-17">17</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d0450594b8c789337922-1"><span class="crayon-k ">.wrap </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-2"><span class="crayon-e ">padding</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-3"><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">150px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-4"><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">relative</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-5"><span class="crayon-e ">background</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#e7e6d4</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-6"><span class="crayon-e ">text-align</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">right</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-7"><span class="crayon-e ">border</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3px</span><span class="crayon-h"> </span><span class="crayon-i ">dashed</span><span class="crayon-h"> </span><span class="crayon-i ">#645a4e</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-8"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-9"><span class="crayon-k ">.white </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-10"><span class="crayon-e ">position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">absolute</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-11"><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">200px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-12"><span class="crayon-e ">top</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-13"><span class="crayon-e ">left</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-14"><span class="crayon-e ">padding</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">10px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-15"><span class="crayon-e ">background</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#fff</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-16"><span class="crayon-e ">border</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">3px</span><span class="crayon-h"> </span><span class="crayon-i ">dashed</span><span class="crayon-h"> </span><span class="crayon-i ">#312a22</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d0450594b8c789337922-17"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0011 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/11/relative-absolute.png" alt="relative-absolute" width="680" height="165" class="alignleft size-full wp-image-3122"></p>
+<figcaption style="clear:both">Рис. 6. Абсолютное относительное позиционирование</figcaption>
+</figure>
+<h3 id="part6">4. Проблемы позиционирования</h3>
+<p>1. У элемента с <kbd>position: absolute</kbd> ширина равна ширине содержимого, т.е. такой блок не занимает всю ширину родительского блока.<br />
+2. Если внутри блока с <kbd>position: absolute</kbd> расположены элементы, для которых задано обтекание <kbd>float</kbd>, то высота этого элемента будет равна высоте самого высокого из этих элементов.<br />
+3. На элемент с <kbd>position: absolute</kbd> и положительными значениями <kbd>left</kbd>, <kbd>right</kbd>, <kbd>top</kbd> или <kbd>bottom</kbd> не оказывают влияние положительные значения свойства <kbd>margin</kbd>.<br />
+4. Для одного элемента нельзя одновременно устанавливать свойства <kbd>position: absolute</kbd> и <kbd>float</kbd> с установленными значениями, но можно задавать <kbd>position: relative</kbd> и <kbd>float</kbd>.</p>
+<!--Ad Injection:bottom-->
+<div style='clear:both;margin-top:30px;padding-top:30px;padding-bottom:0px;'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ADAPT -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4906567094890032"
+     data-ad-slot="5808407100"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<div id="disqus_thread">
+            <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-1">
+        <div id="dsq-comment-header-1" class="dsq-comment-header">
+            <cite id="dsq-cite-1">
+                <span id="dsq-author-user-1">zeyser</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-1" class="dsq-comment-body">
+            <div id="dsq-comment-message-1" class="dsq-comment-message"><p>Спасибо. Помогла ваша статья со схлопованием. Все написано лаконично и от того понятно.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2">
+        <div id="dsq-comment-header-2" class="dsq-comment-header">
+            <cite id="dsq-cite-2">
+http://html5book.ru                <span id="dsq-author-user-2">nazarelen</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-2" class="dsq-comment-body">
+            <div id="dsq-comment-message-2" class="dsq-comment-message"><p>Пожалуйста, я очень рада, что моя статья помогла вам разобраться<br />
+в премудростях позиционирования. Я сама не люблю, когда написано много и тем<br />
+более непонятно, ведь это уводит от сути проблемы. Надеюсь, вы найдете для себя<br />
+много полезного на моем сайте.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-10">
+        <div id="dsq-comment-header-10" class="dsq-comment-header">
+            <cite id="dsq-cite-10">
+                <span id="dsq-author-user-10">Некто Пельмень</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-10" class="dsq-comment-body">
+            <div id="dsq-comment-message-10" class="dsq-comment-message"><p>Здравствуйте, возможно ли распространение материала на другом ресурсе, с указанием ссылки на данный сайт? </p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-3" id="dsq-comment-11">
+        <div id="dsq-comment-header-11" class="dsq-comment-header">
+            <cite id="dsq-cite-11">
+http://html5book.ru                <span id="dsq-author-user-11">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-11" class="dsq-comment-body">
+            <div id="dsq-comment-message-11" class="dsq-comment-message"><p>Здравствуйте. Смотря какой материал и в каком количестве вы собираетесь распространять.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-4" id="dsq-comment-78">
+        <div id="dsq-comment-header-78" class="dsq-comment-header">
+            <cite id="dsq-cite-78">
+                <span id="dsq-author-user-78">мишСа</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-78" class="dsq-comment-body">
+            <div id="dsq-comment-message-78" class="dsq-comment-message"><p>спасибо вам огромное Елена вы очень много помогаете новичкам .много статей прочитал о сss.там один набор слов или категория понимание сложности</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-5" id="dsq-comment-80">
+        <div id="dsq-comment-header-80" class="dsq-comment-header">
+            <cite id="dsq-cite-80">
+http://html5book.ru                <span id="dsq-author-user-80">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-80" class="dsq-comment-body">
+            <div id="dsq-comment-message-80" class="dsq-comment-message"><p>И вам спасибо за теплые слова, очень приятно) Я тоже столкнулась с такой проблемой при изучении веб-технологий и считаю, что если человек не может понятно объяснить другим материал, значит он сам не до конца его понимает.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even depth-5" id="dsq-comment-81">
+        <div id="dsq-comment-header-81" class="dsq-comment-header">
+            <cite id="dsq-cite-81">
+                <span id="dsq-author-user-81">мишСа</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-81" class="dsq-comment-body">
+            <div id="dsq-comment-message-81" class="dsq-comment-message"><p>я давно читаю ваши артиклы мне очень нравится  простое обеснение. извините конечно да немного тяжело но это не от вас  зависит .потому что я Азербайджане и мне немного трудно понять но я в практике логично могу уловливать уловливать мысли о чем идёт речь</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt depth-5" id="dsq-comment-84">
+        <div id="dsq-comment-header-84" class="dsq-comment-header">
+            <cite id="dsq-cite-84">
+http://html5book.ru                <span id="dsq-author-user-84">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-84" class="dsq-comment-body">
+            <div id="dsq-comment-message-84" class="dsq-comment-message"><p>Да, главное &#8212; практика. По большому счету понять теги и разметку несложно, затруднение вызывают css-стили. Можно взять пример кода и поэкспериментировать в онлайн-редакторе (я люблю <a target="_blank" rel="nofollow" href="http://html5book.ru/goto/http://codepen.io"  rel="nofollow">http://codepen.io</a>), меняя значения свойств или убирая их.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even depth-5" id="dsq-comment-82">
+        <div id="dsq-comment-header-82" class="dsq-comment-header">
+            <cite id="dsq-cite-82">
+                <span id="dsq-author-user-82">мишСа</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-82" class="dsq-comment-body">
+            <div id="dsq-comment-message-82" class="dsq-comment-message"><p>основном мне понравился ваша макет в теме 3д .фон природы рисовать живую бабочку</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt depth-5" id="dsq-comment-85">
+        <div id="dsq-comment-header-85" class="dsq-comment-header">
+            <cite id="dsq-cite-85">
+http://html5book.ru                <span id="dsq-author-user-85">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-85" class="dsq-comment-body">
+            <div id="dsq-comment-message-85" class="dsq-comment-message"><p>Бабочка мне самой нравится))</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even depth-4" id="dsq-comment-88">
+        <div id="dsq-comment-header-88" class="dsq-comment-header">
+            <cite id="dsq-cite-88">
+                <span id="dsq-author-user-88">МишСА</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-88" class="dsq-comment-body">
+            <div id="dsq-comment-message-88" class="dsq-comment-message"><p>Благодарю вас!</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-5" id="dsq-comment-89">
+        <div id="dsq-comment-header-89" class="dsq-comment-header">
+            <cite id="dsq-cite-89">
+http://html5book.ru                <span id="dsq-author-user-89">Назарова Елена</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-89" class="dsq-comment-body">
+            <div id="dsq-comment-message-89" class="dsq-comment-message"><p>Спасибо, приятно, когда есть такие читатели!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+var disqus_url = 'http://html5book.ru/css-position/';
+var disqus_identifier = '1771 http://html5book.ru/?page_id=1771';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'html5book';
+var disqus_title = "2.3. CSS позиционирование";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=1771';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+      </div>
+    </article>
+  </div> <!-- end of content -->
+<aside id="sidebar">
+  <div class="searchform-wrapper">
+ <script>
+  (function() {
+    var cx = '008774849217505016839:j25nz2oka_a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search></div><div id="nav_menu-2" class="sidebar-widget widget_nav_menu"><div class="menu-left-container"><ul id="menu-left" class="menu"><li id="menu-item-1860" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1860"><a href="http://html5book.ru/html-html5/">HTML</a>
+<ul class="sub-menu">
+	<li id="menu-item-2804" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2804"><a href="http://html5book.ru/osnovy-html/">1.1. Основы HTML</a></li>
+	<li id="menu-item-1859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1859"><a href="http://html5book.ru/html-tags/">1.2. HTML теги</a></li>
+	<li id="menu-item-1841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1841"><a href="http://html5book.ru/html-attributes/">1.3. HTML атрибуты</a></li>
+	<li id="menu-item-1847" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1847"><a href="http://html5book.ru/html-text/">1.4. HTML текст</a></li>
+	<li id="menu-item-1845" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1845"><a href="http://html5book.ru/hyperlinks-in-html/">1.5. HTML ссылки</a></li>
+	<li id="menu-item-1843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1843"><a href="http://html5book.ru/images-in-html/">1.6. HTML изображения</a></li>
+	<li id="menu-item-1846" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1846"><a href="http://html5book.ru/html-table/">1.7. HTML таблицы</a></li>
+	<li id="menu-item-1844" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1844"><a href="http://html5book.ru/html-lists/">1.8. HTML списки</a></li>
+	<li id="menu-item-1858" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1858"><a href="http://html5book.ru/specsimvoly-html/">1.9. Спецсимволы HTML</a></li>
+	<li id="menu-item-1856" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-1856"><a href="http://html5book.ru/poleznye-servisy-html/">1.10. HTML генераторы</a></li>
+</ul>
+</li>
+<li id="menu-item-1862" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1862"><a href="http://html5book.ru/html-html5/">HTML5</a>
+<ul class="sub-menu">
+	<li id="menu-item-2838" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2838"><a href="http://html5book.ru/html5-semantic-elements/">1.11. HTML5 семантические элементы</a></li>
+	<li id="menu-item-1848" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1848"><a href="http://html5book.ru/html5-audio/">1.12. HTML5 аудио</a></li>
+	<li id="menu-item-1849" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1849"><a href="http://html5book.ru/html5-video/">1.13. HTML5 видео</a></li>
+	<li id="menu-item-2011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2011"><a href="http://html5book.ru/neobyazatelnye-tegi-html5/">1.14. Необязательные теги разметки HTML5</a></li>
+	<li id="menu-item-5395" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5395"><a href="http://html5book.ru/html5-forms/">1.15. HTML5 формы</a></li>
+</ul>
+</li>
+<li id="menu-item-1861" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1861"><a href="http://html5book.ru/css-css3/">CSS</a>
+<ul class="sub-menu">
+	<li id="menu-item-3695" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-3695"><a href="http://html5book.ru/osnovy-css/">2.1. Основы CSS</a></li>
+	<li id="menu-item-3276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3276"><a href="http://html5book.ru/block-inline-elements/">2.2. Блочные и строчные элементы</a></li>
+	<li id="menu-item-3168" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1771 current_page_item menu-item-3168"><a href="http://html5book.ru/css-position/">2.3. CSS позиционирование</a></li>
+	<li id="menu-item-1837" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1837"><a href="http://html5book.ru/css-text/">2.4. CSS текст</a>
+	<ul class="sub-menu">
+		<li id="menu-item-6931" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-6931"><a href="http://html5book.ru/css-text/css-text-2/">CSS текст (часть 2)</a></li>
+		<li id="menu-item-6932" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-6932"><a href="http://html5book.ru/css-text/css-text-3/">CSS текст (часть 3)</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1840"><a href="http://html5book.ru/css-shrifty/">2.5. CSS шрифты</a></li>
+	<li id="menu-item-1855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1855"><a href="http://html5book.ru/styling-hyperlinks/">2.6. CSS ссылки</a></li>
+	<li id="menu-item-1836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1836"><a href="http://html5book.ru/css3-tables/">2.7. CSS таблицы</a></li>
+	<li id="menu-item-1835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1835"><a href="http://html5book.ru/css-spiski/">2.8. CSS списки</a></li>
+	<li id="menu-item-2603" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2603"><a href="http://html5book.ru/css-background/">2.9. CSS фон</a></li>
+	<li id="menu-item-2665" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2665"><a href="http://html5book.ru/css-border/">2.10. CSS рамка</a></li>
+	<li id="menu-item-3752" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3752"><a href="http://html5book.ru/css-content/">2.11. CSS content</a></li>
+	<li id="menu-item-1853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1853"><a href="http://html5book.ru/generatory-css/">2.12. CSS генераторы</a></li>
+	<li id="menu-item-1842" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-1842"><a href="http://html5book.ru/css-colors/">2.13. CSS цвета</a></li>
+</ul>
+</li>
+<li id="menu-item-2534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2534"><a href="http://html5book.ru/css-css3/">CSS3</a>
+<ul class="sub-menu">
+	<li id="menu-item-2950" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2950"><a href="http://html5book.ru/css3-text/">2.14. CSS3 текст</a></li>
+	<li id="menu-item-2548" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2548"><a href="http://html5book.ru/css3-gradient/">2.15. CSS3 градиент</a></li>
+	<li id="menu-item-3032" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3032"><a href="http://html5book.ru/css3-borders/">2.16. CSS3 рамка</a></li>
+	<li id="menu-item-3076" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3076"><a href="http://html5book.ru/css3-shadows/">2.17. CSS3 тень</a></li>
+	<li id="menu-item-3723" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3723"><a href="http://html5book.ru/css3-transition/">2.18. CSS3 переходы</a></li>
+	<li id="menu-item-3748" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3748"><a href="http://html5book.ru/css3-transform/">2.19. CSS3 трансформации</a></li>
+	<li id="menu-item-3914" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3914"><a href="http://html5book.ru/css3-animation/">2.20. CSS3 анимация</a></li>
+	<li id="menu-item-5880" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5880"><a href="http://html5book.ru/css3-flexbox/">2.21. CSS3 flexbox</a></li>
+	<li id="menu-item-5989" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5989"><a href="http://html5book.ru/css3-columns/">2.22. CSS3 columns</a></li>
+	<li id="menu-item-6186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6186"><a href="http://html5book.ru/3d-transform/">2.23. CSS3 3D трансформации</a></li>
+	<li id="menu-item-6237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6237"><a href="http://html5book.ru/css3-mediazaprosy/">2.24. CSS3 медиа запросы</a></li>
+	<li id="menu-item-8072" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-8072"><a href="http://html5book.ru/css3-filtry/">2.25. CSS3 фильтры</a></li>
+</ul>
+</li>
+<li id="menu-item-5592" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5592"><a href="http://html5book.ru/javascript-jquery/">JavaScript</a>
+<ul class="sub-menu">
+	<li id="menu-item-5593" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-5593"><a href="http://html5book.ru/osnovy-javascript/">3.1. Основы JavaScript</a></li>
+	<li id="menu-item-5701" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5701"><a href="http://html5book.ru/vyrazheniya-v-javascript/">3.2. Выражения в JavaScript</a></li>
+</ul>
+</li>
+<li id="menu-item-1863" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1863"><a href="http://html5book.ru/javascript-jquery/">jQuery</a>
+<ul class="sub-menu">
+	<li id="menu-item-1851" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-1851"><a href="http://html5book.ru/vvedenie-v-jquery/">3.10. Введение в jQuery</a></li>
+	<li id="menu-item-1854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1854"><a href="http://html5book.ru/metody-jquery/">3.11. Методы jQuery</a>
+	<ul class="sub-menu">
+		<li id="menu-item-6875" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-6875"><a href="http://html5book.ru/metody-jquery/jquery-manipulyacii/">3.11.1. Манипуляции html-элементами</a></li>
+		<li id="menu-item-6874" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6874"><a href="http://html5book.ru/metody-jquery/jquery-svoistva-klassy-atribyti/">3.11.2. Чтение и изменение css-свойств, классов и атрибутов</a></li>
+		<li id="menu-item-6873" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6873"><a href="http://html5book.ru/metody-jquery/jquery-vyborka-elementov/">3.11.3. Обход DOM и выборка html-элементов</a></li>
+		<li id="menu-item-6895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6895"><a href="http://html5book.ru/metody-jquery/jquery-animaciya/">3.11.4. jQuery анимация</a></li>
+		<li id="menu-item-6894" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-6894"><a href="http://html5book.ru/metody-jquery/jquery-metody-window/">3.11.5. Методы объекта window</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1857" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1857"><a href="http://html5book.ru/sobytiya-jquery/">3.12. События jQuery</a></li>
+	<li id="menu-item-4153" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-4153"><a href="http://html5book.ru/jquery-selectors/">3.13. Селекторы jQuery</a></li>
+</ul>
+</li>
+<li id="menu-item-1866" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1866"><a href="http://html5book.ru/web-topography/">Веб-типографика</a>
+<ul class="sub-menu">
+	<li id="menu-item-1850" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-1850"><a href="http://html5book.ru/kakoj-shrift-mne-ispolzovat-pyat-principov-vybora-i-ispolzovaniya-shriftov/">4.1. Пять принципов выбора и использования шрифтов</a></li>
+	<li id="menu-item-1852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1852"><a href="http://html5book.ru/shrift-dlya-sita/">4.2. Выбираем шрифт для сайта</a></li>
+	<li id="menu-item-7976" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-7976"><a href="http://html5book.ru/pravila-veb-tipografiki/">4.3. Правила веб-типографики</a></li>
+</ul>
+</li>
+<li id="menu-item-7796" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7796"><a href="http://html5book.ru/seo/">SEO</a>
+<ul class="sub-menu">
+	<li id="menu-item-7803" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-7803"><a href="http://html5book.ru/ranzhirovanie-google-200-faktorov/">Ранжирование Google: 200 факторов</a></li>
+</ul>
+</li>
+</ul></div></div>		<div id="recent-posts-2" class="sidebar-widget widget_recent_entries">		 <p class="sidebar-headline">Свежие записи</p>		<ul>
+					<li>
+				<a href="http://html5book.ru/mnogourovnevoe-vypadayushee-menu/">Горизонтальное выпадающее многоуровневое меню</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/shpargalka-po-tablicam/">Шпаргалка по работе с таблицами</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/pole-poiska-dlya-sayta/">Поле поиска для сайта. Идеи для оформления</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/adaptivnyy-dizayn-saita/">Адаптивный дизайн сайта</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/oformlenie-tablicy-psevdoklassami/">Оформление таблицы с помощью псевдоклассов</a>
+						</li>
+				</ul>
+		</div>		</aside> <!-- end of sidebar -->
+  </div> <!-- end of main-content -->
+</div> <!-- end of container -->
+<footer id="wrapper-footer">
+  <div id="footer">
+    <div class="footer-widget-area footer-widget-area-1">
+<div id="text-4" class="footer-widget widget_text">			<div class="textwidget"><!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='//www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t44.10;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31' ><\/a>")
+//--></script><!--/LiveInternet--></div>
+		</div>    </div>
+    
+    <div class="footer-widget-area footer-widget-area-2">
+<div id="text-9" class="footer-widget widget_text">			<div class="textwidget">&copy; Запрещено копирование материала без согласия автора</div>
+		</div>    </div>
+   
+    <div class="footer-widget-area footer-widget-area-3">
+<div id="text-7" class="footer-widget widget_text">			<div class="textwidget"><!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=23928760&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/23928760/3_0_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0; position:absolute; left:-9999px;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:23928760,lang:'ru'});return false}catch(e){}"/></a>
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter23928760 = new Ya.Metrika({id:23928760,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/23928760" style="position:absolute; left:-9999px; bottom:0;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter --></div>
+		</div>    </div>
+  </div>
+</footer>  <!-- end of wrapper-footer -->
+<span id="bruteprotect_uptime_check_string" style="display:none;">7ads6x98y</span>        <script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'html5book';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1) {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script'); 
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+        <script type='text/javascript' src='http://html5book.ru/wp-includes/js/comment-reply.min.js?ver=4.4.2'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/themes/papercuts/js/placeholders.js?ver=2.1.0'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/themes/papercuts/js/responsive.js?ver=1.0'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/wp-embed.min.js?ver=4.4.2'></script>
+    
+</body>
+</html>

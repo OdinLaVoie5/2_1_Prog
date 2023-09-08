@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset=UTF-8>
+
+    <!-- Metadata -->
+
+    <meta http-equiv="date" content="Tuesday, 09  2011 00:00:00 GMT" />
+
+
+    <meta name="keywords" content="Animation,Carousel,CSS3,3D" />
+
+
+    <title>Pure CSS 3D Carousel</title>
+
+	<link rel="alternate" type="application/rss+xml" href="/feed/index.xml">
+	<link rel="stylesheet" media="all" data-noprefix href="/css/style.css">
+	
+  <script type="text/javascript" src="/code/3rdparty/prefixfree/prefixfree.min.js"></script>
+</head>
+<body>
+<div id='wrap'>
+<header role="banner">
+	<ul>
+    	<li><a href='/'>Kaizou</a></li>
+		<li><a href="/tools/">tools</a></li>
+		<li><a href="/demos/">demos</a></li>
+		<li><a href="/about.html">?</a></li>
+	</ul>
+</header>
+<div id="content">
+	<!-- Post -->
+<div id='first-col'>
+<article role='main'>
+<header class='title'>
+  <h1><a href="/2011/08/pure-css-3d-carousel" rel="bookmark">Pure CSS 3D Carousel</a></h1>
+  <small><span>09 Aug 2011</span> by David Corvoysier</small>
+</header>
+<p>CSS 3D transformations are a wonderful tool to add very impressive animation effects to your web pages without requiring a massive amount of javascript and/or WebGL code.</p>
+
+<!--more-->
+
+<p>More, unlike 2D canvas for instance, if a browser supports CSS 3D Transforms, it is almost certain that it is backed by hardware-acceleration, and thus the effects should not suffer from sluggishness in the animation.</p>
+
+<p>This post demonstrates how a pure 3D CSS carousel can be implemented.</p>
+
+<h2 id="design-principles">Design principles</h2>
+
+<p>The carousel is constructed dynamically based on the number of cells and their size.</p>
+
+<p>The cells are children elements of a single containing block element.  </p>
+
+<pre><code>&lt;div class='carousel'&gt;
+    &lt;div class='cell&gt;...&lt;/div&gt;
+    &lt;div class='cell&gt;...&lt;/div&gt;
+    ...
+    &lt;div class='cell&gt;...&lt;/div&gt;
+    &lt;div class='cell&gt;...&lt;/div&gt;
+    &lt;div class='cell&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3 id="defining-cell-positions">Defining Cell positions</h3>
+
+<p>Relatively to the parent element, each cell element is positioned in the 3D space on an horizontal plane using its <a href="http://en.wikipedia.org/wiki/Polar_coordinate_system">polar coordinates</a> (ie angle and distance from the coordinates origin).</p>
+
+<p>The <code>N</code> cells are positioned evenly on the carousel using a rotation based on their index <code>n</code></p>
+
+<math>
+  <mrow>
+    <mi>rotation</mi>
+    <mo>=</mo>
+    <mi>n</mi>
+    <mo>x</mo>
+    <mi>alpha</mi>
+  </mrow>
+</math>
+
+<p>with </p>
+
+<math>
+  <mrow>
+    <mi>alpha</mi>
+    <mo>=</mo>
+    <mfrac>
+     <mrow>
+      <mn>2</mn>
+      <mo>&#960;</mo>
+     </mrow>
+     <mi>N</mi>
+   </mfrac>
+</mrow>
+</math>
+
+<p>they are also positioned far enough from the center of the carousel circle so that they don’t overlap:</p>
+
+<math>
+  <mrow>
+    <mi>radius</mi>
+    <mo>=</mo>
+ <mfrac>
+  <mi>width</mi>
+  <mrow>
+   <mn>2</mn>
+   <mo>&#8290;</mo>
+   <mrow>
+    <mi>tan</mi>
+    <mo>&#8289;</mo>
+    <mo>(</mo>
+    <mfrac>
+     <mi>&#960;</mi>
+     <mi>N</mi>
+    </mfrac>
+    <mo>)</mo>
+   </mrow>
+  </mrow>
+ </mfrac>
+</mrow>
+</math>
+
+<p>The CSS transformation applied to cell n is therefore: </p>
+
+<pre><code>.cell:nth-child(n) {
+  transform: rotateY((n-1)*alpha) translateZ(radius);
+}
+</code></pre>
+
+<h3 id="configuring-the-3d-scene">Configuring the 3D scene</h3>
+
+<p>The carousel element is translated in the same way along the Z axis from a negative radius to make sure that all carousel cells are visible. It is also that element that defines the 3D perspective of the scene.</p>
+
+<pre><code>transform: perspective (1100px) translate(-radiuspx);
+transform-style: preserve-3d;
+</code></pre>
+
+<h3 id="rotating-the-carousel">Rotating the Carousel</h3>
+
+<p>It is only the parent element that is rotated to achieve the carousel effect. </p>
+
+<p>For instance, to have the Carousel rotated p times to the right, the following additional transformation is applied:</p>
+
+<pre><code>carousel.style['transform'] = 'perspective (1100px) translate(-radiuspx) rotateY(p*alpha)';
+</code></pre>
+
+<p>A CSS transition on the Carousel <code>transform</code> property animates the rotation:  </p>
+
+<pre><code>transition: transform 0.5s;
+</code></pre>
+
+<h3 id="allow-customization">Allow customization</h3>
+
+<p>To allow the carousel to be specialized for any type of content, the cells are created empty, and it is up to the web page code to populate them using dedicated callbacks specified during initialization.</p>
+
+<p>Specific behaviours can also be attached when a cell enters/leaves the front position.</p>
+
+<h2 id="implementation-details">Implementation details</h2>
+
+<p>The code source of the Carousel is available on <a href="https://github.com/kaizouman/3dcarousel">github</a> under an MIT licence.</p>
+
+<h3 id="dealing-with-fragmentation">Dealing with fragmentation</h3>
+<p>At the time this article is written, CSS 3D Transformations are only available using vendor prefixes (ie -webkit, -moz or -ms).</p>
+
+<p>I decided however to use the standard un-prefixed syntax to keep the code generic and readable.</p>
+
+<p>I also decided to insert generic rules using <code>id</code> and <code>class</code> selectors instead of specifying the transformations on each element using the <code>style</code> attribute.</p>
+
+<p>In order to make it work with existing implementations, I use the <a href="http://leaverou.github.io/prefixfree/">-prefix-free</a> library to convert the rules on the client-side whenever it is needed: this means that the code will still be valid when an implementation drops vendor prefixes.</p>
+
+<p>The Carousel object includes a special method for that purpose:</p>
+
+<pre><code>Carousel.prototype.insertRule = function(rule) {
+  if( document.styleSheets.length == 0 ) {
+    var style = document.createElement('style');
+    style.type = 'text/css';
+   	document.getElementsByTagName('head')[0].appendChild(style);
+  }
+  var styleSheet = document.styleSheets[document.styleSheets.length-1];
+  // If prefixfree is available, use it
+  rule = window.PrefixFree ? PrefixFree.prefixCSS(rule,true):rule;
+  // Insert the rule
+  styleSheet.insertRule(rule,styleSheet.cssRules.length);  
+} 
+</code></pre>
+
+<h3 id="initialization">Initialization</h3>
+<p>The Carousel lives inside a containing element that is passed as a parameter in the Carousel constructor, along with the number of cells and their dimensions:</p>
+
+<pre><code>container = document.getElementById('container');
+carousel = new Carousel(container,9,465,352, ...)
+</code></pre>
+
+<p>The other parameters are callback functions to populate the cells and customize the Carousel behaviour.</p>
+
+<p>To disambiguate between multiple instances of Carousel elements that may be inserted in the same page, each one of them is assigned a random ID:</p>
+
+<pre><code>function Carousel(container,nbcell,cwidth,cheight,onadded,onfocus,onblur,onselect){
+  this.carousel = document.createElement("div");
+  this.id = "Carousel" + Math.floor((Math.random()*10000000)+1);;
+  this.carousel.id = this.id;
+</code></pre>
+
+<p>A specific rule matching the Carousel id is then built and inserted:</p>
+
+<pre><code>#Carousel8618105 {
+    position: relative;
+    transform: perspective(1100px) translateZ(-639px);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    ...
+}
+</code></pre>
+
+<p>Another rule is created to match the class of its children:</p>
+
+<pre><code>#Carousel8618105 .cell {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    ...
+}
+</code></pre>
+
+<p>Once the carousel has been created, its cell children are added one by one.</p>
+
+<h3 id="adding-cells">Adding cells</h3>
+
+<p>As explained in the first paragraph, each cell is a simple div element to which a specific rule is associated using the <code>nth-child</code> selector.</p>
+
+<pre><code>#Carousel8618105 .cell:nth-child(3) {
+    transform: rotateY(80deg) translateZ(639px);
+}
+</code></pre>
+
+<p>Each cell is created empty: it is up to the caller to populate it using a callback provided at initialization.</p>
+
+<h3 id="rotating-the-carousel-1">Rotating the Carousel</h3>
+
+<p>As explained before, the Carousel is rotated by applying a rotation to the main element.</p>
+
+<pre><code>Carousel.DIRECTION = {
+LEFT:-1,
+RIGHT:1
+};
+
+Carousel.prototype.rotate = function(direction) {
+  this.blur();
+  this.frontIndex = (this.frontIndex - direction + this.nbcell)%this.nbcell;
+  this.theta = (this.theta + direction*( 360 / this.nbcell ));
+  var style = 'transform: translateZ(-'+this.radius+'px) rotateY(' + this.theta + 'deg)';
+  // If prefixfree is available, use it
+  style = window.PrefixFree ? PrefixFree.prefixCSS(style,true):style;
+  this.carousel.setAttribute('style',style);
+  this.focus();
+}
+</code></pre>
+
+<p>Callback functions specified at intialization can be called when the cell displayed at the front changes. </p>
+
+<h2 id="live-demonstrations">Live Demonstrations</h2>
+
+<p>The following demos only work on recent Chrome, Safari or Firefox.</p>
+
+<p>Here is a first example using images.</p>
+
+<div class="picture">
+  <p><a href="/demos/3d-carousel-demo"><img src="/images/3d-carousel-images.png" /></a>
+&lt;div class='legend'&gt;Click on the image to see the live version&lt;/div&gt;</p>
+</div>
+
+<p>And another example using this time video elements.</p>
+
+<div class="picture">
+  <p><a href="/demos/3d-video-carousel-demo/"><img src="/images/3d-carousel-videos.png" /></a>
+&lt;div class='legend'&gt;Click on the image to see the live version&lt;/div&gt;</p>
+</div>
+
+
+<!-- Comments -->
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'kaizouorg';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+</div>
+<aside id='second-col'>
+<div id="me">
+<h2>Hi</h2>
+<p>I am David Corvoysier, versatile developer and open Source enthusiast.</p>
+</div>
+
+<div id='social'>
+  <h2>Follow me: 
+    <a href="https://github.com/kaizouman">
+<img alt="Kaizouman repository on github" src="/images/Octocat.png" />
+</a>
+           
+    <a href="/feed/">
+<img alt="Site Feed" src="/images/rss.svg" />
+</a>
+
+    <a href="https://twitter.com/kaizouda">
+<img alt="Follow David Corvoysier in Twitter" src="/images/twitter.png" />
+</a>
+
+    <a href="https://fr.linkedin.com/pub/david-corvoysier/a3/2aa/a90">
+<img alt="David Corvoysier on linkedIn" src="/images/linkedin.jpg" />
+</a>
+
+  </h2>
+</div>
+
+<!-- Related Posts -->
+<div id="related-posts">
+  <div class='tuple'><h2>Related Posts</h2></div>
+    
+        
+        
+            <div class='tuple'>
+        
+    	<article>
+    <header>
+      <h1><a href="/2015/01/linux-libraries" rel="bookmark">Better understanding Linux secondary dependencies solving with examples</a></h1>
+      <small><span>08 Jan 2015</span> by David Corvoysier</small>
+    </header>
+    <section>
+      <p>A few months ago I stumbled upon a linking problem with secondary dependencies I couldn't solved without [__overlinking__](https://wiki.mageia.org/en/Overlinking_issues_in_packaging) the corresponding libraries.
+
+I only realized today in a discussion with my friend [Yann E. Morin](http://ymorin.is-a-geek.org/) that not only did I use the wrong solution for that particular problem, but that my understanding of the gcc linking process was not as good as I had imagined.
+
+This blog post is to summarize what I have now understood.
+
+There is also a [small repository on github](https://github.com/kaizouman/linux-shlib-link-samples) with the mentioned samples.
+
+</p>
+      <p><a href="/2015/01/linux-libraries">(more…)</a></p>
+    </section>
+    <footer>
+      <span>Categories: 
+        
+        <a href="/categories.html#linux" rel="tag">linux</a>
+        
+      </span>
+      <span>Tags: 
+        
+        <a href="/tags.html#gcc" rel="tag">gcc</a>
+        
+        <a href="/tags.html#ld" rel="tag">ld</a>
+        
+      </span>
+    </footer>
+</article>
+
+        
+    
+        
+        
+    	<article>
+    <header>
+      <h1><a href="/2014/11/gtest-cmake" rel="bookmark">Unit testing with GoogleTest and CMake</a></h1>
+      <small><span>05 Nov 2014</span> by David Corvoysier</small>
+    </header>
+    <section>
+      <p>Continuous integration requires a robust test environment to be able to detect regressions as early as possible.
+
+A typical test environment will typically be composed of integration tests of the whole system and unit tests per components.
+
+This post explains how to create unit tests for a `C++` component using [__GoogleTest__](https://code.google.com/p/googletest/) and [__CMake__](http://www.cmake.org/).
+
+</p>
+      <p><a href="/2014/11/gtest-cmake">(more…)</a></p>
+    </section>
+    <footer>
+      <span>Categories: 
+        
+        <a href="/categories.html#linux" rel="tag">linux</a>
+        
+      </span>
+      <span>Tags: 
+        
+        <a href="/tags.html#CMake" rel="tag">CMake</a>
+        
+        <a href="/tags.html#GoogleTest" rel="tag">GoogleTest</a>
+        
+      </span>
+    </footer>
+</article>
+
+        
+            </div>
+        
+    
+        
+        
+            <div class='tuple'>
+        
+    	<article>
+    <header>
+      <h1><a href="/2014/11/typical-cmake-project" rel="bookmark">A typical Linux project using CMake</a></h1>
+      <small><span>03 Nov 2014</span> by David Corvoysier</small>
+    </header>
+    <section>
+      <p>When it comes to choosing a make system on Linux, you basically only have two options: autotools or CMake. I have always found Autotools a bit counter-intuitive, but was reluctant to make the effort to switch to CMake because I was worried the learning curve would be too steep for a task you don't have to perform that much often (I mean, you usually spend more time writing code than writing build rules).
+
+A recent project of mine required writing a lot of new Linux packages, and I decided it was a good time to give CMake a try. This article is about how I have used it to build plain old Linux packages almost effortlessly.
+
+</p>
+      <p><a href="/2014/11/typical-cmake-project">(more…)</a></p>
+    </section>
+    <footer>
+      <span>Categories: 
+        
+        <a href="/categories.html#linux" rel="tag">linux</a>
+        
+      </span>
+      <span>Tags: 
+        
+        <a href="/tags.html#CMake" rel="tag">CMake</a>
+        
+      </span>
+    </footer>
+</article>
+
+        
+    
+        
+        
+    	<article>
+    <header>
+      <h1><a href="/2014/06/remote-dbus" rel="bookmark">Remote debugging a device running DBus</a></h1>
+      <small><span>05 Jun 2014</span> by David Corvoysier</small>
+    </header>
+    <section>
+      <p>[D-Bus](http://www.freedesktop.org/wiki/Software/dbus/) is the application Bus used on Linux desktop, and is sometimes used on other devices running Linux due to the lack of good alternatives (Android is a good example of D-Bus being adopted by chance).
+
+One of the key benefits of using DBus is that you can issue D-Bus requests from the command-line or from very simple python scripts, which is great for testing.
+
+Trouble is: what if you don't have python on the device, or even worse, if you don't have access to the command-line ?
+
+</p>
+      <p><a href="/2014/06/remote-dbus">(more…)</a></p>
+    </section>
+    <footer>
+      <span>Categories: 
+        
+        <a href="/categories.html#linux" rel="tag">linux</a>
+        
+      </span>
+      <span>Tags: 
+        
+        <a href="/tags.html#DBus" rel="tag">DBus</a>
+        
+        <a href="/tags.html#Remote" rel="tag">Remote</a>
+        
+      </span>
+    </footer>
+</article>
+
+        
+            </div>
+        
+    
+</div>
+<div id='tag-cloud'>
+  <div class='tuple'><h2>Tag cloud</h2></div>
+    <a style='font-size: 70%' href='/tags.html#SVG'>SVG</a>
+<a style='font-size: 124%' href='/tags.html#XHTML'>XHTML</a>
+<a style='font-size: 111%' href='/tags.html#Cache'>Cache</a>
+<a style='font-size: 70%' href='/tags.html#HTTP'>HTTP</a>
+<a style='font-size: 94%' href='/tags.html#HTML'>HTML</a>
+<a style='font-size: 170%' href='/tags.html#HTML5'>HTML5</a>
+<a style='font-size: 94%' href='/tags.html#Video'>Video</a>
+<a style='font-size: 151%' href='/tags.html#CSS3'>CSS3</a>
+<a style='font-size: 94%' href='/tags.html#Javascript'>Javascript</a>
+<a style='font-size: 111%' href='/tags.html#Animation'>Animation</a>
+<a style='font-size: 70%' href='/tags.html#Benchmark'>Benchmark</a>
+<a style='font-size: 70%' href='/tags.html#Carousel'>Carousel</a>
+<a style='font-size: 70%' href='/tags.html#Canvas'>Canvas</a>
+<a style='font-size: 124%' href='/tags.html#video'>video</a>
+<a style='font-size: 70%' href='/tags.html#cross-compilation'>cross-compilation</a>
+<a style='font-size: 70%' href='/tags.html#DBus'>DBus</a>
+<a style='font-size: 70%' href='/tags.html#CMake'>CMake</a>
+
+</div>
+</aside>
+
+</div>
+<footer role="contentinfo">
+    <ul>
+        <li>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+<img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" />
+</a>
+
+        </li>
+        <li>
+            <span>Generated by <a href='http://github.com/mojombo/jekyll'>Jekyll</a></span>
+        </li>
+        <li>
+            <a href="https://github.com/kaizouman">
+<img alt="Kaizouman repository on github" src="/images/Octocat.png" />
+</a>
+           
+        </li>
+        <li>
+            <a href="/feed/">
+<img alt="Site Feed" src="/images/rss.svg" />
+</a>
+
+        </li>
+        <li>
+            <a href="https://twitter.com/kaizouda">
+<img alt="Follow David Corvoysier in Twitter" src="/images/twitter.png" />
+</a>
+            
+        </li>
+    </ul>
+</footer>
+</div>
+<!-- Code Highlighting -->
+<script type='text/javascript' src='/js/code-highlight.js'>
+</script>
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57955939-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+
+</body>

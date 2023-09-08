@@ -1,0 +1,10 @@
+#mymy {
+	color: #930;
+}
+
+
+ @media screen and (max-width: 400px) {
+#mymy {
+	color: #FF0;
+}
+}

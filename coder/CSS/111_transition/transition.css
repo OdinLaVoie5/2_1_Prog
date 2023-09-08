@@ -1,0 +1,309 @@
+      /*панели                    !!!  поставить фото усложнить   увелич при наведении   ... */
+
+#ccc {
+	-webkit-transition: width 0.8s linear, background-color 0.8s linear; 
+	width:0px; 
+	height:250px;
+	margin:-10px; 
+	padding:10px;
+	background-color:#A0FE9E;
+	overflow:hidden;
+	z-index:2;
+	}
+#ccc:hover {
+	width:550px;
+	background-color:#CCCCCC;
+	}
+#ccc img {
+	margin:10px;
+	height:100px;}
+
+
+
+
+
+                                   /*AMBER*/
+/* черновик 1 
+#amber {
+	height:400px;
+	background-color:#E4E4E4;
+	}
+.kartIn {
+	width:200px; height:300px;
+	margin:50px; padding:10px;    
+	background-color:#00FF00;
+}
+
+
+.kart {
+	width:200px; height:300px;
+	position:relative;
+	left:0px;	
+	-webkit-transform-origin: left bottom;
+	-webkit-transform:rotate(0deg);
+	-webkit-transition:-webkit-transform 1s linear, left 1s linear 1s;
+}
+.kartIn:hover .kart { 'hhhhhhhhhh
+	left:100px;
+	-webkit-transform:rotate(15deg); 	     
+	-webkit-transition:-webkit-transform 1s linear, left 1s linear 1s;
+}
+*/
+
+/* черновик 2  translateZ   смотреть в браузере
+#amber {
+	height:400px;   
+	padding:10px;
+	background-color:#E4E4E4;
+}
+.kartIn {
+	width:200px; height:300px;
+	padding:10px;    
+	position:relative;
+	background-color:#00FF00;
+	transform-origin:left top;
+	perspective:100px;
+}
+
+.kart {
+	width:200px; height:300px;
+	position:relative;
+	left:0px;
+	-webkit-transform: rotate3d(15deg, 15deg, 15deg, 10deg); 	
+	
+	-webkit-transition:-webkit-transform 0.5s linear, left 0.5s linear 0.5s;
+}
+.kartIn:hover .kart {
+	-webkit-transform: translateZ(-50px); 	
+*/
+
+/* черновик 2.1  translate3d  смотреть в браузере ((есть 3D!))
+
+#amber {
+	height:400px;   
+	padding:10px 100px;
+	background-color:#E4E4E4;
+}
+.kartIn {
+	width:200px; height:300px;
+	padding:10px;    
+	position:relative;
+	background-color:#00FF00;
+	perspective: 50cm;
+}
+
+.kart {
+	width:200px; height:300px;
+	position:relative;
+	-webkit-transform-origin:200px 300px;
+	left:0px; top:0px;
+	-webkit-transition:-webkit-transform 0.5s linear;
+}
+.kartIn:hover .kart {
+	-webkit-transform: translate3d(100px, -50px, 25cm)  rotateX(-10deg) rotateY(45deg); 
+}
+*/
+
+/* черновик 3   rotateY  ((квази 3D))
+#amber {
+	height:400px;   
+	padding:10px;
+	background-color:#E4E4E4;
+	}
+.kartIn {
+	width:200px; height:300px;
+	padding:10px;    
+	position:relative;
+	background-color:#00FF00;
+}
+
+.kart {
+	width:200px; height:300px;
+	position:relative;
+	left:0px; top:0px;
+	-webkit-transform-origin:200px 300px;
+	-webkit-transition:-webkit-transform 0.5s linear, left 0.5s linear 0.5s, top 0.5s linear 0.5s ;
+}
+.kartIn:hover .kart {
+	left:100px;    top:27px;
+	-webkit-transform-origin:200px 300px;
+	-webkit-transform:rotate(15deg) rotateY(180deg); 	
+}
+*/
+
+#amber {
+	height:400px;   
+	padding:10px 100px;
+	background-color:#E4E4E4;
+}
+.kartIn {
+	width:200px; height:300px;
+	padding:10px;    
+	position:relative;
+	background-color:#00FF00;
+	perspective: 50cm;
+}
+
+
+.kart {
+	box-shadow: 5px 5px 10px rgba(0,0,0, 1);	
+	width:200px; height:300px;
+	position:relative;
+	-webkit-transform-origin:200px 300px 2cm;
+	left:0px; top:0px;
+	-webkit-transition:-webkit-transform 0.5s linear;
+}
+.kartIn:hover .kart {
+	-webkit-transform: translate3d(100px, -50px, 25cm)  rotateX(-15deg) rotateY(45deg); 
+}
+
+
+#square {
+position :absolute;
+top :50px;
+left :50px;
+width :100px;
+height :100px;
+padding :2px;
+text-align :center;
+border-width :1px;
+border-style :solid;
+background :orange;
+transition :all .8s ease-in-out;
+-moz-transition :all .8s ease-in-out;
+-webkit-transition:all .8s ease-in-out;
+-o-transition :all .8s ease-in-out;
+-ms-transition :all .8s ease-in-out; }
+#square:hover {
+background :yellow;
+-moz-transform :rotate(180deg);
+-webkit-transform :rotate(180deg);
+-o-transform :rotate(180deg);
+-ms-transform :rotate(180deg);
+transform :rotate(180deg); }
+
+
+
+
+
+
+
+
+
+#in {
+	margin:40px 0; 
+	height:300px;                 
+}
+
+/* ======= ПЛИТКИ   -webkit-transition:   Переходы   ============*/
+p.aaa {
+-webkit-transition: background-color 0.8s linear, border-color 0.8s linear , -webkit-transform 0.8s linear; 
+color: RED;
+background-color:BLUE;
+border-color:#9999FF;
+right: 20px;
+-webkit-transform:translateX(0px);
+width: 300px;
+padding: 5px;
+border-style: double;
+z-index:5;
+box-shadow: 4px 4px 4px #000000 inset 4px 4px 4px #000000;
+}
+#in:hover .aaa {
+color: BLUE;
+background-color:RED;
+border-color:#00FF00;
+-webkit-transform:translateX(200px);
+}
+
+
+
+
+
+/* =======  ШАР   -webkit-transition:   Переходы   ============*/
+#bbb {	-webkit-transition: width 1s linear 3s, height 1s linear 1s, -webkit-border-radius 1s linear, border-color 1s linear, background-color 1s linear, left 1s linear, top 1s linear 2s, -webkit-transform 1s linear 2s, border-width 1s linear; 
+	width:40px;
+	height:40px;
+	border-width:20px;
+	border-radius:40px;
+	border-color:#00FF00;
+	background-color:#FF00FF;
+	left:0px;
+	top:0px;
+	padding:0;
+	margin:0;
+	position:relative;
+	border-style:solid;
+	z-index:4;
+	-webkit-transform:translate(0px,-0px) scale(1);
+	box-shadow: 2px 2px 2px rgba(0,0,255, 1), inset 2px 2px 2px rgba(0,0,255,1);	
+}
+
+#in:hover #bbb {
+	-webkit-transition: width 1s linear 2s, height 1s linear , -webkit-border-radius 1s linear, border-color 1s linear, background-color 1s linear, left 1s linear, top 1s linear 1s, -webkit-transform 1s linear, border-width 1s linear 3s;
+	width:80px;
+	height:80px;
+	border-width:40px;
+	border-radius:80px;
+	border-color:#FF00FF;
+	background-color:#00FF00;
+	left:50px;
+	top:-50px;
+	padding:0;
+	margin:0;
+	border-style:solid;
+	-webkit-transform:translate(50%, -50%)  scale(2); 
+	visibility:visible;
+}
+
+
+
+
+/*движение    ##MY              4 вложенных блока */
+
+#d1 {
+	-webkit-transition:left 1s linear;
+	position:relative;
+	background-color:#FF0000;
+	width:20px; height:20px;
+	left:0;
+	bottom:0;
+	z-index:100;
+}
+#in:hover #d1 {
+	left:100px;
+	bottom:0;
+}
+
+#d2 {
+	-webkit-transition: bottom 1s linear 1s;
+	position:relative;
+	left:0;
+	bottom:0;
+}
+#in:hover #d2 {
+	left:0;
+	bottom:100px;
+}
+
+#d3 {
+	-webkit-transition: left 1s linear 2s;
+	position:relative;
+	left:0;
+	bottom:0;
+}
+#in:hover #d3 {
+	left:100px;
+	bottom:0;
+}
+
+#d4 {
+	-webkit-transition: bottom 1s linear 3s;
+	position:relative;
+	left:0;
+	bottom:0;
+}
+#in:hover #d4 {
+	left:0;
+	bottom:-100px;
+}

@@ -1,0 +1,94 @@
+body {
+	background-color: Lightgrey;
+}
+/*ввод цветов в скрипт ??? 
+.UU {
+	color:Red; 
+}
+.III {
+	color:rgb(255,0,255); 
+}
+.I {
+	color:rgb(0,255,255); 
+}
+.M {
+	color:rgb(0,255,0); 
+}
+*/
+
+
+.rez, .info{
+	margin-left:3px;
+	margin-top:5px;
+}
+
+#textup {
+	white-space: nowrap;
+	position:absolute;
+	background-color: rgb(255,230,230);
+	z-index: 1000;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 12px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#textsmall {
+	margin-top: 70px;   <!-- ???  -->
+}
+#textsmall table,#textadd table{
+	border-style:solid;
+	border-width: 1px;
+}
+
+.rez {
+	font-family: "Courier New", Courier, monospace;
+	white-space: nowrap;
+}
+.rez table {
+	border-collapse: collapse;
+}
+.rez .separ1 {
+	background-color:transparent;
+	line-height: 5px;
+}
+.rez tr {
+	background-color: rgb(255,255,255);
+	cursor:pointer;
+}
+.rez tr:first-child {
+	height: 25px;
+}
+.rez tr:last-child {
+	height: 25px;
+}
+
+
+td {
+	padding-left: 15px;
+}
+.rez td:first-child {
+	padding-left: 5px;
+}
+.rez td:nth-child(3) {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.rez td:nth-child(4) {
+	padding-left: 20px;
+}
+.rez td:nth-child(5) {
+	text-align: center;
+}
+.rez td:last-child {
+	padding: 0px;
+}
+
+
+#disp0{
+	background-color:rgb(255,255,255);
+}
+/*.rez td:nth-child(4) {
+	text-shadow: currentColor 0px 0px 1px;
+}
+*/

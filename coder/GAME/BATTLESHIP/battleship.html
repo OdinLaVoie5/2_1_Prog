@@ -1,0 +1,91 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+<title>Battleship</title>
+<meta charset="UTF-8">
+</head>
+<body>
+
+
+
+
+
+
+<h1 id="start">Play battleship!</h1>
+<script>
+
+
+var start = document.getElementById("start");    
+start.onclick = funGame;  
+
+
+
+
+
+
+function funGame (){
+	var ship = Math.floor(Math.random() * 22)+1;
+	var ships = [ship, ship+1, ship+2];
+	var shoot=0;
+	var shoots = 0;
+	var hits = 0;
+	var miss = 0;
+	var past=[]; 
+	var ser;     // ??			
+	    							//  ?? сделать норм  досрочное завершение   или перезагрузку игры
+	
+	while (hits < 3) {                      //  цикл пока корабль не потоплен 
+		shoot = prompt("Введите число от 1 до 24");	
+		if (isNaN(shoot)===false) {
+			if (shoot = 111 ){            // временное   - вводит 0 - стоп игра
+				alert("Стоп игра");      
+				break;    
+			} 				
+			else if (shoot < 0 || shoot > 24 ){            // ??  вместо 24  переменную
+				alert("Неверный ввод. Введите число от 0 до 24!");          // ?? вместо 24  переменную
+			} 				
+			else if  (past.indexOf(shoot)>=0) {
+				alert("уже было!");
+			}
+			else {			                             // игра
+				shoots++;	
+				past.push(shoot);				
+				if (ships.indexOf(Number(shoot))>=0 ) {               // ??  попадание
+					hits++;
+					alert("ПОПАДАНИЕ!");
+				}else {
+					miss++;	
+					alert("промах");
+					if (miss===10){                    //    ??  вместо 6  переменную
+						ser= confirm("Попыток больше нет. Повторить?");
+						if (ser){
+							funGame ()
+							break;
+						}else {
+							alert ("Пока")	             //  ??  сделать выход
+							break;
+						}	
+					}		
+				}
+			}
+		}	
+	};
+
+	if (hits === 3) {
+		var ser1= confirm("ПОБЕДА! Вы потопили корабль с "  +shoots+ "выстрелов.  Повторить?");
+		if (ser1){
+			funGame ()
+		}else {
+			alert ("Пока");	             //  ??  сделать выход						
+		};	
+	};
+};
+
+
+
+
+
+	
+</script>
+</body>
+</html>

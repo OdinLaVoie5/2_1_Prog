@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru-RU" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#" itemscope="itemscope" itemtype="http://schema.org/Blog">
+<head>
+<meta charset="UTF-8">
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="msapplication-square150x150logo" content="http://htmlhook.ru/square.png" />
+<meta itemprop="image" content="http://htmlhook.ru/logo.jpg" />
+<title>Разработка игры HTML5 | htmlhook.ru</title>
+<meta itemprop="description" content="Разработка игры HTML5 с использованием canvas. HTML5 игра называется &#8212; Скайуокер, это симулятор полета самолета и несколько ..." />
+<meta itemprop="keywords" content="Canvas, Скачать, " />
+ 
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:type" content="article" />    
+<meta property="og:title" content="Разработка игры HTML5 | htmlhook.ru" />
+<meta property="og:description" content="Разработка игры HTML5 с использованием canvas. HTML5 игра называется &#8212; Скайуокер, это симулятор полета самолета и несколько ..." />
+<meta property="og:url" content="http://htmlhook.ru/razrabotka-igry-html5.html" />
+<meta property="og:site_name" content="htmlhook.ru" />
+<meta property="article:publisher" content="100002248866244" />
+<meta property="article:author" content="http://www.facebook.com/ViktorKlim78" />
+<meta property="og:see_also" content="http://htmlhook.ru" />
+<meta property="article:section" content="JavaScript" />
+<meta property="article:tag" content="Canvas" />
+<meta property="article:tag" content="Скачать" />
+<meta property="article:published_time" content="2012-10-08T11:23:20+00:00" /><meta property="article:modified_time" content="2015-12-21T16:41:31+00:00" /><meta property="og:updated_time" content="2015-12-21T16:41:31+00:00" /><meta property="fb:app_id" content="1506396329683118" /> 
+<meta property="og:image" content="http://htmlhook.ru/logo.jpg" />
+<meta name="DC.title" lang="ru" content="Разработка игры HTML5 | htmlhook.ru" />
+<meta name="DC.creator" content="Виктор Клим" />
+<meta name="DC.subject" content="Canvas" />
+<meta name="DC.subject" content="Скачать" />
+<meta name="DC.description" content="Разработка игры HTML5 с использованием canvas. HTML5 игра называется &#8212; Скайуокер, это симулятор полета самолета и несколько ..." />
+<link rel="prefetch" href="http://htmlhook.ru">
+<link rel="prerender" href="http://htmlhook.ru">
+<!--[if lt IE 9]><script src="http://htmlhook.ru/wp-content/themes/pixelcom/js/html5.js"></script><![endif]-->
+
+<!-- All in One SEO Pack 2.2.7.6.2 by Michael Torbert of Semper Fi Web Design[-1,-1] -->
+<link rel="author" href="https://plus.google.com/+ViktorKlim/" />
+<meta name="description"  content="Разработка игры HTML5 с использованием canvas, уровень карты, введение экран, ракеты, взрыв, враги и спрайты самолетов." />
+
+<meta name="keywords"  content="canvas,game,html5,javascript,html5 разработка игры,html5 игры,html5 игра,пример игры html5," />
+
+<link rel="canonical" href="http://htmlhook.ru/razrabotka-igry-html5.html" />
+<!-- /all in one seo pack -->
+<link rel='stylesheet' property='stylesheet' id='genericons-css'  href='http://htmlhook.ru/wp-content/themes/pixelcom/style.css' type='text/css' media='all' />
+<link rel='prev' title='TypeScript' href='http://htmlhook.ru/typescript.html' />
+<link rel='next' title='File Expert для Android' href='http://htmlhook.ru/file-expert-dlya-android.html' />
+
+<script type="text/javascript">
+	function addHandler(object, event, handler) {
+		if (typeof object.addEventListener != 'undefined') 
+			object.addEventListener(event, handler, false);
+		else
+			if (typeof object.attachEvent != 'undefined')
+				object.attachEvent('on' + event, handler);
+			else 
+				throw 'Incompatible browser';
+	}
+</script>
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<link rel="amphtml" href="http://htmlhook.ru/razrabotka-igry-html5.html/amp" /><style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+<body class="single single-post postid-2611 single-format-standard group-blog singular"><div id="page" class="hfeed site">
+<header id="masthead" class="site-header" itemscope="itemscope" itemtype="http://schema.org/WPHeader"><div class="logo" role="banner"><div class="logo-top"></div><div class="logo-title"></div><div class="logo-left"></div><div class="logo-bottom"></div><div class="logo-right"></div></div><p class="site-title" itemprop="headline"> <a itemprop="url" href="http://htmlhook.ru/" rel="home" data-title="htmlhook.ru">htmlhook.ru</a></p>
+<p itemprop="description" class="site-description">Скрипты для веб-приложений</p><a class="screen-reader-text" href="#content">Перейти к содержанию</a><button class="menu-toggle"></button><nav id="primary-navigation" class="primary-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement"><div class="menu-kategorii-sajta-container"><ul id="menu-kategorii-sajta" class="nav-menu"><li id="menu-item-8275" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8275"><a title="Демонстрация возможностей новых элементов HTML для разметки и отображения содержимого веб-сайтов в стандарте HTML5" href="http://htmlhook.ru/html5" itemprop="url"><span itemprop="name">HTML5</span></a></li>
+<li id="menu-item-2890" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2890"><a title="Примеры CSS3, рисование кодом в каскадной таблице стилей без JavaScript" href="http://htmlhook.ru/css3" itemprop="url"><span itemprop="name">CSS3</span></a></li>
+<li id="menu-item-8356" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8356"><a title="Четвертый уровень спецификации CSS" href="http://htmlhook.ru/css4" itemprop="url"><span itemprop="name">CSS4</span></a></li>
+<li id="menu-item-7144" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7144"><a title="Новые функции PHP, обзор редакторов и фреймворков" href="http://htmlhook.ru/php" itemprop="url"><span itemprop="name">PHP</span></a></li>
+<li id="menu-item-8268" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-8268"><a title="Примеры JavaScript, скрипты JavaScript, уроки по JavaScript" href="http://htmlhook.ru/javascript" itemprop="url"><span itemprop="name">JS</span></a></li>
+<li id="menu-item-2901" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2901"><a title="Примеры применения скриптов библиотеки jQuery для веб-приложений" href="http://htmlhook.ru/jquery" itemprop="url"><span itemprop="name">jQuery</span></a></li>
+<li id="menu-item-2889" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2889"><a title="Обзор популярных CMS (система управления контентом)" href="http://htmlhook.ru/cms" itemprop="url"><span itemprop="name">CMS</span></a></li>
+<li id="menu-item-7825" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7825"><a title="Раскрутка и оптимизация сайта, продвижение сайтов, инструменты SEO" href="http://htmlhook.ru/seo" itemprop="url"><span itemprop="name">SEO</span></a></li>
+<li id="menu-item-2897" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2897"><a title="Скачать бесплатно шаблоны для популярных CMS, вёрстка HTML, CSS" href="http://htmlhook.ru/template" itemprop="url"><span itemprop="name">Шаблоны</span></a></li>
+<li id="menu-item-2894" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2894"><a title="Веб — дизайн, проектирование пользовательских веб-интерфейсов для сайта или веб-приложения" href="http://htmlhook.ru/design" itemprop="url"><span itemprop="name">Дизайн</span></a></li>
+<li id="menu-item-8232" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8232"><a title="Скачать бесплатно программы для Android и Windows" href="http://htmlhook.ru/soft" itemprop="url"><span itemprop="name">Программы</span></a></li>
+</ul></div></nav><button class="search-toggle"></button><div id="search-container" class="search-box-wrapper" style="display:none;"><div role="search" class="search-box"><form method="get" class="search-form" action="http://htmlhook.ru/">
+	<label>
+		<span class="screen-reader-text">Найти:</span>
+		<input type="search" class="search-field" placeholder="Поиск&hellip;" value="" name="s" title="Найти:" />
+	</label>
+<input type="submit" class="search-submit" value="Поиск" />
+</form></div></div></header><div class="site-main"><div id="primary" class="content-area"><div id="content" class="site-content" role="main"><div class="kama_breadcrumbs">
+<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://htmlhook.ru" itemprop="url"><span itemprop="title"><span class="screen-reader-text">Блог</span></span></a></span> › 
+<span itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="http://htmlhook.ru/javascript" itemprop="url"><span itemprop="title">JavaScript</span></a></span> › 
+Разработка игры HTML5</div>
+			<article id="post-2611" class="post-2611 post type-post status-publish format-standard hentry category-javascript tag-canvas tag-skachat" itemscope="itemscope" itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+<meta itemscope="itemscope" itemprop="mainEntityOfPage" itemType="http://schema.org/WebPage" itemid="http://htmlhook.ru/razrabotka-igry-html5.html" content="post-2611"/>
+<header class="entry-header">		<h1 class="entry-title" itemprop="headline">Разработка игры HTML5</h1><div class="entry-meta">
+			<span class="date-published"><time class="entry-date published" datetime="2012-10-08T11:23:20+00:00" itemprop="datePublished">08.10.2012</time><time class="updated" datetime="2015-12-21T16:41:31+00:00" itemprop="dateModified">21.12.2015</time></span> <span class="byline"> <span class="screen-reader-text">Автор</span> <span class="author vcard" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"> <span class="fn" itemprop="name">Виктор Клим</span></span></span>       </div></header><div class="entry-content" itemprop="articleBody" role="article">
+		<p><b>Разработка игры HTML5</b> с использованием canvas. HTML5 игра называется &#8212; Скайуокер, это симулятор полета самолета и несколько врагов. Наша цель добраться до финиша. Ключевые функции: спрайты для самолета и взрывы, возможность нажать несколько клавиш. В демонстрации Вы можете одновременно передвигаться и атаковать, на определенное расстояние. Обнаружения столкновений с врагами могут повредить самолёт это влияет на параметры жизни и оценки.<span id="more-2611"></span></p>
+<p><!--noindex--><a target="_blank" rel="nofollow" href="http://demo.htmlhook.ru/canvas/game/index.htm" class="demo" title="HTML5 игры" >Демо</a><!--/noindex--></p>
+<h3>Шаг 1. HTML</h3>
+<pre class="brush: css; title: ; notranslate" title="">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru&quot; &gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot; /&gt;
+        &lt;title&gt;HTML5 Game Development (SkyWalker)&lt;/title&gt;
+
+        &lt;!-- add styles --&gt;
+        &lt;link href=&quot;css/main.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+
+        &lt;!-- add scripts --&gt;
+        &lt;!--[if lt IE 9]&gt;
+          &lt;script src=&quot;http://html5shiv.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;
+        &lt;![endif]--&gt;
+        &lt;script src=&quot;js/jquery.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;js/script.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;header&gt;
+            &lt;h1&gt;HTML5 Game Development&lt;/h1&gt;
+        &lt;/header&gt;
+
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;canvas id=&quot;scene&quot; width=&quot;700&quot; height=&quot;700&quot; tabindex=&quot;1&quot;&gt;&lt;/canvas&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h3>Шаг 2. JS</h3>
+<p><b>js/script.js</b></p>
+<p>Создайте файл script.js в папке js с кодом ниже, это полный код js для игры Скайуокер.</p>
+<pre class="brush: php; title: ; notranslate" title="">// переменные
+  var canvas, ctx;
+
+  // Изображения
+  var backgroundImage;
+  var oRocketImage;
+  var oExplosionImage;
+  var introImage;
+  var oEnemyImage;
+
+  var iBgShiftY = 9300; //10000 (длина уровня) - 700 (высота холста)
+  var bPause = true; // пауза
+  var plane = null; // самолет
+  var rockets = []; // массив ракет
+  var enemies = []; // массив врагов
+  var explosions = []; // массив взрывов
+  var planeW = 200; // ширина самолета
+  var planeH = 110; // высота самолета
+  var iSprPos = 2; // начало спрайт кадров для плоскости
+  var iMoveDir = 0; // направление перемещения
+  var iEnemyW = 128; // ширина врага
+  var iEnemyH = 128; // высота врага
+  var iRocketSpeed = 10; // начальная скорость полета ракеты
+  var iEnemySpeed = 5; // начальная врага скорость
+  var pressedKeys = []; // массив нажатия клавиши
+  var iScore = 0; // общая оценка
+  var iLife = 100; // жизни
+  var iDamage = 10; // - повреждения самолета врага
+  var enTimer = null; // случайные таймер для нового врага
+  // -------------------------------------------------------------
+
+  // объекты :
+  function Plane(x, y, w, h, image) {
+  this.x = x;
+  this.y = y;
+  this.w = w;
+  this.h = h;
+  this.image = image;
+  this.bDrag = false;
+  }
+  function Rocket(x, y, w, h, speed, image) {
+  this.x = x;
+  this.y = y;
+  this.w = w;
+  this.h = h;
+  this.speed = speed;
+  this.image = image;
+  }
+  function Enemy(x, y, w, h, speed, image) {
+  this.x = x;
+  this.y = y;
+  this.w = w;
+  this.h = h;
+  this.speed = speed;
+  this.image = image;
+  }
+  function Explosion(x, y, w, h, sprite, image) {
+  this.x = x;
+  this.y = y;
+  this.w = w;
+  this.h = h;
+  this.sprite = sprite;
+  this.image = image;
+  }
+  // -------------------------------------------------------------
+  // получить случайное число между X и Y
+  function getRand(x, y) {
+  return Math.floor(Math.random()*y)+x;
+  }
+
+  // Дисплей функции Intro (вступление)
+  function displayIntro() {
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  ctx.drawImage(introImage, 0, 0,700, 700);
+  }
+
+  // Основные функции сцены
+  function drawScene() {
+
+  if (! bPause) {
+  iBgShiftY -= 2; // двигаться
+  if (iBgShiftY &lt; 5) { // остановиться
+   bPause = true;      // счет
+   ctx.font = '40px Verdana';
+   ctx.fillStyle = '#fff';
+   ctx.fillText('Finish, your score: ' + iScore * 10 + ' points', 50, 200);   return;   }
+      // процесс нажатия клавиши, (перемещение)
+   processPressedKeys();
+      // очистка холста
+   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      // фон
+   ctx.drawImage(backgroundImage, 0, 0 + iBgShiftY, 700, 700, 0, 0, 700, 700);
+      // самолет
+   ctx.drawImage(plane.image, iSprPos*plane.w, 0, plane.w, plane.h, plane.x - plane.w/2, plane.y - plane.h/2, plane.w, plane.h);
+      // ракеты
+   if (rockets.length &gt; 0) {
+  for (var key in rockets) {
+  if (rockets[key] != undefined) {
+  ctx.drawImage(rockets[key].image, rockets[key].x, rockets[key].y);
+  rockets[key].y -= rockets[key].speed;
+
+  // if a rocket is out of screen - remove it
+  if (rockets[key].y &lt; 0) {   delete rockets[key];
+   }
+   }
+   }
+   }
+      // взрывы
+   if (explosions.length &gt; 0) {
+  for (var key in explosions) {
+  if (explosions[key] != undefined) {
+  // спрайты
+  ctx.drawImage(explosions[key].image, explosions[key].sprite*explosions[key].w, 0, explosions[key].w, explosions[key].h, explosions[key].x - explosions[key].w/2, explosions[key].y - explosions[key].h/2, explosions[key].w, explosions[key].h);
+  explosions[key].sprite++;
+
+  // удаление взрыва когда он исчезнет
+  if (explosions[key].sprite &gt; 10) {
+  delete explosions[key];
+  }
+  }
+  }
+  }
+
+  // враги
+  if (enemies.length &gt; 0) {
+  for (var ekey in enemies) {
+  if (enemies[ekey] != undefined) {
+  ctx.drawImage(enemies[ekey].image, enemies[ekey].x, enemies[ekey].y);
+  enemies[ekey].y -= enemies[ekey].speed;
+
+  // удалить вражеский объект, если он находится вне экрана
+  if (enemies[ekey].y &gt; canvas.height) {
+  delete enemies[ekey];
+  }
+  }
+  }
+  }
+
+  if (enemies.length &gt; 0) {
+  for (var ekey in enemies) {
+  if (enemies[ekey] != undefined) {
+
+  // столкновения с ракетами
+  if (rockets.length &gt; 0) {
+  for (var key in rockets) {
+  if (rockets[key] != undefined) {
+  if (rockets[key].y &lt; enemies[ekey].y + enemies[ekey].h/2 &amp;&amp; rockets[key].x &gt; enemies[ekey].x &amp;&amp; rockets[key].x + rockets[key].w &lt; enemies[ekey].x + enemies[ekey].w) {
+  explosions.push(new Explosion(enemies[ekey].x + enemies[ekey].w / 2, enemies[ekey].y + enemies[ekey].h / 2, 120, 120, 0, oExplosionImage));
+
+  // убить врага, ракетой, и добавить +1 балл
+  delete enemies[ekey];
+  delete rockets[key];
+  iScore++;
+  }
+  }
+  }
+  }
+
+  // столкновения с самолетом
+  if (enemies[ekey] != undefined) {
+  if (plane.y - plane.h/2 &lt; enemies[ekey].y + enemies[ekey].h/2 &amp;&amp; plane.x - plane.w/2 &lt; enemies[ekey].x + enemies[ekey].w &amp;&amp; plane.x + plane.w/2 &gt; enemies[ekey].x) {
+  explosions.push(new Explosion(enemies[ekey].x + enemies[ekey].w / 2, enemies[ekey].y + enemies[ekey].h / 2, 120, 120, 0, oExplosionImage));
+
+  // удалить врага и нанести ущерб
+  delete enemies[ekey];
+  iLife -= iDamage;
+
+  if (iLife &lt;= 0) { // Конец игры
+   bPause = true;
+      // счет
+   ctx.font = '38px Verdana';
+   ctx.fillStyle = '#fff';
+   ctx.fillText('Game over, your score: ' + iScore * 10 + ' points', 25, 200);
+   return;
+   }
+   }
+   }
+   }
+   }
+   }
+      // отображение жизни и оценок
+   ctx.font = '14px Verdana';
+   ctx.fillStyle = '#fff';
+  ctx.fillText('Life: ' + iLife + ' / 100', 50, 660);
+   ctx.fillText('Score: ' + iScore * 10, 50, 680);
+   }
+   }
+      // функция нажатия клавиши
+   function processPressedKeys() {
+   if (pressedKeys[37] != undefined) { // 'влево'
+   if (iSprPos &gt; 0) {
+  iSprPos--;
+  iMoveDir = -7;
+  }
+  if (plane.x - plane.w / 2 &gt; 10) {
+  plane.x += iMoveDir;
+  }
+  }
+  else if (pressedKeys[39] != undefined) { // 'вправо'
+  if (iSprPos &lt; 4) {
+  iSprPos++;
+  iMoveDir = 7;
+  }
+  if (plane.x + plane.w / 2 &lt; canvas.width - 10) {
+   plane.x += iMoveDir;
+   }
+   }
+   }
+      // добавить врага (функция добавляет новый врагов беспорядочно)
+   function addEnemy() {
+   clearInterval(enTimer);
+      var randX = getRand(0, canvas.height - iEnemyH);
+   enemies.push(new Enemy(randX, 0, iEnemyW, iEnemyH, - iEnemySpeed, oEnemyImage));
+      var interval = getRand(1000, 4000);
+   enTimer = setInterval(addEnemy, interval); // цикл
+   }
+      // Основные Инициализации
+   $(function(){
+   canvas = document.getElementById('scene');
+   ctx = canvas.getContext('2d');
+      // загрузка изображения фона
+   backgroundImage = new Image();
+   backgroundImage.src = 'images/levelmap.jpg';
+   backgroundImage.onload = function() {
+   }   backgroundImage.onerror = function() {
+   console.log('Error loading the background image.');
+   }
+      introImage = new Image();
+   introImage.src = 'images/intro.jpg';
+      // инициализация пустой ракеты
+   oRocketImage = new Image();
+   oRocketImage.src = 'images/rocket.png';
+   oRocketImage.onload = function() { }
+      // инициализация изображения взрыва
+   oExplosionImage = new Image();
+   oExplosionImage.src = 'images/explosion.png';
+   oExplosionImage.onload = function() { }
+      // инициализация пустого врага
+   oEnemyImage = new Image();
+   oEnemyImage.src = 'images/enemy.png';
+   oEnemyImage.onload = function() { }
+      // инициализация самолета
+   var oPlaneImage = new Image();
+   oPlaneImage.src = 'images/plane.png';
+   oPlaneImage.onload = function() {
+   plane = new Plane(canvas.width / 2, canvas.height - 100, planeW, planeH, oPlaneImage);
+   }
+      $(window).keydown(function (evt){ // обработка событий
+   var pk = pressedKeys[evt.keyCode];   if (! pk) {
+   pressedKeys[evt.keyCode] = 1; // добавить все нажатия клавиш в массиве
+   }
+      if (bPause &amp;&amp; evt.keyCode == 13) { // в случае Enter
+   bPause = false;
+      // начало анимации
+   setInterval(drawScene, 30); // loop drawScene
+      // добавить первого противника
+   addEnemy();
+   }
+   });
+      $(window).keyup(function (evt) { // onkeyup обработки событий
+   var pk = pressedKeys[evt.keyCode];
+     if (pk) {
+   delete pressedKeys[evt.keyCode]; // удаление нажатии клавиши из массива
+   }
+     if (evt.keyCode == 65) { // 'A' button - add a rocket
+   rockets.push(new Rocket(plane.x - 16, plane.y - plane.h, 32, 32, iRocketSpeed, oRocketImage));
+   }
+     if (evt.keyCode == 37 || evt.keyCode == 39) {
+   // вернуть самолет в положение по умолчанию
+     if (iSprPos &gt; 2) {
+  for (var i = iSprPos; i &gt;= 2; i--) {
+  iSprPos = i;
+  iMoveDir = 0;
+  }
+  } else {
+  for (var i = iSprPos; i &lt;= 2; i++) {
+  iSprPos = i;
+  iMoveDir = 0;
+  }
+  }
+  }
+  });
+
+  // когда отображать вступление
+  introImage.onload = function() {
+  displayIntro(); // Показать первое вступление
+  }
+  });</pre>
+<p>В основном инициализация сценария загружает все необходимые изображения: уровень карты, экран, ракеты, взрыв, враги и спрайты самолетов. Чтобы справиться с несколькими нажатием клавиш используется массив <code>pressedKeys</code>, чтобы сохранить все нажатия клавиш во время появления на главной сцене, мы будем использовать массив манипулирования с нашим самолетом. И наконец, один раз сразу при загрузке страницы на экране мы показываем вступление. Одним из важных моментов обработка нескольких клавиш, посмотрите на этот код:</p>
+<pre class="brush: php; title: ; notranslate" title="">var pressedKeys = []; // массив нажатии клавиши
+
+  $(window).keydown(function (evt){ // onkeydown обработки событий
+  var pk = pressedKeys[evt.keyCode];
+  if (! pk) {
+  pressedKeys[evt.keyCode] = 1; // добавить все нажатия клавиш в массиве
+  }
+  });
+
+  $(window).keyup(function (evt) { // onkeyup обработки событий
+  var pk = pressedKeys[evt.keyCode];
+  if (pk) {
+  delete pressedKeys[evt.keyCode]; // удаление нажатий клавиш из массива
+  }
+  });</pre>
+<p>Эта техника позволяет работать с несколькими ключами. Во время основной сцены мы вызываем следующие объекты: фон, основной самолет, ракеты самолета, врагов и взрывы. Как только попали по врагу рисуем спрайт взрыва на последнем месте прибывания противника. Наши оппоненты не безвредны, как только они касаются нашего самолета взрываются и наносят ущерб нашему самолету. Если значение жизни будет нуль, игра окончена. Для реализации столкновений и взрывов, следующий код:</p>
+<pre class="brush: php; title: ; notranslate" title="">if (plane.y - plane.h/2 &lt; enemies[ekey].y + enemies[ekey].h/2 &amp;&amp; plane.x - plane.w/2 &lt; enemies[ekey].x + enemies[ekey].w &amp;&amp; plane.x + plane.w/2 &gt; enemies[ekey].x) {
+  explosions.push(new Explosion(enemies[ekey].x + enemies[ekey].w / 2, enemies[ekey].y + enemies[ekey].h / 2, 120, 120, 0, oExplosionImage));
+
+  // удалить врага и нанести ущерб
+  delete enemies[ekey];
+  iLife -= iDamage;
+
+  if (iLife &lt;= 0) { // Конец игры
+  bPause = true;
+
+  // счет
+  ctx.font = '38px Verdana';
+  ctx.fillStyle = '#fff';
+  ctx.fillText('Game over, your score: ' + iScore * 10 + ' points', 25, 200);
+  return;
+  }
+  }</pre>
+<h3>Шаг 3. Графика</h3>
+<p><var>enemy.png, explosion.png, intro.jpg, levelmap.jpg, plane.png, rocket.png</var></p>
+<p>Все используемые изображения доступны в пакете: <!--noindex--><a target="_blank" rel="nofollow" href="http://www.script-tutorials.com/demos/314/source.zip" title="Скачать игру HTML5" >скачать</a><!--/noindex-->.</p>
+<p style="margin-top: 30px;">Статья подготовлена для вас коллективом сайта <a href="http://htmlhook.ru/">htmlhook.ru</a><br />
+Оригинал статьи: <!--noindex--><a target="_blank" rel="nofollow" href="http://www.script-tutorials.com/html5-game-development-lesson-10" >script-tutorials.com/html5-game-development-lesson-10</a><!--/noindex--><br />
+Перевел: Виктор Клим<br />
+<a href="http://htmlhook.ru/userfiles/pravila-sita.htm" target="_blank">Правила использования материалов сайта!</a></p>
+</div><footer class="entry-meta"><span itemprop="articleSection" class="tag-links"><a href="http://htmlhook.ru/tag/canvas" rel="tag">Canvas</a> <a href="http://htmlhook.ru/tag/skachat" rel="tag">Скачать</a></span><div class="category" itemprop="articleSection"><ul class="post-categories">
+	<li><a href="http://htmlhook.ru/javascript" rel="category tag">JavaScript</a></li></ul></div><div class="screen-reader-text" itemprop="publisher" itemscope="itemscope" itemtype="https://schema.org/Organization"><div itemprop="logo" itemscope="itemscope" itemtype="https://schema.org/ImageObject"> <img itemprop="url contentUrl" src="http://htmlhook.ru/banner.png" alt="http://htmlhook.ru | Скрипты для веб-приложений" /><meta itemprop="width" content="600"><meta itemprop="height" content="60"></div><meta itemprop="name" content="htmlhook.ru"><meta itemprop="telephone" content="+7 978 786-19-95"><meta itemprop="address" content="Крым, Зуя"></div></footer></article><footer class="entry-media">
+     <!-- Яндекс.Директ -->
+<div id="yandex_ad" itemscope="itemscope" itemtype="http://schema.org/WPAdBlock"></div><script type="text/javascript">
+!function(t,e,o,n,c){t[o]=t[o]||[],t[o].push(function(){Ya.Direct.insertInto(148302,"yandex_ad",{ad_format:"direct",font_size:1,type:"vertical",limit:2,title_font_size:3,links_underline:!1,site_bg_color:"FFFFFF",title_color:"666699",url_color:"006600",text_color:"000000",hover_color:"0066FF",no_sitelinks:!0})}),c=e.getElementsByTagName("script")[0],n=e.createElement("script"),n.src="http://htmlhook.ru/wp-content/themes/pixelcom/js/context.js",n.type="text/javascript",n.async=!0,c.parentNode.insertBefore(n,c)}(window,document,"yandex_context_callbacks");</script>
+<a class="popup" href="http://htmlhook.ru/wp-login.php" title="Войти"></a>
+<ul class="♥" aria-label="Расскажи всем"><li><!--noindex--><a class="popup" href="http://htmlhook.ru/feed/atom" title="Смотреть ленту RSS Atom">RSS</a><!--/noindex--></li><li><a href="mailto:pixelcom.crimea%40gmail.com?subject=%C2%ABhtmlhook.ru%C2%BB%D0%A0%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0+%D0%B8%D0%B3%D1%80%D1%8B+HTML5&amp;body=http%3A%2F%2Fhtmlhook.ru%2Frazrabotka-igry-html5.html"></a></li><li><!--noindex--><a class="popup" rel="nofollow" title="Поделиться в Моем Мире@Mail.Ru" href="http://connect.mail.ru/share?url=http://htmlhook.ru/razrabotka-igry-html5.html">@</a><!--/noindex--></li><li><!--/noindex--><a class="popup" rel="nofollow" title="Поделиться ВКонтакте" href="http://vk.com/share.php?url=http://htmlhook.ru/razrabotka-igry-html5.html">ВКонтакте</a><!--/noindex--></li><li><!--/noindex--><a class="popup" rel="nofollow" title="Поделиться ссылкой в FaceBook" href="https://www.facebook.com/sharer/sharer.php?u=http://htmlhook.ru/razrabotka-igry-html5.html">Facebook</a><!--/noindex--></li><li><!--noindex--><a class="popup" target="_blank" rel="nofollow" title="Добавить в Twitter" href="http://twitter.com/share?text=%D0%A0%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0+%D0%B8%D0%B3%D1%80%D1%8B+HTML5&amp;url=http%3A%2F%2Fhtmlhook.ru%2Frazrabotka-igry-html5.html">Twitter</a><!--/noindex--></li><li><!--noindex--><a class="popup" rel="nofollow" title="Поделиться в Google+" href="https://plus.google.com/share?url=http://htmlhook.ru/razrabotka-igry-html5.html">G+</a><!--/noindex--></li></ul>
+<div itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement"><h2 itemprop="name">Интересные записи</h2><ul class="related-posts" aria-label="Похожие записи"><li role="presentation"><h3 class="entry-title"><a itemprop="url" href="http://htmlhook.ru/rukovodstvo-po-html5-canvas.html" rel="bookmark"><span itemprop="name">Руководство по HTML5 Canvas</span></a></h3><div class="entry-meta"> <span class="entry-date">29.Фев.2012</span></div></li>
+<li role="presentation"><h3 class="entry-title"><a itemprop="url" href="http://htmlhook.ru/muzykalnoe-vypadayushhee-menyu-css3.html" rel="bookmark"><span itemprop="name">Музыкальное выпадающее меню CSS3</span></a></h3><div class="entry-meta"> <span class="entry-date">09.Июл.2012</span></div></li>
+<li role="presentation"><h3 class="entry-title"><a itemprop="url" href="http://htmlhook.ru/vlast-deferred.html" rel="bookmark"><span itemprop="name">Власть $.deferred</span></a></h3><div class="entry-meta"> <span class="entry-date">30.Авг.2012</span></div></li>
+<li role="presentation"><h3 class="entry-title"><a itemprop="url" href="http://htmlhook.ru/getusermedia-teper-dostupen.html" rel="bookmark"><span itemprop="name">getUserMedia теперь доступен</span></a></h3><div class="entry-meta"> <span class="entry-date">12.Дек.2012</span></div></li>
+</ul></div></footer>
+<script>!function(){function e(e){e=e?e:window.event;var r=e.target?e.target:e.srcElement,i=Math.floor(((screen.availWidth||1024)-t.Width)/2),n=Math.floor(((screen.availHeight||700)-t.Height)/2),o=window.open(r.href,"social","width="+t.Width+",height="+t.Height+",left="+i+",top="+n+",location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1");return o&&(o.focus(),e.preventDefault&&e.preventDefault(),e.returnValue=!1),!!o}for(var t={Link:"a.popup",Width:600,Height:600},r=document.querySelectorAll(t.Link),i=0;i<r.length;i++)r[i].onclick=e}();</script><nav class="post-navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement"><h2 class="screen-reader-text" itemprop="name"> Навигация по записям</h2><div class="nav-links">
+			<a itemprop="url" href="http://htmlhook.ru/typescript.html" rel="prev"><span class="meta-nav">Предыдущая запись</span> &larr;  <b>TypeScript</b></a><a itemprop="url" href="http://htmlhook.ru/file-expert-dlya-android.html" rel="next"><span class="meta-nav">Следующая запись</span> <b>File Expert для Android</b> &rarr;</a></div></nav>
+	<div id="comments" class="comments-area">				<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Добавить комментарий <small><a rel="nofollow" id="cancel-comment-reply-link" href="/razrabotka-igry-html5.html#respond" style="display:none;">Отменить ответ</a></small></h3>				<form action="http://htmlhook.ru/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+					<p class="comment-notes"><span id="email-notes">Ваш e-mail не будет опубликован.</span> Обязательные поля помечены <span class="required">*</span></p><p class="comment-form-comment" role="region"><label for="comment">Комментарий</label><span class="add-code">&#091;php&#093;код&#091;/php&#093;</span><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" aria-label="Комментарий"></textarea></p><p class="comment-form-author"><label for="author">Имя <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required='true' required='required' /></p>
+<p class="comment-form-email"><label for="email">E-mail <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" aria-describedby="email-notes" aria-required='true' required='required' /></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Отправить комментарий" /> <input type='hidden' name='comment_post_ID' value='2611' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><noscript><strong>Пожалуйста, включите JavaScript в Вашем обозревателе для того, чтобы оставить комментарий!</strong></noscript>				</form>
+					</div><!-- #respond -->
+		</div>
+ </div></div>
+<div id="content-sidebar" class="content-sidebar widget-area" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar"><aside id="text-10" class="widget widget_text">			<div class="textwidget"><div class="aut-link" itemscope="itemscope" itemtype="http://schema.org/WPAdBlock">
+<ins>Понравилась моя работа?</ins><br>
+Внесите вклад в развитие, пожертвовав любую сумму на этот счет:<br>
+<!--noindex--><a itemprop="url" target="_blank" href="https://money.yandex.ru/direct-payment.xml?from=imainp2p" rel="nofollow" style="color: #333;"> 410011349414697</a><!--/noindex-->
+<p style="background:#111; outline: 1px solid #111"><!--noindex--><a rel="nofollow"  itemprop="url" style="color:#DFFF2B;" title="Звёздное небо" href="http://www.mapsky.ru/?Tablica_chastot">Звёздное небо</a><!--/noindex--><br><span style="color:#4EE;">Таблица частот спутниковых каналов</span></p></div></div>
+		</aside><aside id="nav_menu-7" class="widget widget_nav_menu"><h3 itemprop="name" class="widget-title">Метки сайта</h3><div class="menu-metki-sajta-container"><ul id="menu-metki-sajta" class="menu"><li id="menu-item-7585" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-7585"><a title="Векторная графика SVG" href="http://htmlhook.ru/tag/svg" itemprop="url"><span itemprop="name">Графика SVG</span></a></li>
+<li id="menu-item-6703" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-6703"><a title="Примеры и коды Canvas HTML5" href="http://htmlhook.ru/tag/canvas" itemprop="url"><span itemprop="name">HTML5 Canvas</span></a></li>
+<li id="menu-item-6706" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-6706"><a title="Удивительная графика WebGL в браузере" href="http://htmlhook.ru/tag/webgl" itemprop="url"><span itemprop="name">Графика WebGL</span></a></li>
+<li id="menu-item-6722" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-6722"><a title="Новые веб-технологии для анимации в браузере " href="http://htmlhook.ru/tag/animations" itemprop="url"><span itemprop="name">Анимация</span></a></li>
+<li id="menu-item-7584" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-7584"><a title="Применение тегов HTML5" href="http://htmlhook.ru/tag/teg-html" itemprop="url"><span itemprop="name">Теги HTML5</span></a></li>
+<li id="menu-item-8113" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-8113"><a title="Набор программных средств для WordPress для создания сайта" href="http://htmlhook.ru/tag/wordpress" itemprop="url"><span itemprop="name">WordPress</span></a></li>
+<li id="menu-item-6705" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-6705"><a title="набор готовых функций API" href="http://htmlhook.ru/tag/api" itemprop="url"><span itemprop="name">Интерфейсы API</span></a></li>
+<li id="menu-item-6724" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-6724"><a title="Библиотеки JavaScript и PHP для разработки сайтов" href="http://htmlhook.ru/tag/framework" itemprop="url"><span itemprop="name">Фреймворки</span></a></li>
+<li id="menu-item-6694" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-6694"><a title="Что нового для веб" href="http://htmlhook.ru/tag/news" itemprop="url"><span itemprop="name">Веб новости</span></a></li>
+<li id="menu-item-6700" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-6700"><a title="Веб формы для сайта" href="http://htmlhook.ru/tag/form" itemprop="url"><span itemprop="name">Формы для сайта</span></a></li>
+<li id="menu-item-8391" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-8391"><a title="Псевдоклассы применяются для элементов в соответствии с их положением в дереве документа HTML" href="http://htmlhook.ru/tag/pseudo-classes" itemprop="url"><span itemprop="name">Псевдоклассы</span></a></li>
+<li id="menu-item-8511" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-8511"><a title="Микроразметка для разработки единой схемы семантической разметки в документе HTML" href="http://htmlhook.ru/tag/microdata" itemprop="url"><span itemprop="name">Микроразметка</span></a></li>
+<li id="menu-item-8513" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-8513"><a title="Мобильные приложения и устройства для различных операционных мобильных систем" href="http://htmlhook.ru/tag/mobile" itemprop="url"><span itemprop="name">Мобильные приложения</span></a></li>
+<li id="menu-item-8514" class="menu-item menu-item-type-taxonomy menu-item-object-post_tag menu-item-8514"><a title="Скачать бесплатно программы, плагины, расширение, браузеры, шаблоны, скрипты, макеты" href="http://htmlhook.ru/tag/skachat" itemprop="url"><span itemprop="name">Скачать бесплатно</span></a></li>
+</ul></div></aside></div><div id="secondary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar"><div id="primary-sidebar" class="primary-sidebar widget-area" role="complementary"><aside class="widget widget_current_category"><h3 class="widget-title" itemprop="name">Содержание</h3><ul class="current_category">
+<li class="post-item"><a itemprop="url" title="getElementById()" href="http://htmlhook.ru/document-getelementbyid.html"> <span itemprop="name">getElementById()</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Простые вкладки (табы) для сайта" href="http://htmlhook.ru/prostye-vkladki-tab-dlya-sajta.html"> <span itemprop="name">Простые вкладки (табы) для сайта</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Возможности видео HTML5" href="http://htmlhook.ru/vozmozhnosti-video-html5.html"> <span itemprop="name">Возможности видео HTML5</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Отправить cookie в браузер" href="http://htmlhook.ru/otpravit-cookie-v-brauzer.html"> <span itemprop="name">Отправить cookie в браузер</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Эффекты библиотеки OriDomi" href="http://htmlhook.ru/effekty-biblioteki-oridomi.html"> <span itemprop="name">Эффекты библиотеки OriDomi</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Web Animations element.animate()" href="http://htmlhook.ru/element-web-animations-element-animate.html"> <span itemprop="name">Web Animations element.animate()</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Web Notifications API" href="http://htmlhook.ru/web-notifications-api.html"> <span itemprop="name">Web Notifications API</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Виджет Dial yahoo" href="http://htmlhook.ru/vidzhet-dial-yahoo.html"> <span itemprop="name">Виджет Dial yahoo</span></a></li>
+	<li class="post-item"><a itemprop="url" title="User Timing API" href="http://htmlhook.ru/user-timing-api.html"> <span itemprop="name">User Timing API</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Фреймворк для разработки сайта" href="http://htmlhook.ru/bootstrap-foundation-framework.html"> <span itemprop="name">Фреймворк для разработки сайта</span></a></li>
+	<li class="post-item"><a itemprop="url" title="getUserMedia захват аудио и видео" href="http://htmlhook.ru/getusermedia-zahvat-audio-i-video.html"> <span itemprop="name">getUserMedia захват аудио и видео</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Intro.js для обзора продукта" href="http://htmlhook.ru/intro-js-dlya-obzora-produkta.html"> <span itemprop="name">Intro.js для обзора продукта</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Устанавить русский TinyMCE" href="http://htmlhook.ru/podklyuchit-redaktor-tinymce.html"> <span itemprop="name">Устанавить русский TinyMCE</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Сжатие HTML, JavaScript и CSS" href="http://htmlhook.ru/szhatie-html-javascript-i-css.html"> <span itemprop="name">Сжатие HTML, JavaScript и CSS</span></a></li>
+	<li class="post-item"><a itemprop="url" title="HTML5 fullscreen" href="http://htmlhook.ru/html5-fullscreen.html"> <span itemprop="name">HTML5 fullscreen</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Fabric.js дополняет HTML5 canvas" href="http://htmlhook.ru/fabric-js-dopolnyaet-html5-canvas.html"> <span itemprop="name">Fabric.js дополняет HTML5 canvas</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Адаптивный Slideshow Widget" href="http://htmlhook.ru/adaptivnyj-slideshow-widget.html"> <span itemprop="name">Адаптивный Slideshow Widget</span></a></li>
+	<li class="post-item"><a itemprop="url" title="JAM Chrome музыкальный проект" href="http://htmlhook.ru/jam-chrome-muzykalnyj-proekt.html"> <span itemprop="name">JAM Chrome музыкальный проект</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Navigation Timing API" href="http://htmlhook.ru/navigation-timing-api.html"> <span itemprop="name">Navigation Timing API</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Анимация фона веб-приложения" href="http://htmlhook.ru/animatsiya-fona-veb-prilozheniya.html"> <span itemprop="name">Анимация фона веб-приложения</span></a></li>
+	<li class="post-item"><a itemprop="url" title="getUserMedia теперь доступен" href="http://htmlhook.ru/getusermedia-teper-dostupen.html"> <span itemprop="name">getUserMedia теперь доступен</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Реагировать на изменения с Object.observe" href="http://htmlhook.ru/reagirovat-na-izmeneniya-s-object-observe.html"> <span itemprop="name">Реагировать на изменения с Object.observe</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Визуализация ближайших звезд" href="http://htmlhook.ru/vizualizatsiya-blizhajshih-zvezd-100000-stars.html"> <span itemprop="name">Визуализация ближайших звезд</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Использование knockout.js" href="http://htmlhook.ru/ispolzovanie-knockout-js.html"> <span itemprop="name">Использование knockout.js</span></a></li>
+	<li class="post-item"><a itemprop="url" title="CSSrefresh для тестирования CSS" href="http://htmlhook.ru/cssrefresh-dlya-testirovaniya-css.html"> <span itemprop="name">CSSrefresh для тестирования CSS</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Каркас 3D объектов в HTML 5" href="http://htmlhook.ru/karkas-3d-ob-ektov-v-html-5.html"> <span itemprop="name">Каркас 3D объектов в HTML 5</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Page Visibility API" href="http://htmlhook.ru/pagevisibility-api.html"> <span itemprop="name">Page Visibility API</span></a></li>
+	<li class="post-item"><a itemprop="url" title="JavaScript примеры и коды" href="http://htmlhook.ru/javascript-primery-i-kody.html"> <span itemprop="name">JavaScript примеры и коды</span></a></li>
+	<li class="post-item"><a itemprop="url" title="SVG новые возможности графики" href="http://htmlhook.ru/svg-novy-e-vozmozhnosti-grafiki.html"> <span itemprop="name">SVG новые возможности графики</span></a></li>
+	<li class="post-item"><a itemprop="url" title="HTML5 загрузка изображений" href="http://htmlhook.ru/html5-zagruzka-izobrazhenij.html"> <span itemprop="name">HTML5 загрузка изображений</span></a></li>
+	<li class="post-item"><a itemprop="url" title="HTML5 Color Picker" href="http://htmlhook.ru/html5-color-picker-canvas.html"> <span itemprop="name">HTML5 Color Picker</span></a></li>
+	<li class="post-item"><a itemprop="url" title="TypeScript" href="http://htmlhook.ru/typescript.html"> <span itemprop="name">TypeScript</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Захват содержания" href="http://htmlhook.ru/zahvat-soderzhaniya.html"> <span itemprop="name">Захват содержания</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Веб-аудио вход" href="http://htmlhook.ru/veb-audio-vhod.html"> <span itemprop="name">Веб-аудио вход</span></a></li>
+	<li class="post-item"><a itemprop="url" title="HTML5 Термометр" href="http://htmlhook.ru/html5-termometr.html"> <span itemprop="name">HTML5 Термометр</span></a></li>
+	<li class="post-item"><a itemprop="url" title="HTML5 Canvas и SVG" href="http://htmlhook.ru/html5-canvas-ili-svg.html"> <span itemprop="name">HTML5 Canvas и SVG</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Власть $.deferred" href="http://htmlhook.ru/vlast-deferred.html"> <span itemprop="name">Власть $.deferred</span></a></li>
+	<li class="post-item"><a itemprop="url" title="HTML5 input [type=&quot;file&quot;]" href="http://htmlhook.ru/integratsiya-vhod-type-file-s-api-fajlovoj-sistemy.html"> <span itemprop="name">HTML5 input [type=&quot;file&quot;]</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Совместимость HTML5" href="http://htmlhook.ru/sovmestimost-html5.html"> <span itemprop="name">Совместимость HTML5</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Скрипт радио плеера" href="http://htmlhook.ru/skript-radio-pleera.html"> <span itemprop="name">Скрипт радио плеера</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Перетащить файлы с рабочего стола в браузер" href="http://htmlhook.ru/fajly-s-rabochego-stola-v-brauzer.html"> <span itemprop="name">Перетащить файлы с рабочего стола в браузер</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Dataview" href="http://htmlhook.ru/dataview.html"> <span itemprop="name">Dataview</span></a></li>
+	<li class="post-item"><a itemprop="url" title="HTML5 игры: canvas" href="http://htmlhook.ru/html5-igry-canvas.html"> <span itemprop="name">HTML5 игры: canvas</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Музыкальное выпадающее меню CSS3" href="http://htmlhook.ru/muzykalnoe-vypadayushhee-menyu-css3.html"> <span itemprop="name">Музыкальное выпадающее меню CSS3</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Руководство по HTML5 SVG" href="http://htmlhook.ru/rukovodstvo-po-html5-svg.html"> <span itemprop="name">Руководство по HTML5 SVG</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Новые трюки в XMLHttpRequest2" href="http://htmlhook.ru/novye-tryuki-v-xmlhttprequest2.html"> <span itemprop="name">Новые трюки в XMLHttpRequest2</span></a></li>
+	<li class="post-item"><a itemprop="url" title="HTML5 &lt;audio&gt;" href="http://htmlhook.ru/html5-audio.html"> <span itemprop="name">HTML5 &lt;audio&gt;</span></a></li>
+	<li class="post-item"><a itemprop="url" title="Руководство по HTML5 Canvas" href="http://htmlhook.ru/rukovodstvo-po-html5-canvas.html"> <span itemprop="name">Руководство по HTML5 Canvas</span></a></li>
+	<li class="post-item"><a itemprop="url" title="HTML5 History API" href="http://htmlhook.ru/istoriya-html5-v-brauzere.html"> <span itemprop="name">HTML5 History API</span></a></li>
+	</ul></aside><aside id="recent-posts-2" class="widget widget_recent_entries"><h2 itemprop="name" class="widget-title">Свежие записи</h2><ul>
+<li class="post-item"><a itemprop="url" title="Псевдокласс :any-link" href="http://htmlhook.ru/psevdoklass-any-link.html"> <span itemprop="name">Псевдокласс :any-link</span></a></li><li class="post-item"><a itemprop="url" title="Google AMP" href="http://htmlhook.ru/google-amp.html"> <span itemprop="name">Google AMP</span></a></li><li class="post-item"><a itemprop="url" title="Значок гамбургер" href="http://htmlhook.ru/znachok-gamburger.html"> <span itemprop="name">Значок гамбургер</span></a></li><li class="post-item"><a itemprop="url" title="Цвета в CSS" href="http://htmlhook.ru/tsveta-v-css.html"> <span itemprop="name">Цвета в CSS</span></a></li><li class="post-item"><a itemprop="url" title="getElementById()" href="http://htmlhook.ru/document-getelementbyid.html"> <span itemprop="name">getElementById()</span></a></li><li class="post-item"><a itemprop="url" title="Псевдокласс :matches()" href="http://htmlhook.ru/psevdoklass-matches.html"> <span itemprop="name">Псевдокласс :matches()</span></a></li><li class="post-item"><a itemprop="url" title="Микроразметка для изображений" href="http://htmlhook.ru/mikrorazmetka-dlya-izobrazhenij.html"> <span itemprop="name">Микроразметка для изображений</span></a></li></ul></aside><aside id="recent-comments-2" class="widget widget_recent_comments"><h3 itemprop="name" class="widget-title">Комментарии</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">Supper</span> к записи <a href="http://htmlhook.ru/maket-css-stanovit-sya-umnee-s-calc.html/comment-page-1#comment-1906">Макет CSS становиться  умнее с calc()</a></li><li class="recentcomments"><span class="comment-author-link"><a href='http://htmlhook.ru' rel='external nofollow' class='url'>Виктор Клим</a></span> к записи <a href="http://htmlhook.ru/clajd-shou-css3.html/comment-page-1#comment-1902">Слайд-шоу CSS3</a></li><li class="recentcomments"><span class="comment-author-link">Валерий</span> к записи <a href="http://htmlhook.ru/clajd-shou-css3.html/comment-page-1#comment-1901">Слайд-шоу CSS3</a></li><li class="recentcomments"><span class="comment-author-link"><a href='http://htmlhook.ru' rel='external nofollow' class='url'>Виктор Клим</a></span> к записи <a href="http://htmlhook.ru/javascript-primery-i-kody.html/comment-page-1#comment-1892">JavaScript примеры и коды</a></li><li class="recentcomments"><span class="comment-author-link">Олег</span> к записи <a href="http://htmlhook.ru/javascript-primery-i-kody.html/comment-page-1#comment-1891">JavaScript примеры и коды</a></li></ul></aside></div></div><input type="hidden" name="NCMDkcys7Dc8" id="NCMDkcys7Dc8" />
+<script type="text/javascript">
+function fW4YKpySbBSlw() {
+	var o=document.getElementById("NCMDkcys7Dc8");
+	o.value="C4DhqSj6Gamf";
+}
+var boEkAqjEZmPk7 = document.getElementById("submit");
+if (boEkAqjEZmPk7) {
+	var cGCZb7a9nQ7Q8 = document.getElementById("NCMDkcys7Dc8");
+	var pDpwkwmenhpYk = boEkAqjEZmPk7.parentNode;
+	pDpwkwmenhpYk.appendChild(cGCZb7a9nQ7Q8, boEkAqjEZmPk7);
+	addHandler(boEkAqjEZmPk7, "mousedown", fW4YKpySbBSlw);
+	addHandler(boEkAqjEZmPk7, "keypress", fW4YKpySbBSlw);
+}
+</script>
+</div><footer id="colophon" class="site-footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter"><div class="back"><a href='#' onclick="return up()"></a></div><div id="supplementary"><div id="footer-sidebar" class="footer-sidebar widget-area" role="complementary" itemscope="itemscope" itemtype="http://schema.org/WPSideBar"><aside id="linkcat-2" class="widget widget_links"><h4 itemprop="name" class="widget-title">Быстрые ссылки</h4>
+	<ul class='xoxo blogroll'>
+<li><a itemprop="url" href="http://htmlhook.ru/rukovodstvo-po-html5-canvas.html" title="Руководство по HTML5 Canvas" target="_blank">HTML5 Canvas</a></li>
+<li><a itemprop="url" href="http://htmlhook.ru/javascript-primery-i-kody.html" title="JavaScript примеры и коды, которые помогают разработчикам при строительстве сайтов" target="_blank">JavaScript примеры и коды</a></li>
+<li><a itemprop="url" href="http://htmlhook.ru/animatsiya-v-css3.html" title="Построить анимацию HTML-элементов.">Анимация CSS3</a></li>
+<li><a itemprop="url" href="http://htmlhook.ru/sitemap.xml" title="Карта сайта в формате XML" target="_blank">Карта сайта XML</a></li>
+<li><a itemprop="url" href="http://htmlhook.ru/knopki-dlya-sajta.html" title="Кнопки для сайта, несколько примеров." target="_blank">Кнопки для сайта</a></li>
+<li><a itemprop="url" href="http://htmlhook.ru/oformlenie-wordpress.html" title="Важно знать при работе с WordPress" target="_blank">Оформление WordPress</a></li>
+<li><a itemprop="url" href="http://htmlhook.ru/pseudo-classes.html" title="Примеры псевдоклассов CSS3" target="_blank">Псевдоклассы CSS3</a></li>
+
+	</ul>
+</aside>
+<aside id="nav_menu-4" class="widget widget_nav_menu"><h4 itemprop="name" class="widget-title">Формат записей</h4><div class="menu-tipy-zapisej-container"><ul id="menu-tipy-zapisej" class="menu"><li id="menu-item-3452" class="menu-item menu-item-type-taxonomy menu-item-object-post_format menu-item-3452"><a title="Формат Видео" href="http://htmlhook.ru/type/video" itemprop="url"><span itemprop="name">Видео</span></a></li>
+<li id="menu-item-3453" class="menu-item menu-item-type-taxonomy menu-item-object-post_format menu-item-3453"><a title="Формат Изображение" href="http://htmlhook.ru/type/image" itemprop="url"><span itemprop="name">Изображение</span></a></li>
+<li id="menu-item-3454" class="menu-item menu-item-type-taxonomy menu-item-object-post_format menu-item-3454"><a title="Формат Заметка" href="http://htmlhook.ru/type/aside" itemprop="url"><span itemprop="name">Заметка</span></a></li>
+<li id="menu-item-3455" class="menu-item menu-item-type-taxonomy menu-item-object-post_format menu-item-3455"><a title="Формат Статус" href="http://htmlhook.ru/type/status" itemprop="url"><span itemprop="name">Статус</span></a></li>
+<li id="menu-item-3495" class="menu-item menu-item-type-taxonomy menu-item-object-post_format menu-item-3495"><a title="Формат Ссылка" href="http://htmlhook.ru/type/link" itemprop="url"><span itemprop="name">Ссылка</span></a></li>
+<li id="menu-item-5712" class="menu-item menu-item-type-taxonomy menu-item-object-post_format menu-item-5712"><a title="Формат Цитата" href="http://htmlhook.ru/type/quote" itemprop="url"><span itemprop="name">Цитата</span></a></li>
+<li id="menu-item-6150" class="menu-item menu-item-type-taxonomy menu-item-object-post_format menu-item-6150"><a title="Формат Аудио" href="http://htmlhook.ru/type/audio" itemprop="url"><span itemprop="name">Аудио</span></a></li>
+</ul></div></aside><aside id="pages-2" class="widget widget_pages"><h4 itemprop="name" class="widget-title">Страницы</h4>		<ul>
+			<li class="page_item page-item-3229"><a itemprop="url" href="http://htmlhook.ru/project">Проект</a></li>
+<li class="page_item page-item-1532"><a itemprop="url" href="http://htmlhook.ru/primery-jquery">Примеры jQuery</a></li>
+		</ul>
+		</aside><aside id="text-44" class="widget widget_text">			<div class="textwidget"><!--noindex--><a rel="nofollow" href="http://htmlhook.ru/userfiles/mail/" title="Форма обратной связи" target="_blank"></a><!--/noindex--></div>
+		</aside></div></div><hr /><p> <small role="contentinfo"> 2004 - <span itemprop="copyrightYear">2016</span> &copy; <a itemprop="url" title="Скрипты для веб-приложений" href="http://htmlhook.ru/"> <span itemprop="copyrightHolder">htmlhook.ru</span></a></small><!--noindex--><a target="_blank" rel="nofollow" href="http://ru.wordpress.org" title="Состояние арт-семантической индивидуальной издательской платформы">WordPress</a><!--/noindex--></p></footer></div><script type='text/javascript' src='http://htmlhook.ru/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/shCore.js'></script>
+<script type='text/javascript' src='http://htmlhook.ru/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/shBrushCss.js'></script>
+<script type='text/javascript' src='http://htmlhook.ru/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/shBrushPhp.js'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://htmlhook.ru/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/styles/shCore.css?ver=2.1.364";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "http://htmlhook.ru/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/styles/shThemeDefault.css?ver=2.1.364";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.clipboardSwf = 'http://htmlhook.ru/wp-content/plugins/syntaxhighlighter/syntaxhighlighter2/scripts/clipboard.swf';
+	SyntaxHighlighter.config.strings.expandSource = 'show source';
+	SyntaxHighlighter.config.strings.viewSource = 'view source';
+	SyntaxHighlighter.config.strings.copyToClipboard = 'copy to clipboard';
+	SyntaxHighlighter.config.strings.copyToClipboardConfirmation = 'The code is in your clipboard now';
+	SyntaxHighlighter.config.strings.print = 'print';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['auto-links'] = false;
+	SyntaxHighlighter.defaults['gutter'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['smart-tabs'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+</script>
+<script>(function(){for(var tags = ['details','summary'], i = 0; i < tags.length; i ++){document.createElement(tags[i]);}})();</script><script>function up(){var e=Math.max(document.body.scrollTop,document.documentElement.scrollTop);return e>0?(window.scrollBy(0,(e+100)/-10),t=setTimeout("up()",20)):clearTimeout(t),!1}!function(e,t,n){"use strict";var r=e.querySelectorAll(".search-toggle, .menu-toggle, #click-button"),a=function(e,t){var n=t.getAttribute("aria-hidden");"false"==n?(e.setAttribute("aria-expanded","false"),t.setAttribute("aria-hidden","true"),t.style.display="none"):(e.setAttribute("aria-expanded","true"),t.setAttribute("aria-hidden","false"),t.style.display="block")};[].forEach.call(r,function(e,t){var n=e.nextElementSibling;e.setAttribute("aria-expanded","false"),e.setAttribute("aria-controls","button-"+t),n.setAttribute("aria-hidden","true"),n.setAttribute("aria-labelledby","content-"+t),n.setAttribute("tabindex","0"),e.addEventListener("click",function(){return a(this,n),!1},!1),e.addEventListener("keydown",function(e){32===e.which&&(e.preventDefault(),a(this,n))},!1)})}(document,window);for(var navMenu=document.getElementById("primary-navigation"),roles=navMenu.getElementsByTagName("ul"),u=0;u<roles.length;u++)roles[u].setAttribute("role","menubar");for(var roles=navMenu.getElementsByTagName("li"),l=0;l<roles.length;l++)roles[l].setAttribute("role","presentation");for(var roles=navMenu.getElementsByTagName("a"),a=0;a<roles.length;a++)roles[a].setAttribute("role","menuitem");</script>
+<!--[if IE 8]><script src="http://htmlhook.ru/wp-content/themes/pixelcom/js/ie8.js"></script><![endif]--><script>function lc_get_cookie(name) {var c = document.cookie;if (c.indexOf(name) != -1) {var x = c.indexOf(name)+name.length+1;var y = c.indexOf(";",x);if (y < 0) y = c.length;return decodeURIComponent(c.substring(x,y));} else return "";}if ((d = document.getElementById("commentform")) != null) { e = d.elements;var z = lc_get_cookie("comment_author_email_ec276c13e6199c36f918eb99ca00b047");if (z != "") e["email"].value = z;z = lc_get_cookie("comment_author_ec276c13e6199c36f918eb99ca00b047");if (z != "") e["author"].value = z.replace(/\+/g, " ");z = lc_get_cookie("comment_author_url_ec276c13e6199c36f918eb99ca00b047");if (z != "") e["url"].value = z;}</script></body></html><!-- hyper cache 2016-02-28 10:48:23 -->

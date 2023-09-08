@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!--  <script type="application/JavaScript;version=1.8"></script> -->
+<title>целые числа, простые числа</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+ </head>
+
+<body>
+<ul id="results"> </ul>
+ 
+<script>
+
+
+//    ##Math 
+
+
+     // ##СЛУЧАЙНОЕ      ##random      здесь     /////// a>b ///////
+// + см OSC  randomIntegerOSC(min, max)
+	// 1  псевдо-случайное в интервале [0,1)    вкл 0, не вкл 1.       инициализуется текущим временем.
+assert (1, Math.random());  
+ 
+
+	// 2  случайное в интервале (a, b)         не вкл a и b.  
+var a = 7, b = 3;
+assert (1,  Math.random()*(a - b) + b); 
+    // частный случ      случ  от -a до a  
+//kkk     var a = 5;     alert (Math.random()*2*a - a)  
+   // частный случ      случ  от 0 до a      var a = 5;    alert (Math.random()*a);
+
+
+	// 3  концепт  генератор случ ЦЕЛОГО числа   в интервале [a, b]      вкл a и b. 
+//  Math.round(Math.random()*((a+0.5) - (b-0.5)) + b-0.5); 
+var a = 6, b = 2
+assert (1, Math.round(Math.random()*(a-b+1) + b-0.5) );  
+     // частный случ      случ  от -a до a  
+//kkk     var a = 5;     alert(Math.round(Math.random()*(2*a+1) - a-0.5))  
+     // частный случай     случ  от 0 до a     
+//kkk     var a = 5;   alert(Math.round(Math.random()*(a+1) -0.5));
+
+
+/*// концепт1   генератор СЛУЧАЙНОГО ЦЕЛОГО числа    !!!
+//  (в интервале [max, min]  вкл max и min.) 
+var max=6, min=2;
+alert (Math.floor(Math.random() * (max + 1 - min) + min));
+*/    
+
+
+
+
+
+
+
+
+//=======================================================================
+// 4     Math.Pi()   
+var pi = Math.PI
+assert (1, pi); 
+
+// 5   %	Взятие остатка от деления   
+assert (1, 7%4); 
+
+// 6   !! записи целых чисел в восьмеричном и шестнадцатеричном виде
+assert (1, 012+ " "+ 0x18); 
+
+
+// 7  Math.  ##max  ##min
+var biggest=Math.max ( 1 , 2 ) ;
+var biggest=Math.max ( 1 ,3 , 4 , 5 , 20 , 6 , 7 , 8 , 9 , 10 ) ;
+assert ( true, biggest); 
+
+
+//  8, 9    см  OSC
+assert(smallest([0,1,2,3]) == 0," smallest([0,1,2,3]) == 0 " ) ;
+assert(largest ([0,1,2,3]) == 3," largest ([0,1,2,3]) == 3 " ) ;
+
+
+
+
+
+// ##примеры
+
+/*
+/// Using Math.random()      Rounding Down with Math.floor()
+var randomWords = ["Explosion", "Cave", "Princess", "Pen"];
+var randomIndex = Math.floor(Math.random() * 4);
+document.write(randomWords[randomIndex]);    document.write("<br>");
+
+// Creating a Random Insult Generator
+var randomBodyParts = ["Face", "Nose", "Hair"];
+var randomAdjectives = ["Smelly", "Boring", "Stupid",   "Kozak" ];
+var randomWords = ["Fly", "Marmot", "Stick", "Monkey", "Rat"];
+
+var randomBodyPart = randomBodyParts[Math.floor(Math.random() * randomBodyParts.length)];
+var randomAdjective = randomAdjectives[Math.floor(Math.random() * randomAdjectives.length)];
+var randomWord = randomWords[Math.floor(Math.random() * randomWords.length)];
+var randomInsult = "Your " + randomBodyPart + " is like a " + randomAdjective + " " + randomWord + "!!!";
+document.write(randomInsult);   
+*/
+ document.write("<hr>");
+
+
+
+
+
+</script>
+
+
+
+
+<script src="mathmy1.js"></script>
+</body>
+</html>

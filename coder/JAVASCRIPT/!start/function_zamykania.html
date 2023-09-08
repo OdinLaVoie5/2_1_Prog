@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>nindja1</title>
+<script src="../jquery.js"></script>
+<script src='../OSC.js'></script>
+
+<style>
+#box {
+	border:solid;
+	width:100px;
+	text-align:center;
+	color:red;	
+}
+.clickedOn {
+	border:solid 10px #00FF00;	
+}
+</style>
+
+</head>
+
+<body>
+<ul id="results" style="position:relative"> </ul>
+
+<button id = "test" style="position:relative"> Test</button>
+<button type="button" id='testButton'> Go! </button>
+<button id = "clickme" style="position:relative"> Clickme</button>
+
+<div id="testSubject"></div>
+<div id = "message" style="position:relative"> message</div>
+<div id = "box" style="position:relative">   NNNNN </div>
+
+<img src="image.png"> 
+
+<script src="func_zam.js"></script>
+
+
+
+
+
+
+<script>
+document.write("<br>");  // ??
+
+//// примеры    замыкания (ф-ция и её окружение) 
+var count = 0;
+window.onload = function() {
+var button = document.getElementById("clickme");
+button.onclick = handleClick;
+};
+function handleClick() {
+var message = "You clicked me ";
+var div = document.getElementById("message");
+count++;
+div.innerHTML = message + count + " times!";
+}
+
+
+
+
+//  пример
+function makePassword(password) {
+  return function guess(passwordGuess) {
+	return (passwordGuess === password);
+  };
+}
+var tryGuess = makePassword("secret");
+document.write("Пароль 'nope': " + tryGuess("nope"));  
+document.write(" "+"Пароль 'secret': " + tryGuess("secret"));
+
+
+
+//   
+function makeCounter() {
+var count = 0;
+return {
+increment: function() {
+count++;
+return count;
+}
+};
+}
+var counter = makeCounter();
+document.write("<br>"+counter.increment());
+document.write(counter.increment());
+document.write(counter.increment()+ "<br>");
+
+
+
+
+
+
+//// пример    локал и глобал  переменные с одним именем
+var justAVar = "Oh, don't you worry about it, I'm GLOBAL";
+
+function whereAreYou() {
+var justAVar = "Just an every day LOCAL";
+return justAVar;
+}
+
+document.write(whereAreYou());
+
+</script>
+	
+
+
+</body>
+</html>

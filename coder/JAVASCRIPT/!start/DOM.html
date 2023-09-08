@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+
+</head>
+
+<body>
+<ul id="results"> </ul>
+
+<div id=code2> </div>
+<span id=code1> клик </span>
+<script>
+//см OSC.js
+
+
+/////  Добавление элементов
+//    ##createElement   ##appendChild  ##parentNode     ##removeChild ()         ##id   ##innerHTML 
+alert('Для добавления элемента щелкните на кнопке OK')
+newdiv = document.createElement('div')
+newdiv.id = 'NewDiv'
+document.body.appendChild(newdiv)   // !!  ##body   можно также ##html
+S(newdiv).border = 'solid 1px red'
+S(newdiv).width = '100px'
+S(newdiv).height = '100px'
+newdiv.innerHTML = "Это новый объект, вставленный в DOM"
+tmp = newdiv.offsetTop   // вроде бы нужно для немедленного отражения на экране (здесь просто запрос расстояния до верха) ?? 
+alert('Для удаления элемента щелкните на кнопке OK')
+pnode = newdiv.parentNode
+pnode.removeChild(newdiv)
+tmp = pnode.offsetTop
+
+
+//  + разная работа с видимостью элементов      !!    
+// newdiv.style.visibility = 'hidden'     newdiv.style.visibility = 'visible'      
+//  newdiv.style.display = 'none'    newdiv.style.display = 'block'    
+//   O('NewDiv').innerHTML = 'Новое содержимое'  O('NewDiv').innerHTML = ''  
+// + можно воспользоваться свойством непрозрачности,   применяя для свойства position значения 'absolute', 'static' или 'relative', вы можете даже поместить объект в любое место окна браузера (или снаружи).  
+//  ??   когда нужно .style  а когда можно и без? - если св-ва устанавл через CSS?
+
+
+
+ //      ##outerHTML  содержимое без крайних тегов и с ними.
+
+var access = document.getElementById("code1");
+var code = access.outerHTML;
+document.write("<sub>" + code + "</sub>");    
+document.write("<sup>" + code + "</sup>");    
+document.write("<br>");
+
+
+
+
+//   document
+
+// my
+document.onclick = function () {document.bgColor = 'yellow'}
+</script>
+
+<script src="dom.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+body {
+	background-color: Lightgrey;
+}
+/*ввод цветов в скрипт ??? 
+.UU {
+	color:Red; 
+}
+.III {
+	color:rgb(255,0,255); 
+}
+.I {
+	color:rgb(0,255,255); 
+}
+.M {
+	color:rgb(0,255,0); 
+}
+*/
+
+
+#textup, #textsmallout, #textbigout {
+	position: static;
+	margin-left: 3px;
+	margin-top: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 12px;
+	white-space: nowrap;
+}
+#textup {
+	background-color: rgb(255,230,230);
+	width: 600px;
+}
+#textup .top {
+	margin-bottom: 5px;
+}
+#textsmallout {
+	background-color: rgb(255,255,200);
+	width: 600px;
+}
+#textbigout {
+	width: 600px;
+}
+.rez, #startname, #finname, #fncs {
+	font-family: "Courier New", Courier, monospace;
+	white-space: nowrap;
+}
+.rez table {
+	border-collapse: collapse;
+	border: solid thin rgb(153,153,153);
+	margin-bottom: 12px;
+}
+.rez .separ1 {
+	background-color: transparent;
+	line-height: 5px;
+}
+.separ1:first-child td {    /*сортировочный верх*/
+	border-style: solid;
+	border-width: thin;
+	border-color: rgb(153,153,153);
+	background-color: White;
+	text-align: center;
+	padding: 0px;
+	padding-bottom: 2px;
+	font-size: 10px;
+	cursor: pointer;
+	color: rgba(0,0,0,0.2)
+}
+.separ1:first-child td:last-child {
+	padding-bottom: 2px;
+}
+.separ1:first-child td:hover {
+	color: rgba(0,0,0,1)
+}
+.rez tr {
+	background-color: White;
+}
+#textbig tr:first-child {
+	height: 3px;
+}
+.rez tr:last-child {
+	height: 25px;
+}
+.rez td {
+	padding-left: 15px;
+}
+.rez td:first-child {
+	padding-left: 5px;
+}
+.rez td:nth-child(3) {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+.rez td:nth-child(4) {
+	padding-left: 20px;
+}
+.rez td:nth-child(5) {
+	text-align: center;
+}
+.rez td:last-child {
+	padding: 0px;
+}
+.top {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	margin-top: 8px;
+	margin-bottom: 15px;
+}
+.sum {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+#scroll {
+	background-color: transparent;
+	position: fixed;
+	top: 300px;
+	left: -5px;
+	z-index: 1000;
+}
+#scroll p {
+	margin: 0px;
+	font-size: 24px;
+	cursor: pointer;
+	color: rgba(0,0,0,0.2)
+}
+#scroll p:hover {
+	color: rgba(0,0,0,1)
+}
+
+
+
+
+#bigdiv {
+	position: fixed;
+	right: 0px;
+	top: -3px;
+}
+.optionpanel {
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+	right: 0px;
+	top: 0px;
+	width: 480px;
+	background-color: rgb(240,240,240);
+	border-collapse: collapse;
+}
+.optionpanel tr:last-child {
+	height: 65px;
+	vertical-align: bottom;
+}
+.optionpanel tr:first-child {
+	height: 45px;
+	vertical-align: bottom;
+}
+.optionpanel td {
+	padding-left: 15px;
+}
+.optionpanel td:first-child {
+	width: 220px;
+}
+.optionpanel td:nth-child(2) {
+	width: 200px;
+}
+
+
+#option0 {
+	margin-top:15px;
+	height: 220px;
+	top: -1500px;
+}
+#option1 {
+	height: 170px;
+	top: -1500px;
+}
+#option2 {
+	height: 200px;
+	top: -1500px;
+}
+#option3 {
+	height: 330px;
+	right: 485px;
+	top: -1500px;
+}
+
+
+
+.smallUser {
+	width: 38px;
+}
+#butcheck {
+	color: rgb(240,0,0);
+}
+#butadd0 {
+	width: 100px;
+}
+.resetIt {
+	display: none;
+}
+#gamburg {
+	position: absolute;
+	float: right;
+	padding: 0px;
+	margin: 0px;
+	right: 0px;
+	top: 3px;
+	z-index: 100;
+	font: 2em "arial";
+	text-align: center;
+	background-color: rgb(200,200,200);
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+#gamburg:hover {
+	background-color: rgb(210,220,230);
+}
+#menuTitleOut {
+	visibility: visible;
+	height: 30px;
+	width: 480px;
+}
+#menuTitleOut img {
+	height: 40px;
+	float: left;
+	margin-top: 2px; 
+}
+#menuTitle {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+	padding-top: 12px;
+	background-color: rgb(240,240,240);
+	border-bottom: solid rgb(200,200,200);
+	cursor: pointer;
+	height: 30px;
+}
+#menuTitle:hover {
+	background-color: rgb(210,220,230);
+}
+
+
+
+
+

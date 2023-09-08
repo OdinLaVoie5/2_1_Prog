@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+ 	<meta HTTP-EQUIV="X-UA-COMPATIBLE" CONTENT="IE=9" >
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta property="fb:admins" content="1838199180" />
+
+	<!-- Google Analytics -->
+	<meta name="verify-v1" content="76mLLsz9Quagn33AQKKRm8yvB0rV1yl7nuQ/mrrph4U=" />
+	
+	<title>Political Influence - Brightpoint</title>
+	
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="pingback" href="http://www.brightpointinc.com/xmlrpc.php" />
+    
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/wp-content/themes/flatstudio/images/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/wp-content/themes/flatstudio/images/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/wp-content/themes/flatstudio/images/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/wp-content/themes/flatstudio/images/apple-touch-icon-57-precomposed.png">
+	
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />
+	
+	<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+	<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+	<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+	<!--[if IE 9]>    <html class="no-js ie9" lang="en"> <![endif]-->
+	<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+	<!--[if gt IE 9]><!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/Product"><!--<![endif]-->
+
+	<!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+    
+    <link rel='stylesheet' id='slider-pro-slider-base-css'  href='/wp-content/plugins/slider-pro/css/slider/advanced-slider-base.css?ver=3.6' type='text/css' media='all' />
+    <link rel='stylesheet' id='slider-pro-skin-pixel-css'  href='/wp-content/plugins/slider-pro/skins/slider/pixel/pixel.css?ver=3.6' type='text/css' media='all' />
+    <link rel='stylesheet' id='slider-pro-1-custom-css'  href='/wp-content/plugins/slider-pro/custom/slider-pro-1/slider-pro-1-custom-css.css?ver=3.6' type='text/css' media='all' />
+	<link href='http://fonts.googleapis.com/css?family=Raleway:100,400,600,700,800' rel='stylesheet' type='text/css'>
+	
+	<script type="text/javascript">
+	document.documentElement.className = 'js';
+	</script>
+    
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+	<script type="text/javascript">
+    function toggleAndChangeText() {
+         $('#divToToggle').toggle();
+         if ($('#divToToggle').css('display') == 'none') {
+              $('#aTag').html('');
+         }
+         else {
+              $('#aTag').html('');
+         }
+    }
+    </script>
+	
+		<!-- Get the favicon -->
+	<link rel="icon" type="image/png" href="http://www.brightpointinc.com/wp-content/uploads/2013/11/favicon.png" />
+	
+	
+	
+	<!-- HEADER START -->
+	
+<!-- This site is optimized with the Yoast SEO plugin v2.3.5 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="http://www.brightpointinc.com/political_influence/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Political Influence - Brightpoint" />
+<meta property="og:description" content="This visualization looks at the monetary contributions made by the top 20 Political Action Committees (PAC) for the 2012 congressional election cycle, both for the House of Representatives and the Senate.The goal was to depict how intertwined special interests groups and our political representatives are. Each inner circle represents a member of congress, blue isRead More" />
+<meta property="og:url" content="http://www.brightpointinc.com/political_influence/" />
+<meta property="og:site_name" content="Brightpoint" />
+<meta property="article:section" content="HTML5 Data Visualizaton with D3.js" />
+<meta property="article:published_time" content="2015-08-01T17:48:43+00:00" />
+<meta property="article:modified_time" content="2015-11-03T13:00:37+00:00" />
+<meta property="og:updated_time" content="2015-11-03T13:00:37+00:00" />
+<meta property="og:image" content="http://www.brightpointinc.com/wp-content/uploads/2015/08/Influence_Project.png" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Brightpoint &raquo; Feed" href="http://www.brightpointinc.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Brightpoint &raquo; Comments Feed" href="http://www.brightpointinc.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Brightpoint &raquo; Political Influence Comments Feed" href="http://www.brightpointinc.com/political_influence/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.brightpointinc.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.3.3"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='font-awesome-css'  href='http://www.brightpointinc.com/wp-content/plugins/download-manager/font-awesome/css/font-awesome.min.css?ver=4.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wpdm-bootstrap-css'  href='http://www.brightpointinc.com/wp-content/plugins/download-manager/bootstrap/css/bootstrap.css?ver=4.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='wpdm-front-css'  href='http://www.brightpointinc.com/wp-content/plugins/download-manager/css/front.css?ver=4.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='slider-pro-slider-base-css'  href='http://www.brightpointinc.com/wp-content/plugins/slider-pro/css/slider/advanced-slider-base.css?ver=3.6' type='text/css' media='all' />
+<link rel='stylesheet' id='slider-pro-skin-minimal-light-css'  href='http://www.brightpointinc.com/wp-content/plugins/slider-pro/skins/slider/minimal-light/minimal-light.css?ver=3.6' type='text/css' media='all' />
+<link rel='stylesheet' id='slider-pro-1-custom-css'  href='http://www.brightpointinc.com/wp-content/plugins/slider-pro/custom/slider-pro-1/slider-pro-1-custom-css.css?ver=3.6' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css'  href='http://www.brightpointinc.com/wp-content/themes/flatstudio/style.css?ver=4.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='metrize_css-css'  href='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/fonts/style.css?ver=0.1' type='text/css' media='screen' />
+<link rel='stylesheet' id='gumby_css-css'  href='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/css/gumby.css?ver=0.1' type='text/css' media='screen' />
+<link rel='stylesheet' id='hoverex-all_css-css'  href='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/css/hoverex-all.css?ver=0.1' type='text/css' media='screen' />
+<link rel='stylesheet' id='google_opensans-css'  href='http://fonts.googleapis.com/css?family=Open+Sans%3A400%2C700&#038;ver=4.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='google_lato-css'  href='http://fonts.googleapis.com/css?family=Lato%3A300%2C400%2C700&#038;ver=4.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='synved-shortcode-jquery-ui-css'  href='http://www.brightpointinc.com/wp-content/plugins/synved-shortcodes/synved-shortcode/jqueryUI/css/snvdshc/jquery-ui-1.9.2.custom.min.css?ver=1.9.2' type='text/css' media='all' />
+<link rel='stylesheet' id='synved-shortcode-layout-css'  href='http://www.brightpointinc.com/wp-content/plugins/synved-shortcodes/synved-shortcode/style/layout.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='synved-shortcode-jquery-ui-custom-css'  href='http://www.brightpointinc.com/wp-content/plugins/synved-shortcodes/synved-shortcode/style/jquery-ui.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='http://www.brightpointinc.com/wp-content/plugins/jetpack/css/jetpack.css?ver=3.8.0' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/download-manager/bootstrap/js/bootstrap.min.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/download-manager/js/jquery.cookie.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/download-manager/js/front.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/download-manager/js/chosen.jquery.min.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/modernizr-2.6.2.min.js?ver=2.6.2'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/addons/light-prompt/script/light-prompt.js?ver=1.2.4'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/synved-shortcodes/synved-shortcode/script/jquery.ba-bbq.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/synved-shortcodes/synved-shortcode/script/jquery.scrolltab.js?ver=1.0'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-includes/js/jquery/ui/tabs.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-includes/js/jquery/ui/accordion.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-includes/js/jquery/ui/button.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/synved-shortcodes/synved-shortcode/script/jquery-unselectable.js?ver=1.0.0'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-includes/js/jquery/ui/slider.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/synved-shortcodes/synved-shortcode/script/base.js?ver=1.0'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/synved-shortcodes/synved-shortcode/script/custom.js?ver=1.0'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.brightpointinc.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.brightpointinc.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.3.3" />
+<link rel='shortlink' href='http://wp.me/p46IBg-5Y' />
+<meta name="generator" content="Custom Login v3.2.4" />
+
+<link rel='dns-prefetch' href='//jetpack.wordpress.com'>
+<link rel='dns-prefetch' href='//s0.wp.com'>
+<link rel='dns-prefetch' href='//s1.wp.com'>
+<link rel='dns-prefetch' href='//s2.wp.com'>
+<link rel='dns-prefetch' href='//public-api.wordpress.com'>
+<link rel='dns-prefetch' href='//0.gravatar.com'>
+<link rel='dns-prefetch' href='//1.gravatar.com'>
+<link rel='dns-prefetch' href='//2.gravatar.com'>
+<style type='text/css'>img#wpstats{display:none}</style>        <style type="text/css"> 
+body ::-moz-selection{background:  #6ec5e2;}body ::selection{background:#6ec5e2;}.container .blocked {background:#363B48;}.container .interblock_footer {background:#F17C71;}#contact_info {background:#e95855;}.container section {background:#f1f1f1;}
+.filter li a:hover, .filter li a.active {background-color: #F17C71;} .buttom {
+background: #a0cac0; border-bottom: 4px solid #68a697;}#header h2, #header .lead {color:#FFFFFF;}</style>
+    	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+
+<style type="text/css">.synved-share-image {
+ opacity:.45;
+}
+.synved-share-image:hover {
+ opacity:1;
+}</style>
+
+<style type="text/css"></style>
+
+<style type="text/css">
+.synved-social-resolution-single {
+display: inline-block;
+}
+.synved-social-resolution-normal {
+display: inline-block;
+}
+.synved-social-resolution-hidef {
+display: none;
+}
+
+@media only screen and (min--moz-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-device-pixel-ratio: 2),
+only screen and (min-resolution: 2dppx),
+only screen and (min-resolution: 192dpi) {
+	.synved-social-resolution-normal {
+	display: none;
+	}
+	.synved-social-resolution-hidef {
+	display: inline-block;
+	}
+}
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #fff; }
+</style>
+
+<style id="custom-css-css">/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/</style>
+	<!-- HEADER END -->
+
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-173014-2', 'brightpointinc.com');
+        ga('send', 'pageview');
+
+    </script>
+
+</head>
+
+<body class="single single-post postid-370 single-format-standard custom-background">
+
+<div class="loader"></div>
+
+	<div class="container">
+
+		<div class="cbp-af-header">
+		
+			<nav class="row">
+				 <div id="logo" class="clearfix">
+			<a id="aTag" class="navbar-toggle "href="javascript:toggleAndChangeText();"></a>
+				 								<a href="http://www.brightpointinc.com/" class="clearfix"><img class="logo" src="http://www.brightpointinc.com/wp-content/uploads/2013/11/brightpoint-logo.png" alt="Political Influence" /></a>
+	    						    		</div>
+	    						<div id="nav" class="clearfix">
+					<div class="special clearfix">
+						<div class="menu-navigation-container"><ul id="menu-navigation" class="nav"><li id="menu-item-408" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-408"><a title="Data Visualization Services" href="/project-list/">Projects</a></li>
+<li id="menu-item-634" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-634"><a title="Data Visualization Services" href="http://www.brightpointinc.com/data-visualization-services/">Services</a></li>
+<li id="menu-item-654" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-654"><a href="http://www.brightpointinc.com/data-visualization-articles/">Articles</a></li>
+<li id="menu-item-655" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-655"><a href="http://www.brightpointinc.com/data-visualization-open-source/">Open Source</a></li>
+<li id="menu-item-711" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-711"><a href="/#about-us">About Us</a></li>
+<li id="menu-item-712" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-712"><a href="http://www.brightpointinc.com/#contact-us">Contact Us</a></li>
+</ul></div>			 		</div>
+			 	</div>
+	    					</nav>
+
+		</div> 
+          
+        <div id="divToToggle" style="display: none;">
+                <div class="mobile-menu">
+                    <!-- section id="collapse" -->
+		    <!-- I had to change the id of this section, because the javascript was defaulting this display:none
+			 so the menu was not showing up initially when toggled on mobile devices.  To restore to previous
+			state remove the below <section ...> tag and uncomment one above -->
+			<section id="collapse-not-working" style="display:block">
+                        <div class="row">
+                            <div class="mobile-menu-inner">
+        			                                <div class="menu-navigation-container"><ul id="menu-navigation-1" class="nav-mobile"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-408"><a title="Data Visualization Services" href="/project-list/">Projects</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-634"><a title="Data Visualization Services" href="http://www.brightpointinc.com/data-visualization-services/">Services</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-654"><a href="http://www.brightpointinc.com/data-visualization-articles/">Articles</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-655"><a href="http://www.brightpointinc.com/data-visualization-open-source/">Open Source</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-711"><a href="/#about-us">About Us</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-712"><a href="http://www.brightpointinc.com/#contact-us">Contact Us</a></li>
+</ul></div>                            </div>
+                        </div>
+                    </section>
+                                    </div>
+        </div>  
+    
+<section id="feature-bg-mobile"></section>
+<div class="row mobile-feature centered">
+    <div class="twelve columns">
+        <h3>Bringing Data to Life</h3>
+    </div>
+    <a href="/project-list">
+    	<img src="/wp-content/uploads/D3_Project.png" alt="Bringing Data to Life"/>
+    </a>
+    <div class="twelve columns centered"><a class="buttom" href="/project-list">VIEW THE PROJECTS</a></div>
+</div>
+
+<section id="feature-bg"></section>
+<div id="main" class="slider-holder">
+	<div class="advanced-slider lightbox-slider" id="slider-pro-1" tabindex="0">
+	<div class="slides">
+		<div class="slide" data-image="http://www.brightpointinc.com/wp-content/uploads/2015/08/Influence_Banner.png">
+			<a href="http://www.brightpointinc.com/political_influence/" target="_self" tabindex="-1">
+				<img class="image" src="http://www.brightpointinc.com/wp-content/plugins/slider-pro/css/images/blank.gif" alt="Political Influence" title="Political Influence"/>
+			</a>
+			<div class="thumbnail"><a href="http://www.brightpointinc.com/political_influence/" style="color:#000000; font-weight:200; font-size:12px"><img src="http://www.brightpointinc.com/wp-content/uploads/2015/08/Influence_Thumbnail.png" />
+POLITICAL INFLUENCE</a></div>
+			<div class="layer white" data-transition="up" data-position="bottomRight" data-horizontal="-1" data-width="100%" >POLITICAL INFLUENCE</div>
+		</div>
+		<div class="slide" data-image="http://www.brightpointinc.com/wp-content/uploads/2015/08/Banner_D3Mobile.png">
+			<a href="http://www.brightpointinc.com/d3-mobile-web-application/" target="_self" title="Mobile Data Visualization" tabindex="-1">
+				<img class="image" src="http://www.brightpointinc.com/wp-content/plugins/slider-pro/css/images/blank.gif" alt="D3 Mobile Web App" title="MOBILE DATA VISUALIZATION"/>
+			</a>
+			<div class="thumbnail"><a href="http://www.brightpointinc.com/d3-mobile-web-application/" style="color:#000000; font-weight:200; font-size:12px"><img src="http://www.brightpointinc.com/wp-content/uploads/2015/08/D3Mobile_Thumbnail_Clear.png"/>
+MOBILE FINANCE</a></div>
+			<div class="layer white" data-transition="up" data-position="bottomRight" data-horizontal="-1" data-width="100%" >MOBILE FINANCE APPLICATION</div>
+		</div>
+		<div class="slide" data-image="http://www.brightpointinc.com/wp-content/uploads/2015/08/Banner_Budget.png">
+			<a href="http://www.brightpointinc.com/2013-federal-budget/" target="_self" tabindex="-1">
+				<img class="image" src="http://www.brightpointinc.com/wp-content/plugins/slider-pro/css/images/blank.gif" alt="2013 Federal Budget" title="2013 Federal Budget"/>
+			</a>
+			<div class="thumbnail"><a href="http://www.brightpointinc.com/2013-federal-budget/" style="color:#000000; font-weight:200; font-size:12px"><img src="http://www.brightpointinc.com/wp-content/uploads/2015/08/Budget_Thumbnail.png" />
+FEDERAL BUDGET</a></div>
+			<div class="layer white" data-transition="up" data-position="bottomRight" data-horizontal="-1" data-width="100%" >2013 FEDERAL BUDGET</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="twelve columns centered"><a class="buttom" href="/project-list">VIEW ALL PROJECTS</a></div>
+</div>
+</div>
+
+<div id="wrapper" class="clearfix">
+	<div id="main"><style>
+.cbp-af-header{position:relative; z-index:555;}
+section#header{display:none;}
+section#header, .slider-holder, #feature-bg, #feature-bg-mobile, .mobile-feature{display:none;}
+</style>
+<script language="javascript">
+<!--
+function popup(url) 
+{
+ params  = 'width='+screen.width;
+ params += ', height='+screen.height;
+ params += ', top=0, left=0';
+ params += ', fullscreen=yes';
+
+ newwin=window.open(url,'windowname4', params);
+ if (window.focus) {newwin.focus()}
+ return false;
+}
+// -->
+</script>
+
+<section>
+<div class="row">
+	<div id="content" class="clearfix">
+
+		<div class="columns">
+			<div class="content-posts">
+				
+								
+				<article class="post clearfix post-370 type-post status-publish format-standard has-post-thumbnail hentry category-html5-data-visualizaton-with-d3-js category-show-back-to-projects-button category-visualization">
+					<style>
+#collapse{display:block!important;}
+</style>
+
+<div class="entry-wrap even">
+	<div class="entry-content">
+    
+<!-- Added check to make sure this was a visualization before displaying button - TG 10/16/2015 -->
+
+<!-- file: format-standard.php:REMOVED BUTTON ENTIRELY - TG 10/21/2015
+	            <div class="row">
+            	<div class="twelve columns"><a class="buttom" href="/project-list/">GO BACK TO PROJECT LIST</a></div>
+            </div>
+         -->
+	
+			<header>	
+				<h1 class="entry-title" style="font-size:12pt;">
+					<a href="http://www.brightpointinc.com/political_influence/" title="Political Influence">
+Political Influence<!-- format-standard.php: REMOVED CATEGORY TO MAKE ROOOM FOR ARTICLE BANNER TG 10/24/15 -->
+<!--  - HTML5 Data Visualizaton with D3.js -->
+</a>
+				</h1>
+
+				<!-- COMMENTED THIS OUT (REMOVED AUTHOR) -->
+				
+			</header>
+
+			<div class="row" style="position:relative">
+<div style='position:absolute; margin-top:-58px; right:-20px; z-index:900'><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-normal synved-social-provider-facebook nolightbox synved-social-button-light-prompt" data-provider="facebook" target="_blank" rel="nofollow" title="Share on Facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;t=Political%20Influence&#038;s=100&#038;p&#091;url&#093;=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;p&#091;images&#093;&#091;0&#093;=http%3A%2F%2Fwww.brightpointinc.com%2Fwp-content%2Fuploads%2F2015%2F08%2FInfluence_Project.png&#038;p&#091;title&#093;=Political%20Influence" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="facebook" title="Share on Facebook" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/16x16/facebook.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-normal synved-social-provider-twitter nolightbox synved-social-button-light-prompt" data-provider="twitter" target="_blank" rel="nofollow" title="Share on Twitter" href="http://twitter.com/share?url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;text=Hey%20check%20this%20out" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="twitter" title="Share on Twitter" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/16x16/twitter.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-normal synved-social-provider-google_plus nolightbox synved-social-button-light-prompt" data-provider="google_plus" target="_blank" rel="nofollow" title="Share on Google+" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="google_plus" title="Share on Google+" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/16x16/google_plus.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-normal synved-social-provider-reddit nolightbox synved-social-button-light-prompt" data-provider="reddit" target="_blank" rel="nofollow" title="Share on Reddit" href="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;title=Political%20Influence" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="reddit" title="Share on Reddit" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/16x16/reddit.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-normal synved-social-provider-pinterest nolightbox synved-social-button-light-prompt" data-provider="pinterest" target="_blank" rel="nofollow" title="Pin it with Pinterest" href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;media=http%3A%2F%2Fwww.brightpointinc.com%2Fwp-content%2Fuploads%2F2015%2F08%2FInfluence_Project.png&#038;description=Political%20Influence" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="pinterest" title="Pin it with Pinterest" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/16x16/pinterest.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-normal synved-social-provider-linkedin nolightbox synved-social-button-light-prompt" data-provider="linkedin" target="_blank" rel="nofollow" title="Share on Linkedin" href="http://www.linkedin.com/shareArticle?mini=true&#038;url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;title=Political%20Influence" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="linkedin" title="Share on Linkedin" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/16x16/linkedin.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-normal synved-social-provider-mail nolightbox" data-provider="mail" rel="nofollow" title="Share by email" href="mailto:?subject=Political%20Influence&#038;body=Hey%20check%20this%20out:%20http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;"><img alt="mail" title="Share by email" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/16x16/mail.png" /></a><div class="synved-social-light-prompt-extra" style="display:none;"><div class="synved-social-light-prompt-target" data-href="" data-provider="facebook" data-action="script" data-script="//connect.facebook.net/en_US/all.js#xfbml=1" data-script-onload="FB.Event.subscribe(&#039;xfbml.render&#039;,
+    function(response) {
+							var jelem = jQuery(&#039;.fb-like &gt; span&#039;);
+							jelem.css({ minWidth: 450 });
+    }
+);" data-content="&lt;div id=&quot;fb-root&quot;&gt;&lt;/div&gt;" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"><div class="fb-like" data-href="http://www.brightpointinc.com/political_influence/" data-send="true" data-layout="button_count" data-width="500" data-show-faces="true"></div></div></div><div class="synved-social-light-prompt-target" data-href="" data-provider="twitter" data-action="script" data-script="//platform.twitter.com/widgets.js" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"><a href="https://twitter.com/share" class="twitter-share-button" data-via="" data-lang="en" data-url="http://www.brightpointinc.com/political_influence/" data-text="Hey check this out"></a></div></div><div class="synved-social-light-prompt-target" data-href="" data-provider="google_plus" data-action="script" data-script="//apis.google.com/js/plusone.js" data-script-text="{&quot;parsetags&quot; : &quot;explicit&quot;, lang: &quot;en&quot;}" data-script-onload="gapi.plusone.go(&#039;synved-social-light-prompt&#039;)" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"><div class="g-plusone" data-annotation="inline" data-href="http://www.brightpointinc.com/political_influence/"></div></div></div><div class="synved-social-light-prompt-target" data-href="" data-provider="reddit" data-action="script-insert" data-script="//www.reddit.com/static/button/button1.js" data-script-sync="yes" data-script-write="yes" data-script-config="reddit_url=&#039;http://www.brightpointinc.com/political_influence/&#039;" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"></div></div><div class="synved-social-light-prompt-target" data-href="" data-provider="pinterest" data-action="script" data-script="//assets.pinterest.com/js/pinit.js" data-script-force="yes" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"><a data-pin-config="beside" href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&description=Political%20Influence" data-pin-do="buttonPin"></a></div></div><div class="synved-social-light-prompt-target" data-href="" data-provider="linkedin" data-action="script" data-script="//platform.linkedin.com/in.js" data-script-text="lang:en_US" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"><script type="IN/Share" data-url="http://www.brightpointinc.com/political_influence/" data-counter="right"></script></div></div></div><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-hidef synved-social-provider-facebook nolightbox synved-social-button-light-prompt" data-provider="facebook" target="_blank" rel="nofollow" title="Share on Facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;t=Political%20Influence&#038;s=100&#038;p&#091;url&#093;=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;p&#091;images&#093;&#091;0&#093;=http%3A%2F%2Fwww.brightpointinc.com%2Fwp-content%2Fuploads%2F2015%2F08%2FInfluence_Project.png&#038;p&#091;title&#093;=Political%20Influence" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="facebook" title="Share on Facebook" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/facebook.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-hidef synved-social-provider-twitter nolightbox synved-social-button-light-prompt" data-provider="twitter" target="_blank" rel="nofollow" title="Share on Twitter" href="http://twitter.com/share?url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;text=Hey%20check%20this%20out" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="twitter" title="Share on Twitter" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/twitter.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-hidef synved-social-provider-google_plus nolightbox synved-social-button-light-prompt" data-provider="google_plus" target="_blank" rel="nofollow" title="Share on Google+" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="google_plus" title="Share on Google+" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/google_plus.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-hidef synved-social-provider-reddit nolightbox synved-social-button-light-prompt" data-provider="reddit" target="_blank" rel="nofollow" title="Share on Reddit" href="http://www.reddit.com/submit?url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;title=Political%20Influence" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="reddit" title="Share on Reddit" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/reddit.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-hidef synved-social-provider-pinterest nolightbox synved-social-button-light-prompt" data-provider="pinterest" target="_blank" rel="nofollow" title="Pin it with Pinterest" href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;media=http%3A%2F%2Fwww.brightpointinc.com%2Fwp-content%2Fuploads%2F2015%2F08%2FInfluence_Project.png&#038;description=Political%20Influence" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="pinterest" title="Pin it with Pinterest" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/pinterest.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-hidef synved-social-provider-linkedin nolightbox synved-social-button-light-prompt" data-provider="linkedin" target="_blank" rel="nofollow" title="Share on Linkedin" href="http://www.linkedin.com/shareArticle?mini=true&#038;url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&#038;title=Political%20Influence" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;margin-right:5px;"><img alt="linkedin" title="Share on Linkedin" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/linkedin.png" /></a><a class="synved-social-button synved-social-button-share synved-social-size-16 synved-social-resolution-hidef synved-social-provider-mail nolightbox" data-provider="mail" rel="nofollow" title="Share by email" href="mailto:?subject=Political%20Influence&#038;body=Hey%20check%20this%20out:%20http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F" style="font-size: 0px; width:16px;height:16px;margin:0;margin-bottom:5px;"><img alt="mail" title="Share by email" class="synved-share-image synved-social-image synved-social-image-share" width="16" height="16" style="display: inline; width:16px;height:16px; margin: 0; padding: 0; border: none; box-shadow: none;" src="http://www.brightpointinc.com/wp-content/plugins/social-media-feather/synved-social/image/social/regular/32x32/mail.png" /></a><div class="synved-social-light-prompt-extra" style="display:none;"><div class="synved-social-light-prompt-target" data-href="" data-provider="facebook" data-action="script" data-script="//connect.facebook.net/en_US/all.js#xfbml=1" data-script-onload="FB.Event.subscribe(&#039;xfbml.render&#039;,
+    function(response) {
+							var jelem = jQuery(&#039;.fb-like &gt; span&#039;);
+							jelem.css({ minWidth: 450 });
+    }
+);" data-content="&lt;div id=&quot;fb-root&quot;&gt;&lt;/div&gt;" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"><div class="fb-like" data-href="http://www.brightpointinc.com/political_influence/" data-send="true" data-layout="button_count" data-width="500" data-show-faces="true"></div></div></div><div class="synved-social-light-prompt-target" data-href="" data-provider="twitter" data-action="script" data-script="//platform.twitter.com/widgets.js" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"><a href="https://twitter.com/share" class="twitter-share-button" data-via="" data-lang="en" data-url="http://www.brightpointinc.com/political_influence/" data-text="Hey check this out"></a></div></div><div class="synved-social-light-prompt-target" data-href="" data-provider="google_plus" data-action="script" data-script="//apis.google.com/js/plusone.js" data-script-text="{&quot;parsetags&quot; : &quot;explicit&quot;, lang: &quot;en&quot;}" data-script-onload="gapi.plusone.go(&#039;synved-social-light-prompt&#039;)" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"><div class="g-plusone" data-annotation="inline" data-href="http://www.brightpointinc.com/political_influence/"></div></div></div><div class="synved-social-light-prompt-target" data-href="" data-provider="reddit" data-action="script-insert" data-script="//www.reddit.com/static/button/button1.js" data-script-sync="yes" data-script-write="yes" data-script-config="reddit_url=&#039;http://www.brightpointinc.com/political_influence/&#039;" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"></div></div><div class="synved-social-light-prompt-target" data-href="" data-provider="pinterest" data-action="script" data-script="//assets.pinterest.com/js/pinit.js" data-script-force="yes" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"><a data-pin-config="beside" href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F&description=Political%20Influence" data-pin-do="buttonPin"></a></div></div><div class="synved-social-light-prompt-target" data-href="" data-provider="linkedin" data-action="script" data-script="//platform.linkedin.com/in.js" data-script-text="lang:en_US" data-background="#ededed" data-opacity="0.75" data-border="solid 1px #d0d0d0" data-width="250" data-height="45"><div class="synved-social-light-prompt-markup"><script type="IN/Share" data-url="http://www.brightpointinc.com/political_influence/" data-counter="right"></script></div></div></div></div>
+<div>
+<div style="margin-top:-20px">
+This visualization looks at the monetary contributions made by the top 20 Political Action Committees (PAC) for the 2012 congressional election cycle, both for the House of Representatives and the Senate.The goal was to depict how intertwined special interests groups and our political representatives are.  </p>
+<p>Each inner circle represents a member of congress, blue is democrat, red is republican, and gold is independent. The larger the circle, the more funds that member has received.  Each arc along the circumference is one of the top 20 PAC&#8217;s.  Each section of the arc and corresponding chord that connects to a member&#8217;s circle represents a specific donation on a given date.  As the diagram animates it shows cumulative funding over the period of a year.  Use your mouse to roll-over each element to see how everything is connected.  Data Source: www.fec.gov</p>
+<p><iframe id='frame' style='position:relative; width:100%; overflow:hidden;' scrolling='no'></iframe></p>
+</div>
+<p><script>
+var e = document.getElementById("frame");
+if (e) {
+e.height = e.getBoundingClientRect().width+50;
+e.src="../labs/political_influence/";
+}
+</script></p>
+            
+					</div>
+</div>
+
+
+	<div class="row commentstyle">
+    	<div class="twelve columns">
+      
+        <h3 class="left bottomnone">Comments</h3>
+        
+      	</div>
+    </div>
+
+	<section>
+		<div class="row">
+			<div id="comments" class="clearfix">
+				<div class="comments-wrap">
+					<ol class="commentlist">
+						<li class="pingback even thread-even depth-1 clearfix" id="li-comment-15">
+		
+		<div class="comment-block" id="comment-15">
+			<div class="comment-info">	
+				<div class="comment-author vcard clearfix">
+					<img alt='' src='http://0.gravatar.com/avatar/?s=75&#038;d=mm&#038;r=g' srcset='http://1.gravatar.com/avatar/?s=150&amp;d=mm&amp;r=g 2x' class='avatar avatar-75 photo avatar-default' height='75' width='75' />					
+					<div class="comment-meta commentmetadata">
+						<cite class="fn"><a href='http://iworldnew.com/visualizing-publicly-available-us-government-data-online.htm' rel='external nofollow' class='url'>Visualizing Publicly Available US Government Data Online * The New World</a></cite>						<div style="clear:both;"></div>
+						<a class="comment-time" href="http://www.brightpointinc.com/political_influence/#comment-15">November 26, 2014 at 8:46 pm</a>					</div>
+				</div>
+			<div class="clearfix"></div>
+			</div>
+			
+			<div class="comment-text">
+				<p>[&#8230;] custom chore diagram titled Political Influence [brightpointinc.com] highlights the monetary contributions made by the top Political Action [&#8230;]</p>
+				<p class="reply">
+					<a rel='nofollow' class='comment-reply-link' href='http://www.brightpointinc.com/political_influence/?replytocom=15#respond' onclick='return addComment.moveForm( "comment-15", "15", "respond", "370" )' aria-label='Reply to Visualizing Publicly Available US Government Data Online * The New World'>Reply</a>				</p>
+			</div>
+		
+			    
+		</div>
+</li><!-- #comment-## -->
+					</ol>
+		
+							</div>
+		</div>
+	</section>
+
+<div class="line"></div>
+
+	<div class="row commentstyle">
+      <div class="twelve columns">
+      
+        <h3 class="left bottomnone">Leave a reply</h3>
+        
+      </div>
+    </div>
+
+	<section>
+		<div class="row commentstyle">
+						
+		<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><div id="cancel-comment-reply-link" style="display:none;"><i class="icon-remove-sign"></i> </div></small></h3>
+			<div id="commentform" class="comment-form">
+				<iframe src="http://jetpack.wordpress.com/jetpack-comment/?blogid=60706758&#038;postid=370&#038;comment_registration=0&#038;require_name_email=1&#038;stc_enabled=1&#038;stb_enabled=1&#038;show_avatars=1&#038;avatar_default=mystery&#038;greeting=Leave+a+Reply&#038;greeting_reply=Leave+a+Reply+to+%25s&#038;color_scheme=light&#038;lang=en-US&#038;jetpack_version=3.8.0&#038;sig=417063197d0577efbd16dd8a048f38dba01890b0#parent=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F" allowtransparency="false" style="width:100%; height: 430px;border:0px;" frameBorder="0" scrolling="no" name="jetpack_remote_comment" id="jetpack_remote_comment"></iframe>
+			</div>
+		</div>
+
+		
+		<input type="hidden" name="comment_parent" id="comment_parent" value="" />
+
+				</div>
+	</section>				</article>
+				
+								
+											</div>
+
+			
+
+
+	</div>
+
+</div>
+</div>
+</section>
+<!-- Show standard footer -->
+
+</div>
+<!-- Load the scripts -->
+
+    <audio controls autoplay preload='auto' style='width: 100%;display: none' src='#' id='wpdm-audio-player'></audio>
+
+    
+
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/slider-pro/js/slider/jquery.easing.1.3.min.js?ver=3.6'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/slider-pro/js/slider/jquery.advancedSlider.min.js?ver=3.6'></script>
+
+
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery("#slider-pro-1").advancedSlider({
+			width: '', 
+			height: 600, 
+			responsive: 1, 
+			skin: 'minimal-light', 
+			scaleType: 'exactFit', 
+			shadow: 0, 
+			border: 0, 
+			glow: 0, 
+			preloadNearbyImages: 1, 
+			slideButtons: 0, 
+			timerAnimation: 0, 
+			timerAnimationControls: 0, 
+			effectType: 'slide', 
+			slideLoop: 1, 
+			thumbnailType: 'scroller', 
+			thumbnailWidth: 154, 
+			thumbnailHeight: 114, 
+			thumbnailBorder: 0, 
+			thumbnailBackground: 0, 
+			thumbnailGlow: 0, 
+			thumbnailLayers: 2, 
+			thumbnailArrows: 0
+		});
+	});
+</script>
+
+
+	<div style="display:none">
+	</div>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/akismet/_inc/form.js?ver=3.1.5'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-includes/js/jquery/jquery.form.min.js?ver=3.37.0'></script>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201608'></script>
+<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2016Febaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/plugins/jetpack/modules/wpgroho.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/jquery.parallax-1.1.3.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/waypoints.min.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/jquery.scrollto.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/jquery.hoverdir.min.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/jquery.isotope.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/jquery.hoverex.min.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/validate.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/fitvids.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/flexslider-min.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/contact-form.js?ver=4.3.3'></script>
+<script type='text/javascript' src='http://www.brightpointinc.com/wp-content/themes/flatstudio/includes/js/main.js?ver=4.3.3'></script>
+
+		<!--[if IE]>
+		<script type="text/javascript">
+		if ( 0 === window.location.hash.indexOf( '#comment-' ) ) {
+			// window.location.reload() doesn't respect the Hash in IE
+			window.location.hash = window.location.hash;
+		}
+		</script>
+		<![endif]-->
+		<script type="text/javascript">
+			var comm_par_el = document.getElementById( 'comment_parent' ),
+			    comm_par = (comm_par_el && comm_par_el.value) ? comm_par_el.value : '',
+			    frame = document.getElementById( 'jetpack_remote_comment' ),
+			    tellFrameNewParent;
+
+			tellFrameNewParent = function() {
+				if ( comm_par ) {
+					frame.src = "http://jetpack.wordpress.com/jetpack-comment/?blogid=60706758&postid=370&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en-US&jetpack_version=3.8.0&sig=417063197d0577efbd16dd8a048f38dba01890b0#parent=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F" + '&replytocom=' + parseInt( comm_par, 10 ).toString();
+				} else {
+					frame.src = "http://jetpack.wordpress.com/jetpack-comment/?blogid=60706758&postid=370&comment_registration=0&require_name_email=1&stc_enabled=1&stb_enabled=1&show_avatars=1&avatar_default=mystery&greeting=Leave+a+Reply&greeting_reply=Leave+a+Reply+to+%25s&color_scheme=light&lang=en-US&jetpack_version=3.8.0&sig=417063197d0577efbd16dd8a048f38dba01890b0#parent=http%3A%2F%2Fwww.brightpointinc.com%2Fpolitical_influence%2F";
+				}
+			};
+
+	
+			if ( 'undefined' !== typeof addComment ) {
+				addComment._Jetpack_moveForm = addComment.moveForm;
+
+				addComment.moveForm = function( commId, parentId, respondId, postId ) {
+					var returnValue = addComment._Jetpack_moveForm( commId, parentId, respondId, postId ), cancelClick, cancel;
+
+					if ( false === returnValue ) {
+						cancel = document.getElementById( 'cancel-comment-reply-link' );
+						cancelClick = cancel.onclick;
+						cancel.onclick = function() {
+							var cancelReturn = cancelClick.call( this );
+							if ( false !== cancelReturn ) {
+								return cancelReturn;
+							}
+
+							if ( !comm_par ) {
+								return cancelReturn;
+							}
+
+							comm_par = 0;
+
+							tellFrameNewParent();
+
+							return cancelReturn;
+						};
+					}
+
+					if ( comm_par == parentId ) {
+						return returnValue;
+					}
+
+					comm_par = parentId;
+
+					tellFrameNewParent();
+
+					return returnValue;
+				};
+			}
+
+	
+			if ( window.postMessage ) {
+				if ( document.addEventListener ) {
+					window.addEventListener( 'message', function( event ) {
+						if ( "http:\/\/jetpack.wordpress.com" !== event.origin ) {
+							return;
+						}
+
+						jQuery( frame ).height( event.data );
+					} );
+				} else if ( document.attachEvent ) {
+					window.attachEvent( 'message', function( event ) {
+						if ( "http:\/\/jetpack.wordpress.com" !== event.origin ) {
+							return;
+						}
+
+						jQuery( frame ).height( event.data );
+					} );
+				}
+			}
+		</script>
+
+	<script type='text/javascript' src='http://stats.wp.com/e-201608.js' async defer></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:3.8.0',blog:'60706758',post:'370',tz:'-7',srv:'www.brightpointinc.com'} ]);
+	_stq.push([ 'clickTrackerInit', '60706758', '370' ]);
+</script>
+
+
+	<div class="row"> 
+    <div class="other-projects"> 
+    <h3>Other Projects</h3>
+                <div class="four columns pull-left">
+                <a href="http://www.brightpointinc.com/2015-nfl-predictions/"><img width="300" height="224" src="http://www.brightpointinc.com/wp-content/uploads/2015/11/NFL_Predictions.png" class="attachment-large_wide wp-post-image" alt="NFL_Predictions" /></a>
+                <h5><a href="http://www.brightpointinc.com/2015-nfl-predictions/">2015 NFL Predictions</a></h5>
+        </div>
+            <div class="four columns pull-left">
+                <a href="http://www.brightpointinc.com/d3-mobile-web-application/"><img width="300" height="224" src="http://www.brightpointinc.com/wp-content/uploads/2015/08/D3_Project_Clear.png" class="attachment-large_wide wp-post-image" alt="D3_Project_Clear" /></a>
+                <h5><a href="http://www.brightpointinc.com/d3-mobile-web-application/">D3 Mobile Web Application</a></h5>
+        </div>
+            <div class="four columns pull-left">
+                <a href="http://www.brightpointinc.com/political_influence/"><img width="300" height="224" src="http://www.brightpointinc.com/wp-content/uploads/2015/08/Influence_Project.png" class="attachment-large_wide wp-post-image" alt="Influence_Project" /></a>
+                <h5><a href="http://www.brightpointinc.com/political_influence/">Political Influence</a></h5>
+        </div>
+            </div>
+    <div class="row">
+        <div class="twelve columns centered"><a class="buttom" href="/project-list/">VIEW MORE PROJECTS</a></div>
+    </div>
+</div>	<section id="contact-us" class="white-footer">
+<div class="row">
+<div class="footer-nav">
+<a href="http://www.brightpointinc.com#about-us">About Us</a>
+<a href="http://www.brightpointinc.com#contact-us">Contact Us</a> 
+<a href="http://www.brightpointinc.com/terms-of-use">Terms of Use</a> 
+<a href="http://www.brightpointinc.com/terms-of-use">Privacy Policy</a>
+<p><span class="copywrite">© 2016 - BrightPoint Consulting Inc.</span></div></p>
+</div>
+</section>	
+
+</body>
+
+</html>

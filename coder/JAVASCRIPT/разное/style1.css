@@ -1,0 +1,38 @@
+﻿@import url('style2.css');
+/* my не получается поместить  ##@import в  @media   жаль  ?? */
+
+
+th {
+	color: #0F0;
+}
+.signup {
+	border: 1px solid #999999;
+	font: normal 14px helvetica;
+	color: #444444;
+}
+#dest, #dest1, #dest2 {
+	background: lightblue;
+	border : 1px solid #444;
+	width : 318px;
+	height : 220px;
+	padding : 10px;
+}
+
+#dest1{
+	 position:relative;
+	 left:350px;
+	 top:-262px
+}
+
+#dest2 {
+	 position:absolute;
+	 left:355px;
+	 top:8px
+}
+
+ /*   ??  почему-то работает если расположено в конце.   */
+ @media screen and (min-width: 800px) {
+th {
+	color: #396;
+}
+}

@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, minimumscale=1.0, maximum-scale=1.0" />  
+  <title>CSS фон</title>  
+  <!--[if lt IE 9]>
+	<script src="http://html5book.ru/wp-content/themes/papercuts/js/html5.js"></script>
+	<![endif]-->
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-49017436-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<style type='text/css'></style>
+<!-- This site is optimized with the Yoast SEO plugin v3.0.7 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="CSS фон позволяет с помощью css-свойства background добавлять фон для любого html-элемента. В качестве фона можно задавать цвет, градиент, или изображение."/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="http://html5book.ru/css-background/" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="CSS фон" />
+<meta property="og:description" content="CSS фон позволяет с помощью css-свойства background добавлять фон для любого html-элемента. В качестве фона можно задавать цвет, градиент, или изображение." />
+<meta property="og:url" content="http://html5book.ru/css-background/" />
+<meta property="og:site_name" content="html5book" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/10/css_background.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/10/background-color.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2015/03/13.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2015/03/15.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/10/background_repeat_bottom.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2015/03/16.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2015/03/12.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2015/03/14.png" />
+<meta property="og:image" content="http://html5book.ru/wp-content/uploads/2014/10/backgrounds.png" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента" href="http://html5book.ru/feed/" />
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента комментариев" href="http://html5book.ru/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="html5book &raquo; Лента комментариев к &laquo;2.9. CSS фон&raquo;" href="http://html5book.ru/css-background/feed/" />
+<link rel='stylesheet' id='crayon-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-idle-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/themes/idle/idle.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-consolas-css'  href='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/fonts/consolas.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='papercuts-style-css'  href='http://html5book.ru/wp-content/themes/papercuts/style.css?ver=4.4.2' type='text/css' media='all' />
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/html5book.ru\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u041d\u0430\u0436\u043c\u0438\u0442\u0435 %s \u0434\u043b\u044f \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f, %s \u0434\u043b\u044f \u0432\u0441\u0442\u0430\u0432\u043a\u0438","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<link rel='https://api.w.org/' href='http://html5book.ru/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://html5book.ru/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://html5book.ru/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='http://html5book.ru/?p=2596' />
+<link rel="alternate" type="application/json+oembed" href="http://html5book.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5book.ru%2Fcss-background%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://html5book.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fhtml5book.ru%2Fcss-background%2F&#038;format=xml" />
+ 
+
+   
+    <style type="text/css">   
+      #panel_load {
+  		 background:#fff;
+  		 border:1px solid #ccc;
+  		 opacity:1;
+  		 padding:10px;
+  		 position:fixed;
+  		 right: 30px;
+  		 top: 40px;
+  		 color:#555;
+  		 font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
+  		 font-size:12px;
+  		 text-align:center;
+  		 z-index:100;
+  		 
+  		 box-shadow:5px 5px 5px -6px #000;
+  		 -moz-box-shadow:5px 5px 5px -6px #000;
+  		 -webkit-box-shadow:5px 5px 5px -6px #000;
+  		 -khtml-box-shadow:5px 5px 5px -6px #000;
+  		 -o-box-shadow:5px 5px 5px -6px #000;
+      }  
+     </style>  
+    
+    <!--[if IE]>
+<style type="text/css" media="screen">
+#wrapper-header, #wrapper-footer, #top-navigation-wrapper, .header-image-wrapper, .entry-content, .home-list-posts, .post-entry, .sidebar-widget, .sidebar-headline, .footer-signature, #nav-below, #papercuts-post-nav, .search .navigation {
+        behavior: url("http://html5book.ru/wp-content/themes/papercuts/css/pie/PIE.php");
+        zoom: 1;
+}
+</style>
+<![endif]-->
+  
+</head>
+<body class="page page-id-2596 page-template-default" id="wrapper">
+
+<header>  
+ <div class="header-content">
+<a href="http://html5book.ru/">
+<img class="header-logo" src="http://html5book.ru/wp-content/themes/papercuts/images/logo.png"></a>
+  <div class="menu-box-wrapper">
+<div class="menu-top-container"><ul id="nav" class="menu"><li id="menu-item-3827" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3827"><a href="http://html5book.ru/html-html5/">HTML</a></li>
+<li id="menu-item-3871" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3871"><a href="http://html5book.ru/css-css3/">CSS</a></li>
+<li id="menu-item-3975" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3975"><a href="http://html5book.ru/javascript-jquery/">JavaScript</a></li>
+<li id="menu-item-3884" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3884"><a href="http://html5book.ru/web-topography/">Веб-типографика</a></li>
+<li id="menu-item-5292" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5292"><a href="http://html5book.ru/category/uroki/">Уроки</a></li>
+<li id="menu-item-5951" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5951"><a href="http://html5book.ru/css-spravochnik/">CSS справочник</a></li>
+<li id="menu-item-7807" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7807"><a href="http://html5book.ru/seo/">SEO</a></li>
+</ul></div>  </div>
+    </div>
+</header> <!-- end of wrapper-header -->
+
+<div id="container">
+  <div id="main-content">
+  <div id="content">    <article class="entry-content"> 
+      <div class="entry-content-inner">
+		        <h1 class="content-headline">2.9. CSS фон</h1>
+		<!--Ad Injection:top-->
+<div style='margin-bottom:30px;padding-top:0px;padding-bottom:30px;'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ADAPT -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4906567094890032"
+     data-ad-slot="5808407100"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><p><img src="http://html5book.ru/wp-content/uploads/2014/10/css_background.png" alt="css_background" width="250" height="250" class="alignleft"><strong>CSS фон</strong> позволяет с помощью css-свойства <kbd>background</kbd> добавлять фон для любого html-элемента. Каждая веб-страница имеет фон, на котором можно размещать рисунки и текст. В качестве фона любого элемента можно задавать <strong>цвет</strong>, <a href="http://html5book.ru/css3-gradient/" class="site" target="_blank">градиент</a> или <strong>изображение</strong>. </p>
+<p>Чтобы установить фон для одного элемента из группы, нужно назначить для этого элемента класс (например,<br />
+<kbd>&lt;div class="header_box"&gt;&lt;/div&gt;</kbd>), идентификатор (например, <kbd>&lt;div id="footer_box"&gt;&lt;/div&gt;</kbd>), или воспользоваться при отборе <a href="http://html5book.ru/osnovy-css/#part5" class="site" target="_blank">селекторами</a>. Свойства фона не наследуются, но фон родительского блока всегда будет виден.</p>
+<p>Некоторые браузеры отображают фон HTML-документов, заданный для элемента <kbd>&lt;html&gt;</kbd>, но рекомендуется устанавливать фон для элемента <kbd>&lt;body&gt;</kbd>.</p>
+<p>Если вы хотите, чтобы <b>фон заполнил веб-страницу полностью</b>, добавьте для <kbd>body {margin: 0;}</kbd>.</p>
+<p>Если информация на вашем сайте предназначена для распечатывания, не забывайте отключать фон и фоновые изображения в стилях для печати, например,</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854bc978371776" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+@media print {
+header {background: none; color: black;}
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854bc978371776-1">1</div><div class="crayon-num" data-line="crayon-56d04881854bc978371776-2">2</div><div class="crayon-num" data-line="crayon-56d04881854bc978371776-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854bc978371776-1"><span class="crayon-n">@media print {</span></div><div class="crayon-line" id="crayon-56d04881854bc978371776-2"><span class="crayon-n">header {background: none;</span><span class="crayon-h"> </span><span class="crayon-e ">color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">black</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854bc978371776-3"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p></p>
+<h2 style="clear:both">Фон и фоновые изображения на веб-странице</h2>
+<ul class="contents">
+<li style="color:white; background:#84cd1b;">Содержание:</li>
+<li><a href="#background-color">1. Цвет изображения <kbd>background-color</kbd></a></li>
+<li><a href="#background-image">2. Фоновое изображение <kbd>background-image</kbd></a></li>
+<li><a href="#background-repeat">3. Повтор фоновых изображений <kbd>background-repeat</kbd></a></li>
+<li><a href="#background-position">4. Позиционирование фоновых изображений <kbd>background-position</kbd></a></li>
+<li><a href="#background-attachment">5. Фиксация изображения на месте <kbd>background-attachment</kbd></a></li>
+<li><a href="#background-clip">6. Заполнение фоном отступов и границ элемента <kbd>background-clip</kbd></a></li>
+<li><a href="#background-origin">7. Положение фонового изображения относительно его родительского блока <kbd>background-origin</kbd></a></li>
+<li><a href="#background-size">8. Размер изображения <kbd>background-size</kbd></a></li>
+<li><a href="#background">9. Задание фона элемента одним свойством <kbd>background</kbd></a></li>
+<li><a href="#part9">10. Множественные фоны</a></li>
+</ul>
+<h3 id="background-color">1. Цвет изображения</h3>
+<p>Свойство <kbd>background-color</kbd> позволяет задать цвет фона для любого html-элемента. Для блочных элементов цвет фона распространится на всю ширину и высоту блока элемента, для строчных -только на область их содержимого. Не наследуется. </p>
+<table class="t1">
+<tr>
+<th colspan="2">background-color</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td>цвет</td>
+<td>Цвет фона можно задать с помощью различных методов: <a href="http://html5book.ru/css-shrifty/#hex" class="site" target="_blank">HEX</a>, <a href="http://html5book.ru/css-shrifty/#rgb" class="site" target="_blank">RGB</a>, <a href="http://html5book.ru/css-shrifty/#rgba" class="site" target="_blank">RGBA</a>, <a href="http://html5book.ru/css-shrifty/#hsl" class="site" target="_blank">HSL</a>, <a href="http://html5book.ru/css-shrifty/#hsla" class="site" target="_blank">HSLA</a>, а также с помощью <a href="http://html5book.ru/html-css-colors/" class="site"  target="_blank">140 кроссбраузерных названий цветов</a>.</td>
+</tr>
+<tr>
+<td><kbd>transparent</kbd></td>
+<td>Значение по умолчанию. Задает прозрачный фон для элемента.</td>
+</tr>
+</table>
+<p>Синтаксис:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854c7000620138" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {background-color: papayawhip;}
+h1 {background-color: palevioletred;}
+p {background-color: peachpuff;}
+span {background-color: peru;}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854c7000620138-1">1</div><div class="crayon-num" data-line="crayon-56d04881854c7000620138-2">2</div><div class="crayon-num" data-line="crayon-56d04881854c7000620138-3">3</div><div class="crayon-num" data-line="crayon-56d04881854c7000620138-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854c7000620138-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">papayawhip</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854c7000620138-2"><span class="crayon-k ">h1 </span><span class="crayon-sy">{</span><span class="crayon-e ">background-color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">palevioletred</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854c7000620138-3"><span class="crayon-k ">p </span><span class="crayon-sy">{</span><span class="crayon-e ">background-color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">peachpuff</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854c7000620138-4"><span class="crayon-k ">span </span><span class="crayon-sy">{</span><span class="crayon-e ">background-color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">peru</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/10/background-color.png" alt="background-color" class="alignleft"></p>
+<figcaption>Рис. 1. Свойство background-color для разных элементов</figcaption>
+</figure>
+<h3 id="background-image">2. Фоновое изображение</h3>
+<p>Свойство <kbd>background-image</kbd> позволяет установить фоновое изображение для элемента. Фоновым изображением может быть как картинка, так и градиент, который задается с помощью функций <kbd>background-image: linear-gradient()</kbd>, <kbd>background-image: radial-gradient()</kbd>. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">background-image</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>url('URL')</kbd></td>
+<td>Абсолютный или относительный адрес изображения.</td>
+</tr>
+<tr>
+<td><kbd>none</kbd></td>
+<td>Удаляет изображение для элемента.</td>
+</tr>
+</table>
+<p>Синтаксис:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854cb715922254" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {background-image: url(http://html5book.ru/images/flower.png);}
+table {background-image: radial-gradient(farthest-corner at 50% 50%, white, #DCECF8);}
+p {background-image: linear-gradient(to top left, white, lightblue);}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854cb715922254-1">1</div><div class="crayon-num" data-line="crayon-56d04881854cb715922254-2">2</div><div class="crayon-num" data-line="crayon-56d04881854cb715922254-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854cb715922254-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-image</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-e ">http</span><span class="crayon-sy">:</span><span class="crayon-i ">//html5book.ru/images/flower.png</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854cb715922254-2"><span class="crayon-k ">table </span><span class="crayon-sy">{</span><span class="crayon-e ">background-image</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">radial-gradient</span><span class="crayon-sy">(</span><span class="crayon-i ">farthest-corner</span><span class="crayon-h"> </span><span class="crayon-i ">at</span><span class="crayon-h"> </span><span class="crayon-i ">50%</span><span class="crayon-h"> </span><span class="crayon-i ">50%,</span><span class="crayon-h"> </span><span class="crayon-i ">white,</span><span class="crayon-h"> </span><span class="crayon-i ">#DCECF8</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854cb715922254-3"><span class="crayon-k ">p </span><span class="crayon-sy">{</span><span class="crayon-e ">background-image</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">linear-gradient</span><span class="crayon-sy">(</span><span class="crayon-i ">to</span><span class="crayon-h"> </span><span class="crayon-i ">top</span><span class="crayon-h"> </span><span class="crayon-i ">left,</span><span class="crayon-h"> </span><span class="crayon-i ">white,</span><span class="crayon-h"> </span><span class="crayon-i ">lightblue</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0007 seconds] -->
+<p></p>
+<h3 id="background-repeat">3. Повтор фоновых изображений</h3>
+<p>Используя свойство <kbd>background-repeat</kbd>, можно определить, каким образом будет повторяться фоновый рисунок. По умолчанию рисунок всегда находится в верхнем левом углу. Можно задавать одновременно повтор изображений по <kbd>X</kbd> и <kbd>Y</kbd>. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">background-repeat</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>repeat</kbd></td>
+<td>Весь фон страницы будет заполнен фоновым рисунком. Если при этом задать <kbd>background-position</kbd>, то повтор будет осуществляться с указанной позиции. Значение по умолчанию.</td>
+</tr>
+<tr>
+<td><kbd>no-repeat</kbd></td>
+<td>Фоновое изображение не будет повторяться.</td>
+</tr>
+<tr>
+<td><kbd>repeat-x</kbd></td>
+<td>Фоновый рисунок повторяется от левого до правого края веб-страницы по верхнему краю страницы.</td>
+</tr>
+<tr>
+<td><kbd>repeat-y</kbd></td>
+<td>Фоновый рисунок повторяется от верхнего до нижнего края веб-страницы по левому краю страницы.</td>
+</tr>
+</table>
+<p>Синтаксис:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854cf096189868" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {background-repeat: no-repeat;}
+div {background-repeat: repeat-x;}
+div {background-repeat: repeat-y;}
+div {background-repeat: repeat;}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854cf096189868-1">1</div><div class="crayon-num" data-line="crayon-56d04881854cf096189868-2">2</div><div class="crayon-num" data-line="crayon-56d04881854cf096189868-3">3</div><div class="crayon-num" data-line="crayon-56d04881854cf096189868-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854cf096189868-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-repeat</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">no-repeat</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854cf096189868-2"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-repeat</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">repeat-x</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854cf096189868-3"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-repeat</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">repeat-y</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854cf096189868-4"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-repeat</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">repeat</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2015/03/13.png" alt="13" class="alignleft"></p>
+<figcaption>Рис. 2. Свойство background-repeat</figcaption>
+</figure>
+<h3 id="background-position">4. Позиционирование фоновых изображений</h3>
+<p>Свойство <kbd>background-position</kbd> позволяет управлять точным расположением фонового изображения. Можно определить начальную позицию фонового изображения в виде горизонтальной и вертикальной координат посредством ключевых слов, точных абсолютных и процентных значений. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">background-position</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>left, center, right</kbd></td>
+<td>Горизонтальное позиционирование</td>
+</tr>
+<tr>
+<td><kbd>top, center, bottom</kbd></td>
+<td>Вертикальное позиционирование</td>
+</tr>
+<tr>
+<td><kbd>px / em/ %</kbd></td>
+<td>Указывается два значения, первое определяет расстояние между левой стороной изображения и левым краем элемента-контейнера (по горизонтали), второе значение указывает расстояние между верхней стороной изображения и верхним краем элемента-контейнера (по вертикали). Также можно использовать <b>отрицательные значения</b> для обрезки части изображения.<br />
+Процентное значение рассчитывается относительно самого изображения и относительно элемента-контейнера, в котором оно расположено. Например, при задании <kbd>background-position:50% 50%;</kbd> центр изображения совпадет с центром элемента-контейнера.<br />
+Можно одновременно комбинировать значения в <kbd>px, em</kbd> и <kbd>%</kbd>.</td>
+</tr>
+</table>
+<p>Синтаксис:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854d3077755803" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {background-position: center center;}
+div {background-position: 50% 100%;}
+div {background-position: left;}
+div {background-position: 50px;}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854d3077755803-1">1</div><div class="crayon-num" data-line="crayon-56d04881854d3077755803-2">2</div><div class="crayon-num" data-line="crayon-56d04881854d3077755803-3">3</div><div class="crayon-num" data-line="crayon-56d04881854d3077755803-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854d3077755803-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">center</span><span class="crayon-h"> </span><span class="crayon-i ">center</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854d3077755803-2"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">50%</span><span class="crayon-h"> </span><span class="crayon-i ">100%</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854d3077755803-3"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">left</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854d3077755803-4"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">50px</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2015/03/15.png" alt="15" class="alignleft"></p>
+<figcaption>Рис. 3. Свойство background-position</figcaption>
+</figure>
+<p>Можно задать фоновую картинку так, чтобы она располагалась только по низу блока:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854d6937333911" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+background-color: #FCF8F7;
+height: 120px;
+background-image: url(http://html5book.ru/images/flower112.png);
+background-position: left bottom;
+background-repeat: repeat-x;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854d6937333911-1">1</div><div class="crayon-num" data-line="crayon-56d04881854d6937333911-2">2</div><div class="crayon-num" data-line="crayon-56d04881854d6937333911-3">3</div><div class="crayon-num" data-line="crayon-56d04881854d6937333911-4">4</div><div class="crayon-num" data-line="crayon-56d04881854d6937333911-5">5</div><div class="crayon-num" data-line="crayon-56d04881854d6937333911-6">6</div><div class="crayon-num" data-line="crayon-56d04881854d6937333911-7">7</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854d6937333911-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d04881854d6937333911-2"><span class="crayon-e ">background-color</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">#FCF8F7</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854d6937333911-3"><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">120px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854d6937333911-4"><span class="crayon-e ">background-image</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-e ">http</span><span class="crayon-sy">:</span><span class="crayon-i ">//html5book.ru/images/flower112.png</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854d6937333911-5"><span class="crayon-e ">background-position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">left</span><span class="crayon-h"> </span><span class="crayon-i ">bottom</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854d6937333911-6"><span class="crayon-e ">background-repeat</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">repeat-x</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854d6937333911-7"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+<p> </p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2014/10/background_repeat_bottom.png" alt="background_repeat_bottom" class="alignleft"></p>
+<figcaption>Рис. 4. Фоновое изображение по низу блока</figcaption>
+</figure>
+<p>Также, благодаря свойству позиционирования, для одного блока можно использовать несколько фоновых изображений:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854d9912395775" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+width: 660px;
+background-color:#E0E4EF;
+height: 300px;
+background-image: url(http://html5book.ru/images/flower112.png), url(http://html5book.ru/images/leaf112.png), 
+url(http://html5book.ru/images/flower221.png);
+background-repeat: repeat-x;
+background-position: 0 250px, 0 150px, 0 98px; 
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854d9912395775-1">1</div><div class="crayon-num" data-line="crayon-56d04881854d9912395775-2">2</div><div class="crayon-num" data-line="crayon-56d04881854d9912395775-3">3</div><div class="crayon-num" data-line="crayon-56d04881854d9912395775-4">4</div><div class="crayon-num" data-line="crayon-56d04881854d9912395775-5">5</div><div class="crayon-num" data-line="crayon-56d04881854d9912395775-6">6</div><div class="crayon-num" data-line="crayon-56d04881854d9912395775-7">7</div><div class="crayon-num" data-line="crayon-56d04881854d9912395775-8">8</div><div class="crayon-num" data-line="crayon-56d04881854d9912395775-9">9</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854d9912395775-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d04881854d9912395775-2"><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">660px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854d9912395775-3"><span class="crayon-e ">background-color</span><span class="crayon-sy">:</span><span class="crayon-i ">#E0E4EF</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854d9912395775-4"><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">300px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854d9912395775-5"><span class="crayon-e ">background-image</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-e ">http</span><span class="crayon-sy">:</span><span class="crayon-i ">//html5book.ru/images/flower112.png</span><span class="crayon-sy">)</span><span class="crayon-i ">,</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-e ">http</span><span class="crayon-sy">:</span><span class="crayon-i ">//html5book.ru/images/leaf112.png</span><span class="crayon-sy">)</span><span class="crayon-i ">,</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d04881854d9912395775-6"><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-e ">http</span><span class="crayon-sy">:</span><span class="crayon-i ">//html5book.ru/images/flower221.png</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854d9912395775-7"><span class="crayon-e ">background-repeat</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">repeat-x</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854d9912395775-8"><span class="crayon-e ">background-position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">250px,</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">150px,</span><span class="crayon-h"> </span><span class="crayon-i ">0</span><span class="crayon-h"> </span><span class="crayon-i ">98px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d04881854d9912395775-9"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p> </p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2015/03/16.png" alt="16" class="alignleft"></p>
+<figcaption>Рис. 5. Задание для блока нескольких фоновых изображений</figcaption>
+</figure>
+<h3 id="background-attachment">5. Фиксация изображения на месте</h3>
+<p>Свойство <kbd>background-attachment</kbd> позволяет управлять положением фонового изображения при прокрутке страницы. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">background-attachment</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>scroll</kbd></td>
+<td>Фоновое изображение прокручивается вместе с текстом и другим содержимым. Значение по умолчанию.</td>
+</tr>
+<tr>
+<td><kbd>fixed</kbd></td>
+<td>Предотвращает перемещение, фиксирует фоновое изображение на заднем плане.</td>
+</tr>
+<tr>
+<td><kbd>local</kbd></td>
+<td>Фоновое изображение прокручивается вместе с содержимым элемента.</td>
+</tr>
+</table>
+<p>Синтаксис:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854dc961037979" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {background-attachment: scroll;}
+div {background-attachment: fixed;}
+div {background-attachment: local;}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854dc961037979-1">1</div><div class="crayon-num" data-line="crayon-56d04881854dc961037979-2">2</div><div class="crayon-num" data-line="crayon-56d04881854dc961037979-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854dc961037979-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-attachment</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">scroll</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854dc961037979-2"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-attachment</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">fixed</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854dc961037979-3"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-attachment</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">local</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p></p>
+<h3 id="background-clip">6. Заполнение фоном отступов и границ элемента</h3>
+<p>Свойство <kbd>background-clip</kbd> определяет, будет ли цвет фона ограничиваться началом границы элемента или будет продолжаться до внешнего края границы. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">background-clip</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>border-box</kbd></td>
+<td>Фон простирается до внешнего края границы элемента.</td>
+</tr>
+<tr>
+<td><kbd>padding-box</kbd></td>
+<td>Фона простирается до внешнего края отступов элемента.</td>
+</tr>
+<tr>
+<td><kbd>content-box</kbd></td>
+<td>Фон окрашивает только содержимое элемента.</td>
+</tr>
+</table>
+<p>Синтаксис:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854df792499297" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {background-clip: border-box;}
+div {background-clip: padding-box;}
+div {background-clip: content-box;}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854df792499297-1">1</div><div class="crayon-num" data-line="crayon-56d04881854df792499297-2">2</div><div class="crayon-num" data-line="crayon-56d04881854df792499297-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854df792499297-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-clip</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">border-box</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854df792499297-2"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-clip</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">padding-box</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854df792499297-3"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-clip</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">content-box</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2015/03/12.png" alt="12" class="alignleft"></p>
+<figcaption>Рис. 6. Свойство background-clip</figcaption>
+</figure>
+<h3 id="background-origin">7. Положение фонового изображения относительно его родительского блока</h3>
+<p>Свойство <kbd>background-origin</kbd> определяет позиционирование элемента относительно границ его родительского элемента.</p>
+<table class="t1">
+<tr>
+<th colspan="2">background-origin</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>padding-box</kbd></td>
+<td>Положение элемента вычисляется относительно верхнего левого угла с внутренней стороны границы элемента</td>
+</tr>
+<tr>
+<td><kbd>border-box</kbd></td>
+<td>Положение элемента вычисляется относительно верхнего левого угла с внешней стороны границы элемента.</td>
+</tr>
+<tr>
+<td><kbd>content-box</kbd></td>
+<td>Положение элемента вычисляется относительно верхнего левого угла содержимого.</td>
+</tr>
+</table>
+<p>Синтаксис:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854e2936745181" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {background-origin: padding-box;}
+div {background-origin: border-box;}
+div {background-origin: content-box;}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854e2936745181-1">1</div><div class="crayon-num" data-line="crayon-56d04881854e2936745181-2">2</div><div class="crayon-num" data-line="crayon-56d04881854e2936745181-3">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854e2936745181-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-origin</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">padding-box</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854e2936745181-2"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-origin</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">border-box</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854e2936745181-3"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-origin</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">content-box</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p></p>
+<h3 id="background-size">8. Размер изображения</h3>
+<p>Свойство <kbd>background-size</kbd> позволяет масштабировать фоновое изображение по вертикали и горизонтали (<kbd>background-image</kbd>). Оно описывает, как изображение будет растягиваться и обрезаться, чтобы полностью закрыть собой фоновую область. С помощью этого свойства изображение также можно уменьшать по ширине и по высоте. Не наследуется.</p>
+<table class="t1">
+<tr>
+<th colspan="2">background-size</th>
+</tr>
+<tr>
+<td>Значения:</td>
+<td></td>
+</tr>
+<tr>
+<td><kbd>px / em /cm</kbd></td>
+<td>Размер задается парой значений, первое значение устанавливает ширину изображения, второе &#8212; высоту. Для того, чтобы фон масштабировался вместе с текстом, размеры изображения нужно задавать в <kbd>em</kbd>.</td>
+</tr>
+<tr>
+<td><kbd>%</kbd></td>
+<td>Задает размер фонового изображения в процентах от ширины или высоты элемента, которое заполняется фоном.</td>
+</tr>
+<tr>
+<td><kbd>cover</kbd></td>
+<td>Масштабирует изображение с сохранением пропорций так, чтобы его ширина или высота равнялась ширине или высоте блока.</td>
+</tr>
+<tr>
+<td><kbd>contain</kbd></td>
+<td>Масштабирует изображение с сохранением пропорций таким образом, чтобы оно целиком поместилось внутри блока.</td>
+</tr>
+</table>
+<p>Синтаксис:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854e6795153598" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {background-size: 300px 150px;}
+div {background-size: 50% 30%;}
+div {background-size: cover;}
+div {background-size: contain;}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854e6795153598-1">1</div><div class="crayon-num" data-line="crayon-56d04881854e6795153598-2">2</div><div class="crayon-num" data-line="crayon-56d04881854e6795153598-3">3</div><div class="crayon-num" data-line="crayon-56d04881854e6795153598-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854e6795153598-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-size</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">300px</span><span class="crayon-h"> </span><span class="crayon-i ">150px</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854e6795153598-2"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-size</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">50%</span><span class="crayon-h"> </span><span class="crayon-i ">30%</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854e6795153598-3"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-size</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">cover</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d04881854e6795153598-4"><span class="crayon-k ">div </span><span class="crayon-sy">{</span><span class="crayon-e ">background-size</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">contain</span><span class="crayon-sy">;</span><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p></p>
+<figure><img src="http://html5book.ru/wp-content/uploads/2015/03/14.png" alt="14" class="alignleft"></p>
+<figcaption>Рис. 7. Свойство background-size</figcaption>
+</figure>
+<h3 id="background">9. Задание фона элемента одним свойством</h3>
+<p>Свойство <kbd>background</kbd> позволяет описать в одном объявлении следующие свойства фона: <kbd>background-color</kbd>, <kbd>background-image</kbd>, <kbd>background-position</kbd>, <kbd>background-size</kbd>, <kbd>background-repeat</kbd>, <kbd>background-origin</kbd>, <kbd>background-clip</kbd> и <kbd>background-attachment</kbd>. Необязательно указывать все перечисленные свойства, если какое-либо свойство будет пропущено, оно примет значение по-умолчанию.</p>
+<p>Если вы указываете в краткой записи фона свойство <kbd>background-size</kbd>, то его значения нужно будет записать через слеш <kbd>/</kbd>, чтобы отделить его от свойства <kbd>background-position</kbd>.</p>
+<h3 id="part9">10. Множественные фоны</h3>
+<p>CSS3 предоставила еще одну полезную возможность &#8212; множественные фоны, которые можно задавать как для страницы целиком, так и для конкретного блока. Например:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d04881854e9005062647" class="crayon-syntax crayon-theme-idle crayon-font-consolas crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover wrap" style=" max-width: 660px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Показать код в новом окне"><div class="crayon-button-icon"></div></div><span class="crayon-language">CSS</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea  class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+div {
+width: 680px;
+height: 630px;
+background-image: url(http://html5book.ru/wp-content/uploads/2015/02/flower_rose.png), url(http://html5book.ru/wp-content/uploads/2015/02/love.png), url(http://html5book.ru/wp-content/uploads/2015/02/border_white.png);
+background-repeat: no-repeat;
+background-position: bottom right, center center, top left;
+}</textarea></div>
+			<div class="crayon-main" style=" max-width: 660px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d04881854e9005062647-1">1</div><div class="crayon-num" data-line="crayon-56d04881854e9005062647-2">2</div><div class="crayon-num" data-line="crayon-56d04881854e9005062647-3">3</div><div class="crayon-num" data-line="crayon-56d04881854e9005062647-4">4</div><div class="crayon-num" data-line="crayon-56d04881854e9005062647-5">5</div><div class="crayon-num" data-line="crayon-56d04881854e9005062647-6">6</div><div class="crayon-num" data-line="crayon-56d04881854e9005062647-7">7</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d04881854e9005062647-1"><span class="crayon-k ">div </span><span class="crayon-sy">{</span></div><div class="crayon-line" id="crayon-56d04881854e9005062647-2"><span class="crayon-e ">width</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">680px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854e9005062647-3"><span class="crayon-e ">height</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">630px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854e9005062647-4"><span class="crayon-e ">background-image</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-e ">http</span><span class="crayon-sy">:</span><span class="crayon-i ">//html5book.ru/wp-content/uploads/2015/02/flower_rose.png</span><span class="crayon-sy">)</span><span class="crayon-i ">,</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-e ">http</span><span class="crayon-sy">:</span><span class="crayon-i ">//html5book.ru/wp-content/uploads/2015/02/love.png</span><span class="crayon-sy">)</span><span class="crayon-i ">,</span><span class="crayon-h"> </span><span class="crayon-i ">url</span><span class="crayon-sy">(</span><span class="crayon-e ">http</span><span class="crayon-sy">:</span><span class="crayon-i ">//html5book.ru/wp-content/uploads/2015/02/border_white.png</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854e9005062647-5"><span class="crayon-e ">background-repeat</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">no-repeat</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854e9005062647-6"><span class="crayon-e ">background-position</span><span class="crayon-sy">:</span><span class="crayon-h"> </span><span class="crayon-i ">bottom</span><span class="crayon-h"> </span><span class="crayon-i ">right,</span><span class="crayon-h"> </span><span class="crayon-i ">center</span><span class="crayon-h"> </span><span class="crayon-i ">center,</span><span class="crayon-h"> </span><span class="crayon-i ">top</span><span class="crayon-h"> </span><span class="crayon-i ">left</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d04881854e9005062647-7"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p></p>
+<p>Изображения нужно перечислять в порядке наложения, самое верхнее изображение должно быть первым, а самое большое, расположенное на заднем плане &#8212; последним.</p>
+<p><img src="http://html5book.ru/wp-content/uploads/2014/10/backgrounds.png" alt="backgrounds" width="660" height="612" class="alignleft size-full wp-image-4206" srcset="http://html5book.ru/wp-content/uploads/2014/10/backgrounds-300x278.png 300w, http://html5book.ru/wp-content/uploads/2014/10/backgrounds.png 660w" sizes="(max-width: 660px) 100vw, 660px" /></p>
+<ul>
+<li>
+<h4>Читайте также:</h4>
+</li>
+<li><a href="http://html5book.ru/css3-gradient/" target="_blank" class="site">CSS3 градиенты</a></li>
+<li><a href="http://html5book.ru/krasivye-gradienty/" target="_blank" class="site">Красивые градиенты</a></li>
+<li><a href="http://html5book.ru/svetlye-fony-dlya-sayta/" target="_blank" class="site">Светлые фоны для сайта</a></li>
+<li><a href="http://html5book.ru/styling-images/" target="_blank" class="site">Оформление изображений на сайте</a></li>
+</ul>
+<!--Ad Injection:bottom-->
+<div style='clear:both;margin-top:30px;padding-top:30px;padding-bottom:0px;'><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ADAPT -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-4906567094890032"
+     data-ad-slot="5808407100"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+<div id="disqus_thread">
+            <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-8">
+        <div id="dsq-comment-header-8" class="dsq-comment-header">
+            <cite id="dsq-cite-8">
+                <span id="dsq-author-user-8">Артем</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-8" class="dsq-comment-body">
+            <div id="dsq-comment-message-8" class="dsq-comment-message"><p>Почему не задается фоновая картинка элементу с position absolute, relative??</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-9">
+        <div id="dsq-comment-header-9" class="dsq-comment-header">
+            <cite id="dsq-cite-9">
+http://html5book.ru                <span id="dsq-author-user-9">nazarelen</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-9" class="dsq-comment-body">
+            <div id="dsq-comment-message-9" class="dsq-comment-message"><p>Здравствуйте. Предлагаю рассмотреть несколько вариантов. Если в вашем случае разметка отличается, прошу дать уточнение.<br />
+1. Если пустой элемент позиционируется относительно элемента body с помощью position absolute/relative и для него заданы ширина и высота, то для него можно установить фон (картинку, цвет или градиент).<br />
+2. Если непустой элемент позиционируется относительно элемента body с помощью position absolute/relative, то для него можно задать фон (картинку, цвет или градиент).<br />
+3. Если непустой элемент с position: absolute находится внутри элемента-контейнера с position: relative, и для элемента-контейнера высота не задана, то для него нельзя установить фон, так как абсолютно позиционированные элементы удаляются из основного потока страницы и высота элемента-контейнера станет равной нулю.<br />
+Для вложенного элемента с position absolute фон задать можно. При этом ширина абсолютно позиционированного элемента станет равной ширине его содержимого, а не родительского элемента. В данном случае, нужно установить width: 100%.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+var disqus_url = 'http://html5book.ru/css-background/';
+var disqus_identifier = '2596 http://html5book.ru/?page_id=2596';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'html5book';
+var disqus_title = "2.9. CSS фон";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=2596';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+      </div>
+    </article>
+  </div> <!-- end of content -->
+<aside id="sidebar">
+  <div class="searchform-wrapper">
+ <script>
+  (function() {
+    var cx = '008774849217505016839:j25nz2oka_a';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search></div><div id="nav_menu-2" class="sidebar-widget widget_nav_menu"><div class="menu-left-container"><ul id="menu-left" class="menu"><li id="menu-item-1860" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1860"><a href="http://html5book.ru/html-html5/">HTML</a>
+<ul class="sub-menu">
+	<li id="menu-item-2804" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2804"><a href="http://html5book.ru/osnovy-html/">1.1. Основы HTML</a></li>
+	<li id="menu-item-1859" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1859"><a href="http://html5book.ru/html-tags/">1.2. HTML теги</a></li>
+	<li id="menu-item-1841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1841"><a href="http://html5book.ru/html-attributes/">1.3. HTML атрибуты</a></li>
+	<li id="menu-item-1847" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1847"><a href="http://html5book.ru/html-text/">1.4. HTML текст</a></li>
+	<li id="menu-item-1845" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1845"><a href="http://html5book.ru/hyperlinks-in-html/">1.5. HTML ссылки</a></li>
+	<li id="menu-item-1843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1843"><a href="http://html5book.ru/images-in-html/">1.6. HTML изображения</a></li>
+	<li id="menu-item-1846" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1846"><a href="http://html5book.ru/html-table/">1.7. HTML таблицы</a></li>
+	<li id="menu-item-1844" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1844"><a href="http://html5book.ru/html-lists/">1.8. HTML списки</a></li>
+	<li id="menu-item-1858" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1858"><a href="http://html5book.ru/specsimvoly-html/">1.9. Спецсимволы HTML</a></li>
+	<li id="menu-item-1856" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-1856"><a href="http://html5book.ru/poleznye-servisy-html/">1.10. HTML генераторы</a></li>
+</ul>
+</li>
+<li id="menu-item-1862" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1862"><a href="http://html5book.ru/html-html5/">HTML5</a>
+<ul class="sub-menu">
+	<li id="menu-item-2838" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2838"><a href="http://html5book.ru/html5-semantic-elements/">1.11. HTML5 семантические элементы</a></li>
+	<li id="menu-item-1848" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1848"><a href="http://html5book.ru/html5-audio/">1.12. HTML5 аудио</a></li>
+	<li id="menu-item-1849" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1849"><a href="http://html5book.ru/html5-video/">1.13. HTML5 видео</a></li>
+	<li id="menu-item-2011" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2011"><a href="http://html5book.ru/neobyazatelnye-tegi-html5/">1.14. Необязательные теги разметки HTML5</a></li>
+	<li id="menu-item-5395" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5395"><a href="http://html5book.ru/html5-forms/">1.15. HTML5 формы</a></li>
+</ul>
+</li>
+<li id="menu-item-1861" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1861"><a href="http://html5book.ru/css-css3/">CSS</a>
+<ul class="sub-menu">
+	<li id="menu-item-3695" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-3695"><a href="http://html5book.ru/osnovy-css/">2.1. Основы CSS</a></li>
+	<li id="menu-item-3276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3276"><a href="http://html5book.ru/block-inline-elements/">2.2. Блочные и строчные элементы</a></li>
+	<li id="menu-item-3168" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3168"><a href="http://html5book.ru/css-position/">2.3. CSS позиционирование</a></li>
+	<li id="menu-item-1837" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1837"><a href="http://html5book.ru/css-text/">2.4. CSS текст</a>
+	<ul class="sub-menu">
+		<li id="menu-item-6931" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-6931"><a href="http://html5book.ru/css-text/css-text-2/">CSS текст (часть 2)</a></li>
+		<li id="menu-item-6932" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-6932"><a href="http://html5book.ru/css-text/css-text-3/">CSS текст (часть 3)</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1840"><a href="http://html5book.ru/css-shrifty/">2.5. CSS шрифты</a></li>
+	<li id="menu-item-1855" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1855"><a href="http://html5book.ru/styling-hyperlinks/">2.6. CSS ссылки</a></li>
+	<li id="menu-item-1836" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1836"><a href="http://html5book.ru/css3-tables/">2.7. CSS таблицы</a></li>
+	<li id="menu-item-1835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1835"><a href="http://html5book.ru/css-spiski/">2.8. CSS списки</a></li>
+	<li id="menu-item-2603" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2596 current_page_item menu-item-2603"><a href="http://html5book.ru/css-background/">2.9. CSS фон</a></li>
+	<li id="menu-item-2665" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2665"><a href="http://html5book.ru/css-border/">2.10. CSS рамка</a></li>
+	<li id="menu-item-3752" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3752"><a href="http://html5book.ru/css-content/">2.11. CSS content</a></li>
+	<li id="menu-item-1853" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1853"><a href="http://html5book.ru/generatory-css/">2.12. CSS генераторы</a></li>
+	<li id="menu-item-1842" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-1842"><a href="http://html5book.ru/css-colors/">2.13. CSS цвета</a></li>
+</ul>
+</li>
+<li id="menu-item-2534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2534"><a href="http://html5book.ru/css-css3/">CSS3</a>
+<ul class="sub-menu">
+	<li id="menu-item-2950" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-2950"><a href="http://html5book.ru/css3-text/">2.14. CSS3 текст</a></li>
+	<li id="menu-item-2548" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2548"><a href="http://html5book.ru/css3-gradient/">2.15. CSS3 градиент</a></li>
+	<li id="menu-item-3032" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3032"><a href="http://html5book.ru/css3-borders/">2.16. CSS3 рамка</a></li>
+	<li id="menu-item-3076" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3076"><a href="http://html5book.ru/css3-shadows/">2.17. CSS3 тень</a></li>
+	<li id="menu-item-3723" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3723"><a href="http://html5book.ru/css3-transition/">2.18. CSS3 переходы</a></li>
+	<li id="menu-item-3748" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3748"><a href="http://html5book.ru/css3-transform/">2.19. CSS3 трансформации</a></li>
+	<li id="menu-item-3914" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3914"><a href="http://html5book.ru/css3-animation/">2.20. CSS3 анимация</a></li>
+	<li id="menu-item-5880" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5880"><a href="http://html5book.ru/css3-flexbox/">2.21. CSS3 flexbox</a></li>
+	<li id="menu-item-5989" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5989"><a href="http://html5book.ru/css3-columns/">2.22. CSS3 columns</a></li>
+	<li id="menu-item-6186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6186"><a href="http://html5book.ru/3d-transform/">2.23. CSS3 3D трансформации</a></li>
+	<li id="menu-item-6237" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6237"><a href="http://html5book.ru/css3-mediazaprosy/">2.24. CSS3 медиа запросы</a></li>
+	<li id="menu-item-8072" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-8072"><a href="http://html5book.ru/css3-filtry/">2.25. CSS3 фильтры</a></li>
+</ul>
+</li>
+<li id="menu-item-5592" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-5592"><a href="http://html5book.ru/javascript-jquery/">JavaScript</a>
+<ul class="sub-menu">
+	<li id="menu-item-5593" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-5593"><a href="http://html5book.ru/osnovy-javascript/">3.1. Основы JavaScript</a></li>
+	<li id="menu-item-5701" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-5701"><a href="http://html5book.ru/vyrazheniya-v-javascript/">3.2. Выражения в JavaScript</a></li>
+</ul>
+</li>
+<li id="menu-item-1863" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1863"><a href="http://html5book.ru/javascript-jquery/">jQuery</a>
+<ul class="sub-menu">
+	<li id="menu-item-1851" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-1851"><a href="http://html5book.ru/vvedenie-v-jquery/">3.10. Введение в jQuery</a></li>
+	<li id="menu-item-1854" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1854"><a href="http://html5book.ru/metody-jquery/">3.11. Методы jQuery</a>
+	<ul class="sub-menu">
+		<li id="menu-item-6875" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-6875"><a href="http://html5book.ru/metody-jquery/jquery-manipulyacii/">3.11.1. Манипуляции html-элементами</a></li>
+		<li id="menu-item-6874" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6874"><a href="http://html5book.ru/metody-jquery/jquery-svoistva-klassy-atribyti/">3.11.2. Чтение и изменение css-свойств, классов и атрибутов</a></li>
+		<li id="menu-item-6873" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6873"><a href="http://html5book.ru/metody-jquery/jquery-vyborka-elementov/">3.11.3. Обход DOM и выборка html-элементов</a></li>
+		<li id="menu-item-6895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6895"><a href="http://html5book.ru/metody-jquery/jquery-animaciya/">3.11.4. jQuery анимация</a></li>
+		<li id="menu-item-6894" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-6894"><a href="http://html5book.ru/metody-jquery/jquery-metody-window/">3.11.5. Методы объекта window</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1857" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1857"><a href="http://html5book.ru/sobytiya-jquery/">3.12. События jQuery</a></li>
+	<li id="menu-item-4153" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-4153"><a href="http://html5book.ru/jquery-selectors/">3.13. Селекторы jQuery</a></li>
+</ul>
+</li>
+<li id="menu-item-1866" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1866"><a href="http://html5book.ru/web-topography/">Веб-типографика</a>
+<ul class="sub-menu">
+	<li id="menu-item-1850" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-1850"><a href="http://html5book.ru/kakoj-shrift-mne-ispolzovat-pyat-principov-vybora-i-ispolzovaniya-shriftov/">4.1. Пять принципов выбора и использования шрифтов</a></li>
+	<li id="menu-item-1852" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1852"><a href="http://html5book.ru/shrift-dlya-sita/">4.2. Выбираем шрифт для сайта</a></li>
+	<li id="menu-item-7976" class="menu-item menu-item-type-post_type menu-item-object-page last-menu-item menu-item-7976"><a href="http://html5book.ru/pravila-veb-tipografiki/">4.3. Правила веб-типографики</a></li>
+</ul>
+</li>
+<li id="menu-item-7796" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-7796"><a href="http://html5book.ru/seo/">SEO</a>
+<ul class="sub-menu">
+	<li id="menu-item-7803" class="menu-item menu-item-type-post_type menu-item-object-page first-menu-item menu-item-7803"><a href="http://html5book.ru/ranzhirovanie-google-200-faktorov/">Ранжирование Google: 200 факторов</a></li>
+</ul>
+</li>
+</ul></div></div>		<div id="recent-posts-2" class="sidebar-widget widget_recent_entries">		 <p class="sidebar-headline">Свежие записи</p>		<ul>
+					<li>
+				<a href="http://html5book.ru/mnogourovnevoe-vypadayushee-menu/">Горизонтальное выпадающее многоуровневое меню</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/shpargalka-po-tablicam/">Шпаргалка по работе с таблицами</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/pole-poiska-dlya-sayta/">Поле поиска для сайта. Идеи для оформления</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/adaptivnyy-dizayn-saita/">Адаптивный дизайн сайта</a>
+						</li>
+					<li>
+				<a href="http://html5book.ru/oformlenie-tablicy-psevdoklassami/">Оформление таблицы с помощью псевдоклассов</a>
+						</li>
+				</ul>
+		</div>		</aside> <!-- end of sidebar -->
+  </div> <!-- end of main-content -->
+</div> <!-- end of container -->
+<footer id="wrapper-footer">
+  <div id="footer">
+    <div class="footer-widget-area footer-widget-area-1">
+<div id="text-4" class="footer-widget widget_text">			<div class="textwidget"><!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='//www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t44.10;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='31' height='31' ><\/a>")
+//--></script><!--/LiveInternet--></div>
+		</div>    </div>
+    
+    <div class="footer-widget-area footer-widget-area-2">
+<div id="text-9" class="footer-widget widget_text">			<div class="textwidget">&copy; Запрещено копирование материала без согласия автора</div>
+		</div>    </div>
+   
+    <div class="footer-widget-area footer-widget-area-3">
+<div id="text-7" class="footer-widget widget_text">			<div class="textwidget"><!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=23928760&amp;from=informer"
+target="_blank" rel="nofollow"><img src="//bs.yandex.ru/informer/23928760/3_0_FFFFFFFF_EFEFEFFF_0_pageviews"
+style="width:88px; height:31px; border:0; position:absolute; left:-9999px;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" onclick="try{Ya.Metrika.informer({i:this,id:23928760,lang:'ru'});return false}catch(e){}"/></a>
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter23928760 = new Ya.Metrika({id:23928760,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/23928760" style="position:absolute; left:-9999px; bottom:0;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter --></div>
+		</div>    </div>
+  </div>
+</footer>  <!-- end of wrapper-footer -->
+<span id="bruteprotect_uptime_check_string" style="display:none;">7ads6x98y</span>        <script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'html5book';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1) {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script'); 
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+        <script type='text/javascript' src='http://html5book.ru/wp-includes/js/comment-reply.min.js?ver=4.4.2'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/themes/papercuts/js/placeholders.js?ver=2.1.0'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-content/themes/papercuts/js/responsive.js?ver=1.0'></script>
+<script type='text/javascript' src='http://html5book.ru/wp-includes/js/wp-embed.min.js?ver=4.4.2'></script>
+    
+</body>
+</html>

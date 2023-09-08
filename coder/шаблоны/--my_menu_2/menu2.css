@@ -1,0 +1,153 @@
+body {
+	background-color: Lightgrey;
+}
+
+
+
+
+
+.titleMenu:first-child {
+	line-height: 40px;
+	height: 40px;
+	font-weight: bold;
+}
+.titleMenu {
+	width: 480px;
+
+	padding: 0px;
+	margin: 0px;
+	
+	line-height: 30px;
+	height: 30px;
+
+	text-align: center;
+	background-color: rgb(220,220,220);
+	
+	font-family: Georgia, "Times New Roman", Times, serif;
+
+	cursor: pointer;
+}
+
+
+.titleMenu:first-child img {
+	float: left;
+	padding-top:-15px;
+	height: 40px;
+}
+.titleMenu img {
+	height: 30px;
+}
+
+
+
+
+
+.titleMenu:hover {
+	background-color: rgb(210,220,230);
+}
+
+
+
+
+
+
+#gamburg {
+	position:absolute;
+	float: right;
+
+	right: 0px;
+	top: 0px;
+	
+	width: 40px;
+	z-index: 100;
+	font: 2em "arial";
+	background-color: rgb(180,180,180);
+}
+
+#gamburg:hover {
+	background-color: rgb(180,190,200);
+}
+
+
+.bigmenu {
+	position:absolute;
+	padding: 0px;
+	margin: 0px;
+	right: 0px;
+	
+	top: 0px;    /* ??? */
+	height: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.menu0 {
+	position:relative;	
+	padding: 0px;
+	margin: 0px;
+	right: 0px;
+
+	top: -1500px;
+
+	width: 480px;
+	background-color: rgb(240,240,240);
+	border-collapse: collapse;
+}
+.menu0 tr:first-child {
+	height: 45px;
+	vertical-align: bottom;
+}
+.menu0 td {
+	padding-left: 15px;
+}
+.menu0 td:first-child {
+	width: 220px;
+}
+.menu0 td:nth-child(2) {
+	width: 200px;
+}
+
+
+
+
+
+/*
+#menu00 {
+	height: 215px;
+}
+#menu01 {
+	height: 160px;
+}
+#menu02 {
+	height: 215px;
+}
+#menu03 {
+	height: 335px;
+}
+
+*/
+
+.smallInput {
+	width: 38px;
+}
+#butcheck {
+	color: rgb(240,0,0);
+	float:right;
+}
+#butadd0 {
+	width: 100px;
+}
+#clear0, #clear1{
+	float:right;
+	
+}
+
+

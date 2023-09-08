@@ -1,0 +1,114 @@
+/*см поиск border*/
+
+/* ========== Структурные псевдоклассы  ???  изучить ===============*/
+
+
+
+
+/*=================== TEXT-SHADOW   стиль ================*/
+/* !!! если не определено свойство border-color, у границы будет ЦВЕТ ТЕКСТА, или currentColor.*/
+h2 {
+	width: 200px;
+	text-shadow: #000000 0px 0px 10px;
+	border-style: double;
+	color: #FFFF33;
+}
+
+
+
+
+
+
+
+
+/*==================== КЛИК НА ОДНО - ДЕЙСТВИЕ С ДРУГИМ   псевдоклассы !!  (:checked, :hover ...)*/
+input[type="checkbox"]:not(:checked)~input {
+	visibility: hidden;
+
+}
+
+
+
+
+
+
+
+/*============= background-image: LINEAR-GRADIENT   ##вариант  ниже ещё варианты   ============= 
+linear-gradient(to top left, #00F 10%, #FFFF00, #FF00FF 90%);     background-image: linear-gradient(135deg, red, orange, yellow, green, blue, purple);   background-image: linear-gradient(red 16.7%, orange 16.7%, orange 33.3%, yellow 33.3%, yellow 50%, green 50%, green 66.7%, blue 66.7%, blue 83.3%, purple 83.3%); 
+}*/
+
+/* общий фон  !!!
+background-image:linear-gradient(to right,#C7CCD4 7%,#CBD2D8 7%); 	background-size:8px;	background-repeat:repeat; ((можно упростить применив repeating-linear-gradient?))         !! 
+
+1 полосатый фон  body { background-image:repeating-linear-gradient(to right,#C7CCD4 0,#C7CCD4 5px, #CBD2D8 5px, #CBD2D8 7px); }
+
+2 клетчатый фон   body { background-color:#CCCCCC;  background-image:repeating-linear-gradient(45deg, transparent 0,transparent 3px, #EEEEEE 3px, #EEEEEE 6px) , repeating-linear-gradient(-45deg, transparent 0,transparent 3px, #EEEEEE 3px, #EEEEEE 6px);  } 
+		   
+3 фон с прозрачн треугольн поверх фото      body {background-image: linear-gradient(45deg,#C7CCD4 30%,transparent 30%), url(image/pezi.jpg);	background-size:8px 8px,cover; background-repeat:repeat;} 
+*/
+
+
+body {
+	background-image: linear-gradient(135deg, yellow, orange, red, purple, blue, green);
+	/*	!!!  размещение нескольких фоновых изображений по углам и сторонам
+	background :url('b1.gif') top left no-repeat,
+	url('b2.gif') top right no-repeat,
+	url('b3.gif') bottom left no-repeat,
+	url('b4.gif') bottom right no-repeat,
+	url('ba.gif') top repeat-x,
+	url('bb.gif') left repeat-y,
+	url('bc.gif') right repeat-y,
+	url('bd.gif') bottom repeat-x
+*/
+}
+
+
+
+/* ============== -webkit-filter:  Фильтры  =============*/
+
+.stat {
+	position: fixed;
+	left: 500px;
+	top: 5px;
+	z-index: 101;
+	opacity: 1;
+}
+
+.stat:hover {
+	opacity: 0;
+}
+
+.din {
+	position: fixed;
+	left: 500px;
+	top: 5px;
+	z-index: 100;
+	opacity: 0;
+}
+
+.stat:hover+.din {
+	opacity: 1;
+}
+
+
+
+
+/*  BORDER-IMAGE  !!!  -prefix-border-image: <source> <slice {1,4}> / <width {1,4}> <outset> <repeat{1,2}>; */
+/*-webkit-mask  ???  пока не работает?*/
+.arrow {
+	position: relative;
+	margin: 20px;
+	height: 200px;
+	width: 400px;
+	border: solid;
+	-webkit-border-image: url(image/arrow.png) round 5 5 5 5/10px/15px;
+	background-image: url(image/pezi.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	-webkit-mask: url(image/logo.png);
+	background-origin: padding-box;
+	background-clip: border-box;
+	opacity: 1;
+	-webkit-filter: blur(0px);
+	z-index: 1;
+}

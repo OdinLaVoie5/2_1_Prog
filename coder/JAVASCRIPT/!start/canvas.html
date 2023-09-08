@@ -1,0 +1,571 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+</head>
+
+<body>
+<ul id="results"> </ul>
+
+
+<!--  #canvas    -->	
+<canvas id='mycanvas' width='320' height='240'>
+ если это видно в браузе, значит Ваш браузер не поддерживает холст. 
+</canvas>
+<img id='myimage'>
+<canvas id='mycanvas1' width='640' height='240'></canvas>
+<canvas id='mycanvas2' width='640' height='240'></canvas>
+<canvas id='mycanvas3' width='640' height='240'></canvas>
+<canvas id='mycanvas4' width='640' height='240'></canvas>
+<canvas id='mycanvas5' width='535' height='360'></canvas>
+<canvas id='mycanvas6' width='320' height='320'></canvas>
+<canvas id='mycanvas7' width='640' height='440'></canvas>
+<canvas id='mycanvas8' width='640' height='500'></canvas>
+<canvas id='mycanvas9' width='640' height='500'></canvas>
+<canvas id='mycanvas10' width='640' height='500'></canvas>
+<canvas id='mycanvas11' width='640' height='500'></canvas>
+<canvas id='mycanvas12' width='640' height='500'></canvas>
+
+
+<!--для globalCompositeOperation-->
+<canvas id='c1' width='120' height='120'></canvas>
+<canvas id='c2' width='120' height='120'></canvas>
+<canvas id='c3' width='120' height='120'></canvas>
+<canvas id='c4' width='120' height='120'></canvas>
+<canvas id='c5' width='120' height='120'></canvas>
+<canvas id='c6' width='120' height='120'></canvas>
+<canvas id='c7' width='120' height='120'></canvas>
+<canvas id='c8' width='120' height='120'></canvas>
+<canvas id='c9' width='120' height='120'></canvas>
+<canvas id='c10' width='120' height='120'></canvas>
+<canvas id='c11' width='120' height='120'></canvas>
+<canvas id='c12' width='120' height='120'></canvas>
+
+<canvas id='mycanvas13' width='300' height='200'></canvas>
+<canvas id='mycanvas14' width='300' height='200'></canvas>
+<canvas id='mycanvas15' width='300' height='200'></canvas>
+<canvas id='mycanvas16' width='300' height='200'></canvas>
+
+
+
+<script>
+
+
+//  японский флаг
+var canvas = O('mycanvas')
+var context = canvas.getContext('2d')
+context.fillStyle = 'red'
+S(canvas).border = '1px solid black'
+context.beginPath()
+context.moveTo(160, 120)
+context.arc(160, 120, 70, 0, Math.PI * 2, false)
+context.closePath()      // ??  когда нужно применять?
+context.fill()
+
+// Копирование изображения холста  здесь на img (можно перетаскивать и сохранять в отличии от canvas)
+S('myimage').border = '1px solid black'
+// вариант O('myimage').src = canvas.toDataURL()
+O('myimage').src = canvas.toDataURL('image/jpeg', 0.8)   // лучше png (jpg что-то не то)
+// сохр в формате jpg, качество  от 0 низкое - до 1 высокое. 
+// применяется к объекту холста, а не к любому контексту, созданному из этого объекта. 
+
+
+canvas = O('mycanvas1')
+context = canvas.getContext('2d')
+S(canvas).background = 'lightblue'
+context.fillStyle = 'blue'
+context.strokeStyle = 'green'
+context.fillRect( 20, 20, 600, 200)
+context.clearRect( 40, 40, 560, 160)
+context.strokeRect(60, 60, 520, 120)
+
+gradient = context.createLinearGradient(0, 80, 640,80)    // нач и конечн точки (ими регулир угол)
+gradient.addColorStop(0, 'white')
+gradient.addColorStop(1, 'black')
+context.fillStyle = gradient
+context.fillRect(80, 80, 480,80)
+
+
+// 4 цветных примера 
+canvas = O('mycanvas2')
+context = canvas.getContext('2d')
+gradient = context.createLinearGradient(0, 0, 160, 0)
+
+gradient.addColorStop(0, 'white')
+gradient.addColorStop(1, 'black')
+context.fillStyle = gradient
+context.fillRect(20, 20, 135, 200)
+gradient = context.createLinearGradient(0, 0, 0, 240)
+gradient.addColorStop(0, 'yellow')
+gradient.addColorStop(1, 'red')
+context.fillStyle = gradient
+context.fillRect(175, 20, 135, 200)
+gradient = context.createLinearGradient(320, 0, 480, 240)
+gradient.addColorStop(0, 'green')
+gradient.addColorStop(1, 'purple')
+context.fillStyle = gradient
+context.fillRect(330, 20, 135, 200)
+gradient = context.createLinearGradient(480, 240, 640, 0)
+gradient.addColorStop(0, 'orange')
+gradient.addColorStop(1, 'magenta')
+context.fillStyle = gradient
+context.fillRect(485, 20, 135, 200)
+
+
+
+// радуга
+canvas = O('mycanvas3')
+context = canvas.getContext('2d')
+gradient = context.createLinearGradient(0, 0, 640, 0)
+
+gradient.addColorStop(0.00, 'red')
+gradient.addColorStop(0.14, 'orange')
+gradient.addColorStop(0.28, 'yellow')
+gradient.addColorStop(0.42, 'green')
+gradient.addColorStop(0.56, 'blue')
+gradient.addColorStop(0.70, 'indigo')
+gradient.addColorStop(0.84, 'violet')
+
+context.fillStyle = gradient
+context.fillRect(0, 0, 640, 240)
+
+
+
+//  Создание радиального градиента  
+canvas = O('mycanvas4')
+context = canvas.getContext('2d')
+gradient = context.createRadialGradient (190, 40, 0, 320, 120, 340) //  регулировка центра и внешн круга
+// вариант  gradient.addColorStop(0, 'lightgray'); gradient.addColorStop(1, 'black')
+gradient.addColorStop(0.00, 'red')
+gradient.addColorStop(0.14, 'orange')
+gradient.addColorStop(0.28, 'yellow')
+gradient.addColorStop(0.42, 'green')
+gradient.addColorStop(0.56, 'blue')
+gradient.addColorStop(0.70, 'indigo')
+gradient.addColorStop(0.84, 'violet')
+context.fillStyle = gradient
+context.fillRect(0, 0, 640, 240)
+
+
+
+/*//  Использование изображения для узора заливки
+canvas = O('mycanvas4')
+context = canvas.getContext('2d')
+image = new Image()
+image.src = 'image.png'
+image.onload = function()
+{
+pattern = context.createPattern(image, 'repeat')   //repeat  repeat-x  repeat-y  no-repeat
+context.fillStyle = pattern
+context.fillRect(120, 150, 600, 200)
+}*/
+
+//  ##текст   ##strokeText
+context.font = 'bold 100px Times'    // bold  italic  normal 
+context.textBaseline = 'top'  // bottom middle top и alphabetic
+context.textAlign = 'left'       // left center right
+context.strokeText('WickerpediA', 0, 0)  
+//  можно залить изо как в предыдущ
+O('myimage').src = canvas.toDataURL('image/jpeg', 0.8) 
+
+metrics = context.measureText('WickerpediA')    // определение ширины текста
+width = metrics.width
+// document.write(width);    document.write("<br>");
+
+
+
+//  	концы и сочленения
+canvas = O('mycanvas5')
+context = canvas.getContext('2d')
+S(canvas).background = 'lightblue'
+context.fillStyle = 'red'
+context.font = 'bold 13pt Courier'
+context.strokeStyle = 'blue'
+context.textBaseline = 'top'
+context.textAlign = 'center'
+context.lineWidth = 20
+caps = ['butt', 'round', 'square']
+joins = ['round', 'bevel', 'miter']
+for (j = 0 ; j < 3 ; ++j)
+{
+for (k = 0 ; k < 3 ; ++k)
+{
+context.lineCap = caps[j]
+context.lineJoin = joins[k]
+context.fillText(' cap:' + caps[j], 88 + j * 180, 45 + k * 120)
+context.fillText('join:' + joins[k], 88 + j * 180, 65 + k * 120)
+context.beginPath()
+context.moveTo( 20 + j * 180, 100 + k * 120)
+context.lineTo( 20 + j * 180, 20 + k * 120)
+context.lineTo(155 + j * 180, 20 + k * 120)
+context.lineTo(155 + j * 180, 100 + k * 120)
+context.stroke()   //  ?? если поменять со след строкой - контур замкнётся.
+context.closePath()
+}
+}
+
+
+
+//фигуры с заливкой
+canvas = O('mycanvas6')
+context = canvas.getContext('2d')
+
+S(canvas).background = 'lightblue'
+context.strokeStyle = 'orange'
+context.fillStyle = 'yellow'
+orig = 160
+points = 21   // *10
+dist = Math.PI / points * 2
+scale1 = 150
+scale2 = 80
+context.beginPath()
+for (j = 0 ; j < points ; ++j)
+{
+x = Math.sin(j * dist)
+y = Math.cos(j * dist)
+context.lineTo(orig + x * scale1, orig + y * scale1)
+context.lineTo(orig + x * scale2, orig + y * scale2)
+}
+context.closePath()
+context.stroke()
+context.fill()
+
+
+
+
+
+//  метод  ##clip
+canvas = O('mycanvas7')
+context = canvas.getContext('2d')
+
+context.fillStyle = 'white'
+context.strokeRect(20, 20, 600, 440) // Черная граница
+context.fillRect( 20, 20, 600, 440) // Белый фон
+context.beginPath()
+for (j = 0 ; j < 10 ; ++j)
+{
+context.moveTo(20, j * 48)
+context.lineTo(620, j * 48)
+context.lineTo(620, j * 48 + 30)
+context.lineTo(20, j * 48 + 30)
+}
+context.clip()
+context.closePath()
+context.fillStyle = 'blue' // Синее небо
+context.fillRect(20, 20, 600, 320)
+context.fillStyle = 'green' // Зеленая трава
+context.fillRect(20, 320, 600, 140)
+context.strokeStyle = 'orange'
+context.fillStyle = 'yellow'
+orig = 170
+points = 21
+dist = Math.PI / points * 2
+scale1 = 130
+scale2 = 80
+context.beginPath()
+for (j = 0 ; j < points ; ++j)
+{
+x = Math.sin(j * dist)
+y = Math.cos(j * dist)
+context.lineTo(orig + x * scale1, orig + y * scale1)
+context.lineTo(orig + x * scale2, orig + y * scale2)
+}
+context.closePath()
+context.stroke() // Контур солнца
+context.fill() // Заливка солнца
+
+
+
+
+
+// дуги  сегменты  окружности     ##arc
+canvas = O('mycanvas8')
+context = canvas.getContext('2d')
+
+context.strokeStyle = 'blue'
+arcs =
+[
+Math.PI,
+Math.PI * 2,
+Math.PI / 2,
+Math.PI / 180 * 59
+]
+for (j = 0 ; j < 4 ; ++j)
+{
+context.beginPath()
+context.arc(80 + j * 160, 80, 70, 0, arcs[j])
+context.closePath()
+context.stroke()
+}
+context.strokeStyle = 'red'
+for (j = 0 ; j < 4 ; ++j)
+{
+context.beginPath()
+context.arc(80 + j * 160, 240, 70, 0, arcs[j])
+context.stroke()
+context.closePath()
+}
+context.strokeStyle = 'green'
+for (j = 0 ; j < 4 ; ++j)
+{
+context.beginPath()
+context.arc(80 + j * 160, 400, 70, 0, arcs[j], true)
+context.stroke()
+context.closePath()
+}
+
+
+
+//     ##arcTo
+for (j = 0 ; j <= 280 ; j += 40)
+{
+context.beginPath()
+context.moveTo(20, 20)
+context.arcTo(240, 240, 460, 20, j)
+context.lineTo(460, 20)
+context.stroke()
+context.closePath()
+}
+
+
+// Рисование с кривыми второго порядка
+canvas = O('mycanvas9')
+context = canvas.getContext('2d')
+S(canvas).background = 'lightblue'
+
+context.beginPath()
+context.moveTo(180, 60)
+context.quadraticCurveTo(240, 0, 300, 60)
+context.quadraticCurveTo(460, 30, 420, 100)
+context.quadraticCurveTo(480, 210, 340, 170)
+context.quadraticCurveTo(240, 240, 200, 170)
+context.quadraticCurveTo(100, 200, 140, 130)
+context.quadraticCurveTo( 40, 40, 180, 60)
+context.fillStyle = 'white'
+context.fill()
+//k context.setLineDash([1, 2, 1, 3, 5, 1, 2, 4])     // !! штриховка 
+context.stroke()
+context.closePath()
+
+
+
+// Создание кривой Безье с двумя точками притяжения   !!
+mycanvas = O('mycanvas10')
+context = mycanvas.getContext('2d')
+context.strokeStyle = 'blue'
+
+context.beginPath()
+context.moveTo(240, 20)
+context.bezierCurveTo(720, 480, -240, -240, 240, 220)
+context.stroke()
+context.closePath()
+
+
+//  картинка,  вырезка,      !!  в том числе из самой canvas
+
+myimage = new Image()
+myimage.src = 'image.png'
+
+myimage.onload = function()
+{
+canvas = O('mycanvas10')           // my если определение холста не поместить в ф-цию - холсты путаются
+context = canvas.getContext('2d')
+context.drawImage(myimage, 20, 20 )
+context.drawImage(myimage, 140, 260, 220, 220)
+context.drawImage(myimage, 380, 260, 80, 220)
+context.drawImage(mycanvas, 11, 5, 620, 440, 20, 260, 160, 100)
+}
+
+
+//  ##тени  ##shadow
+myimage1 = new Image()
+myimage1.src = 'image1.png'
+
+orig = 95
+points = 21
+dist = Math.PI / points * 2
+scale1 = 75
+scale2 = 50
+
+myimage1.onload = function()
+{
+canvas = O('mycanvas11')
+context = canvas.getContext('2d')
+
+
+context.beginPath()
+for (j = 0 ; j < points ; ++j)
+{
+x = Math.sin(j * dist)
+y = Math.cos(j * dist)
+context.lineTo(orig + x * scale1, orig + y * scale1)
+context.lineTo(orig + x * scale2, orig + y * scale2)
+}
+context.closePath()
+context.shadowOffsetX = 5
+context.shadowOffsetY = 5
+context.shadowBlur = 6
+context.shadowColor = '#444'
+context.fillStyle = 'red'
+context.stroke()
+context.fill()
+context.shadowOffsetX = 2
+context.shadowOffsetY = 2
+context.shadowBlur = 3
+context.shadowColor = 'yellow'
+context.font = 'bold 36pt Times'
+context.textBaseline = 'top'
+context.fillStyle = 'green'
+context.fillText('Sale now on!', 200, 5)
+context.shadowOffsetX = 3
+context.shadowOffsetY = 3
+context.shadowBlur = 5
+context.shadowColor = 'black'
+context.drawImage(myimage1, 150, 145)    // ??   лучше png с прозрачным фоном
+}
+
+
+///  !! ?? сложно   Редактирование на уровне пикселов   ##getImageData   ##data
+myimage2 = new Image()
+myimage2.src = 'image2.jpg'
+myimage2.onload = function()
+{
+canvas = O('mycanvas12')
+context = canvas.getContext('2d')
+
+context.drawImage(myimage2, 0, 0, 200, 300)
+idata = context.getImageData(0, 0, myimage2.width, myimage2.height)
+for (y = 0 ; y < myimage2.height ; ++y)
+{
+pos = y * myimage2.width * 4
+for (x = 0 ; x < myimage2.width ; ++x)
+{
+average =
+(
+idata.data[pos] +
+idata.data[pos + 1] +
+idata.data[pos + 2]
+) / 3
+idata.data[pos] = average + 50
+idata.data[pos + 1] = average
+idata.data[pos + 2] = average - 50
+pos += 4;
+}
+}
+context.putImageData(idata, 320, 0)
+}
+
+
+
+
+
+//   ##globalCompositeOperation    12 видов наложений изо
+//  ??  поставить  image3.png с прозрачным фоном (и полупрозрачным)
+image3 = new Image()
+image3.src = 'image3.png'
+image3.onload = function()
+{
+types =
+[
+'source-over', 'source-in', 'source-out',
+'source-atop', 'destination-over', 'destination-in',
+'destination-out', 'destination-atop', 'lighter',
+'darker', 'copy', 'xor'
+]
+for (j = 0 ; j < 12 ; ++j)    //  !!!  цикл построения canvas
+{
+canvas = O('c' + (j + 1))
+context = canvas.getContext('2d')
+S(canvas).background = 'lightblue'
+context.fillStyle = 'red'
+context.arc(50, 50, 50, 0, Math.PI * 2, false)
+context.fill()
+
+context.globalAlpha = 1    //  вариант  прозрачность !!   = 0.5
+
+context.globalCompositeOperation = types[j]
+context.drawImage(image3, 20, 30, 90, 80)
+}
+}
+
+
+//   Преобразования   ##scale, rotate, translate и transform.
+image4 = new Image()
+image4.src = 'image4.png'
+
+image4.onload = function() {
+canvas = O('mycanvas13')
+context = canvas.getContext('2d')
+
+context.drawImage(image4, 0, 0)
+context.scale(5, 2)
+context.drawImage(image4, 20, 0)
+context.scale(.2, .7)      // ??  отриц значения должны переворачивать фигуру, но не работает совсем.
+context.drawImage(image4, 50, 50)
+}
+
+
+
+// тоже что предыдущ но с   ##save() и   ##restore()    !!! +  transform
+image5 = new Image()
+image5.src = 'image4.png'
+
+image5.onload = function() {
+canvas = O('mycanvas14')
+context = canvas.getContext('2d')
+
+context.drawImage(image5, 0, 0)
+context.save()
+context.transform(3, 2, 1, 2, 0, 0)            // вариант context.scale(3, 2) 
+context.drawImage(image5, 40, 0)
+context.restore()
+context.drawImage(image5, 0, 100)
+}
+
+
+
+//    ##rotate !!
+image6 = new Image()
+image6.src = 'image4.png'
+
+image6.onload = function() {
+canvas = O('mycanvas15')
+context = canvas.getContext('2d')
+for (j = 0 ; j < 4 ; ++j)
+{
+context.drawImage(image6, 20 + j * 40 , 20)
+context.rotate(Math.PI / 12)   // поворот осуществляется вокруг исходной точки холста в позиции 0,0.   каждый новый поворот сочетается с предыдущим
+}
+}
+
+
+// Вращение объектов на месте !!
+image7 = new Image()
+image7.src = 'image4.png'
+image7.onload = function() {
+canvas = O('mycanvas16')
+context = canvas.getContext('2d')
+ w = image7.width
+ h = image7.height
+for (j = 0 ; j < 4 ; ++j)
+{
+context.save()
+context.translate(20 + w / 2 + j * (w + 20), 20 + h / 2) // вариант context.transform(1, 0, 0, 1, 20 + w / 2 + j * (w + 20), 20 + h / 2)
+context.rotate(Math.PI / 5 * j)
+context.drawImage(image7, -(w / 2), -(h / 2))
+context.restore()
+}
+}
+
+
+
+
+</script>
+
+
+
+</body>
+</html>

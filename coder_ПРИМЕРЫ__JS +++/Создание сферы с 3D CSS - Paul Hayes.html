@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" id="paulrhayes-com" class="no-js">
+<head>
+  
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+<title>Creating a sphere with 3D CSS — Paul Hayes</title>
+<meta name="description" content="I design and build websites from Brighton &amp; London. I take photos too." />
+<meta name="google-site-verification" content="KXou1BjZqpDc9x8CuCA6epEKcxttO_EGrdhHSkqgEOI" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>(function(d){d.className=d.className.replace(/^no-js\b/,'js');}(document.documentElement));</script>
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<link rel="stylesheet" href="/css/master.css?1450961603" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="author" href="https://plus.google.com/101305158833886436755?rel=author" />
+<link rel="alternate" type="application/rss+xml" href="http://feeds.feedburner.com/prhayes" title="Paul Hayes RSS" />
+<link rel="alternate" href="/atom.xml" title="Paul Hayes" type="application/atom+xml">
+<link rel="icon" type="image/png" href="/favicon.png" />
+<script src="http://use.typekit.com/fdb0guo.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+
+  
+</head>
+<body>
+  
+  <div class="wrapper hfeed layout-post">
+    <header class="masthead">
+  
+    <div>
+      <a class="site-title" rel="home" href="/">
+        Paul Hayes
+      </a>
+      <a href="http://twitter.com/fofr" class="masthead-twitter" rel="me">
+        <img src="/images/twitter.png" width="32" height="32" alt="Follow @fofr on Twitter" title="Follow @fofr on Twitter" />
+      </a>
+    </div>
+  
+</header>
+
+    <article class="article h-entry" role="main">
+  <header class="article-header">
+    <h1 class="main-content-title entry-title p-name">
+      Creating a sphere with 3D CSS
+    </h1>
+  </header>
+  <div class="article-meta" role="contentinfo">
+    <time datetime="2011-02-10T23:33:33.000Z" class="entry-date published dt-published" pubdate>
+  10 Feb
+  <a href="/archive/2011">2011</a>
+</time>
+
+    
+
+  <nav>
+    
+      <a href="/2010-10/thoughts-on-responsive-enhancement/" title="Thoughts on Responsive Enhancement" rel="prev" data-key="left">&larr; Prev</a>
+    
+     | 
+    
+      <a href="/2011-03/css-modal/" title="Creating a modern modal with CSS" rel="next" data-key="right">Next &rarr;</a>
+    
+  </nav>
+
+
+  </div>
+  <div class="article-content entry-content e-content">
+    <p>With CSS3’s 3D transforms I’ve illustrated how to build a <a href="/2009-07/animated-css3-cube-interface-using-3d-transforms/">cube</a> and a <a href="/2010-10/css-tetrahedron/">tetrahedron</a>. It is also possible to create a sphere-like object, albeit with many elements.</p>
+<p><a href="/experiments/sphere/">3D CSS Sphere</a><br>Works in the latest Safari and iOS (just about runs on an iPhone 4).</p>
+<p><time datetime="2012-02-12"><strong>12 Feb 2012</strong></time>: Experiment updated to support <code>-moz</code> now that Firefox 10 supports 3D transforms.</p>
+<div class="video-wrapper"><iframe class="vimeo" src="http://player.vimeo.com/video/19806423" width="612" height="408" frameborder="0"></iframe></div>
+
+<p>Recently I’ve been looking at creating applicable 3D carousels. These rely on positioning panels in a circle around a central point (ie. rotation about the Y-axis), I put these panels in an unordered list. A natural extension is to duplicate each <code>&lt;ul&gt;</code> and rotate about the X-axis. With ‘A’ rounds (or lists), and ‘B’ panels per round (<code>&lt;li&gt;</code>s), I built a script that would distribute these in a circular manner, panels about Y-axis, lists about the X-axis, creating a sphere.</p>
+<p>The more elements per round and the more rounds, the smoother the sphere. But this soon stacks up and kills Safari. The optimum numbers have been about 9 rounds and 30 panels per round for a decent looking sphere, but that’s 279 3D elements and Safari starts to choke. Allowing the panels to overlap eases this somewhat and leads to a tighter sphere but it still appears blocky.</p>
+<p>The biggest gains come with border radius. Using a huge radius that made each panel circular the sphere suddenly gained a lovely curvature, and the number of rounds and panels could be reduced. In the experiment I use 8 rounds and 24 panels (200 elements). This doesn’t start choking until I start aggressively animating.</p>
+<p><a href="/experiments/sphere/"><img src="http://www.paulrhayes.com/images/creating-a-sphere-with-3d-css/sphere-normal.png" alt="3D sphere using CSS transform"></a></p>
+<p>Playing with this I’ve built a few different styles of sphere. In the experiment I’ve included the blocky ‘square’ version, along with the smoothed out border radius one (default). Marking panels white, and a few black can create a nice eye-ball effect.</p>
+<p><a href="/experiments/sphere/"><img src="http://www.paulrhayes.com/images/creating-a-sphere-with-3d-css/sphere-square-150x150.png" alt="Sphere without border radius"></a> <a href="/experiments/sphere/"><img src="http://www.paulrhayes.com/images/creating-a-sphere-with-3d-css/sphere-eye-150x150.png" alt="Eye"></a></p>
+<p>Also included in the experiment are versions showing a single round and another style named ‘contact’. This takes two lists and animates them like the space transportation device in the Jodie Foster movie of the same name.</p>
+<p><a href="/experiments/sphere/"><img src="http://www.paulrhayes.com/images/creating-a-sphere-with-3d-css/sphere-contact-150x150.png" alt="Rotating rounds"></a> <a href="/experiments/sphere/"><img src="http://www.paulrhayes.com/images/creating-a-sphere-with-3d-css/sphere-half-150x150.png" alt="Half a sphere"></a> <a href="/experiments/sphere/"><img src="http://www.paulrhayes.com/images/creating-a-sphere-with-3d-css/sphere-kaleid-150x150.png" alt="Kaleidoscope effect"></a></p>
+<p>Animating the border radius on all 192 panels (if your machine can cope), gives a neat kaleidoscope effect, also included in the experiment.</p>
+<h2 id="Code">Code</h2><p>The generated HTML is simply a couple of <code>&lt;div&gt;</code>s containing lists:</p>
+<pre><code class="html">&lt;div id=&quot;sphere&quot;&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;/li&gt;
+      …
+    &lt;/ul&gt;
+    …
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>To transform each set of panels into a circle the total number is divided by 360 to get the angle of rotation. Merely rotating will put all panels on top of each other, translating in the Z axis will move them out from the centre point. The correct translation distance so the panels slightly overlap (ie the circle radius) is worked out with some <a href="http://en.wikipedia.org/wiki/Trigonometry#Mnemonics">simple trigonometry</a>. Lists are rotated in the X axis, simply the number of lists divided by 360.</p>
+<p>Looping through each panel for each list, the angles of rotation are gradually increased by the calculated increments and applied to the elements:</p>
+<pre><code class="js">var panels = p || this.panels,
+  rounds = r || this.rounds,
+  rotationPerPanel = 360/panels,
+  rotationPerRound = 360/2/rounds,
+  yRotation, xRotation,
+  width = this.panelWidth,
+  zTranslate = (width/2) / Math.tan(rotationPerPanel * Math.PI/180),
+  $container = this.el,
+  $ul, $li, i, j;
+
+this.el.html(&#39;&#39;);
+for(i = 0; i &amp;lt; rounds; i++) {
+  $ul = $(&#39;&lt;ul&gt;&#39;);
+  xRotation = rotationPerRound * i;
+  $ul[0].style[transformProperty] = &quot;rotateX(&quot;+ xRotation + &quot;deg)&quot;;
+  for(j = 0; j &amp;lt; panels; j++) {
+    $li = $(&#39;&lt;li&gt;&#39;);
+    yRotation = rotationPerPanel * j;
+    $li[0].style[transformProperty] = &quot;rotateY(&quot;+ yRotation +&quot;deg)
+                         translateZ(&quot;+ zTranslate +&quot;px)&quot;;
+    $ul.append($li);
+  }
+  $container.append($ul);
+}
+</code></pre>
+<p>To achieve the 3D effect we give <code>#sphere</code> some perspective, which forms the containing block. A second container transitions between different transforms, letting us rotate the sphere. The complicated transform parts are applied inline via the JavaScript above, but each list element needs <code>preserve-3d</code> so its direct descendants are transformed in the same 3D space (rather than in 2D).</p>
+<pre><code class="css">#sphere {
+  width: 100px;
+  height: 100px;
+  margin: 200px auto;
+  -webkit-perspective: 800px;
+  -moz-persective: 800px;
+}
+
+.container {
+  width: 100px;
+  height: 100px;
+  -webkit-transition: -webkit-transform 200ms linear;
+  -webkit-transform-style: preserve-3d;
+  -moz-transition: -webkit-transform 200ms linear;
+  -moz-transform-style: preserve-3d;
+}
+
+.container &gt; ul {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.container li {
+  width: 98px;
+  height: 98px;
+  position: absolute;
+  display: block;
+  background: #000;
+  border: 1px solid #fff;
+  opacity: 0.1;
+  border-radius: 50px;
+}
+</code></pre>
+
+  </div>
+  <footer class="article-footer">
+  <p class="article-discussion"><a href="https://github.com/fofr/paulrhayes.com/tree/master/source/_posts/creating-a-sphere-with-3d-css.md" rel="alternate">This article is available on Github in Markdown format</a></p>
+  <div class="media h-card p-author">
+    <img src="http://1.gravatar.com/avatar/71f534a5deac2c9aa23b1a9c6de4f2e1?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G" alt="Paul Hayes" class="media-pull-left paul-avatar u-photo" />
+    <div class="media-body p-note">
+      <strong class="p-name">Paul Hayes</strong> is currently contracting at <a href="https://gds.blog.gov.uk/">Government Digital Service</a> after working for <a href="http://www.last.fm/user/FofR/" rel="me">Last.fm</a>. You can find him <a href="http://twitter.com/fofr" rel="me">on Twitter (@<span class="p-nickname">fofr</span>)</a>, where he talks about user experience, front-end development and design, amongst other day to day ramblings.
+    </div>
+  </div>
+</footer>
+
+  <section class="listing clearfix latest-posts">
+  <h1 class="main-content-title">
+    Latest posts
+  </h1>
+  <ol>
+    
+    
+      
+        
+        <li class="listing-item clearfix">
+  <span class="listing-dots"></span>
+  <span class="listing-title">
+    <a href="/2015-12/a-problem-with-exports/" class="listing-link">A problem with exports</a>
+  </span>
+  <time datetime="2015-12-24T00:00:00.000Z" class="pull-right listing-date" pubdate>
+    Dec 2015
+  </time>
+</li>
+
+      
+    
+      
+        
+        <li class="listing-item clearfix">
+  <span class="listing-dots"></span>
+  <span class="listing-title">
+    <a href="/2014-07/design-prototyping-with-github/" class="listing-link">Design prototyping with Git and Github</a>
+  </span>
+  <time datetime="2014-07-25T21:20:49.000Z" class="pull-right listing-date" pubdate>
+    Jul 2014
+  </time>
+</li>
+
+      
+    
+      
+        
+        <li class="listing-item clearfix">
+  <span class="listing-dots"></span>
+  <span class="listing-title">
+    <a href="/2013-09/a-light-progressive-framework/" class="listing-link">A small JavaScript framework</a>
+  </span>
+  <time datetime="2013-09-10T13:02:22.000Z" class="pull-right listing-date" pubdate>
+    Sep 2013
+  </time>
+</li>
+
+      
+    
+      
+        
+        <li class="listing-item clearfix">
+  <span class="listing-dots"></span>
+  <span class="listing-title">
+    <a href="/2013-06/last-fm-webteam/" class="listing-link">Last.fm Webteam</a>
+  </span>
+  <time datetime="2013-06-16T16:49:40.000Z" class="pull-right listing-date" pubdate>
+    Jun 2013
+  </time>
+</li>
+
+      
+    
+      
+        
+        <li class="listing-item clearfix">
+  <span class="listing-dots"></span>
+  <span class="listing-title">
+    <a href="/2012-11/fun-with-face-detection-canvas-and-webcam-video/" class="listing-link">Face detection using webcams and canvas</a>
+  </span>
+  <time datetime="2012-11-18T23:43:27.000Z" class="pull-right listing-date" pubdate>
+    Nov 2012
+  </time>
+</li>
+
+      
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  </ol>
+</section>
+
+</article>
+
+
+    
+      <footer class="site-footer">
+  <div class="site-footer-content-wrapper">
+    <p>
+      <a href="http://paulhayes.photography" rel="me">Photography</a>
+      &bull;
+      <a href="http://twitter.com/fofr" rel="me">Twitter</a>
+      &bull;
+      <a href="http://github.com/fofr" rel="me">Github</a>
+      &bull;
+      <a href="http://www.last.fm/user/FofR/" rel="me">Last.fm</a>
+      &bull;
+      <a href="http://flickr.com/prhayes" rel="me">Flickr</a>
+      &bull;
+      <a href="http://500px.com/FofR" rel="me">500px</a>
+      &bull;
+      <a href="http://sam-and-paul.com" rel="me">Travel blog</a>
+    </p>
+    <p>
+      &copy; 2015 Paul Hayes &mdash; <a href="/contact">Contact</a></p>
+  </div>
+</footer>
+
+    
+  </div>
+  <!--[if lte IE 8]>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>!window.jQuery && document.write('<script src="/js/jquery-1.11.1.min.js"><\/script>')</script>
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>!window.jQuery && document.write('<script src="/js/jquery-2.1.1.min.js"><\/script>')</script>
+  <!--<![endif]-->
+  <script src="/js/mousetrap.min.js"></script>
+  <script src="/js/master.js?1450961603"></script>
+  
+</body>
+</html>

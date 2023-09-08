@@ -1,0 +1,77 @@
+////////  ПАНЕЛЬ ДАННЫХ И НАСТРОЕК  !!! //////////
+// ОТКРЫТЬ - СКРЫТЬ все настройки  // клик по заголовку
+var flagProper = 0;
+function openProper0(){  
+	var menu00 = document.getElementById("menu00"); 
+
+	if (menu00.style.top == "0px") {
+		// menu00.style.top = "-1500px";
+		$("#menu00").animate({top:-1500},700);
+	}
+	else {
+		// menu00.style.top = "0px";
+		$("#menu00").animate({top:0},700);
+	}
+}
+
+function openProper1(){      
+	var menu01 = document.getElementById("menu01"); 
+
+	if (menu01.style.top == "0px") {
+		// menu01.style.top = "-1500px";
+		$("#menu01").animate({top:-1500},700);
+	}
+	else {
+		// menu01.style.top = "0px";
+		$("#menu01").animate({top:0},700);
+		flagProper = 1;
+	}
+}
+
+function openProper2(){      
+	var menu02 = document.getElementById("menu02"); 
+
+	if (menu02.style.top == "0px") {
+		// menu02.style.top = "-1500px";
+		$("#menu02").animate({top:-1500},700);
+	}
+	else {
+		// menu02.style.top = "0px";
+		$("#menu02").animate({top:0},700);
+		flagProper = 1;
+	}
+}
+
+function openProper3(){      
+	var menu03 = document.getElementById("menu03"); 
+	if (menu03.style.top == "0px") {
+		// menu03.style.top ="-1500px"
+		$("#menu03").animate({top:-1500},700);
+	}
+	else {
+		// menu03.style.top = "0px";
+		$("#menu03").animate({top:0},700);
+		flagProper = 1;
+	}
+}
+
+
+// дабл клик по заголовку и кнопка закр все настройки ////
+function openAllProper0(){
+	
+	if(!flagProper){
+		$("#menu00").animate({top:0},700);
+		$("#menu01").animate({top:0},700);
+		$("#menu02").animate({top:0},700);
+		$("#menu03").animate({top:0},700);
+		flagProper = 1;
+	}
+	else{
+		$("#menu00").animate({top:-1500},700);
+		$("#menu01").animate({top:-1500},700);
+		$("#menu02").animate({top:-1500},700);
+		$("#menu03").animate({top:-1500},700);
+		flagProper = 0;
+	}
+}
+

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+</head>
+
+<body>
+
+<canvas id="canvas" width="300" height="300"></canvas>
+
+
+
+
+<script>
+var canvas = document.getElementById("canvas");    
+var ctx = canvas.getContext("2d");   
+var width = canvas.width;
+var height = canvas.height;
+ctx.strokeRect(0, 0, width, height);
+
+
+
+var draw = function(){
+	ctx.beginPath(); 
+	ctx.fillStyle = "Blue";
+	ctx.moveTo(50, 50); 
+	ctx.lineTo(60, 50);
+	ctx.lineTo(60, 60);
+	ctx.lineTo(50, 60);
+	ctx.lineTo(50, 50);
+	ctx.fill();	
+}
+draw ();
+;</script>
+
+
+</body>
+</html>

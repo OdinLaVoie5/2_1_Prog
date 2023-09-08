@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="my.css" rel="stylesheet" type="text/css">
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+<title>MY</title>
+</head>
+<body>
+
+    
+<div>
+<a href="shifrA.html"><img class="stat"  src="image/Odista0.gif" width="500" height="100"><img class="din" src="image/Odidin0.gif" width="500" height="100"> </a>
+</div>
+
+<div>
+<a href="shifrA.html"><img class="stat"  src="image/refsta1.gif"  height="50"><img class="din" src="image/refdin1.gif" height="50"> </a>
+<a href="shifrA.html"><img class="stat"  src="image/refsta0.gif" height="50"><img class="din" src="image/refdin0.gif" height="50"> </a>
+</div>
+
+<div id="ser"></div>
+
+
+
+<script>
+var ser = document.getElementById("ser");
+
+window.onload = function () {    
+	var temp = window.innerHeight+'px'; 
+	ser.style.height = temp;
+	}
+
+
+window.onresize = function () {
+	var temp = window.innerHeight+'px'; 
+	ser.style.height = temp;
+	}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+//  РЕКУРСИЯ.    ( ФОРМАЛЬНЫЕ СИСТЕМЫ )
+
+
+
+var start = "MUIIIU", fin = ""; 
+var hash=[],  flagJ = 0,    stopWord = 20;
+
+// var way = " ";   путь ??  сохранять предысторию прохождения. строкой с разделителем?
+// ??  если на входе сразу fin.
+
+
+
+
+var supNum=0;
+function mui (word, fin){
+  var temp = 0;
+
+
+
+  function UU (word, fin){
+	for (var i=0; i < word.length-1; i++) {   //// -1 ? 
+	  if (word[i] == "U" && word[i+1] == "U" ) {  // правило UU
+		temp = word.slice(0, i) + word.slice(i+2);
+// 		way += "  UU"
+		if (temp == fin)   { flagJ = 1; document.write("!!!!!"+ temp+ "!!!!!"+"<br>"+"<br>"); return;} //  достижение цели
+		if (!hash[temp]) {   // избежание повторов
+		  hash[temp]=temp; 
+		  
+		  document.write (word + "--" + "UU"+ " ");
+		  document.write ("<b>"+temp+"</b>"+"<br>");
+		  supNum++;
+		  
+		  mui (temp, fin);
+		}
+	  }
+	}
+  }
+
+
+
+
+  function III (word, fin){
+	for (var i=0; i < word.length-2; i++) { 
+	  if (word[i] == "I" && word[i+1] == "I"  && word[i+2] == "I") {  // правило III
+		temp = word.slice(0, i) + "U" + word.slice(i+3);
+// 		way += "  III"
+		if (temp == fin)   { flagJ = 1;  document.write("!!!!!"+ temp+ "!!!!!"+"<br>"+"<br>"); return;} //  достижение цели
+		if (!hash[temp]) {   // избежание повторов
+		  hash[temp]=temp; 
+		  
+		  document.write (word + "--" + "III"+ " ");
+		  document.write ("<b>"+temp+"</b>"+"<br>");
+		  supNum++;
+		  
+		  mui (temp, fin);
+		}
+	  }
+	}
+  }
+
+
+
+  function I(word, fin){
+	if (word[word.length-1] == "I") {  //////////////  правило I
+	  temp = word + "U";
+// 	  way += "  I"
+	  if (temp == fin)   { flagJ = 1; document.write("!!!!!"+ temp+ "!!!!!"+"<br>"+"<br>"); return;} //  достижение цели
+	  if (!hash[temp]) {   // избежание повторов
+		hash[temp]=temp; 	  
+
+		document.write (word + "--" + "I"+ " ");
+		document.write ("<b>"+temp+"</b>"+"<br>");
+		supNum++;
+		
+		mui (temp, fin);
+	  }
+	}
+  }
+
+
+
+
+  function M(word, fin){
+	if (word[0] == "M") {  ////////////  правило M 
+	  temp =  "M"+ word.slice(1) + word.slice(1);
+// 	  way += "  M"
+	  if (temp == fin)   { flagJ = 1; document.write("!!!!!"+ temp+ "!!!!!"+"<br>"+"<br>"); return;} //  достижение цели
+	  if (!hash[temp]) {   // избежание повторов
+		hash[temp]=temp; 
+
+		if (temp.length <= stopWord) { // ограничение рекурсии. эта ф-ция оч грузит. 
+		  document.write (word + "--" + "M"+ " ");
+		  document.write ("<b>"+temp+"</b>"+"<br>");
+		  supNum++;
+		
+		  mui (temp, fin);
+		}
+	  }
+	}
+  }
+
+
+	
+	  UU(word,fin);III(word,fin);I(word,fin);  M(word,fin);
+	document.write ("RETURN" + "<br>" + "<br>")
+	return flagJ;
+}
+mui (start, fin );
+
+
+if (flagJ==0) var elem = "Нет вывода."; 
+// else 
+document.write (elem+" "+ supNum+"<br>")
+
+
+// document.write (hash["MUIIU"]+"!!!!!")
+ 
+ 

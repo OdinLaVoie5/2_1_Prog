@@ -1,0 +1,1711 @@
+
+
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+
+</head>
+<body>
+<div id="input0"> </div>
+<ul id="results"> </ul>
+
+<script>
+
+
+// рассматривать сначала  АБСТРАКТ ЗНАКИ   а потом конкретно ['/*', '*/'], ['//', '\n']
+// рассматривать только проблеммы не выявляемые конструктором?
+
+
+//  CSS (можно с анимацией ...)
+
+
+// проверка  ???
+// 1 закрыв сплит перед открыв(отсутств открыв сплита)       - откр в начало,  откр впереди рядом,  убрать закр? 
+// 2      (отсутств закр сплита)               - закр в конец,  закр позади рядом,   убрать закр,           временное изменение иерархии ???
+//  или  нарушение чередования сплитов (prompt?)   
+// ком // в строке перед ком / * * /    нужно предварит поменять местами сплиты                  ( временное изменение иерархии ) +  невидимые или на видимые метки н/р два длин тире(чтото экзотич)   чтобы потом вернуть обратно ?
+// 3 повторные знаки // а также / * и * / в строке   (оставлять крайние?   добавлять противоположные рядом,    или у повторного?   ... )
+//  + возможность одиночного сплита ?? (деление на 2 части?)
+
+//  +++  ??? 
+// внутр некрайн метки - игнор
+// при нарушении - внутр больш заменить.    Или в абстрактнои - перестановка иерархии
+//  скобочное свести к иерархии - именовать каждый уровень скобок?
+// ряд последовательных ф-ции циклом  + apple ?  ???
+
+// ??? 
+// наложение ф-ций (indFunc).   доделать - не разные ф-ции, а разные аргументы той же ф-ции.  ???
+// + сделать - в разных ветках разн аргументы ф-ции хоть и таже метка.     разный оттенок?
+//  ??  ф-цию проверки совпадения цветов в выдаче (в разных опциях) ... ...
+
+var myTest = '<111 <AAA  222 BBB  ццц(( 333))   444      /*  //666 (( 777))  888\n  999*/       000 //  aaa\n kkk    ййй    /*bbb  ccc (( ddd)) eee //fff(( ddd)) kkk  \nggg(( ddd)) */        hhh// iii \njjj'  // входные данные
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+//1 option ////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+var splity = [ ['/*', '*/'] , ['//', '\n'], ['((', '))'], [/[6]/]]; // нач сплиты. ?? сделать проверку повторений сплитов ...  // ?? если один сплит пустой '' - какое то применение одного сплита (1 от начала строки, 2 до конца строки) (но если несколько сплитов используют \n - возможна ошибка? как то возвращать  \n? )
+var rezspl = [ ['&cup;', '&cap;'] , ['&larr;', '&rarr;'], ['&there4;', '&equiv;']]; // кон сплиты
+// по типу сплитов -   (0) / 1 / ...   как в исходном / без сплитов / rezspl
+//                     (0) / ...       как есть / без пробелов  
+var look = [0, 1];       
+
+var maxI = []; // используется в markCSS      j, k  пока? не использую
+
+//  ?????     работа с функциями
+var optionFunc = [[checkCyrOSC, checkCyrOSC], []]; //[[checkCyrOSC, ''], []];    ?? присоединять аргументы ... ...
+
+
+
+
+
+//1                     Ф-ЦИЯ ОБРАБОТКИ   +  УСТАНОВКИ МЕТОК                         
+function splitCodeOSC (code, splity, look) { 
+  var codeStr = code + '';    
+  codeStr = checkSymbolOSC(codeStr);  // замена проблемных знаков
+  var arrStr = [codeStr];
+  
+  //                   ДОПОЛН   ф-ция для установок меток                   
+  function funcMark(str, i, m) {  
+	return '<span id="spl_' +i+m + '">' + str + '</span>';  //   j, k  пока? не использую
+  };
+
+  //                   РЕКУРСИВНАЯ   ф-ция                                  
+  function splitPart (arrStr, splity, i) {
+	if(!rezspl[i]){rezspl[i] = ['-', '-']}// умолчание при отсутствии
+	if(!rezspl[i][1]){rezspl[i][1] = '-'}// умолчание  ?
+	if(!rezspl[i][0]){rezspl[i][0] = '-'}// умолчание  ?
+	if(!look[0]){rezspl = splity};   // умолч. если look[0] нет или 0, то сплиты результа как в исходном
+	if(look[0] == 1){rezspl[i][0] = ''; rezspl[i][1] = '';} // если look[0] = 1 результ без сплитов
+
+	for (var j=0; j < arrStr.length; j++) {
+	  var ind0 = arrStr[j].indexOf(splity[i][0]); // индикатор отсутствия сплита (продолж для ошибок) ??
+	  arrStr[j] = arrStr[j].split(splity[i][0]);
+	  for (var k=0; k < arrStr[j].length; k++) { 
+		var ind1 = arrStr[j][k].indexOf(splity[i][1]); // индикатор отсутствия сплита   ??
+		arrStr[j][k] = arrStr[j][k].split(splity[i][1]);
+
+		if(splity[i+1]){splitPart (arrStr[j][k], splity, i+1);}	// рекурсия	
+		 
+		// маркировка и ф-ции             // j, k  пока? не использую
+		//  для сплитов более сложн типа возможно  m больше 2 ?
+		for (var m=0; m< arrStr[j][k].length; m++) {
+		  if(~ind0){
+			var oneTwo = m;
+			if(arrStr[j][k].length == 1) oneTwo = 1; // случай переднего (одинарного) блока
+			arrStr[j][k][m] = funcMark(arrStr[j][k][m], i, oneTwo)
+			if(optionFunc[i]&&optionFunc[i][oneTwo]){arrStr[j][k][m] = optionFunc[i][oneTwo](arrStr[j][k][m], 'gold')}
+		  }
+		}		
+
+	  // обратное соединение 
+	  arrStr[j][k] = arrStr[j][k].join(rezspl[i][1]);
+	  }
+	arrStr[j] = arrStr[j].join(rezspl[i][0]);
+	}
+  if(maxI[0] < i || !maxI[0]){maxI[0] = i} // вытаскиваю макс уровеннь i для CSS (j, k  пока? не использую)
+  }
+  splitPart (arrStr, splity, 0);	
+
+
+// ВЫВОД  
+  // document.write(arrStr);    document.write("<br>");
+  preOSC(arrStr, look[1])//как есть или без лишн пробелов
+  preOSC(codeStr)//как есть 
+ //alert (arrStr) 
+  return;
+}
+splitCodeOSC (myTest, splity, look)
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+//2 option ////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+var inoutCSS = [[0, 1], [0, 1], [0, 1]];  // 0 - внутреннее,  1 - наружное.  настройки  
+var optionCSS = [['background-color: Yellow; ', 'color: Yellow;'], ['background-color: Blue;', 'color: Blue;'],  ['background-color: Red;', 'color: Red;']];    // варианты: background-image  // text-shadow  // color
+// варианты:  linear-gradient(to top, #ff0, #00efef) // red 1mm 1mm 1px //     text-transform: uppercase;
+var addRez = ''; // добавочное св-во для всех.     'text-shadow: black 1mm 1mm 1px;'
+
+
+
+
+
+//2        Ф-ЦИЯ ГЕНЕРИРОВАНИЯ CSS  (ориентировано на маркировку цветом)
+function markCSS() {
+  var inoutStr, inoutRez = '<style> ';
+  if(!optionCSS[0]){optionCSS[0] = ['background-color: Yellow;']}; // 1-е св-во по умолч
+  for (var i=0; i <= maxI[0]; i++) {
+	if(!inoutCSS[i]){inoutCSS[i] = inoutCSS[i-1]};    // по умолч - предпослед уровень 
+	if(!optionCSS[i]){optionCSS[i] = ['background-color: Gray;']}; // если ф-ции нет - серое 
+
+	for (var m=0; m< optionCSS[i].length; m++) {
+	  if(!optionCSS[i][m]){optionCSS[i][m] = 'background-color: Gray;'}; //
+	  
+	  // формирование CSS 
+	  inoutStr = ' #spl_' + i + inoutCSS[i][m] + '{' + optionCSS[i][m] + addRez + '}';
+	  inoutRez  += inoutStr;
+	}
+  }
+  inoutRez += ' </style>'; // завершение формирования CSS
+  
+  // alert (inoutRez)
+  document.write(inoutRez);  // выдача
+  return ;
+}
+markCSS();
+
+
+
+
+
+//  ?? попытка - вместо конкретного сплита  регул выраж.
+var ttt = 'q7we 123333  qw1e';
+var regex = /\d+/g;
+// alert (getClassOSC(ttt))
+// alert (ttt.match(regex) )
+// alert (ttt.indexOf('we'))
+
+</script>
+</body>
+</html>
+
+//  упростил с одинарными
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+
+</head>
+<body>
+<div id="input0"> </div>
+<ul id="results"> </ul>
+
+<script>
+// рассматривать сначала  АБСТРАКТ ЗНАКИ   а потом конкретно ['/*', '*/'], ['//', '\n']
+// рассматривать только проблеммы не выявляемые конструктором?
+
+
+//  CSS (можно с анимацией ...)
+
+
+// проверка  ???
+// 1 закрыв сплит перед открыв(отсутств открыв сплита)       - откр в начало,  откр впереди рядом,  убрать закр? 
+// 2      (отсутств закр сплита)               - закр в конец,  закр позади рядом,   убрать закр,           временное изменение иерархии ???
+//  или  нарушение чередования сплитов (prompt?)   
+// ком // в строке перед ком / * * /    нужно предварит поменять местами сплиты                  ( временное изменение иерархии ) +  невидимые или на видимые метки н/р два длин тире(чтото экзотич)   чтобы потом вернуть обратно ?
+// 3 повторные знаки // а также / * и * / в строке   (оставлять крайние?   добавлять противоположные рядом,    или у повторного?   ... )
+//  + возможность одиночного сплита ?? (деление на 2 части?)
+
+//  +++  ??? 
+// внутр некрайн метки - игнор
+// при нарушении - внутр больш заменить.    Или в абстрактнои - перестановка иерархии
+//  скобочное свести к иерархии - именовать каждый уровень скобок?
+// ряд последовательных ф-ции циклом  + apple ?  ???
+
+// ??? 
+// наложение ф-ций (indFunc).   доделать - не разные ф-ции, а разные аргументы той же ф-ции.  ???
+// + сделать - в разных ветках разн аргументы ф-ции хоть и таже метка.     разный оттенок?
+//  ф-цию проверки совпадения цветов в выдаче (в разных опциях) ... ...
+
+var myTest = '<111 <AAA  222 BBB  (( 333))   444      /*  //666 (( 777))  888\n  999*/       000 //  aaa\n kkk    ййй    /*bbb  ccc (( ddd)) eee //fff(( ddd)) kkk  \nggg(( ddd)) */        hhh// iii \njjj'  // входные данные
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+//1 option ////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+var splity = [ ['/*', '*/'] , ['//', '\n'], ['((', '))']]; // нач сплиты. ?? сделать проверку повторений сплитов ...  // ?? если один сплит пустой '' - какое то применение одного сплита (1 от начала строки, 2 до конца строки) (но если несколько сплитов используют \n - возможна ошибка? как то возвращать  \n? )
+var rezspl = [ ['&cup;', '&cap;'] , ['&larr;', '&rarr;'], ['&there4;', '&equiv;']]; // кон сплиты
+// по типу сплитов -   (0) / 1 / ...   как в исходном / без сплитов / rezspl
+//                     (0) / ...       как есть / без пробелов  
+var lookrez = [0, 1];       
+
+var maxI = []; // используется в markCSS      j, k  пока? не использую
+
+//  ?????     работа с функциями
+var addFunc = [[checkCyrOSC, checkCyrOSC], []]; //[[checkCyrOSC, ''], []];    ?? присоединять аргументы ... ...
+
+
+
+
+
+//1                     Ф-ЦИЯ ОБРАБОТКИ   +  УСТАНОВКИ МЕТОК                         
+function splitCodeOSC (code, splity, lookrez) { 
+  var codeStr = code + '';    
+  codeStr = checkSymbolOSC(codeStr);  // замена проблемных знаков
+  var arrStr = [codeStr];
+  function splitPart (arrStr, splity, i) {
+	if(!rezspl[i]){rezspl[i] = ['-', '-']}// умолчание при отсутствии
+	if(!rezspl[i][1]){rezspl[i][1] = '-'}// умолчание  ?
+	if(!rezspl[i][0]){rezspl[i][0] = '-'}// умолчание  ?
+	if(!lookrez[0]){rezspl = splity};   // умолч. если lookrez[0] нет или 0, то сплиты результа как в исходном
+	if(lookrez[0] == 1){rezspl[i][0] = ''; rezspl[i][1] = '';} // если lookrez[0] = 1 результ без сплитов
+
+	for (var j=0; j < arrStr.length; j++) {
+	  var ind0 = arrStr[j].indexOf(splity[i][0]); // индикатор отсутствия сплита (продолж для ошибок) ??
+	  arrStr[j] = arrStr[j].split(splity[i][0]);
+	  for (var k=0; k < arrStr[j].length; k++) { 
+		var ind1 = arrStr[j][k].indexOf(splity[i][1]); // индикатор отсутствия сплита   ??
+		arrStr[j][k] = arrStr[j][k].split(splity[i][1]);
+
+		if(splity[i+1]){splitPart (arrStr[j][k], splity, i+1);}	// рекурсия	
+		 
+		// маркировка и ф-ции             // j, k  пока? не использую
+		//  для сплитов более сложн типа возможно  m больше 2 ?
+		for (var m=0; m< arrStr[j][k].length; m++) {
+		  if(~ind0){
+			var one = m;
+			if(arrStr[j][k].length == 1) one = 1;
+			arrStr[j][k][m] = funcMark(arrStr[j][k][m], i, one)
+			if(addFunc[i]&&addFunc[i][one]){arrStr[j][k][m] = addFunc[i][one](arrStr[j][k][m], 'gold')}
+		  }
+		}		
+
+	  // обратное соединение 
+	  arrStr[j][k] = arrStr[j][k].join(rezspl[i][1]);
+	  }
+	arrStr[j] = arrStr[j].join(rezspl[i][0]);
+	}
+  if(maxI[0] < i || !maxI[0]){maxI[0] = i} // вытаскиваю макс уровеннь i для CSS (j, k  пока? не использую)
+  }
+  splitPart (arrStr, splity, 0);	
+
+
+// ВЫВОД  
+  // document.write(arrStr);    document.write("<br>");
+  preOSC(arrStr, lookrez[1])//как есть или без лишн пробелов
+  preOSC(codeStr)//как есть 
+ //alert (arrStr) 
+  return;
+}
+splitCodeOSC (myTest, splity, lookrez)
+
+
+
+
+
+//2                        ДОПОЛН   ф-ция для установок меток                        
+function funcMark(str, i, m) {  
+  if(!i){i = 0};   
+  if(!m){m = 0}
+  return '<span id="spl_' +i+m + '">' + str + '</span>';  //   j, k  пока? не использую
+};
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+//2 option ////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+var inout = [[0, 1], [0, 1], [0]];  // 0 - внутреннее,  1 - наружное.  настройки   ?? поставить наверх, использовать в установке меток (ф-ции сразу ??)
+var funcRez = [['background-color: Yellow;', 'color: Yellow;'], ['background-color: Blue;', 'color: Blue;'],  ['background-color: Red;', 'color: Red;']];    // варианты: background-image  // text-shadow  // color
+// варианты:  linear-gradient(to top, #ff0, #00efef) // red 1mm 1mm 1px //
+var addRez = ''; // добавочное св-во для всех.     'text-shadow: black 1mm 1mm 1px;'
+
+
+
+
+
+//3        Ф-ЦИЯ ГЕНЕРИРОВАНИЯ CSS  (ориентировано на маркировку цветом)
+function markCSS() {
+  var inoutStr, inoutRez = '<style> ';
+  if(!funcRez[0]){funcRez[0] = ['background-color: Yellow;']}; // 1-е св-во по умолч
+  for (var i=0; i <= maxI[0]; i++) {
+	if(!inout[i]){inout[i] = inout[i-1]};    // по умолч - предпослед уровень 
+	if(!funcRez[i]){funcRez[i] = ['background-color: Gray;']}; // если ф-ции нет - серое 
+
+	for (var k=0; k< inout[i].length; k++) {
+	  if(!funcRez[i][k]){funcRez[i][k] = 'background-color: Gray;'}; //
+	  
+	  // формирование CSS 
+	  inoutStr = ' #spl_' + i + inout[i][k] + '{' + funcRez[i][k] + addRez + '}';
+	  inoutRez  += inoutStr;
+	}
+  }
+  inoutRez += ' </style>'; // завершение формирования CSS
+  
+  // alert (inoutRez)
+  document.write(inoutRez);  // выдача
+  return ;
+}
+markCSS();
+
+
+
+
+
+//  ?? попытка - вместо конкретного сплита  регул выраж.
+var ttt = 'q7we 123333  qw1e';
+var regex = /\d+/g;
+// alert (getClassOSC(ttt))
+// alert (ttt.match(regex) )
+// alert (ttt.indexOf('we'))
+
+</script>
+</body>
+</html>
+
+//  ф-ции и там и там.
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+
+</head>
+<body>
+<div id="input0"> </div>
+<ul id="results"> </ul>
+
+<script>
+// рассматривать сначала  АБСТРАКТ ЗНАКИ   а потом конкретно ['/*', '*/'], ['//', '\n']
+// рассматривать только проблеммы не выявляемые конструктором?
+
+
+//  CSS (можно с анимацией ...)
+
+
+// проверка  ???
+// 1 закрыв сплит перед открыв(отсутств открыв сплита)       - откр в начало,  откр впереди рядом,  убрать закр? 
+// 2      (отсутств закр сплита)               - закр в конец,  закр позади рядом,   убрать закр,           временное изменение иерархии ???
+//  или  нарушение чередования сплитов (prompt?)   
+// ком // в строке перед ком / * * /    нужно предварит поменять местами сплиты                  ( временное изменение иерархии ) +  невидимые или на видимые метки н/р два длин тире(чтото экзотич)   чтобы потом вернуть обратно ?
+// 3 повторные знаки // а также / * и * / в строке   (оставлять крайние?   добавлять противоположные рядом,    или у повторного?   ... )
+//  + возможность одиночного сплита ?? (деление на 2 части?)
+
+//  +++  ??? 
+// внутр некрайн метки - игнор
+// при нарушении - внутр больш заменить.    Или в абстрактнои - перестановка иерархии
+//  скобочное свести к иерархии - именовать каждый уровень скобок?
+// ряд последовательных ф-ции циклом  + apple ?  ???
+
+// ??? 
+// наложение ф-ций (indFunc).   доделать - не разные ф-ции, а разные аргументы той же ф-ции.  ???
+// + сделать - в разных ветках разн аргументы ф-ции хоть и таже метка.     разный оттенок?
+//  ф-цию проверки совпадения цветов в выдаче (в разных опциях) ... ...
+
+var myTest = '<111 <AAA 222 BBB  (( 333))   444      /* ййй //666 (( 777)) 888\n 999*/       000 //aaa\n kkk        /*bbb ccc (( ddd)) eee //fff(( ddd)) kkk  \nggg(( ddd)) */        hhh// iii \njjj'  // входные данные
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+//1 option /////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+var splity = [ ['/*', '*/'] , ['//', '\n'], ['((', '))']]; // нач сплиты. ?? сделать проверку повторений сплитов ...  // ?? если один сплит пустой '' - какое то применение одного сплита (1 от начала строки, 2 до конца строки) (но если несколько сплитов используют \n - возможна ошибка? как то возвращать  \n? )
+var rezspl = [ ['&cup;', '&cap;'] , ['&larr;', '&rarr;'], ['&there4;', '&equiv;']]; // кон сплиты
+// по типу сплитов -   (0) / 1 / ...   как в исходном / без сплитов / rezspl
+// по структуре?   -   (0) / ...         без лишнего / допол блоки?
+//                     (0) / ...       как есть / без пробелов  
+var lookrez = [1, 0, 1];       
+
+var maxI = []; // используется в resultCSS      j, k  пока? не использую
+
+//  ?????     работа с функциями
+var addFunc = [[checkCyrOSC, ''], []]; //[[checkCyrOSC, ''], []];    ?? присоединять аргументы ... ...
+
+
+
+
+
+//1                     Ф-ЦИЯ УСТАНОВКИ МЕТОК   +                         
+function splitCodeOSC (code, splity, lookrez) { 
+  var codeStr = code + '';    
+  codeStr = checkSymbolOSC(codeStr);  // замена проблемных знаков
+  var arrStr = [codeStr];
+  function splitPart (arrStr, splity, i) {
+	if(!rezspl[i]){rezspl[i] = ['-', '-']}// умолчание при отсутствии
+	if(!rezspl[i][1]){rezspl[i][1] = '-'}// умолчание  ?
+	if(!rezspl[i][0]){rezspl[i][0] = '-'}// умолчание  ?
+	if(!lookrez[0]){rezspl = splity};   // умолч. если lookrez[0] нет или 0, то сплиты результа как в исходном
+	if(lookrez[0] == 1){rezspl[i][0] = ''; rezspl[i][1] = '';} // если lookrez[0] = 1 результ без сплитов
+
+	for (var j=0; j < arrStr.length; j++) {
+	  var ind0 = arrStr[j].indexOf(splity[i][0]); // индикатор отсутствия сплита (продолж для ошибок) ??
+	  arrStr[j] = arrStr[j].split(splity[i][0]);
+	  for (var k=0; k < arrStr[j].length; k++) { 
+		var ind1 = arrStr[j][k].indexOf(splity[i][1]); // индикатор отсутствия сплита   ??
+		arrStr[j][k] = arrStr[j][k].split(splity[i][1]);
+		if(arrStr[j][k].length == 1){arrStr[j][k].unshift('&nbsp;&nbsp;')} // если блок неполный (одинарный) - дополняет его блоком (my  поставил маячок - типа невидимые пробелы) ?? поставить др знаки?
+
+		if(splity[i+1]){splitPart (arrStr[j][k], splity, i+1);}	// рекурсия	
+		 
+		// маркировка              // j, k  пока? не использую
+		//  для сплитов более сложн типа возможно arrStr[j][k].length  больше 2 ?
+		for (var m=0; m< arrStr[j][k].length; m++) {
+		  if(~ind0){              // ф-ция если не пустой. 
+			if(addFunc[i]&&addFunc[i][m]){arrStr[j][k][m] = addFunc[i][m](arrStr[j][k][m], 'gold')}
+			arrStr[j][k][m] = funcMark(arrStr[j][k][m], i, m)
+		  }; 
+		}		
+
+		if(~arrStr[j][k][0].indexOf('&nbsp;&nbsp;')){ //помеченые ранее пустые блоки - удалить
+		  if(!lookrez[1]) {arrStr[j][k].splice(0, 1)} // или оставлять  
+		};
+		
+	  // обратное соединение 
+	  arrStr[j][k] = arrStr[j][k].join(rezspl[i][1]);
+	  }
+	arrStr[j] = arrStr[j].join(rezspl[i][0]);
+	}
+  if(maxI[0] < i || !maxI[0]){maxI[0] = i} // вытаскиваю макс уровеннь i для CSS (j, k  пока? не использую)
+  }
+  splitPart (arrStr, splity, 0);	
+
+
+// ВЫВОД  
+  // document.write(arrStr);    document.write("<br>");
+  preOSC(arrStr, lookrez[2])//как есть или без лишн пробелов
+  preOSC(codeStr)//как есть 
+  //alert (arrStr)
+  return;
+}
+splitCodeOSC (myTest, splity, lookrez)
+
+
+
+
+
+//2                        ДОПОЛН   ф-ция для установок меток                        
+function funcMark(str, i, m) {  
+  if(!i){i = 0};   
+  if(!m){m = 0}
+  return '<span id="spl_' +i+m + '">' + str + '</span>';  //   j, k  пока? не использую
+};
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+//2 option /////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+var inout = [[0, 1], [0, 1], [0, 1]];  // 0 - внутреннее,  1 - наружное.  настройки   ?? поставить наверх, использовать в установке меток (ф-ции сразу ??)
+var funcRez = [['background-color: Yellow;', 'color: Yellow;'], ['background-color: Blue;', 'color: Blue;'],  ['background-color: Red;', 'color: Red;']];    // варианты: background-image  // text-shadow  // color
+// варианты:  linear-gradient(to top, #ff0, #00efef) // red 1mm 1mm 1px //
+var addRez = ''; // добавочное св-во для всех.     'text-shadow: black 1mm 1mm 1px;'
+
+
+
+
+
+//3          Ф-ЦИЯ ВЫВОДА РЕЗУЛЬТАТА  (ориентировано на маркировку цветом)  ?? вставить все ф-ции в одну
+function resultCSS() {
+  var inoutStr, inoutRez = '<style> ';
+  if(!funcRez[0]){funcRez[0] = ['background-color: Yellow;']}; // 1-е св-во по умолч
+  for (var i=0; i <= maxI[0]; i++) {
+	if(!inout[i]){inout[i] = inout[i-1]};    // по умолч - предпослед уровень 
+	if(!funcRez[i]){funcRez[i] = ['background-color: Gray;']}; // если ф-ции нет - серое 
+
+	for (var k=0; k< inout[i].length; k++) {
+	  if(!funcRez[i][k]){funcRez[i][k] = 'background-color: Gray;'}; //
+	  
+	  // формирование CSS 
+	  inoutStr = ' #spl_' + i + inout[i][k] + '{' + funcRez[i][k] + addRez + '}';
+	  inoutRez  += inoutStr;
+	}
+  }
+  inoutRez += ' </style>'; // завершение формирования CSS
+  
+  // alert (inoutRez)
+  document.write(inoutRez);  // выдача
+  return ;
+}
+resultCSS();
+
+
+
+
+
+//  ?? попытка - вместо конкретного сплита  регул выраж.
+var ttt = 'q7we 123333  qw1e';
+var regex = /\d+/g;
+// alert (getClassOSC(ttt))
+// alert (ttt.match(regex) )
+// alert (ttt.indexOf('we'))
+
+</script>
+</body>
+</html>
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+
+</head>
+<body>
+<div id="input0"> </div>
+<ul id="results"> </ul>
+
+<script>
+// рассматривать сначала  АБСТРАКТ ЗНАКИ   а потом конкретно ['/*', '*/'], ['//', '\n']
+// рассматривать только проблеммы не выявляемые конструктором?
+
+
+//  CSS (можно с анимацией ...)
+
+
+// проверка  ???
+// 1 закрыв сплит перед открыв(отсутств открыв сплита)       - откр в начало,  откр впереди рядом,  убрать закр? 
+// 2      (отсутств закр сплита)               - закр в конец,  закр позади рядом,   убрать закр,           временное изменение иерархии ???
+//  или  нарушение чередования сплитов (prompt?)   
+// ком // в строке перед ком / * * /    нужно предварит поменять местами сплиты                  ( временное изменение иерархии ) +  невидимые или на видимые метки н/р два длин тире(чтото экзотич)   чтобы потом вернуть обратно ?
+// 3 повторные знаки // а также / * и * / в строке   (оставлять крайние?   добавлять противоположные рядом,    или у повторного?   ... )
+//  + возможность одиночного сплита ?? (деление на 2 части?)
+
+//  +++  ??? 
+// внутр некрайн метки - игнор
+// при нарушении - внутр больш заменить.    Или в абстрактнои - перестановка иерархии
+//  скобочное свести к иерархии - именовать каждый уровень скобок?
+// ряд последовательных ф-ции циклом  + apple ?  ???
+
+// ??? 
+// наложение ф-ций (indFunc).   доделать - не разные ф-ции, а разные аргументы той же ф-ции.  ???
+// + сделать - в разных ветках разн аргументы ф-ции хоть и таже метка.     разный оттенок?
+
+
+var myTest = '<111 <AAA 222 BBB  (( 333))   444      /* 555 //666 (( 777)) 888\n 999*/       000 //aaa\n kkk        /*bbb ccc (( ddd)) eee //fff(( ddd))   ggg\n(( ddd)) */        hhh// iii \njjj'  // входные данные
+
+// option 
+var splity = [ ['/*', '*/'] , ['//', '\n'], ['((', '))']]; // нач сплиты. ?? сделать проверку повторений сплитов ...  // ?? если один сплит пустой '' - какое то применение одного сплита (1 от начала строки, 2 до конца строки) (но если несколько сплитов используют \n - возможна ошибка? как то возвращать  \n? )
+var rezspl = [ ['&cup;', '&cap;'] , ['&larr;', '&rarr;'], ['&there4;', '&equiv;']]; // кон сплиты
+// по типу сплитов -   (0) / 1 / ...   как в исходном / без сплитов / rezspl
+// по структуре?   -   (0) / ...         без лишнего / допол блоки?
+//                     (0) / ...       как есть / без пробелов  
+var lookrez = [1, 0, 1];       
+
+var maxI = []; // используется в result      j, k  пока? не использую
+var addFunc = [];
+
+//1                     Ф-ЦИЯ УСТАНОВКИ МЕТОК   +                         
+function splitCodeOSC (code, splity, lookrez) { 
+  var codeStr = code + '';    
+  codeStr = checkSymbolOSC(codeStr);  // замена проблемных знаков 
+  var arrStr = [codeStr];
+  function splitPart (arrStr, splity, i) {
+	if(!rezspl[i]){rezspl[i] = ['-', '-']}// умолчание при отсутствии
+	if(!rezspl[i][1]){rezspl[i][1] = '-'}// умолчание  ?
+	if(!rezspl[i][0]){rezspl[i][0] = '-'}// умолчание  ?
+	if(!lookrez[0]){rezspl = splity};   // умолч. если lookrez[0] нет или 0, то сплиты результа как в исходном
+	if(lookrez[0] == 1){rezspl[i][0] = ''; rezspl[i][1] = '';} // если lookrez[0] = 1 результ без сплитов
+
+	for (var j=0; j < arrStr.length; j++) {
+	  var ind0 = arrStr[j].indexOf(splity[i][0]); // индикатор отсутствия сплита (продолж для ошибок) ??
+	  arrStr[j] = arrStr[j].split(splity[i][0]);
+	  for (var k=0; k < arrStr[j].length; k++) { 
+		var ind1 = arrStr[j][k].indexOf(splity[i][1]); // индикатор отсутствия сплита   ??
+		arrStr[j][k] = arrStr[j][k].split(splity[i][1]);
+		if(arrStr[j][k].length == 1){arrStr[j][k].unshift('&nbsp;&nbsp;')} // если блок неполный (одиарный) - дополняет его блоком (my  поставил маячок - типа невидимые пробелы) ?? поставить др знаки?
+
+		if(splity[i+1]){splitPart (arrStr[j][k], splity, i+1);}	// рекурсия	
+		 
+		// маркировка
+		m = '0'; arrStr[j][k][0] = func(arrStr[j][k][0], i, m);     //  ф-ция.   j, k  пока? не использую
+		m = '1'; arrStr[j][k][1] = func(arrStr[j][k][1], i, m);     //  ф-ция    j, k  пока? не использую
+		
+		if(~arrStr[j][k][0].indexOf('&nbsp;&nbsp;')){//помеченые ранее пустые блоки - удалить
+		  if(!lookrez[1]) {arrStr[j][k].splice(0, 1)} // или оставлять  
+		};
+	  // обратное соединение 
+	  arrStr[j][k] = arrStr[j][k].join(rezspl[i][1]);
+	  }
+	arrStr[j] = arrStr[j].join(rezspl[i][0]);
+	}
+  if(maxI[0] < i || !maxI[0]){maxI[0] = i} // вытаскиваю макс уровеннь i для CSS (j, k  пока? не использую)
+  }
+  splitPart (arrStr, splity, 0);	
+
+
+// ВЫВОД  
+  // document.write(arrStr);    document.write("<br>");
+  preOSC(arrStr, lookrez[2])//как есть или без лишн пробелов
+  preOSC(codeStr)//как есть 
+  //alert (arrStr)
+  return;
+}
+splitCodeOSC (myTest, splity, lookrez)
+
+
+//2                        ДОПОЛН   ф-ция для установок меток                        
+function func(str, i, m) {  
+  if(!i){i = 0};   
+  if(!m){m = 0}
+  return '<span id="spl_' +i+m + '">' + str + '</span>';  //   j, k  пока? не использую
+};
+
+
+
+//3            Ф-ЦИЯ ВЫВОДА РЕЗУЛЬТАТА  (ориентировано на маркировку цветом)          
+var inout = [0, 0, 0];  // 0 - внутреннее,  1 - наружное.  настройки   
+var funcRez = ['background-color'];    // варианты: background-image  // text-shadow  // color
+var argumFunc = ['Yellow', 'Blue', 'Red']; // варианты:  linear-gradient(to top, #ff0, #00efef) // red 1mm 1mm 1px //
+
+function result() {
+  var inoutStr, inoutRez = '<style> ';
+  if(!funcRez[0]){funcRez[0] = 'background-color'}; // умолч
+  if(!argumFunc[0]){
+	if(~funcRez[0].indexOf('color')){argumFunc[0] = 'Yellow'}
+	else {alert ('Установите функции и аргументы')};
+  }
+  for (var i=0; i<= maxI[0]; i++) {
+	if(!inout[i]){inout[i] = 0};    // по умолч - 0 (внутреннее) 
+	if(!funcRez[i]){funcRez[i] = funcRez[i-1]}; // если ф-ции нет - использ предпослед
+	if(!argumFunc[i]){  // если аргумента нет - серый (если color) или начальное (argumFunc[0])
+	  if(~funcRez[i].indexOf('color') && i > 0){argumFunc[i] = 'Grey'}	   
+	  else argumFunc[i] = argumFunc[0];
+	};                              // умолч //
+	
+	// формирование CSS 
+	inoutStr = ' #spl_' + i + inout[i] + ' {' + funcRez[i] + ':' + argumFunc[i] + ';}';
+	inoutRez  += inoutStr;
+  }
+  inoutRez += ' </style>'; // завершение формирования CSS
+  
+  // alert (inoutRez)
+  document.write(inoutRez);  // выдача
+  return ;
+}
+result();
+
+
+
+
+</script>
+</body>
+</html>
+
+
+// концепт - в ф-ции только метки (с id ).  процедуры после.
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+<style>
+#spl00 {
+background-color:rgb(255,255,0);	
+}
+#spl10 {
+background-color:rgb(0,0,255);	
+}
+#spl20 {
+background-color:rgb(255,0,0);	
+}
+</style>
+
+
+</head>
+<body>
+<div id="input0"> </div>
+<ul id="results"> </ul>
+
+
+
+<script>
+// рассматривать сначала  АБСТРАКТ ЗНАКИ   а потом конкретно ['/*', '*/'], ['//', '\n']
+
+
+//  может не выполнять ф-ции сразу,    а назначать ID ...    а потом CSS (можно с анимацией ...)
+
+
+// проверка  ???
+// 1 закрыв сплит перед открыв(отсутств открыв сплита)       - откр в начало,  откр впереди рядом,  убрать закр? 
+// 2      (отсутств закр сплита)               - закр в конец,  закр позади рядом,   убрать закр,           временное изменение иерархии ???
+//  или  нарушение чередования сплитов (prompt?)   
+// ком // в строке перед ком / * * /    нужно предварит поменять местами сплиты                  ( временное изменение иерархии ) +  невидимые или на видимые метки н/р два длин тире(чтото экзотич)   чтобы потом вернуть обратно ?
+// 3 повторные знаки // а также / * и * / в строке   (оставлять крайние?   добавлять противоположные рядом,    или у повторного?   ... )
+//  + возможность одиночного сплита ?? (деление на 2 части?)
+
+// рассматривать только проблеммы не выявляемые конструктором?
+
+// ??? 
+// наложение ф-ций (indFunc).   доделать - не разные ф-ции, а разные аргументы той же ф-ции.  ???
+// + сделать - в разных ветках разн аргументы ф-ции хоть и таже метка.     разный оттенок?
+
+function func(str, i, m) {  // ф-ции для выборочной обработки по меткам 
+  if(!i){i = 0};   if(!m){m = 0}
+  return '<mark id="spl' +i+m + '">' + str + '</mark>';
+};
+
+var myTest = '111 AAA 222 BBB  (( 333))   444      /* 555 //666 (( 777)) 888\n 999*/       000 //aaa\n kkk        /*bbb //ccc (( ddd)) eee fff(( ddd))  \nggg(( ddd)) */        hhh// iii \njjj'  // входные данные
+
+// option (сделать объект опций)
+var splity = [ ['/*', '*/'] , ['//', '\n'], ['((', '))']]; // нач разделители. ?? сделать проверку повторений сплитов ...  // ?? если один сплит пустой '' - какое то применение одного сплита (1 от начала строки, 2 до конца строки) (но если несколько сплитов используют \n - возможна ошибка? как то возвращать  \n? )
+var rezspl = [ ['&cup;', '&cap;'] , ['&larr;', '&rarr;'], ['&there4;', '&equiv;']]; // кон разделители
+var inout = [0, 0, 0]; // 0 - внутреннее,  1 - наружное.  настройки   
+var typerez = 1;       // (0) / 1 / ...    как в исходном/без сплитов/rezspl
+var strukrez = 0;      // (0) / 1 / ...  без лишнего/допол блоки/без пробелов  
+
+function splitCodeOSC (code, splity, typerez, strukrez) { 
+  var codeStr = code + '';           
+  var arrStr = [codeStr];
+  function splitPart (arrStr, splity, i) {
+	if(!inout[i]){inout[i] = 0};     // умолч 0.  (ф-ции внутри меток)
+	if(!rezspl[i]){rezspl[i] = ['-', '-']}// умолчание при отсутствии
+	if(!rezspl[i][1]){rezspl[i][1] = '-'}// умолчание 
+	if(!rezspl[i][0]){rezspl[i][0] = '-'}// умолчание 
+	if(!typerez){rezspl = splity};   // умолч. если typerez нет или 0, то сплиты результа как в исходном
+	if(typerez == 1){rezspl[i][0] = ''; rezspl[i][1] = '';} // если typerez = 1 результ без сплитов
+
+	for (var j=0; j < arrStr.length; j++) {
+	  var ind0 = arrStr[j].indexOf(splity[i][0]); // индикатор отсутствия сплита (продолж для ошибок)
+	  arrStr[j] = arrStr[j].split(splity[i][0]);
+	  for (var k=0; k < arrStr[j].length; k++) { 
+		var ind1 = arrStr[j][k].indexOf(splity[i][1]); // индикатор отсутствия сплита
+		arrStr[j][k] = arrStr[j][k].split(splity[i][1]);
+		if(arrStr[j][k].length == 1){arrStr[j][k].unshift('&nbsp;&nbsp;')} // если блок неполный (одиарный) - дополняет его блоком (my  поставил маячок - типа невидимые пробелы) ?? поставить др знаки?
+
+		if(splity[i+1]){splitPart (arrStr[j][k], splity, i+1);}	// рекурсия	
+		 
+		// процедуры ??
+		m = '0'; arrStr[j][k][0] = func(arrStr[j][k][0], i, m);     //  ф-ция.   j, k  пока? не использую
+		m = '1'; arrStr[j][k][1] = func(arrStr[j][k][1], i, m);     //  ф-ция    j, k  пока? не использую
+		
+		if(~arrStr[j][k][0].indexOf('&nbsp;&nbsp;')){//помеченые ранее пустые блоки - удалить
+		  if(strukrez != 1) {arrStr[j][k].splice(0, 1)}   
+		};
+	  // обратное соединение ? 
+	  arrStr[j][k] = arrStr[j][k].join(rezspl[i][1]);
+	  }
+	arrStr[j] = arrStr[j].join(rezspl[i][0]);
+	}
+  }
+  splitPart (arrStr, splity, 0);	
+
+
+// ВЫВОД  
+  // document.write(arrStr);    document.write("<br>");
+  preOSC(arrStr, strukrez)//как есть // 
+  preOSC(codeStr)//как есть // 
+  //alert (arrStr)
+}
+//======================================================================
+
+splitCodeOSC (myTest, splity, typerez, strukrez)
+
+
+/*                  начало
+  if(!display){ // замена проблемных знаков для выдачи ?? document.write() (в конце ф-ции)
+	code = checkSymbolOSC(code); 
+  }
+  
+                   и конец
+  if(!display){
+	preOSC(code);     //  вывод и индикация проверки   ??
+  }
+*/
+
+
+//  +++  ??? 
+// внутр некрайн метки - игнор
+// при нарушении - внутр больш заменить.    Или в абстрактнои - перестановка иерархии
+//  скобочное свести к иерархии - именовать каждый уровень скобок?
+// ряд последовательных ф-ции циклом  + apple ?  ???
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+===================================================================
+// концепт - процедуры сразу в ф-ции
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+
+</head>
+<body>
+<ul id="results"> </ul>
+<script>
+// рассматривать сначала  АБСТРАКТ ЗНАКИ   а потом конкретно ['/*', '*/'], ['//', '\n']
+
+// проверка  ???
+// 1 закрыв сплит перед открыв(отсутств открыв сплита)       - откр в начало,  откр впереди рядом,  убрать закр? 
+// 2      (отсутств закр сплита)               - закр в конец,  закр позади рядом,   убрать закр,           временное изменение иерархии ???
+//  или  нарушение чередования сплитов (prompt?)   
+// ком // в строке перед ком / * * /    нужно предварит поменять местами сплиты                  ( временное изменение иерархии ) +  невидимые или на видимые метки н/р два длин тире(чтото экзотич)   чтобы потом вернуть обратно ?
+// 3 повторные знаки // а также / * и * / в строке   (оставлять крайние?   добавлять противоположные рядом,    или у повторного?   ... )
+
+// рассматривать только проблеммы не выявляемые конструктором?
+
+// ??? 
+// наложение ф-ций (indFunc).   доделать - не разные ф-ции, а разные аргументы той же ф-ции.  ???
+// + сделать - в разных ветках разн аргументы ф-ции хоть и таже метка.     разный оттенок?
+
+function mark(str) {  // ф-ции для выборочной обработки по меткам 
+  return ' <mark style="background-color:Yellow"> ' + str + ' </mark>';
+};
+function mark1(str) { 
+  return ' <mark style="background-color:Blue"> ' + str + ' </mark>';
+};
+function mark2(str) { 
+  return ' <mark style="background-color:Red"> ' + str + ' </mark>';
+};
+var func = [mark, mark1, mark2];  //  массив ф-ций 
+//  + возможность одиночного сплита ?? (деление на 2 части?)
+
+var myTest = '111 AAA 222 BBB  (( 333))   444      /* 555 //666 (( 777)) 888\n 999*/       000 //aaa\n kkk        /*bbb //ccc (( ddd)) eee fff(( ddd))  \nggg(( ddd)) */        hhh// iii \njjj'  // входные данные
+
+// option (сделать объект опций)
+var splity = [ ['/*', '*/'], ['//', '\n'] , ['((', '))']]; // нач разделители. ?? сделать проверку повторений сплитов ...  // ?? если один сплит пустой '' - какое то применение одного сплита (1 от начала строки, 2 до конца строки) (но если несколько сплитов используют \n - возможна ошибка? как то возвращать  \n? )
+var rezspl = [ ['&cup;', '&cap;'] , ['&larr;', '&rarr;'], ['&there4;', '&equiv;']]; // кон разделители
+var inout = [0, 0, 0]; // 0 - внутреннее,  1 - наружное.  настройки   
+var typerez = 0;       // (0) / 1 / ...    как в исходном/без сплитов/rezspl
+var strukrez = 0;      // (0) / 1...  нафига ??  без лишнего/допол блоки 
+
+function splitCodeOSC (code, splity, typerez, strukrez) { 
+  var codeStr = code + '';           
+  var arrStr = [codeStr];
+  function splitPart (arrStr, splity, i) {
+	if(!inout[i]){inout[i] = 0};     // умолч 0.  (ф-ции внутри меток)
+	if(!rezspl[i]){rezspl[i] = ['-', '-']}// умолчание при отсутствии
+	if(!rezspl[i][1]){rezspl[i][1] = '-'}// умолчание 
+	if(!rezspl[i][0]){rezspl[i][0] = '-'}// умолчание 
+	if(!typerez){rezspl = splity};   // умолч. если typerez нет или 0, то сплиты результа как в исходном
+	if(typerez == 1){rezspl[i][0] = ''; rezspl[i][1] = '';} // если typerez = 1 результ без сплитов
+		if(!func[i]){alert ('Функция обработки func[' + i + '] не задана. \n Применяется функция по умолчанию func[0]'); func[i] = func[0]} // умолчание 
+	
+	for (var j=0; j < arrStr.length; j++) {
+	  var ind0 = arrStr[j].indexOf(splity[i][0]); // индикатор отсутствия сплита (продолж для ошибок)
+	  arrStr[j] = arrStr[j].split(splity[i][0]);
+	  for (var k=0; k < arrStr[j].length; k++) { 
+		var ind1 = arrStr[j][k].indexOf(splity[i][1]); // индикатор отсутствия сплита
+		arrStr[j][k] = arrStr[j][k].split(splity[i][1]);
+		if(arrStr[j][k].length == 1){arrStr[j][k].unshift('&nbsp;&nbsp;')} // если блок неполный (одиарный) - дополняет его блоком (my  поставил маячок - типа невидимые пробелы) ?? поставить др знаки?
+
+		if(splity[i+1]){splitPart (arrStr[j][k], splity, i+1);}	// рекурсия	
+		 
+		// процедуры ??
+		if(inout[i] == 1){arrStr[j][k][1] = func[i](arrStr[j][k][1])};     //  ф-ция 
+		if(inout[i] == 0){arrStr[j][k][0] = func[i](arrStr[j][k][0])};     //  ф-ция 
+		
+		if(~arrStr[j][k][0].indexOf('&nbsp;&nbsp;')){//помеченые ранее пустые блоки - удалить
+		  if(!strukrez) {arrStr[j][k].splice(0, 1)}   
+		};
+	  // обратное соединение ? 
+	  arrStr[j][k] = arrStr[j][k].join(rezspl[i][1]);
+	  }
+	arrStr[j] = arrStr[j].join(rezspl[i][0]);
+	}
+  }
+  splitPart (arrStr, splity, 0);	
+//  ?? ОБРАТНАЯ СБОРКА С УСЛОВИЯМИ  ВЫБОРОМ  Ф-ЦИЯМИ // концепт,    уже сделано по ходу разделения  или изменить? 		
+/*	for (var i=0; i<splity.length; i++) {   // цикл по кол-ву пар символов
+    }
+*/
+
+// ВЫВОД  
+  document.write(arrStr);    document.write("<br>");
+  preOSC(arrStr)//как есть // 
+  preOSC(codeStr)//как есть // 
+//  alert (arrStr)
+}
+//======================================================================
+
+splitCodeOSC (myTest, splity, typerez, strukrez)
+
+
+/*                  начало
+  if(!display){ // замена проблемных знаков для выдачи ?? document.write() (в конце ф-ции)
+	code = checkSymbolOSC(code); 
+  }
+  
+                   и конец
+  if(!display){
+	preOSC(code);     //  вывод и индикация проверки   ??
+  }
+*/
+
+
+//  +++  ??? 
+// внутр некрайн метки - игнор
+// при нарушении - внутр больш заменить.    Или в абстрактнои - перестановка иерархии
+//  скобочное свести к иерархии - именовать каждый уровень скобок?
+// ряд последовательных ф-ции циклом  + apple ?  ???
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+// начало
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+
+</head>
+<body>
+<ul id="results"> </ul>
+<script>
+// рассматривать сначала  АБСТРАКТ ЗНАКИ   а потом конкретно ['/*', '*/'], ['//', '\n']
+
+// проверка  ???
+// 1 закрыв сплит перед открыв(отсутств открыв сплита)       - откр в начало,  откр впереди рядом,  убрать закр? 
+// 2      (отсутств закр сплита)               - закр в конец,  закр позади рядом,   убрать закр,           временное изменение иерархии ???
+//  или  нарушение чередования сплитов (prompt?)   
+// ком // в строке перед ком / * * /    нужно предварит поменять местами сплиты                  ( временное изменение иерархии ) +  невидимые или на видимые метки н/р два длин тире(чтото экзотич)   чтобы потом вернуть обратно ?
+// 3 повторные знаки // а также / * и * / в строке   (оставлять крайние?   добавлять противоположные рядом,    или у повторного?   ... )
+
+// рассматривать только проблеммы не выявляемые конструктором?
+
+// ??? 
+// наложение ф-ций (indFunc).   доделать - не разные ф-ции, а разные аргументы той же ф-ции.  ???
+// + сделать - в разных ветках разн аргументы ф-ции хоть и таже метка.     разный оттенок?
+
+function mark(str) {  // ф-ции для выборочной обработки по меткам 
+  return ' <mark style="background-color:Yellow"> ' + str + ' </mark>';
+};
+function mark1(str) { 
+  return ' <mark style="background-color:Blue"> ' + str + ' </mark>';
+};
+function mark2(str) { 
+  return ' <mark style="background-color:Red"> ' + str + ' </mark>';
+};
+var func = [mark, mark1, mark2];  //  массив ф-ций 
+//  + возможность одиночного сплита ?? (деление на 2 части?)
+
+var myTest = '111 AAA 222 BBB  (( 333))   444      /* 555 //666 (( 777)) 888\n 999*/       000 //aaa\n kkk        /*bbb //ccc (( ddd)) eee fff(( ddd))  \nggg(( ddd)) */        hhh// iii \njjj'  // входные данные
+
+// option (сделать объект опций)
+var splity = [ ['/*', '*/'], ['//', '\n'] , ['((', '))']]; // нач разделители. ?? сделать проверку повторений сплитов ...  // ?? если один сплит пустой '' - какое то применение одного сплита (1 от начала строки, 2 до конца строки) (но если несколько сплитов используют \n - возможна ошибка? как то возвращать  \n? )
+var rezspl = [ ['&cup;', '&cap;'] , ['&larr;', '&rarr;'], ['&there4;', '&equiv;']]; // кон разделители
+var inout = [0, 0, 0]; // 0 - внутреннее,  1 - наружное.  настройки   
+var typerez = 0;       // (0) / 1 / ...    как в исходном/без сплитов/rezspl
+var strukrez = 0;      // (0) / 1...  нафига ??  без лишнего/допол блоки 
+
+function splitCodeOSC (code, splity, typerez, strukrez) { 
+  var codeStr = code + '';           
+  var arrStr = [codeStr];
+  function splitPart (arrStr, splity, i) {
+	if(!inout[i]){inout[i] = 0};     // умолч 0.  (ф-ции внутри меток)
+	if(!rezspl[i]){rezspl[i] = ['-', '-']}// умолчание при отсутствии
+	if(!rezspl[i][1]){rezspl[i][1] = '-'}// умолчание 
+	if(!rezspl[i][0]){rezspl[i][0] = '-'}// умолчание 
+	if(!typerez){rezspl = splity};   // умолч. если typerez нет или 0, то сплиты результа как в исходном
+	if(typerez == 1){rezspl[i][0] = ''; rezspl[i][1] = '';} // если typerez = 1 результ без сплитов
+		if(!func[i]){alert ('Функция обработки func[' + i + '] не задана. \n Применяется функция по умолчанию func[0]'); func[i] = func[0]} // умолчание 
+	
+	for (var j=0; j < arrStr.length; j++) {
+	  var ind0 = arrStr[j].indexOf(splity[i][0]); // индикатор отсутствия сплита (продолж для ошибок)
+	  arrStr[j] = arrStr[j].split(splity[i][0]);
+	  for (var k=0; k < arrStr[j].length; k++) { 
+		var ind1 = arrStr[j][k].indexOf(splity[i][1]); // индикатор отсутствия сплита
+		arrStr[j][k] = arrStr[j][k].split(splity[i][1]);
+		if(arrStr[j][k].length == 1){arrStr[j][k].unshift('&nbsp;&nbsp;')} // если блок неполный (одиарный) - дополняет его блоком (my  поставил маячок - типа невидимые пробелы) ?? поставить др знаки?
+
+		if(splity[i+1]){splitPart (arrStr[j][k], splity, i+1);}	// рекурсия	
+		 
+		// процедуры ??
+		if(inout[i] == 1){arrStr[j][k][1] = func[i](arrStr[j][k][1])};     //  ф-ция 
+		if(inout[i] == 0){arrStr[j][k][0] = func[i](arrStr[j][k][0])};     //  ф-ция 
+		
+		if(~arrStr[j][k][0].indexOf('&nbsp;&nbsp;')){//помеченые ранее пустые блоки - удалить
+		  if(!strukrez) {arrStr[j][k].splice(0, 1)}   
+		};
+	  // обратное соединение ? 
+	  arrStr[j][k] = arrStr[j][k].join(rezspl[i][1]);
+	  }
+	arrStr[j] = arrStr[j].join(rezspl[i][0]);
+	}
+  }
+  splitPart (arrStr, splity, 0);	
+//  ?? ОБРАТНАЯ СБОРКА С УСЛОВИЯМИ  ВЫБОРОМ  Ф-ЦИЯМИ // концепт,    уже сделано по ходу разделения  или изменить? 		
+/*	for (var i=0; i<splity.length; i++) {   // цикл по кол-ву пар символов
+    }
+*/
+
+// ВЫВОД  
+  document.write(arrStr);    document.write("<br>");
+  preOSC(arrStr)//как есть // 
+  preOSC(codeStr)//как есть // 
+//  alert (arrStr)
+}
+//======================================================================
+
+splitCodeOSC (myTest, splity, typerez, strukrez)
+
+
+/*                  начало
+  if(!display){ // замена проблемных знаков для выдачи ?? document.write() (в конце ф-ции)
+	code = checkSymbolOSC(code); 
+  }
+  
+                   и конец
+  if(!display){
+	preOSC(code);     //  вывод и индикация проверки   ??
+  }
+*/
+
+
+//  +++  ??? 
+// внутр некрайн метки - игнор
+// при нарушении - внутр больш заменить.    Или в абстрактнои - перестановка иерархии
+//  скобочное свести к иерархии - именовать каждый уровень скобок?
+// ряд последовательных ф-ции циклом  + apple ?  ???
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+===================================================================
+===================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//============================================================================
+                              АРХИВ  блужданий
+//============================================================================
+
+// my  для для тестрования сравнения ТРЁХ Ф-ЦИЙ.   ##performance.now() см в браузе
+// !!!  (прогоны, прогоны прогонов чередуя,  аргумент ф-ций, f, f1, f2)
+function benchmarkMyMy (num, numOut, argum, func,  func1, func2) {   
+  function bench(f) {                    // ф-ция замера разницы
+	var date = Date.now();        //performance.now(); - вариант более точно для брауза.
+	for (var i = 0; i < num; i++) f(argum);  // num раз тестируемая ф-ция
+	return Date.now() - date;     //  разница.  performance.now() - date; - вариант 
+  }
+  // bench для каждого теста запустим много раз, чередуя
+  var time = 0, time1 = 0, time2 = 0;
+  // numOut раз  ф-ция замера разницы bench поочерёдно для ф-ция 1 и ф-ция 2
+  for (var i = 0; i < numOut; i++) {  
+	if(func) time += bench(func);
+	if(func1) time1 += bench(func1);
+	if(func2) time2 += bench(func2);
+  }
+  return [time, time1, time2];
+} 
+
+
+
+
+
+
+обречённая попытка обобщения
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+
+</head>
+<body>
+<ul id="results"> </ul>
+<script>
+//============================================================================
+//    РАЗДЕЛЕНИЕ ТЕКСТА ПО ДАННЫМ СИМВОЛАМ     (границы и философия my !!!!! )
+//============================================================================
+
+// ????? ИЗМЕНИТЬ КОНЦЕПТ? - сначала получить массив положений, потом РАСЦЕНИВАТЬ НАРУШЕНИЯ, исправлять, выдавать .........          тк при нулях (и 2?) в option (внеш) -путаница в mark
+
+
+// рассматривать сначала  АБСТРАКТ ЗНАКИ   а потом конкретно ['/*', '*/'], ['//', '\n']
+
+//      ?? проблемма  нарушение иерархии   
+// ком // в строке перед ком / * * /    нужно предварит трансформ  в такой строке все / * * /  заменить на невидимое или на видимое н/р два длин тире(чтото экзотич) ?
+// повторные знаки // а также / * и * / в строке   (оставлять крайние? )
+
+// рассматривать только проблеммы не выявляемые конструктором?
+
+// ??? 
+// наложение ф-ций (indFunc). доделать - не разные ф-ции, а разные аргументы той же ф-ции.  ??
+// + сделать - в разных ветках разн аргументы ф-ции хоть и таже метка.     разный оттенок?
+// + сделать - разные метки - разные аргументы.       разный цвет? 
+
+//======================================================================
+var splity = [ ['/*', '*/'], ['//', '\n']];      
+var option = [1, 1];  // изменить установку опций? массивы чисел для ряда ф-ций?
+function mark(str) {  // ф-ции для примера 
+  return '<mark style="background-color:Yellow">' + str + '</mark>';
+};
+function mark1(str) { 
+  return '<mark style="background-color:Green">' + str + '</mark>';
+};
+function mark2(str) { 
+  return '<mark style="background-color:Red">' + str + '</mark>';
+};
+var func = [mark, mark1, mark2];
+var myTest = 'aaa//bbb \n  ggg /* DDD//EEE \n */ fff hhh//iii \n jjj /* KKK//LLL \n */  m //m \n m'
+
+
+
+function splitCodeOSC (code, splity) { 
+  var codeStr = code + '',  rez = [];   
+
+  // внутр рекурс функ 
+  function splitPart (codeStr, splity, i) {
+	rez =   [[rez]];                                       //  ?????
+	var j = 0, pos = [], len = []; // массив координат сплитов
+	while (splity[i] && splity[i][j]) { // вначале все на -1
+	  pos[j] =	-1;  
+	  j++;                 
+	}
+	len[i] = j;   //   кол-во сплитов
+	var previous = 0; // координата послед эл-та предшеств цикла
+	// wrong;   //  ?? нарушения структуры
+
+	// нахождение очередных слева сплитов ... ...     ???  с &&  проблема если есть откр но нет закр (концы теряем) как то с if?
+	var k = 0, gap = 0; // индикатор отсутствия сплитов. если = j (нет всех сплитов подряд) - конец цикла true. ;
+	while (gap < len[i]) {
+	  var j = 0;
+	  while (j < len[i]) {  // ?? координаты  на данном цикле
+		pos[j] = codeStr.indexOf(splity[i][j], pos[j] + 1); 
+		if(pos[j] == -1){
+		  gap++
+		// какое либо действие при отсутствии сплита ??
+		};
+		if(!pos[j-1]){pos[j-1] = previous};
+		rez[j] = codeStr.slice(pos[j-1] + splity[i][j].length, pos[j]);  
+		splitPart (rez[j], splity, i+1)
+		previous = pos[j];
+		j++;
+	  }
+
+	  k++;	  // нужно ли k
+	}
+  }
+  splitPart (codeStr, splity, 0) // вкл внутр ф-ции
+
+/*
+
+	  // исправление ???  + др концепт?    закрывающий сплит перед открывающим     или откр нет (а закр есть)
+	  if(pos0 > pos1 || pos0 == -1){
+		wrong = prompt('\t Пропущен откр сплит!\n 1 - Поставить откр прямо перед закр;\n 2 - Поставить откр в начало блока;\n 3 - Удалить закрывающий сплит.'); //  ??  доделать исправление    сформировать codeStr
+		return alert ('откр. потом эту строку убрать. Она чтобы избежать бесконечной рекурсии');
+//		splitPart (codeStr, splity, i); //  повторный запуск исправленного,   могут быть проблемы
+	  }
+	  else if(pos1 == -1){ // закр нет (а откр есть)
+		wrong = prompt('\t Пропущен закр сплит!\n 1 - Поставить закр прямо после откр;\n 2 - Поставить закр в конец блока;\n 3 - Удалить открывающий сплит.'); //  ??  доделать исправление    сформировать codeStr
+		return alert ('закр. потом эту строку убрать. Она чтобы избежать бесконечной рекурсии');
+//		splitPart (codeStr, splity, i);  //  повторный запуск исправленного,   могут быть проблемы
+	  }
+	  
+	  // выделение частей
+	  rez0 = codeStr.slice(previous, pos0);
+	  rez1 = codeStr.slice(pos0 + splity[i][0].length, pos1);  
+
+	  // выполнение ф-ций
+	  if(flag == 0){          // внешн  //////////
+		rez0 = func[indFunc](rez0)  //   массив функ   может вместо перемены ф-ции  менять аргументы ф-ции?  +к цвету ???
+		////alert (indFunc +' /// '+rez0);
+		pro0 = 1;	  pro1 = 0;   // флаги  обработ/необработ
+	  }
+	  else if(flag == 1){     // внутр  //////////
+		rez1 = func[indFunc](rez1);
+		////alert (indFunc +' /// '+rez1);
+		pro0 = 0;	  pro1 = 1;	
+	  }  
+	  else if(flag == 2){     // обе  //////////
+		rez0 = func[indFunc](rez0); rez1 = func[indFunc](rez1);
+		////alert (indFunc +' /// '+rez0 +' /// '+rez1);   
+		pro0 = 1;	  pro1 = 1; 	
+	  }
+	  else {    pro0 = 0;	  pro1 = 0;}  
+	  
+	  // рекурсия.  две ветки.    обобщить - больше веток ??
+	  if(splity[i+1]) {
+		pro = pro0;   rez0 = splitPart (rez0, splity, i+1);      
+		pro = pro1;   rez1 = splitPart (rez1, splity, i+1);      
+	  }
+	  
+	  // помещение в результат
+	  if(rez0 !== undefined) {rez += rez0;}; 
+	  if(rez1 !== undefined) {rez += rez1;}; 
+	  previous = pos1 + splity[i][1].length;	
+	  
+	  pro = 0;	
+	}
+	
+	// концы блоков
+	rez0 = codeStr.slice(previous);
+	if(rez0){           // обработка внешн //////////
+	  if(flag == 0 || flag == 2){
+		rez0 = func[indFunc](rez0);  
+	  };       
+	  if(splity[i+1]){rez0 = splitPart (rez0, splity, i+1)}
+	  else {rez += rez0};
+	}
+	indFunc = 0; 
+
+
+*/  
+
+
+
+// ВЫВОДЫ  
+// без лишних пробелов
+  document.write(rez);    document.write("<br>");
+// с пробелами (как есть) ??  см ниже замена проблемных знаков 
+//kkk   preOSC (rez);
+// alert (rez)
+
+}
+
+
+splitCodeOSC (myTest, splity)
+
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+function checkBigCommentBefore (code) {
+  var codeStr = code + '', arrStr = codeStr.split('\n');
+  
+  for (var i=0; i<arrStr.length; i++) { 
+	var indS = arrStr[i].indexOf('/*');       // позиции комментов  
+	var indF = arrStr[i].indexOf('*/');
+	var lastS = arrStr[i].lastIndexOf('/*');  // позиции комментов  
+	var lastF = arrStr[i].lastIndexOf('*/');
+//	var smal = arrStr[i].indexOf('//');    //  ??? не нужно?
+
+   	if(indS === -1 && indF === -1){continue;}    //  НЕТ ЗНАКОВ
+
+ 	else if(~indS && ~indF){                    // ЕСТЬ ОБА ЗНАКА 
+	  if(lastS > lastF || indS > indF){ // не закрыт нач ком    или  не закрыт кон ком
+		if(lastS > lastF){        // не закрыт нач ком
+			if(lastS == arrStr[i].length - 3){arrStr[i] = arrStr[i].slice(0, lastS) + '\n' + '/*'+ '\n'; }  // последний в строке
+			else {arrStr[i] = arrStr[i].slice(0, lastS) + '\n' + '/*'+ '\n' + arrStr[i].slice(lastS+2); }
+		}
+		if(indS > indF){         // не закрыт кон ком
+			if(indF == 0){arrStr[i] = '*/' + '\n' + arrStr[i].slice(indF+2);}   // первый в строке
+			else {arrStr[i] = arrStr[i].slice(0 , indF) + '\n' + '*/' + '\n' + arrStr[i].slice(indF+2);}
+		}
+	  }  
+	  else {     //  в строке остались только закрытые больш коменты 
+		// ?????   перенос перед и после,  в начале ставить //    (а если */ /* ?)
+		arrStr[i] = arrStr[i].split('/*');
+		arrStr[i] = arrStr[i].join('/*' + '<mark style="background-color:Blue">');
+		arrStr[i] = arrStr[i].split('*/');
+		arrStr[i] = arrStr[i].join('*/' + '</mark>'); // ??  порно когда возле / * * /   //
+
+	  };
+	}else{                                     // ЕСТЬ ОДИН ЗНАК  
+	  if(~indS){                          // есть  / *
+		  arrStr[i] = arrStr[i].split('\/*');
+		  if(arrStr[i][0]==0 && arrStr[i][1]!=0) {arrStr[i] = arrStr[i].join('/*'+'\n');}
+		  else if(arrStr[i][0]!= 0 && arrStr[i][1]!= 0) {arrStr[i] = arrStr[i].join('\n'+'/*'+'\n');}
+		  else if(arrStr[i][0]!= 0 && arrStr[i][1]== 0) {arrStr[i] = arrStr[i].join('\n'+'/*');}	
+		  else  {arrStr[i] = arrStr[i].join('/*');}
+	  }
+	  if(~indF){                          // есть  * /
+		  arrStr[i] = arrStr[i].split('*\/');
+		  if(arrStr[i][0]==0 && arrStr[i][1]!=0) {arrStr[i] = arrStr[i].join('*/'+'\n');}
+		  else if(arrStr[i][0]!=0 && arrStr[i][1]!=0) {arrStr[i] = arrStr[i].join('\n'+'*/'+'\n');}
+		  else if(arrStr[i][0]!=0 && arrStr[i][1]==0) {arrStr[i] = arrStr[i].join('\n'+'*/');}
+		  else  {arrStr[i] = arrStr[i].join('*/');}
+	  }
+	}
+  } 
+  return arrStr.join('');
+}
+
+
+
+!!!!!!!!!!    концепт без массива
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+
+</head>
+<body>
+<ul id="results"> </ul>
+<script>
+//============================================================================
+//    РАЗДЕЛЕНИЕ ТЕКСТА ПО ДАННЫМ СИМВОЛАМ     (границы и философия my !!!!! )
+//============================================================================
+
+// ????? ИЗМЕНИТЬ КОНЦЕПТ? - сначала получить массив положений, потом РАСЦЕНИВАТЬ НАРУШЕНИЯ, исправлять, выдавать .........          тк при нулях (и 2?) в option (внеш) -путаница в mark
+
+
+// рассматривать сначала  АБСТРАКТ ЗНАКИ   а потом конкретно ['/*', '*/'], ['//', '\n']
+
+//      ?? проблемма  нарушение иерархии   
+// ком // в строке перед ком / * * /    нужно предварит трансформ  в такой строке все / * * /  заменить на невидимое или на видимое н/р два длин тире(чтото экзотич) ?
+// повторные знаки // а также / * и * / в строке   (оставлять крайние? )
+
+// рассматривать только проблеммы не выявляемые конструктором?
+
+// ??? 
+// наложение ф-ций (indFunc). доделать - не разные ф-ции, а разные аргументы той же ф-ции.  ??
+// + сделать - в разных ветках разн аргументы ф-ции хоть и таже метка.     разный оттенок?
+// + сделать - разные метки - разные аргументы.       разный цвет? 
+
+//======================================================================
+var splity = [ ['/*', '*/'], ['//', '\n']];      
+var option = [1, 1];  // изменить установку опций? массивы чисел для ряда ф-ций?
+function mark(str) {  // ф-ции для примера 
+  return '<mark style="background-color:Yellow">' + str + '</mark>';
+};
+function mark1(str) { 
+  return '<mark style="background-color:Green">' + str + '</mark>';
+};
+function mark2(str) { 
+  return '<mark style="background-color:Red">' + str + '</mark>';
+};
+var func = [mark, mark1, mark2];
+var myTest = 'aaa//bbb \n  ggg /* DDD//EEE \n */ fff hhh//iii \n jjj /* KKK//LLL \n */  m //m \n m'
+
+
+function splitCodeOSC (code, splity) { 
+  var codeStr = code + '',   rez = '',   indFunc = 0, pro = 0;           
+  function splitPart (codeStr, splity, i) {
+	var pos0 = -1, pos1 = -1, propos = 0, flag, rez0, rez1,  pro0, pro1,   wrong;
+	flag = option[i]; // последний в массиве i (установочное число 0, 1, 2) ( ?? изменить? сделать массив опций по раз ф-циям?)
+	
+	// если наложение ф-ций 
+	if(pro == 1){indFunc++}  //  ??  сделать массив наложений?
+	else {indFunc = 0};      //  ???
+	  
+	// нахождение очередных слева сплитов ... ...     ???  с &&  проблема если есть откр но нет закр (концы теряем) как то с if?
+	while (~(pos0 = codeStr.indexOf(splity[i][0], pos0 + 1)) && ~(pos1 = codeStr.indexOf(splity[i][1], pos1 + 1)) ) {// расширить число сплитов 
+
+	  // исправление ???  + др концепт?    закрывающий сплит перед открывающим     или откр нет (а закр есть)
+	  if(pos0 > pos1 || pos0 == -1){
+		wrong = prompt('\t Пропущен откр сплит!\n 1 - Поставить откр прямо перед закр;\n 2 - Поставить откр в начало блока;\n 3 - Удалить закрывающий сплит.'); //  ??  доделать исправление    сформировать codeStr
+		return alert ('откр. потом эту строку убрать. Она чтобы избежать бесконечной рекурсии');
+//		splitPart (codeStr, splity, i); //  повторный запуск исправленного,   могут быть проблемы
+	  }
+	  else if(pos1 == -1){ // закр нет (а откр есть)
+		wrong = prompt('\t Пропущен закр сплит!\n 1 - Поставить закр прямо после откр;\n 2 - Поставить закр в конец блока;\n 3 - Удалить открывающий сплит.'); //  ??  доделать исправление    сформировать codeStr
+		return alert ('закр. потом эту строку убрать. Она чтобы избежать бесконечной рекурсии');
+//		splitPart (codeStr, splity, i);  //  повторный запуск исправленного,   могут быть проблемы
+	  }
+	  
+	  // выделение частей
+	  rez0 = codeStr.slice(propos, pos0);
+	  rez1 = codeStr.slice(pos0 + splity[i][0].length, pos1);  
+
+	  // выполнение ф-ций
+	  if(flag == 0){          // внешн  //////////
+		rez0 = func[indFunc](rez0)  //   массив функ   может вместо перемены ф-ции  менять аргументы ф-ции?  +к цвету ???
+		////alert (indFunc +' /// '+rez0);
+		pro0 = 1;	  pro1 = 0;   // флаги  обработ/необработ
+	  }
+	  else if(flag == 1){     // внутр  //////////
+		rez1 = func[indFunc](rez1);
+		////alert (indFunc +' /// '+rez1);
+		pro0 = 0;	  pro1 = 1;	
+	  }  
+	  else if(flag == 2){     // обе  //////////
+		rez0 = func[indFunc](rez0); rez1 = func[indFunc](rez1);
+		////alert (indFunc +' /// '+rez0 +' /// '+rez1);   
+		pro0 = 1;	  pro1 = 1; 	
+	  }
+	  else {    pro0 = 0;	  pro1 = 0;}  
+	  
+	  // рекурсия.  две ветки.    обобщить - больше веток ??
+	  if(splity[i+1]) {
+		pro = pro0;   rez0 = splitPart (rez0, splity, i+1);      
+		pro = pro1;   rez1 = splitPart (rez1, splity, i+1);      
+	  }
+	  
+	  // помещение в результат
+	  if(rez0 !== undefined) {rez += rez0;}; 
+	  if(rez1 !== undefined) {rez += rez1;}; 
+	  propos = pos1 + splity[i][1].length;	
+	  
+	  pro = 0;	
+	}
+	
+	// концы блоков
+	rez0 = codeStr.slice(propos);
+	if(rez0){           // обработка внешн //////////
+	  if(flag == 0 || flag == 2){
+		rez0 = func[indFunc](rez0);  
+	  };       
+	  if(splity[i+1]){rez0 = splitPart (rez0, splity, i+1)}
+	  else {rez += rez0};
+	}
+	indFunc = 0; 
+  }
+  splitPart (codeStr, splity, 0) // вкл внутр ф-ции
+  
+// ВЫВОДЫ  
+// без лишних пробелов
+  document.write(rez);    document.write("<br>");
+// с пробелами (как есть) ??  см ниже замена проблемных знаков 
+//kkk   preOSC (rez);
+// alert (rez)
+}
+//======================================================================
+
+splitCodeOSC (myTest, splity)
+
+
+
+
+
+
+/*                  начало
+  if(!display){ // замена проблемных знаков для выдачи ?? document.write() (в конце ф-ции)
+	code = checkSymbolOSC(code); 
+  }
+  
+                   и конец
+  if(!display){
+	preOSC(code);     //  вывод и индикация проверки   ??
+  }
+*/
+
+
+
+
+//  +++  ??? 
+// внутр некрайн метки - игнор
+// при нарушении - внутр больш заменить.    Или в абстрактнои - перестановка иерархии
+//  скобочное свести к иерархии - именовать каждый уровень скобок?
+// ряд последовательных ф-ции циклом  + apple ?  ???
+</script>
+
+
+</body>
+</html>
+
+
+
+!!!!!!!!!!    концепт без массива перестав назад
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src="jquery.js"></script>
+<script src='OSC.js'></script>
+
+</head>
+<body>
+<ul id="results"> </ul>
+<script>
+//============================================================================
+//    РАЗДЕЛЕНИЕ ТЕКСТА ПО ДАННЫМ СИМВОЛАМ     (границы и философия my !!!!! )
+//============================================================================
+
+// ????? ИЗМЕНИТЬ КОНЦЕПТ? - сначала получить массив положений, потом РАСЦЕНИВАТЬ НАРУШЕНИЯ, исправлять, выдавать .........          тк при нулях (и 2?) в option (внеш) -путаница в mark
+
+
+// рассматривать сначала  АБСТРАКТ ЗНАКИ   а потом конкретно ['/*', '*/'], ['//', '\n']
+
+//      ?? проблемма  нарушение иерархии   
+// ком // в строке перед ком / * * /    нужно предварит трансформ  в такой строке все / * * /  заменить на невидимое или на видимое н/р два длин тире(чтото экзотич) ?
+// повторные знаки // а также / * и * / в строке   (оставлять крайние? )
+
+// рассматривать только проблеммы не выявляемые конструктором?
+
+// ??? 
+// наложение ф-ций (indFunc). доделать - не разные ф-ции, а разные аргументы той же ф-ции.  ??
+// + сделать - в разных ветках разн аргументы ф-ции хоть и таже метка.     разный оттенок?
+// + сделать - разные метки - разные аргументы.       разный цвет? 
+
+//======================================================================
+var splity = [ ['/*', '*/'], ['//', '\n']];      
+var option = [1, 1];  // изменить установку опций? массивы чисел для ряда ф-ций?
+function mark(str) {  // ф-ции для примера  fff hhh//iii \n jjj /* KKK//LLL \n */  m //m \n m
+  return '<mark style="background-color:Yellow">' + str + '</mark>';
+};
+function mark1(str) { 
+  return '<mark style="background-color:Green">' + str + '</mark>';
+};
+function mark2(str) { 
+  return '<mark style="background-color:Red">' + str + '</mark>';
+};
+var func = [mark, mark1, mark2];
+var myTest = 'aaa//bbb ggg\n /* DDD//EEE fff \n*/'
+
+
+function splitCodeOSC (code, splity) { 
+  var codeStr = code + '',   rez = '',   indFunc = 0;           
+  function splitPart (codeStr, splity, i) {
+	var pos0 = -1, pos1 = -1, propos = 0, flag, rez0, rez1,   wrong;
+	flag = option[i]; // последний в массиве i (установочное число 0, 1, 2) ( ?? изменить? сделать массив опций по раз ф-циям?)
+	
+	  
+	// нахождение очередных слева сплитов ... ...     ???  с &&  проблема если есть откр но нет закр (концы теряем) как то с if?
+	while (~(pos0 = codeStr.indexOf(splity[i][0], pos0 + 1)) && ~(pos1 = codeStr.indexOf(splity[i][1], pos1 + 1)) ) {// расширить число сплитов 
+
+	  // исправление ???  + др концепт?    закрывающий сплит перед открывающим     или откр нет (а закр есть)
+	  if(pos0 > pos1 || pos0 == -1){
+		wrong = prompt('\t Пропущен откр сплит!\n 1 - Поставить откр прямо перед закр;\n 2 - Поставить откр в начало блока;\n 3 - Удалить закрывающий сплит.'); //  ??  доделать исправление    сформировать codeStr
+		return alert ('откр. потом эту строку убрать. Она чтобы избежать бесконечной рекурсии');
+//		splitPart (codeStr, splity, i); //  повторный запуск исправленного,   могут быть проблемы
+	  }
+	  else if(pos1 == -1){ // закр нет (а откр есть)
+		wrong = prompt('\t Пропущен закр сплит!\n 1 - Поставить закр прямо после откр;\n 2 - Поставить закр в конец блока;\n 3 - Удалить открывающий сплит.'); //  ??  доделать исправление    сформировать codeStr
+		return alert ('закр. потом эту строку убрать. Она чтобы избежать бесконечной рекурсии');
+//		splitPart (codeStr, splity, i);  //  повторный запуск исправленного,   могут быть проблемы
+	  }
+	  
+	  // выделение частей
+	  rez0 = codeStr.slice(propos, pos0);
+	  rez1 = codeStr.slice(pos0 + splity[i][0].length, pos1);  
+
+	  
+	  // рекурсия.  две ветки.    обобщить - больше веток ??
+	  if(splity[i+1]) {
+		rez0 = splitPart (rez0, splity, i+1);       
+		rez1 = splitPart (rez1, splity, i+1);      
+	  }
+
+	  // выполнение ф-ций
+	  if(flag == 0){          // внешн  //////////
+		rez0 = func[indFunc](rez0)  //   массив функ   может вместо перемены ф-ции  менять аргументы ф-ции?  +к цвету ???
+		////alert (indFunc +' /// '+rez0);
+	  }
+	  else if(flag == 1){     // внутр  //////////
+		rez1 = func[indFunc](rez1);
+		////alert (indFunc +' /// '+rez1);
+	  }  
+	  else if(flag == 2){     // обе  //////////
+		rez0 = func[indFunc](rez0); rez1 = func[indFunc](rez1);
+		////alert (indFunc +' /// '+rez0 +' /// '+rez1);   
+	  }
+	  
+	  // помещение в результат
+	  if(rez0 !== undefined) {rez += rez0;}; 
+	  if(rez1 !== undefined) {rez += rez1;}; 
+	  
+	  propos = pos1 + splity[i][1].length;	
+	   
+	}
+	
+	// концы блоков
+/*	rez0 = codeStr.slice(propos);
+	if(splity[i+1]){rez0 = splitPart (rez0, splity, i+1)}
+	else {rez += rez0};
+	if(rez0){           // обработка внешн //////////
+	  if(flag == 0 || flag == 2){
+		rez0 = func[indFunc](rez0);  
+	  };       
+	}
+*/	indFunc = 0; 
+  }
+  splitPart (codeStr, splity, 0) // вкл внутр ф-ции
+  
+// ВЫВОДЫ  
+// без лишних пробелов
+  document.write(rez);    document.write("<br>");
+// с пробелами (как есть) ??  см ниже замена проблемных знаков 
+//kkk   preOSC (rez);
+// alert (rez)
+}
+//======================================================================
+
+splitCodeOSC (myTest, splity)
+
+
+
+
+
+
+/*                  начало
+  if(!display){ // замена проблемных знаков для выдачи ?? document.write() (в конце ф-ции)
+	code = checkSymbolOSC(code); 
+  }
+  
+                   и конец
+  if(!display){
+	preOSC(code);     //  вывод и индикация проверки   ??
+  }
+*/
+
+
+
+
+//  +++  ??? 
+// внутр некрайн метки - игнор
+// при нарушении - внутр больш заменить.    Или в абстрактнои - перестановка иерархии
+//  скобочное свести к иерархии - именовать каждый уровень скобок?
+// ряд последовательных ф-ции циклом  + apple ?  ???
+</script>
+
+
+</body>
+</html>
+
+
+
+

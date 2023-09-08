@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+
+</head>
+
+<body>
+
+<canvas id="canvas" width=640, height=480></canvas>
+
+
+
+<script>
+
+var canvas = document.getElementById('canvas');  
+var ctx = canvas.getContext('2d');
+var nnn = canvas.getContext('2d');   // MY второе перо-фламастер-ручка
+
+ctx.strokeRect(0, 0, 640, 480);
+var width = canvas.width;
+var height = canvas.height;
+
+
+//   ##заготовка  1
+startX=100; startY=100; angle=0;     //-Math.PI/8   начальные данные   и УГОЛ
+		
+ctx.beginPath(); 
+ctx.moveTo(startX, startY); 
+ctx.fillStyle = "Green";
+ctx.lineTo(startX+30*Math.cos(-Math.PI/4+angle), startY+30*Math.sin(-Math.PI/4+angle));
+ctx.lineTo(startX+80*Math.cos(angle), startY+80*Math.sin(angle));      // ?
+ctx.lineTo(startX+30*Math.cos(Math.PI/4+angle), startY+30*Math.sin(Math.PI/4+angle));
+ctx.fill();
+
+
+
+//   ##заготовка  2   ??  взять фото листа и по шаблону сделать норм.
+startX=100; startY=300; angle=0;     // начальные данные   и УГОЛ
+nnn.beginPath(); 
+nnn.moveTo(startX, startY); 
+nnn.fillStyle = "Green";
+nnn.lineTo(startX-20, startY-50);
+nnn.lineTo(startX+20, startY-30);      // ?
+nnn.lineTo(startX+50, startY-50);
+nnn.lineTo(startX+55, startY-20);
+nnn.lineTo(startX+70, startY);
+nnn.lineTo(startX+55, startY+20);
+nnn.lineTo(startX+50, startY+50);
+nnn.lineTo(startX+20, startY+30);      // ?
+nnn.lineTo(startX-20, startY+50);
+nnn.fill();
+
+		
+		
+
+		</script>
+</body>
+</html>
+startY-30*Math.sin(Math.PI/6+angle)

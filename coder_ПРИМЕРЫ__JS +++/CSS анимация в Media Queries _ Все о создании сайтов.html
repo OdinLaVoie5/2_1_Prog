@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://2web-master.ru/xmlrpc.php">
+	<title>CSS анимация в Media Queries | Все о создании сайтов</title>
+
+	  
+<!-- All in One SEO Pack 2.2.7.6.2 by Michael Torbert of Semper Fi Web Designob_start_detected [-1,-1] -->
+<meta name="description" itemprop="description" content="Сегодня мы поговорим о CSS анимации при переходах с одних Media Queries на другие. Преимущество использования CSS очевидно - это простота и размер кода," />
+
+<meta name="keywords" itemprop="keywords" content="media queries" />
+
+<link rel="canonical" href="http://2web-master.ru/css-animaciya-v-media-queries.html" />
+<!-- /all in one seo pack -->
+<link rel="alternate" type="application/rss+xml" title="Все о создании сайтов &raquo; Лента" href="http://2web-master.ru/feed" />
+<link rel="alternate" type="application/rss+xml" title="Все о создании сайтов &raquo; Лента комментариев" href="http://2web-master.ru/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Все о создании сайтов &raquo; Лента комментариев к &laquo;CSS анимация в Media Queries&raquo;" href="http://2web-master.ru/css-animaciya-v-media-queries.html/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/2web-master.ru\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.4.2"}};
+			!function(a,b,c){function d(a){var c,d=b.createElement("canvas"),e=d.getContext&&d.getContext("2d"),f=String.fromCharCode;return e&&e.fillText?(e.textBaseline="top",e.font="600 32px Arial","flag"===a?(e.fillText(f(55356,56806,55356,56826),0,0),d.toDataURL().length>3e3):"diversity"===a?(e.fillText(f(55356,57221),0,0),c=e.getImageData(16,16,1,1).data.toString(),e.fillText(f(55356,57221,55356,57343),0,0),c!==e.getImageData(16,16,1,1).data.toString()):("simple"===a?e.fillText(f(55357,56835),0,0):e.fillText(f(55356,57135),0,0),0!==e.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag"),unicode8:d("unicode8"),diversity:d("diversity")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag&&c.supports.unicode8&&c.supports.diversity||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='http://2web-master.ru/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-familiar-css'  href='http://2web-master.ru/wp-content/plugins/crayon-syntax-highlighter/themes/familiar/familiar.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='http://2web-master.ru/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='generate-fonts-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300%2C300italic%2Cregular%2Citalic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%7CLora%3Aregular%2Citalic%2C700%2C700italic&#038;subset=latin%2Clatin-ext&#038;ver=1.2.9.5' type='text/css' media='all' />
+<link rel='stylesheet' id='generate-secondary-nav-css'  href='http://2web-master.ru/wp-content/plugins/generate-secondary-nav/inc/css/style.css?ver=4.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='generate-secondary-nav-mobile-css'  href='http://2web-master.ru/wp-content/plugins/generate-secondary-nav/inc/css/mobile.css?ver=0.6' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-lightbox-2.min.css-css'  href='http://2web-master.ru/wp-content/plugins/wp-lightbox-2/styles/lightbox.min.ru_RU.css?ver=1.3.4' type='text/css' media='all' />
+<link rel='stylesheet' id='generate-style-grid-css'  href='http://2web-master.ru/wp-content/themes/generatepress/css/unsemantic-grid.css?ver=1.2.9.5' type='text/css' media='all' />
+<link rel='stylesheet' id='generate-style-css'  href='http://2web-master.ru/wp-content/themes/generatepress/style.css?ver=1.2.9.5' type='text/css' media='all' />
+<style id='generate-style-inline-css' type='text/css'>
+body {background-color: #f9f9f0; color: #3a3a3a; }a, a:visited {color: #3a7ea1; text-decoration: none; }a:hover, a:focus, a:active {color: #000000; }body .grid-container {max-width: 1200px; }
+.byline, .single .byline, .group-blog .byline{display:none;}.comments-link{display:none;}.tags-links{display:none;}
+.site-header {background-color: #FFFFFF; color: #3a3a3a; }.site-header a {color: #3a3a3a; }.main-title a,.main-title a:hover,.main-title a:visited {color: #ffffff; }.site-description {color: #d3d3d3; }.main-navigation,  .main-navigation ul ul {background-color: #07101c; }.navigation-search input[type="search"],.navigation-search input[type="search"]:active {color: #ffffff; background-color: #04435a; }.navigation-search input[type="search"]:focus {color: #ffffff; background-color: #04435a; }.main-navigation ul ul {background-color: #266c8e; }.main-navigation .main-nav ul li a,.menu-toggle {color: #FFFFFF; }.main-navigation .main-nav ul ul li a {color: #FFFFFF; }.main-navigation .main-nav ul li > a:hover, .main-navigation .main-nav ul li.sfHover > a {color: #ffffff; background-color: #04435a; }.main-navigation .main-nav ul ul li > a:hover, .main-navigation .main-nav ul ul li.sfHover > a {color: #FFFFFF; background-color: #04435a; }.main-navigation .main-nav ul .current-menu-item > a, .main-navigation .main-nav ul .current-menu-parent > a, .main-navigation .main-nav ul .current-menu-ancestor > a, .main-navigation .main-nav ul .current_page_item > a, .main-navigation .main-nav ul .current_page_parent > a, .main-navigation .main-nav ul .current_page_ancestor > a {color: #FFFFFF; background-color: #04435a; }.main-navigation .main-nav ul .current-menu-item > a:hover, .main-navigation .main-nav ul .current-menu-parent > a:hover, .main-navigation .main-nav ul .current-menu-ancestor > a:hover, .main-navigation .main-nav ul .current_page_item > a:hover, .main-navigation .main-nav ul .current_page_parent > a:hover, .main-navigation .main-nav ul .current_page_ancestor > a:hover, .main-navigation .main-nav ul .current-menu-item.sfHover > a, .main-navigation .main-nav ul .current-menu-parent.sfHover > a, .main-navigation .main-nav ul .current-menu-ancestor.sfHover > a, .main-navigation .main-nav ul .current_page_item.sfHover > a, .main-navigation .main-nav ul .current_page_parent.sfHover > a, .main-navigation .main-nav ul .current_page_ancestor.sfHover > a {color: #FFFFFF; background-color: #04435a; }.main-navigation .main-nav ul ul .current-menu-item > a, .main-navigation .main-nav ul ul .current-menu-parent > a, .main-navigation .main-nav ul ul .current-menu-ancestor > a, .main-navigation .main-nav ul ul .current_page_item > a, .main-navigation .main-nav ul ul .current_page_parent > a, .main-navigation .main-nav ul ul .current_page_ancestor > a {color: #FFFFFF; background-color: #04435a; }.main-navigation .main-nav ul ul .current-menu-item > a:hover, .main-navigation .main-nav ul ul .current-menu-parent > a:hover, .main-navigation .main-nav ul ul .current-menu-ancestor > a:hover, .main-navigation .main-nav ul ul .current_page_item > a:hover, .main-navigation .main-nav ul ul .current_page_parent > a:hover, .main-navigation .main-nav ul ul .current_page_ancestor > a:hover,.main-navigation .main-nav ul ul .current-menu-item.sfHover > a, .main-navigation .main-nav ul ul .current-menu-parent.sfHover > a, .main-navigation .main-nav ul ul .current-menu-ancestor.sfHover > a, .main-navigation .main-nav ul ul .current_page_item.sfHover > a, .main-navigation .main-nav ul ul .current_page_parent.sfHover > a, .main-navigation .main-nav ul ul .current_page_ancestor.sfHover > a {color: #FFFFFF; background-color: #04435a; }.inside-article, .comments-area, .page-header,.one-container .container,.paging-navigation,.inside-page-header {background-color: #FFFFFF; color: #3a3a3a; }.entry-meta {color: #888888; }.entry-meta a, .entry-meta a:visited {color: #666666; }.entry-meta a:hover {color: #1E73BE; }.sidebar .widget {background-color: #FFFFFF; color: #3a3a3a; }.sidebar .widget .widget-title {color: #000000; }.footer-widgets {background-color: #FFFFFF; color: #3a3a3a; }.footer-widgets a, .footer-widgets a:visited {color: #1e73be; }.footer-widgets a:hover {color: #000000; }.footer-widgets .widget-title {color: #000000; }.site-info {background-color: #222222; color: #ffffff; }.site-info a, .site-info a:visited {color: #ffffff; }.site-info a:hover {color: #606060; }input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="tel"], textarea {background-color: #FAFAFA; border-color: #CCCCCC; color: #666666; }input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, textarea:focus {background-color: #FFFFFF; color: #666666; border-color: #BFBFBF; }::-webkit-input-placeholder {color: #666666; opacity: 0.7; }:-moz-placeholder {color: #666666; opacity: 0.7; }::-moz-placeholder {color: #666666; opacity: 0.7; }:-ms-input-placeholder {color: #666666; opacity: 0.7; }button, html input[type="button"], input[type="reset"], input[type="submit"],.button,.button:visited {background-color: #266c8e; color: #FFFFFF; }button:hover, html input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover,.button:hover,button:focus, html input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus,.button:focus,button:active, html input[type="button"]:active, input[type="reset"]:active, input[type="submit"]:active,.button:active {background-color: #2b2b2b; color: #FFFFFF; }
+.inside-header {padding-top: 40px; padding-right: 40px; padding-bottom: 40px; padding-left: 40px; }.separate-containers .inside-article, .separate-containers .comments-area, .separate-containers .page-header, .separate-containers .paging-navigation, .one-container .site-content {padding-top: 40px; padding-right: 40px; padding-bottom: 40px; padding-left: 40px; }.ignore-x-spacing {margin-right: -40px; margin-bottom: 40px; margin-left: -40px; }.ignore-xy-spacing {margin-top: -40px; margin-right: -40px; margin-bottom: 40px; margin-left: -40px; }.main-navigation .main-nav ul li a,			.menu-toggle {padding-left: 10px; padding-right: 10px; line-height: 60px; }.nav-float-right .main-navigation .main-nav ul li a {line-height: 60px; }.main-navigation .main-nav ul ul li a {padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; }.main-navigation ul ul {top: 60px; }.navigation-search {height: 60px; line-height: 0px; }.navigation-search input {height: 60px; line-height: 0px; }.widget-area .widget {padding-top: 40px; padding-right: 40px; padding-bottom: 40px; padding-left: 40px; }.footer-widgets {padding-top: 40px; padding-right: 0px; padding-bottom: 40px; padding-left: 0px; }.site-info {padding-top: 20px; padding-right: 0px; padding-bottom: 20px; padding-left: 0px; }.right-sidebar.separate-containers .site-main {margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 0px; padding: 0px; }.left-sidebar.separate-containers .site-main {margin-top: 15px; margin-right: 0px; margin-bottom: 15px; margin-left: 15px; padding: 0px; }.both-sidebars.separate-containers .site-main {margin: 15px; padding: 0px; }.both-right.separate-containers .site-main {margin-top: 15px; margin-right: 15px; margin-bottom: 15px; margin-left: 0px; padding: 0px; }.separate-containers .site-main {margin-top: 15px; margin-bottom: 15px; padding: 0px; }.separate-containers .page-header-image, .separate-containers .page-header-content, .separate-containers .page-header-image-single, .separate-containers .page-header-content-single {margin-top: 15px; }.both-left.separate-containers .site-main {margin-top: 15px; margin-right: 0px; margin-bottom: 15px; margin-left: 15px; padding: 0px; }.separate-containers .inside-right-sidebar, .inside-left-sidebar {margin-top: 15px; margin-bottom: 15px; padding-top: 0px; padding-bottom: 0px; }.separate-containers .widget, .separate-containers .hentry, .separate-containers .page-header, .widget-area .main-navigation {margin-bottom: 15px; }.both-left.separate-containers .inside-left-sidebar {margin-right: 7.5px; padding-right: 0px; }.both-left.separate-containers .inside-right-sidebar {margin-left: 7.5px; padding-left: 0px; }.both-right.separate-containers .inside-left-sidebar {margin-right: 7.5px; padding-right: 0px; }.both-right.separate-containers .inside-right-sidebar {margin-left: 7.5px; padding-left: 0px; }
+body, button, input, select, textarea {font-family: Open Sans ,sans-serif; font-weight: normal; text-transform: none; font-size: 17px; }.main-title {font-family: Helvetica ,sans-serif; font-weight: normal; text-transform: none; font-size: 35px; }.site-description {font-family: Helvetica ,sans-serif; font-weight: normal; text-transform: none; font-size: 17px; }.main-navigation a, .menu-toggle {font-family: Helvetica ,sans-serif; font-weight: normal; text-transform: none; font-size: 15px; }.main-navigation .main-nav ul ul li a {font-size: 14px; }.widget-title {font-family: Impact ,sans-serif; font-weight: normal; text-transform: none; font-size: 20px; }h1 {font-family: Lora ,sans-serif; font-weight: bold; text-transform: none; font-size: 35px; }h2 {font-family: Lora ,sans-serif; font-weight: bold; text-transform: none; font-size: 30px; }h3 {font-family: Helvetica ,sans-serif; font-weight: normal; text-transform: none; font-size: 25px; }
+body {background-image: none; background-repeat: no-repeat; background-size: cover; background-attachment: fixed; }.site-header {background-image: url(http://2web-master.ru/wp-content/uploads/2015/05/fon5.jpg); background-repeat: no-repeat; background-size: cover; }.main-navigation,.menu-toggle {background-image: none; }.main-navigation .main-nav ul li a {background-image: none; }.main-navigation .main-nav ul li > a:hover, .main-navigation .main-nav ul li.sfHover > a {background-image: none; }.main-navigation .main-nav ul .current-menu-item > a, .main-navigation .main-nav ul .current-menu-parent > a, .main-navigation .main-nav ul .current-menu-ancestor > a, .main-navigation .main-nav ul .current_page_item > a, .main-navigation .main-nav ul .current_page_parent > a, .main-navigation .main-nav ul .current_page_ancestor > a {background-image: none; }.main-navigation .main-nav ul .current-menu-item > a:hover, .main-navigation .main-nav ul .current-menu-parent > a:hover, .main-navigation .main-nav ul .current-menu-ancestor > a:hover, .main-navigation .main-nav ul .current_page_item > a:hover, .main-navigation .main-nav ul .current_page_parent > a:hover, .main-navigation .main-nav ul .current_page_ancestor > a:hover, .main-navigation .main-nav ul .current-menu-item.sfHover > a, .main-navigation .main-nav ul .current-menu-parent.sfHover > a, .main-navigation .main-nav ul .current-menu-ancestor.sfHover > a, .main-navigation .main-nav ul .current_page_item.sfHover > a, .main-navigation .main-nav ul .current_page_parent.sfHover > a, .main-navigation .main-nav ul .current_page_ancestor.sfHover > a {background-image: none; }.main-navigation .main-nav ul ul li a {background-image: none; }.main-navigation .main-nav ul ul li > a:hover, .main-navigation .main-nav ul ul li.sfHover > a {background-image: none; }.main-navigation .main-nav ul ul .current-menu-item > a, .main-navigation .main-nav ul ul .current-menu-parent > a, .main-navigation .main-nav ul ul .current-menu-ancestor > a, .main-navigation .main-nav ul ul .current_page_item > a, .main-navigation .main-nav ul ul .current_page_parent > a, .main-navigation .main-nav ul ul .current_page_ancestor > a {background-image: none; }.main-navigation .main-nav ul ul .current-menu-item > a:hover, .main-navigation .main-nav ul ul .current-menu-parent > a:hover, .main-navigation .main-nav ul ul .current-menu-ancestor > a:hover, .main-navigation .main-nav ul ul .current_page_item > a:hover, .main-navigation .main-nav ul ul .current_page_parent > a:hover, .main-navigation .main-nav ul ul .current_page_ancestor > a:hover,.main-navigation .main-nav ul ul .current-menu-item.sfHover > a, .main-navigation .main-nav ul ul .current-menu-parent.sfHover > a, .main-navigation .main-nav ul ul .current-menu-ancestor.sfHover > a, .main-navigation .main-nav ul ul .current_page_item.sfHover > a, .main-navigation .main-nav ul ul .current_page_parent.sfHover > a, .main-navigation .main-nav ul ul .current_page_ancestor.sfHover > a {background-image: none; }.separate-containers .inside-article, .comments-area, .page-header,.one-container .container,.paging-navigation,.inside-page-header {background-image: none; }.sidebar .widget {background-image: none; }.footer-widgets {background-image: none; }.site-info {background-image: none; }
+.secondary-navigation {background-color: #636363; background-image: none; }.secondary-navigation ul ul {background-color: #303030; top: 40px; }.secondary-navigation ul li a,.secondary-navigation .menu-toggle {color: #FFFFFF; font-family: inherit; font-weight: normal; text-transform: none; font-size: 13px; padding-left: 20px; padding-right: 20px; line-height: 40px; background-image: none; }.secondary-navigation ul ul li a {color: #FFFFFF; font-size: 12px; padding-left: 20px; padding-right: 20px; padding-top: 10px; padding-bottom: 10px; background-image: none; }.secondary-navigation ul li > a:hover, .secondary-navigation ul li.sfHover > a {color: #FFFFFF; background-color: #303030; background-image: none; }.secondary-navigation ul ul li > a:hover, .secondary-navigation ul ul li.sfHover > a {color: #FFFFFF; background-color: #474747; background-image: none; }.secondary-navigation ul .current-menu-item > a, .secondary-navigation ul .current-menu-parent > a, .secondary-navigation ul .current-menu-ancestor > a, .secondary-navigation ul .current_page_item > a, .secondary-navigation ul .current_page_parent > a, .secondary-navigation ul .current_page_ancestor > a {color: #222222; background-color: #ffffff; background-image: none; }.secondary-navigation ul .current-menu-item > a:hover, .secondary-navigation ul .current-menu-parent > a:hover, .secondary-navigation ul .current-menu-ancestor > a:hover, .secondary-navigation ul .current_page_item > a:hover, .secondary-navigation ul .current_page_parent > a:hover, .secondary-navigation ul .current_page_ancestor > a:hover, .secondary-navigation ul .current-menu-item.sfHover > a, .secondary-navigation ul .current-menu-parent.sfHover > a, .secondary-navigation ul .current-menu-ancestor.sfHover > a, .secondary-navigation ul .current_page_item.sfHover > a, .secondary-navigation ul .current_page_parent.sfHover > a, .secondary-navigation ul .current_page_ancestor.sfHover > a {color: #222222; background-color: #ffffff; background-image: none; }.secondary-navigation ul ul .current-menu-item > a, .secondary-navigation ul ul .current-menu-parent > a, .secondary-navigation ul ul .current-menu-ancestor > a, .secondary-navigation ul ul .current_page_item > a, .secondary-navigation ul ul .current_page_parent > a, .secondary-navigation ul ul .current_page_ancestor > a {color: #FFFFFF; background-color: #474747; background-image: none; }.secondary-navigation ul ul .current-menu-item > a:hover, .secondary-navigation ul ul .current-menu-parent > a:hover, .secondary-navigation ul ul .current-menu-ancestor > a:hover, .secondary-navigation ul ul .current_page_item > a:hover, .secondary-navigation ul ul .current_page_parent > a:hover, .secondary-navigation ul ul .current_page_ancestor > a:hover,.secondary-navigation ul ul .current-menu-item.sfHover > a, .secondary-navigation ul ul .current-menu-parent.sfHover > a, .secondary-navigation ul ul .current-menu-ancestor.sfHover > a, .secondary-navigation ul ul .current_page_item.sfHover > a, .secondary-navigation ul ul .current_page_parent.sfHover > a, .secondary-navigation ul ul .current_page_ancestor.sfHover > a {color: #FFFFFF; background-color: #474747; background-image: none; }
+</style>
+<link rel='stylesheet' id='generate-mobile-style-css'  href='http://2web-master.ru/wp-content/themes/generatepress/css/mobile.css?ver=1.2.9.5' type='text/css' media='all' />
+<link rel='stylesheet' id='superfish-css'  href='http://2web-master.ru/wp-content/themes/generatepress/css/superfish.css?ver=1.2.9.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fontawesome-css'  href='http://2web-master.ru/wp-content/themes/generatepress/css/font-awesome.min.css?ver=4.3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='wordpress-popular-posts-css'  href='http://2web-master.ru/wp-content/plugins/wordpress-popular-posts/style/wpp.css?ver=3.3.3' type='text/css' media='all' />
+<link rel='stylesheet' id='blog-styles-css'  href='http://2web-master.ru/wp-content/plugins/generate-blog/inc/css/style.css?ver=4.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-paginate-css'  href='http://2web-master.ru/wp-content/plugins/wp-paginate/wp-paginate.css?ver=1.3.1' type='text/css' media='screen' />
+<script type='text/javascript' src='http://2web-master.ru/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script>
+<script type='text/javascript' src='http://2web-master.ru/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/2web-master.ru\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u041d\u0430\u0436\u043c\u0438\u0442\u0435 %s \u0434\u043b\u044f \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f, %s \u0434\u043b\u044f \u0432\u0441\u0442\u0430\u0432\u043a\u0438","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://2web-master.ru/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<link rel='https://api.w.org/' href='http://2web-master.ru/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://2web-master.ru/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://2web-master.ru/wp-includes/wlwmanifest.xml" /> 
+
+<link rel='shortlink' href='http://2web-master.ru/?p=2458' />
+<link rel="alternate" type="application/json+oembed" href="http://2web-master.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2F2web-master.ru%2Fcss-animaciya-v-media-queries.html" />
+<link rel="alternate" type="text/xml+oembed" href="http://2web-master.ru/wp-json/oembed/1.0/embed?url=http%3A%2F%2F2web-master.ru%2Fcss-animaciya-v-media-queries.html&#038;format=xml" />
+
+<!-- Comment Rating plugin Version: 2.9.29 by Bob King, http://wealthynetizen.com/, dynamic comment voting & styling. --> 
+<style type="text/css" media="screen">
+   .ckrating_highly_rated {background-color:#FFFFCC !important;}
+   .ckrating_poorly_rated {opacity:0.6;filter:alpha(opacity=60) !important;}
+   .ckrating_hotly_debated {background-color:#FFF0F5 !important;}
+</style>
+
+<script type="text/javascript">
+	window._wp_rp_static_base_url = 'https://rp.zemanta.com/static/';
+	window._wp_rp_wp_ajax_url = "http://2web-master.ru/wp-admin/admin-ajax.php";
+	window._wp_rp_plugin_version = '3.6';
+	window._wp_rp_post_id = '2458';
+	window._wp_rp_num_rel_posts = '4';
+	window._wp_rp_thumbnails = true;
+	window._wp_rp_post_title = 'CSS+%D0%B0%D0%BD%D0%B8%D0%BC%D0%B0%D1%86%D0%B8%D1%8F+%D0%B2+Media+Queries';
+	window._wp_rp_post_tags = ['media+queries', '%D0%90%D0%BD%D0%B8%D0%BC%D0%B0%D1%86%D0%B8%D1%8F', 'top', 'layout', 'media', 'background', 'posit', 'color', 'solid', 'queri', 'width', 'ccc', 'left', 'height', 'border', 'bottom', 'css'];
+</script>
+<link rel="stylesheet" href="http://2web-master.ru/wp-content/plugins/related-posts/static/themes/twocolumns.css?version=3.6" />
+<meta name="viewport" content="width=device-width, initial-scale=1">	<!--[if lt IE 9]>
+		<script src="http://2web-master.ru/wp-content/themes/generatepress/js/html5shiv.js"></script>
+		<link rel="stylesheet" href="http://2web-master.ru/wp-content/themes/generatepress/css/ie.css" />
+	<![endif]-->
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+						<!-- WordPress Popular Posts v3.3.3 -->
+				<script type="text/javascript">//<![CDATA[
+
+					var sampling_active = 0;
+					var sampling_rate   = 100;
+					var do_request = false;
+
+					if ( !sampling_active ) {
+						do_request = true;
+					} else {
+						var num = Math.floor(Math.random() * sampling_rate) + 1;
+						do_request = ( 1 === num );
+					}
+
+					if ( do_request ) {
+
+						// Create XMLHttpRequest object and set variables
+						var xhr = ( window.XMLHttpRequest )
+						  ? new XMLHttpRequest()
+						  : new ActiveXObject( "Microsoft.XMLHTTP" ),
+						url = 'http://2web-master.ru/wp-admin/admin-ajax.php',
+						params = 'action=update_views_ajax&token=027e31244d&wpp_id=2458';
+						// Set request method and target URL
+						xhr.open( "POST", url, true );
+						// Set request header
+						xhr.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+						// Hook into onreadystatechange
+						xhr.onreadystatechange = function() {
+							if ( 4 === xhr.readyState && 200 === xhr.status ) {
+								if ( window.console && window.console.log ) {
+									window.console.log( xhr.responseText );
+								}
+							}
+						};
+						// Send request
+						xhr.send( params );
+
+					}
+
+				//]]></script>
+				<!-- End WordPress Popular Posts v3.3.3 -->
+				</head>
+
+<body itemtype="http://schema.org/WebPage" itemscope="itemscope" class="single single-post postid-2458 single-format-standard post-image-below-header post-image-aligned-center secondary-nav-above-header secondary-nav-aligned-right both-sidebars nav-below-header fluid-header separate-containers active-footer-widgets-2 nav-aligned-left header-aligned-center group-blog">
+		<header itemtype="http://schema.org/WPHeader" itemscope="itemscope" id="masthead" role="banner" class="site-header">
+		<div class="inside-header grid-container grid-parent">
+						
+					
+							<div class="site-branding">
+									<p class="main-title" itemprop="headline"><a href="http://2web-master.ru/" title="Все о создании сайтов" rel="home">Все о создании сайтов</a></p>
+									<p class="site-description">Лучшие ресурсы для веб мастера и дизайнера</p>
+								</div>
+							<div class="site-logo">
+					<a href="http://2web-master.ru/" title="Все о создании сайтов" rel="home"><img class="header-image" src="http://2web-master.ru/wp-content/uploads/2014/09/2webmaster_logo3.png" alt="Все о создании сайтов" title="Все о создании сайтов" /></a>
+				</div>
+								</div><!-- .inside-header -->
+	</header><!-- #masthead -->
+		<nav itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" id="site-navigation" role="navigation" class="main-navigation">
+		<div class="inside-navigation grid-container grid-parent">
+				<form role="search" method="get" class="search-form navigation-search" action="http://2web-master.ru/">
+		<input type="search" class="search-field" value="" name="s" title="Поиск">
+	</form>
+	
+				<h3 class="menu-toggle"><span class="mobile-menu">Меню</span></h3>
+			<div class="screen-reader-text skip-link"><a href="#content" title="Перейти к контенту">Перейти к контенту</a></div>
+			<div class="main-nav"><ul id="menu-menyu-2" class=" menu sf-menu"><li id="menu-item-2779" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-has-children menu-item-2779"><a href="http://2web-master.ru/category/css-and-html">CSS&#038;HTML</a>
+<ul class="sub-menu">
+	<li id="menu-item-2780" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2780"><a href="http://2web-master.ru/category/css-and-html/css3">CSS3</a></li>
+	<li id="menu-item-2781" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2781"><a href="http://2web-master.ru/category/css-and-html/html-html5">HTML&#038;HTML5</a></li>
+	<li id="menu-item-2782" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-2782"><a href="http://2web-master.ru/category/css-and-html/animaciya-css">Анимация</a></li>
+	<li id="menu-item-2783" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2783"><a href="http://2web-master.ru/category/css-and-html/geometriya-css">Геометрия</a></li>
+	<li id="menu-item-2784" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2784"><a href="http://2web-master.ru/category/css-and-html/ikonki-css-and-html">Иконки</a></li>
+	<li id="menu-item-2785" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2785"><a href="http://2web-master.ru/category/css-and-html/knopki-css">Кнопки</a></li>
+	<li id="menu-item-2786" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2786"><a href="http://2web-master.ru/category/css-and-html/menyu-css">Меню</a></li>
+	<li id="menu-item-2787" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2787"><a href="http://2web-master.ru/category/css-and-html/osnovy">Основы</a></li>
+	<li id="menu-item-2788" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2788"><a href="http://2web-master.ru/category/css-and-html/snippety">Сниппеты</a></li>
+	<li id="menu-item-2789" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2789"><a href="http://2web-master.ru/category/css-and-html/tricks">Хаки</a></li>
+	<li id="menu-item-2790" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2790"><a href="http://2web-master.ru/category/css-and-html/shablony-css-and-html">Шаблоны</a></li>
+</ul>
+</li>
+<li id="menu-item-2791" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2791"><a href="http://2web-master.ru/category/javascript">JavaScript</a>
+<ul class="sub-menu">
+	<li id="menu-item-2794" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2794"><a href="http://2web-master.ru/category/javascript/jquery">jQuery</a></li>
+	<li id="menu-item-2796" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2796"><a href="http://2web-master.ru/category/javascript/mootools">MooTools</a></li>
+	<li id="menu-item-2793" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2793"><a href="http://2web-master.ru/category/javascript/dojo">Dojo</a></li>
+	<li id="menu-item-2795" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2795"><a href="http://2web-master.ru/category/javascript/json">JSON</a></li>
+	<li id="menu-item-2792" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2792"><a href="http://2web-master.ru/category/javascript/dijit">Dijit</a></li>
+</ul>
+</li>
+<li id="menu-item-2797" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2797"><a href="http://2web-master.ru/category/joomla">Joomla</a>
+<ul class="sub-menu">
+	<li id="menu-item-2798" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2798"><a href="http://2web-master.ru/category/joomla/novosti-joomla">Новости</a></li>
+	<li id="menu-item-2801" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2801"><a href="http://2web-master.ru/category/joomla/temy-joomla">Шаблоны</a></li>
+	<li id="menu-item-8385" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8385"><a href="http://2web-master.ru/category/joomla/modules">Модули</a></li>
+	<li id="menu-item-2799" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2799"><a href="http://2web-master.ru/category/joomla/plaginy-joomla">Плагины</a></li>
+	<li id="menu-item-8384" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8384"><a href="http://2web-master.ru/category/joomla/components">Компоненты</a></li>
+	<li id="menu-item-8386" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8386"><a href="http://2web-master.ru/category/joomla/help">Помощь</a></li>
+</ul>
+</li>
+<li id="menu-item-2804" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2804"><a href="http://2web-master.ru/category/wordpress">WordPress</a>
+<ul class="sub-menu">
+	<li id="menu-item-2805" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2805"><a href="http://2web-master.ru/category/wordpress/novosti">Новости</a></li>
+	<li id="menu-item-2806" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2806"><a href="http://2web-master.ru/category/wordpress/plaginy">Плагины</a></li>
+	<li id="menu-item-2807" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2807"><a href="http://2web-master.ru/category/wordpress/snippety-wordpress">Сниппеты</a></li>
+	<li id="menu-item-2808" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2808"><a href="http://2web-master.ru/category/wordpress/themes-for-wp">Темы</a></li>
+	<li id="menu-item-2809" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2809"><a href="http://2web-master.ru/category/wordpress/xaki-wordpress">Хаки</a></li>
+</ul>
+</li>
+<li id="menu-item-2803" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2803"><a href="http://2web-master.ru/category/php">PHP</a></li>
+<li id="menu-item-2811" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2811"><a href="http://2web-master.ru/category/rukovodstva">Руководства</a></li>
+<li id="menu-item-2812" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2812"><a href="http://2web-master.ru/category/dizajn">Дизайн</a>
+<ul class="sub-menu">
+	<li id="menu-item-2810" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2810"><a href="http://2web-master.ru/category/dizajn/psd">PSD</a></li>
+	<li id="menu-item-2815" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2815"><a href="http://2web-master.ru/category/dizajn/ikonki-dizajn">Иконки</a></li>
+	<li id="menu-item-2816" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2816"><a href="http://2web-master.ru/category/dizajn/infografika-dizajn">Инфографика</a></li>
+	<li id="menu-item-2819" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2819"><a href="http://2web-master.ru/category/dizajn/tekstury-dizajn">Текстуры</a></li>
+	<li id="menu-item-2953" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2953"><a href="http://2web-master.ru/category/dizajn/shrifty-dizajn">Шрифты</a></li>
+	<li id="menu-item-2813" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2813"><a href="http://2web-master.ru/category/dizajn/aieps">Ai&#038;EPS</a></li>
+	<li id="menu-item-2814" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2814"><a href="http://2web-master.ru/category/dizajn/gadzhety">Гаджеты</a></li>
+	<li id="menu-item-2817" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2817"><a href="http://2web-master.ru/category/dizajn/iskusstvo">Искусство</a></li>
+	<li id="menu-item-2818" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2818"><a href="http://2web-master.ru/category/dizajn/oboi">Обои</a></li>
+</ul>
+</li>
+<li id="menu-item-8222" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-8222"><a href="http://2web-master.ru/category/seoshnik">SEOШНИКУ</a></li>
+<li id="menu-item-2820" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-2820"><a href="http://2web-master.ru/category/other">Ещё</a>
+<ul class="sub-menu">
+	<li id="menu-item-2826" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2826"><a href="http://2web-master.ru/category/other/2web">От 2Web</a></li>
+	<li id="menu-item-2823" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2823"><a href="http://2web-master.ru/category/other/dlya-novichkov">Для новичков</a></li>
+	<li id="menu-item-2824" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2824"><a href="http://2web-master.ru/category/other/instrumenti">Инструменты</a></li>
+	<li id="menu-item-2821" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2821"><a href="http://2web-master.ru/category/other/mysql">MySQL</a></li>
+	<li id="menu-item-2822" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2822"><a href="http://2web-master.ru/category/other/seo">SEO</a></li>
+	<li id="menu-item-2825" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2825"><a href="http://2web-master.ru/category/other/obzor">Обзор</a></li>
+</ul>
+</li>
+</ul></div>		</div><!-- .inside-navigation -->
+	</nav><!-- #site-navigation -->
+		
+	<div id="page" class="hfeed site grid-container container grid-parent">
+		<div id="content" class="site-content">
+			
+	<div id="primary" class="content-area grid-parent push-25 grid-50" itemprop="mainContentOfPage">
+		<main id="main" class="site-main" itemtype="http://schema.org/Blog" itemscope="itemscope" role="main">
+				
+			
+<article id="post-2458" class="post-2458 post type-post status-publish format-standard hentry category-animaciya-css tag-media-queries" itemprop="blogPost" itemtype="http://schema.org/BlogPosting" itemscope="itemscope">
+	<div class="inside-article">
+				<header class="entry-header">
+			<h1 class="entry-title" itemprop="headline">CSS анимация в Media Queries</h1>
+			<div class="entry-meta">
+				<span class="posted-on"><a href="http://2web-master.ru/css-animaciya-v-media-queries.html" title="21:05" rel="bookmark"><time class="entry-date published" datetime="2014-04-25T21:05:17+00:00" itemprop="datePublished">25.04.2014</time><time class="updated" datetime="2014-10-25T18:34:26+00:00" itemprop="dateModified">25.10.2014</time></a></span> <span class="byline"><span class="author vcard" itemtype="http://schema.org/Person" itemscope="itemscope" itemprop="author">по <a class="url fn n" href="http://2web-master.ru/author/2webb" title="Посмотреть все статьи по 2Web" rel="author" itemprop="url"><span class="author-name" itemprop="name">2Web</span></a></span></span><img style="padding-left:10px;" src="http://2web-master.ru/wp-content/uploads/2015/05/eye3.jpg" /> 219			</div><!-- .entry-meta -->
+		</header><!-- .entry-header -->
+				<div class="entry-content" itemprop="text">
+			
+<div><center><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 336x280 2web -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-6009432970570964"
+     data-ad-slot="8427845136"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></center></div>
+<p>Сегодня мы поговорим о <em>CSS</em> анимации при переходах с одних <em>Media Queries</em> на другие. Преимущество использования <em>CSS</em> очевидно&nbsp;&mdash; это простота и размер кода, поддержка аппаратного ускорения и отсутствие <em>jQuery</em>.</p>
+<p>Вы, наверное, в курсе, что, в основном, анимация CSS строится на основе состояния <code>:hover</code> или добавлением класса, но еще можно использовать и <em>media queries</em>. Давайте посмотрим, как это работает!<br />
+<span id="more-2458"></span></p>
+<div style="clear:both;"></div>
+<p><center><span class="imp_small"><a class="demo" rel="nofollow" target="_blank" href="http://davidwalsh.name/dw-content/animate-media-queries.php">Пример</a></span></center></p>
+<h2>CSS</h2>
+<p>Синтаксис создания анимации и переходов абсолютно идентичен, как, если бы вы создавали анимацию для состояния <code>:hover</code>, с той лишь разницей, что триггер, в данном случае, <em>media queries</em>:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d2ed174f5fd633412734" class="crayon-syntax crayon-theme-familiar crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-always" style=" max-width: 500px; margin-top: 20px; margin-bottom: 20px; margin-left: 12px; margin-right: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style=" max-width: 500px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-2">2</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-4">4</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-6">6</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-8">8</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-10">10</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-12">12</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-14">14</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-16">16</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-18">18</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-20">20</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-22">22</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-24">24</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-26">26</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-28">28</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-30">30</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-32">32</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-34">34</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-36">36</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-38">38</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-40">40</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-42">42</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f5fd633412734-44">44</div><div class="crayon-num" data-line="crayon-56d2ed174f5fd633412734-45">45</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-1"><span class="crayon-c">/* основное состояние */</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-2"><span class="crayon-p">#layout { </span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-3"><span class="crayon-h">	</span><span class="crayon-v">position</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">relative</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-4"><span class="crayon-h">	</span><span class="crayon-v">width</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">900px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-5"><span class="crayon-h">	</span><span class="crayon-v">border</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">1px</span><span class="crayon-h"> </span><span class="crayon-v">solid</span><span class="crayon-h"> </span><span class="crayon-p">#ccc; </span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-6"><span class="crayon-h">	</span><span class="crayon-v">height</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">200px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-7"><span class="crayon-h">	</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-8"><span class="crayon-h">	</span><span class="crayon-c">/* анимация ширины с заданной длительностью */</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-9"><span class="crayon-h">	</span><span class="crayon-o">-</span><span class="crayon-v">webkit</span><span class="crayon-o">-</span><span class="crayon-v">transition</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-i">width</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-10"><span class="crayon-h">	</span><span class="crayon-o">-</span><span class="crayon-v">moz</span><span class="crayon-o">-</span><span class="crayon-v">transition</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-i">width</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-11"><span class="crayon-h">	</span><span class="crayon-o">-</span><span class="crayon-v">ms</span><span class="crayon-o">-</span><span class="crayon-v">transition</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-i">width</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-12"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-13"><span class="crayon-sy">.</span><span class="crayon-i">child</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-14"><span class="crayon-h">	</span><span class="crayon-v">top</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-15"><span class="crayon-h">	</span><span class="crayon-v">bottom</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-16"><span class="crayon-h">	</span><span class="crayon-v">width</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">290px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-17"><span class="crayon-h">	</span><span class="crayon-v">position</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">absolute</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-18"><span class="crayon-h">	</span><span class="crayon-v">opacity</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-19"><span class="crayon-h">	</span><span class="crayon-v">font</span><span class="crayon-o">-</span><span class="crayon-v">size</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">20px</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-20"><span class="crayon-h">	</span><span class="crayon-v">overflow</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">hidden</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-21"><span class="crayon-h">	</span><span class="crayon-o">-</span><span class="crayon-v">webkit</span><span class="crayon-o">-</span><span class="crayon-v">transform</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">translate3d</span><span class="crayon-sy">(</span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-22"><span class="crayon-h">	</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-23"><span class="crayon-h">	</span><span class="crayon-c">/* анимация прозрачности, left, ширины с заданной длительностью */</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-24"><span class="crayon-h">	</span><span class="crayon-o">-</span><span class="crayon-v">webkit</span><span class="crayon-o">-</span><span class="crayon-v">transition</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-i">opacity</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">width</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">left</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">font</span><span class="crayon-o">-</span><span class="crayon-i">size</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">color</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-25"><span class="crayon-h">	</span><span class="crayon-o">-</span><span class="crayon-v">moz</span><span class="crayon-o">-</span><span class="crayon-v">transition</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-i">opacity</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">width</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">left</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">font</span><span class="crayon-o">-</span><span class="crayon-i">size</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">color</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-26"><span class="crayon-h">	</span><span class="crayon-o">-</span><span class="crayon-v">ms</span><span class="crayon-o">-</span><span class="crayon-v">transition</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-i">opacity</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">width</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">left</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-v">font</span><span class="crayon-o">-</span><span class="crayon-i">size</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">,</span><span class="crayon-h"> </span><span class="crayon-i">color</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-27"><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-28"><span class="crayon-h">	</span><span class="crayon-p">#child1 { left: 0; background: lightblue; }</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-29"><span class="crayon-h">	</span><span class="crayon-p">#child2 { left: 300px; background: lightgreen; }</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-30"><span class="crayon-h">	</span><span class="crayon-p">#child3 { left: 600px; background: lightyellow; }</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-31">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-32"><span class="crayon-c">/* </span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-33"><span class="crayon-c">	Когда ширина окна 860 px или меньше:</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-34"><span class="crayon-c">	 	- анимация первых двух элементов по ширине</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-35"><span class="crayon-c">		- анимация исчезания третьего элемента</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-36"><span class="crayon-c">		- анимация бэкргаунда</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-37"><span class="crayon-c">		- анимация размера шрифта в блоке</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-38"><span class="crayon-c">*/</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-39"><span class="crayon-sy">@</span><span class="crayon-e">media </span><span class="crayon-e">screen </span><span class="crayon-st">and</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">max</span><span class="crayon-o">-</span><span class="crayon-v">width</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">860px</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-40"><span class="crayon-h">	</span><span class="crayon-p">#layout { width: 600px; }</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-41"><span class="crayon-h">	</span><span class="crayon-sy">.</span><span class="crayon-i">child</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h"> </span><span class="crayon-v">width</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">290px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-v">font</span><span class="crayon-o">-</span><span class="crayon-v">size</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">12px</span><span class="crayon-sy">;</span><span class="crayon-h"> </span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-42"><span class="crayon-h">	</span><span class="crayon-p">#child1 { left: 0; background: blue; color: #fff; }</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-43"><span class="crayon-h">	</span><span class="crayon-p">#child2 { left: 300px; background: green; color: #fff; }</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f5fd633412734-44"><span class="crayon-h">	</span><span class="crayon-p">#child3.child { /* hider */ opacity: 0; width: 0; }</span></div><div class="crayon-line" id="crayon-56d2ed174f5fd633412734-45"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0054 seconds] -->
+<p></p>
+<p>Вы, наверное, думаете, зачем нужна такая анимация? Каково ее предназначение?</p>
+<p>Использование анимации Media Queries больше всего подходит при смене ориентации мобильного устройства с портретного на ландшафтный и наоборот:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-56d2ed174f60b372757414" class="crayon-syntax crayon-theme-familiar crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" no-popup minimize scroll-always" style=" max-width: 500px; margin-top: 20px; margin-bottom: 20px; margin-left: 12px; margin-right: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-plain-wrap"></div>
+			<div class="crayon-main" style=" max-width: 500px;">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-56d2ed174f60b372757414-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f60b372757414-2">2</div><div class="crayon-num" data-line="crayon-56d2ed174f60b372757414-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f60b372757414-4">4</div><div class="crayon-num" data-line="crayon-56d2ed174f60b372757414-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f60b372757414-6">6</div><div class="crayon-num" data-line="crayon-56d2ed174f60b372757414-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f60b372757414-8">8</div><div class="crayon-num" data-line="crayon-56d2ed174f60b372757414-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f60b372757414-10">10</div><div class="crayon-num" data-line="crayon-56d2ed174f60b372757414-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f60b372757414-12">12</div><div class="crayon-num" data-line="crayon-56d2ed174f60b372757414-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f60b372757414-14">14</div><div class="crayon-num" data-line="crayon-56d2ed174f60b372757414-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f60b372757414-16">16</div><div class="crayon-num" data-line="crayon-56d2ed174f60b372757414-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f60b372757414-18">18</div><div class="crayon-num" data-line="crayon-56d2ed174f60b372757414-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-56d2ed174f60b372757414-20">20</div><div class="crayon-num" data-line="crayon-56d2ed174f60b372757414-21">21</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-56d2ed174f60b372757414-1"><span class="crayon-c">/* основные стили */</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f60b372757414-2"><span class="crayon-p">#sidebar {</span></div><div class="crayon-line" id="crayon-56d2ed174f60b372757414-3"><span class="crayon-h">	</span><span class="crayon-o">-</span><span class="crayon-v">webkit</span><span class="crayon-o">-</span><span class="crayon-v">transition</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-i">opacity</span><span class="crayon-h"> </span><span class="crayon-cn">2s</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f60b372757414-4"><span class="crayon-h">	</span><span class="crayon-v">width</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">300px</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d2ed174f60b372757414-5"><span class="crayon-h">	</span><span class="crayon-v">overflow</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-v">hidden</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f60b372757414-6"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d2ed174f60b372757414-7">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f60b372757414-8"><span class="crayon-c">/* портрет */</span></div><div class="crayon-line" id="crayon-56d2ed174f60b372757414-9"><span class="crayon-sy">@</span><span class="crayon-e">media </span><span class="crayon-e">screen </span><span class="crayon-st">and</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">orientation</span><span class="crayon-o">:</span><span class="crayon-v">portrait</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span><span class="crayon-h">&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f60b372757414-10"><span class="crayon-h">	</span><span class="crayon-p">#sidebar {</span></div><div class="crayon-line" id="crayon-56d2ed174f60b372757414-11"><span class="crayon-h">		</span><span class="crayon-v">opacity</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f60b372757414-12"><span class="crayon-h">		</span><span class="crayon-v">width</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">0</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-56d2ed174f60b372757414-13"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f60b372757414-14"><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d2ed174f60b372757414-15">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f60b372757414-16"><span class="crayon-c">/* ландшафт */</span></div><div class="crayon-line" id="crayon-56d2ed174f60b372757414-17"><span class="crayon-sy">@</span><span class="crayon-e">media </span><span class="crayon-e">screen </span><span class="crayon-st">and</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">orientation</span><span class="crayon-o">:</span><span class="crayon-v">landscape</span><span class="crayon-sy">)</span><span class="crayon-h"> </span><span class="crayon-sy">{</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f60b372757414-18"><span class="crayon-h">	</span><span class="crayon-p">#sidebar {</span></div><div class="crayon-line" id="crayon-56d2ed174f60b372757414-19"><span class="crayon-h">		</span><span class="crayon-v">opacity</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-cn">1</span><span class="crayon-sy">;</span></div><div class="crayon-line crayon-striped-line" id="crayon-56d2ed174f60b372757414-20"><span class="crayon-h">	</span><span class="crayon-sy">}</span></div><div class="crayon-line" id="crayon-56d2ed174f60b372757414-21"><span class="crayon-sy">}</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0016 seconds] -->
+<p></p>
+<p>С помощью этого кода можно изящно скрывать и показывать панель при переключении режимов просмотра.</p>
+<p><center><span class="imp_small"><a class="demo" rel="nofollow" target="_blank" href="http://davidwalsh.name/dw-content/animate-media-queries.php">Пример</a></span></center></p>
+<p>CSS анимация остается деликатесом в веб-дизайне, но с появлением практического применения, ситуация может измениться. С учетом вышеперечисленных достоинств использование различных эффектов при тех и иных триггерах совершенно точно будет набирать популярность. Например, при <a href="http://webbakery.ru/services/administration.php" target="_blank">обслуживании сайта</a> с адаптивным дизайном, то почему бы не попробовать создать некоторые эффекты?</p>
+</p>
+<center><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 336x280 2web -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-6009432970570964"
+     data-ad-slot="8427845136"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<script type="text/javascript">(function(w,doc) {
+if (!w.__utlWdgt ) {
+    w.__utlWdgt = true;
+    var d = doc, s = d.createElement('script'), g = 'getElementsByTagName';
+    s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+    s.src = ('https:' == w.location.protocol ? 'https' : 'http')  + '://w.uptolike.com/widgets/v1/uptolike.js';
+    var h=d[g]('body')[0];
+    h.appendChild(s);
+}})(window,document);
+</script>
+<div data-mobile-view="true" data-share-size="40" data-like-text-enable="false" data-background-alpha="0.0" data-pid="1381180" data-mode="share" data-background-color="#ffffff" data-hover-effect="rotate-cw" data-share-shape="round-rectangle" data-share-counter-size="12" data-icon-color="#ffffff" data-mobile-sn-ids="vk.fb.tw.ok.gp." data-text-color="#000000" data-buttons-color="#ffffff" data-counter-background-color="#ffffff" data-share-counter-type="disable" data-orientation="horizontal" data-following-enable="false" data-sn-ids="vk.fb.tw.ok.gp." data-preview-mobile="false" data-selection-enable="false" data-exclude-show-more="true" data-share-style="5" data-counter-background-alpha="1.0" data-top-button="false" class="uptolike-buttons" ></div></center><br>
+
+<div class="wp_rp_wrap  wp_rp_twocolumns" id="wp_rp_first"><div class="wp_rp_content"><h3 class="related_post_title">Возможно, Вам будет интересно ↓↓↓</h3><ul class="related_post wp_rp"><li data-position="0" data-poid="in-82" data-post-type="none" ><a href="http://2web-master.ru/mootools-zoomer-plugin.html" class="wp_rp_thumbnail"><img src="http://2web-master.ru/wp-content/uploads/2010/04/greeeeen_by_Amanmahi_small-150x150.jpg" alt="MooTools Zoomer плагин" width="150" height="150" /></a><a href="http://2web-master.ru/mootools-zoomer-plugin.html" class="wp_rp_title">MooTools Zoomer плагин</a></li><li data-position="1" data-poid="in-1837" data-post-type="none" ><a href="http://2web-master.ru/sozdanie-vrashhayushhixsya-luchej-s-pomoshhyu-css3-peredelano.html" class="wp_rp_thumbnail"><img src="http://2web-master.ru/wp-content/plugins/related-posts/static/thumbs/10.jpg" alt="Создание вращающихся лучей с помощью CSS3: Переделка" width="150" height="150" /></a><a href="http://2web-master.ru/sozdanie-vrashhayushhixsya-luchej-s-pomoshhyu-css3-peredelano.html" class="wp_rp_title">Создание вращающихся лучей с помощью CSS3: Переделка</a></li><li data-position="2" data-poid="in-2976" data-post-type="none" ><a href="http://2web-master.ru/sovremennye-texniki-css3-dlya-ukrasheniya-vashego-sajta.html" class="wp_rp_thumbnail"><img src="http://2web-master.ru/wp-content/uploads/2013/02/tech_css-150x150.jpg" alt="Современные техники CSS3 для украшения вашего сайта" width="150" height="150" /></a><a href="http://2web-master.ru/sovremennye-texniki-css3-dlya-ukrasheniya-vashego-sajta.html" class="wp_rp_title">Современные техники CSS3 для украшения вашего сайта</a></li><li data-position="3" data-poid="in-750" data-post-type="none" ><a href="http://2web-master.ru/kak-narisovat-kalendarnye-ikonki-s-pomoshhyu-css3.html" class="wp_rp_thumbnail"><img src="http://2web-master.ru/wp-content/uploads/2011/08/scheme-150x150.gif" alt="Как нарисовать календарные иконки с помощью CSS3" width="150" height="150" /></a><a href="http://2web-master.ru/kak-narisovat-kalendarnye-ikonki-s-pomoshhyu-css3.html" class="wp_rp_title">Как нарисовать календарные иконки с помощью CSS3</a></li></ul></div></div>
+					</div><!-- .entry-content -->
+		
+		
+		<footer class="entry-meta">
+			<span class="cat-links"><span class="screen-reader-text">Categories </span><a href="http://2web-master.ru/category/css-and-html/animaciya-css" rel="category tag">Анимация</a></span><span class="tags-links"><span class="screen-reader-text">Tags </span><a href="http://2web-master.ru/tag/media-queries" rel="tag">Media Queries</a></span>				<nav role="navigation" id="nav-below" class="post-navigation">
+		<h6 class="screen-reader-text">Навигация по статьям</h6>
+
+	
+		<div class="nav-previous"><span class="prev" title="Предыдущее"><a href="http://2web-master.ru/pravilnyj-podbor-klyuchevyx-fraz-dlya-seo.html" rel="prev">Правильный подбор ключевых фраз для СЕО</a></span></div>		<div class="nav-next"><span class="next" title="Следующее"><a href="http://2web-master.ru/analiz-celevoj-auditorii.html" rel="next">Анализ целевой аудитории</a></span></div>
+	
+	</nav><!-- #nav-below -->
+						</footer><!-- .entry-meta -->
+			</div><!-- .inside-article -->
+</article><!-- #post-## -->
+
+								<div class="comments-area">
+						
+	<div id="comments">
+
+	
+	
+					<div id="respond" class="comment-respond">
+			<h3 id="reply-title" class="comment-reply-title">Оставить комментарий <small><a rel="nofollow" id="cancel-comment-reply-link" href="/css-animaciya-v-media-queries.html#respond" style="display:none;">Отменить ответ</a></small></h3>				<form action="http://2web-master.ru/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+					<p class="comment-form-comment"><textarea id="comment" name="00ee8-comment" cols="45" rows="8" aria-required="true"></textarea><textarea name="comment" style="display:none" rows="1" cols="1"></textarea></p><input placeholder="Имя *" id="author" name="author" type="text" value="" size="30" />
+<input placeholder="Email *" id="email" name="email" type="text" value="" size="30" />
+<input placeholder="Вебсайт" id="url" name="url" type="text" value="" size="30" />
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Отправить комментарий" /> <input type='hidden' name='comment_post_ID' value='2458' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p>				</form>
+					</div><!-- #respond -->
+		
+</div><!-- #comments -->
+					</div>
+			
+						</main><!-- #main -->
+	</div><!-- #primary -->
+
+	<div id="left-sidebar" itemtype="http://schema.org/WPSideBar" itemscope="itemscope" role="complementary" class="widget-area grid-25 grid-parent sidebar pull-50">
+		<div class="inside-left-sidebar">
+			<center><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 2web-адаптивный -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-6009432970570964"
+     data-ad-slot="5292908734"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></center><br />			
+<!-- WordPress Popular Posts Plugin v3.3.3 [W] [monthly] [views] [custom] -->
+<aside id="wpp-2" class="widget inner-padding popular-posts">
+<h4 class="widget-title">Популярные статьи</h4>
+<ul class="wpp-list">
+<li><a href="http://2web-master.ru/3-easy-and-fast-css-techniques-for-crop-image.html" title="3 простых и быстрых техники CSS для обрезки картинок" class="wpp-post-title" target="_self">3 простых и быстрых техники CSS для обрезки картинок</a> </li><br />
+<li><a href="http://2web-master.ru/changing-the-img-src-using-jquery.html" title="Изменение src у img, используя jQuery" class="wpp-post-title" target="_self">Изменение src у img, используя jQuery</a> </li><br />
+<li><a href="http://2web-master.ru/sozdaem-treugolniki-na-css.html" title="Создаем треугольники на CSS" class="wpp-post-title" target="_self">Создаем треугольники на CSS</a> </li><br />
+<li><a href="http://2web-master.ru/10-besplatnyx-jquery-plaginov-dlya-sozdaniya-grafikov.html" title="10 бесплатных jQuery плагинов для создания графиков" class="wpp-post-title" target="_self">10 бесплатных jQuery плагинов для создания графиков</a> </li><br />
+<li><a href="http://2web-master.ru/10-udivitelnyx-audiopleerov-na-html5.html" title="10 удивительных аудиоплееров на HTML5" class="wpp-post-title" target="_self">10 удивительных аудиоплееров на HTML5</a> </li><br />
+<li><a href="http://2web-master.ru/katalog-tovarov-na-wordpress-s-plaginom-page-list.html" title="Каталог товаров на WordPress с плагином Page-list" class="wpp-post-title" target="_self">Каталог товаров на WordPress с плагином Page-list</a> </li><br />
+<li><a href="http://2web-master.ru/prostoj-sposob-dobavit-besplatnyj-novostnoj-kontent-na-svoj-sajt.html" title="Простой способ добавить бесплатный новостной контент на свой сайт" class="wpp-post-title" target="_self">Простой способ добавить бесплатный новостной контент на свой сайт</a> </li><br />
+
+</ul>
+</aside>
+<!-- End WordPress Popular Posts Plugin v3.3.3 -->
+<aside id="text-6" class="widget inner-padding widget_text"><h4 class="widget-title">Заработать на своем сайте</h4>			<div class="textwidget"><a href="http://2web-master.ru/goto/http://teasernet.com/?owner_id=73247" target="_blank" rel="nofollow"><strong>TEASERNET</strong></a> - Старая и проверенная временем тизерка. Платят много и стабильно.<br /><br />
+<a href="http://2web-master.ru/goto/https://www.admitad.com/ru/promo/?ref=2a1f19a826" target="_blank" rel="nofollow"><strong>ADMITAD</strong></a> - Одна из лучших CPA партнерских программ в Рунете.<br /><br />
+<a href="http://2web-master.ru/goto/http://www.popunder.ru/?r=146516" target="_blank" rel="nofollow"><strong>POPUNDER</strong></a> - Самая популярная биржа трафика. Выкупят ваш трафик по самым максимальным ценам</div>
+		</aside><aside id="text-2" class="widget inner-padding widget_text"><h4 class="widget-title">Лучший хостинг</h4>			<div class="textwidget"><a href="http://2web-master.ru/goto/http://firstvds.ru/?from=245142" target="_blank" rel="nofollow"><strong>FIRSTVDS</strong></a> - Самые качественные и стабильные виртуальные серверы от 149 рублей в месяц<br /><br />
+<a href="http://2web-master.ru/goto/http://webhost1.ru/?r=7668" target="_blank" rel="nofollow"><strong>WEBHOST1</strong></a> - очень дешевый и в то же время ндежный хостинг, никогда еще не подводил, RU-домены от 100 рублей<br /><br />
+<a href="http://2web-master.ru/goto/http://ad.sprinthost.ru/clk?sl=YToyOntzOjM6InBpbiI7czo0OiI2NDM3IjtzOjY6InRhcmdldCI7czoxOiIvIjt9" target="_blank" rel="nofollow"><strong>SPRINTHOST</strong></a> - Проверенный временем хостинг, идеальное соотношение цена-качество.</div>
+		</aside>					</div><!-- .inside-left-sidebar -->
+	</div><!-- #secondary -->	<div id="right-sidebar" itemtype="http://schema.org/WPSideBar" itemscope="itemscope" role="complementary" class="widget-area grid-25 grid-parent sidebar">
+		<div class="inside-right-sidebar">
+			<div id="subscribe">
+<h3 class="widget-title">Подписаться на новые статьи</h3>
+<form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=2web-master/WOcH, 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+            <p style="margin:0 0 7px 0;"><input type="text" name="email" class="email" placeholder="Введите E-mail" /></p>
+            <p><input type="hidden" value="2web-master/WOcH" name="uri"/><input type="hidden" name="loc" value="ru_RU"/><input type="submit" value="Подписаться" /></p>
+        </form>
+</div><br />			<aside id="text-10" class="widget inner-padding widget_text"><h4 class="widget-title">Заработок на сайте</h4>			<div class="textwidget"><a href="http://aff1.ru" target="_blank" rel="nofollow"><img src="http://2web-master.ru/wp-content/uploads/2015/05/adver.png" width="240"/></a>
+Абсолютно все способы монетизации сайта</div>
+		</aside><aside id="text-11" class="widget inner-padding widget_text"><h4 class="widget-title">Последнее из &#171;CSS&#038;HTML&#187;</h4>			<div class="textwidget"><div class="display-posts-listing"><div class="listing-item"><a class="image" href="http://2web-master.ru/krasivoe-oformlenie-vypadayushhego-spiska-na-css3-i-jquery.html"><img width="300" height="200" src="http://2web-master.ru/wp-content/uploads/2015/06/Красивое-оформление-выпадающего-списка-на-CSS3-и-jQuery-300x200.png" class="attachment-medium size-medium wp-post-image" alt="Красивое оформление выпадающего списка на CSS3 и jQuery" srcset="http://2web-master.ru/wp-content/uploads/2015/06/Красивое-оформление-выпадающего-списка-на-CSS3-и-jQuery-300x200.png 300w, http://2web-master.ru/wp-content/uploads/2015/06/Красивое-оформление-выпадающего-списка-на-CSS3-и-jQuery-500x333.png 500w, http://2web-master.ru/wp-content/uploads/2015/06/Красивое-оформление-выпадающего-списка-на-CSS3-и-jQuery.png 600w" sizes="(max-width: 300px) 100vw, 300px" /></a> <a class="title" href="http://2web-master.ru/krasivoe-oformlenie-vypadayushhego-spiska-na-css3-i-jquery.html">Красивое оформление выпадающего списка на CSS3 и jQuery</a></div><div class="listing-item"><a class="image" href="http://2web-master.ru/sozdanie-gif-animacii-onlajn-7-servisov.html"><img width="300" height="200" src="http://2web-master.ru/wp-content/uploads/2015/08/Создание-GIF-анимации-онлайн-300x200.png" class="attachment-medium size-medium wp-post-image" alt="Создание GIF анимации онлайн" srcset="http://2web-master.ru/wp-content/uploads/2015/08/Создание-GIF-анимации-онлайн-300x200.png 300w, http://2web-master.ru/wp-content/uploads/2015/08/Создание-GIF-анимации-онлайн-500x333.png 500w, http://2web-master.ru/wp-content/uploads/2015/08/Создание-GIF-анимации-онлайн.png 600w" sizes="(max-width: 300px) 100vw, 300px" /></a> <a class="title" href="http://2web-master.ru/sozdanie-gif-animacii-onlajn-7-servisov.html">Создание GIF анимации онлайн: 7 сервисов</a></div><div class="listing-item"><a class="image" href="http://2web-master.ru/ischezayushhij-tekst-v-forme-poiska-input.html"><img width="300" height="200" src="http://2web-master.ru/wp-content/uploads/2015/08/Исчезающий-текст-в-форме-поиска-300x200.png" class="attachment-medium size-medium wp-post-image" alt="Исчезающий текст в форме поиска" srcset="http://2web-master.ru/wp-content/uploads/2015/08/Исчезающий-текст-в-форме-поиска-300x200.png 300w, http://2web-master.ru/wp-content/uploads/2015/08/Исчезающий-текст-в-форме-поиска-500x333.png 500w, http://2web-master.ru/wp-content/uploads/2015/08/Исчезающий-текст-в-форме-поиска.png 600w" sizes="(max-width: 300px) 100vw, 300px" /></a> <a class="title" href="http://2web-master.ru/ischezayushhij-tekst-v-forme-poiska-input.html">Исчезающий текст в форме поиска (input)</a></div><div class="listing-item"><a class="image" href="http://2web-master.ru/prefiksy-css3-dlya-raznyx-brauzerov-opera-chrome-firefox.html"><img width="300" height="200" src="http://2web-master.ru/wp-content/uploads/2015/06/Префиксы-CSS3-для-разных-браузеров-300x200.png" class="attachment-medium size-medium wp-post-image" alt="Префиксы CSS3 для разных браузеров" srcset="http://2web-master.ru/wp-content/uploads/2015/06/Префиксы-CSS3-для-разных-браузеров-300x200.png 300w, http://2web-master.ru/wp-content/uploads/2015/06/Префиксы-CSS3-для-разных-браузеров-500x333.png 500w, http://2web-master.ru/wp-content/uploads/2015/06/Префиксы-CSS3-для-разных-браузеров.png 600w" sizes="(max-width: 300px) 100vw, 300px" /></a> <a class="title" href="http://2web-master.ru/prefiksy-css3-dlya-raznyx-brauzerov-opera-chrome-firefox.html">Префиксы CSS3 для разных браузеров Opera, Chrome, Firefox</a></div><div class="listing-item"><a class="image" href="http://2web-master.ru/css-sprajty-primery-postroeniya.html"><img width="300" height="188" src="http://2web-master.ru/wp-content/uploads/2015/06/sprite-300x188.jpg" class="attachment-medium size-medium wp-post-image" alt="CSS спрайты" srcset="http://2web-master.ru/wp-content/uploads/2015/06/sprite-300x188.jpg 300w, http://2web-master.ru/wp-content/uploads/2015/06/sprite-500x313.jpg 500w, http://2web-master.ru/wp-content/uploads/2015/06/sprite.jpg 720w" sizes="(max-width: 300px) 100vw, 300px" /></a> <a class="title" href="http://2web-master.ru/css-sprajty-primery-postroeniya.html">CSS спрайты. Примеры построения</a></div><div class="listing-item"><a class="image" href="http://2web-master.ru/delaem-modalnoe-okno-s-pomoshhyu-html5.html"><img width="300" height="200" src="http://2web-master.ru/wp-content/uploads/2015/06/модальное-окно-с-помощью-HTML5-300x200.png" class="attachment-medium size-medium wp-post-image" alt="модальное окно с помощью HTML5" srcset="http://2web-master.ru/wp-content/uploads/2015/06/модальное-окно-с-помощью-HTML5-300x200.png 300w, http://2web-master.ru/wp-content/uploads/2015/06/модальное-окно-с-помощью-HTML5-500x333.png 500w, http://2web-master.ru/wp-content/uploads/2015/06/модальное-окно-с-помощью-HTML5.png 600w" sizes="(max-width: 300px) 100vw, 300px" /></a> <a class="title" href="http://2web-master.ru/delaem-modalnoe-okno-s-pomoshhyu-html5.html">Делаем модальное окно с помощью HTML5</a></div><div class="listing-item"><a class="image" href="http://2web-master.ru/sposoby-proverki-validacii-sajta.html"><img width="300" height="200" src="http://2web-master.ru/wp-content/uploads/2015/06/Способы-проверки-валидации-сайта-300x200.png" class="attachment-medium size-medium wp-post-image" alt="Способы проверки валидации сайта" srcset="http://2web-master.ru/wp-content/uploads/2015/06/Способы-проверки-валидации-сайта-300x200.png 300w, http://2web-master.ru/wp-content/uploads/2015/06/Способы-проверки-валидации-сайта-500x333.png 500w, http://2web-master.ru/wp-content/uploads/2015/06/Способы-проверки-валидации-сайта.png 600w" sizes="(max-width: 300px) 100vw, 300px" /></a> <a class="title" href="http://2web-master.ru/sposoby-proverki-validacii-sajta.html">Способы проверки валидации сайта</a></div></div></div>
+		</aside><aside id="text-5" class="widget inner-padding widget_text"><h4 class="widget-title">Продвинуть сайт в ТОП</h4>			<div class="textwidget"><a href="http://2web-master.ru/goto/http://www.gogetlinks.net/?inv=q6raiz" target="_blank" rel="nofollow"><strong>GOGETLINKS</strong></a> - продвижение сайта вечными ссылками с качественных веб-ресурсов. Надежный и проверенный способ попасть в ТОП<br /><br />
+<a href="http://2web-master.ru/goto/https://blogun.ru/daubbhcjgeg.html" target="_blank" rel="nofollow"><strong>BLOGUN</strong></a> - от 15 рублей за постовой. Продвигаемся с помощью блогов</div>
+		</aside>					</div><!-- .inside-right-sidebar -->
+	</div><!-- #secondary -->
+	</div><!-- #content -->
+</div><!-- #page -->
+<div class="site-footer">
+			<div id="footer-widgets" class="site footer-widgets">
+			<div class="inside-footer-widgets grid-container grid-parent">
+									<div class="footer-widget-1 grid-parent grid-50">
+						<aside id="text-13" class="widget inner-padding widget_text">			<div class="textwidget"><center><noindex><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 336x280 блок -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-6009432970570964"
+     data-ad-slot="5272494330"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></noindex></center></div>
+		</aside>					</div>
+								<div class="footer-widget-2 grid-parent grid-50">
+					<aside id="recent-comments-3" class="widget inner-padding widget_recent_comments"><h4 class="widget-title">Новые комментарии</h4><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><noindex><a target="_blank" rel="nofollow" href="http://2web-master.ru/goto/http://ruht.ru/"  rel='external nofollow' class='url'>Сергей</a></noindex></span> к записи <a href="http://2web-master.ru/kak-borotsya-s-adblock.html/comment-page-1#comment-124832">Как бороться с Adblock</a></li><li class="recentcomments"><span class="comment-author-link"><noindex><a target="_blank" rel="nofollow" href="http://2web-master.ru/goto/http://ruht.ru/"  rel='external nofollow' class='url'>Сергей</a></noindex></span> к записи <a href="http://2web-master.ru/kak-borotsya-s-adblock.html/comment-page-1#comment-124831">Как бороться с Adblock</a></li><li class="recentcomments"><span class="comment-author-link">Евгений</span> к записи <a href="http://2web-master.ru/sozdaem-treugolniki-na-css.html/comment-page-1#comment-124780">Создаем треугольники на CSS</a></li><li class="recentcomments"><span class="comment-author-link"><noindex><a target="_blank" rel="nofollow" href="http://2web-master.ru/goto/http://wowcircle.com/"  rel='external nofollow' class='url'>Андрей</a></noindex></span> к записи <a href="http://2web-master.ru/sozdanie-prevyushek-izobrazhenij-na-php.html/comment-page-1#comment-124756">Создание превьюшек изображений на PHP</a></li><li class="recentcomments"><span class="comment-author-link"><noindex><a target="_blank" rel="nofollow" href="http://2web-master.ru/goto/http://torrent.foxcru.ru/"  rel='external nofollow' class='url'>Алексей</a></noindex></span> к записи <a href="http://2web-master.ru/proizvolnye-polya-v-wordpress-sovety-tryuki-i-xaki-chast-1.html/comment-page-1#comment-124634">Произвольные поля в WordPress: Советы, трюки и хаки. Часть 1</a></li></ul></aside>				</div>
+							</div>
+		</div>
+		<footer class="site-info" itemtype="http://schema.org/WPFooter" itemscope="itemscope" role="contentinfo">
+		<div class="inside-site-info grid-container grid-parent">
+			<noindex><!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t24.3;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";h"+escape(document.title.substring(0,80))+";"+Math.random()+
+"' alt='' title='LiveInternet' "+
+"border='0' width='88' height='15'><\/a>")
+//--></script><!--/LiveInternet--></noindex>  2010-2016 &copy; <a href="http://2web-master.ru" title="Все о создании сайтов">2web-master.ru</a> - Лучшие ресурсы для вебмастера и дизайнера		</div>
+	</footer><!-- .site-info -->
+	</div><!-- .site-footer -->
+
+<script type='text/javascript' src='http://2web-master.ru/wp-content/plugins/comment-rating/ck-karma.js?ver=4.4.2'></script>
+<script type='text/javascript' src='http://2web-master.ru/wp-content/plugins/generate-secondary-nav/inc/js/navigation.js?ver=0.6'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var viewsCacheL10n = {"admin_ajax_url":"http:\/\/2web-master.ru\/wp-admin\/admin-ajax.php","post_id":"2458"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://2web-master.ru/wp-content/plugins/wp-postviews/postviews-cache.js?ver=1.68'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var JQLBSettings = {"fitToScreen":"0","resizeSpeed":"400","displayDownloadLink":"0","navbarOnTop":"0","loopImages":"","resizeCenter":"","marginSize":"0","linkTarget":"","help":"","prevLinkTitle":"previous image","nextLinkTitle":"next image","prevLinkText":"\u00ab Previous","nextLinkText":"Next \u00bb","closeTitle":"close image gallery","image":"Image ","of":" of ","download":"Download","jqlb_overlay_opacity":"80","jqlb_overlay_color":"#000000","jqlb_overlay_close":"1","jqlb_border_width":"10","jqlb_border_color":"#ffffff","jqlb_border_radius":"0","jqlb_image_info_background_transparency":"100","jqlb_image_info_bg_color":"#ffffff","jqlb_image_info_text_color":"#000000","jqlb_image_info_text_fontsize":"10","jqlb_show_text_for_image":"1","jqlb_next_image_title":"next image","jqlb_previous_image_title":"previous image","jqlb_next_button_image":"http:\/\/2web-master.ru\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/ru_RU\/next.gif","jqlb_previous_button_image":"http:\/\/2web-master.ru\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/ru_RU\/prev.gif","jqlb_maximum_width":"","jqlb_maximum_height":"","jqlb_show_close_button":"1","jqlb_close_image_title":"close image gallery","jqlb_close_image_max_heght":"22","jqlb_image_for_close_lightbox":"http:\/\/2web-master.ru\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/ru_RU\/closelabel.gif","jqlb_keyboard_navigation":"1","jqlb_popup_size_fix":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://2web-master.ru/wp-content/plugins/wp-lightbox-2/wp-lightbox-2.min.js?ver=1.3.4.1'></script>
+<script type='text/javascript' src='http://2web-master.ru/wp-content/themes/generatepress/js/navigation.js?ver=1.2.9.5'></script>
+<script type='text/javascript' src='http://2web-master.ru/wp-content/themes/generatepress/js/superfish.js?ver=1.2.9.5'></script>
+<script type='text/javascript' src='http://2web-master.ru/wp-includes/js/hoverIntent.min.js?ver=1.8.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var generateSearch = {"search":"\u041f\u043e\u0438\u0441\u043a"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://2web-master.ru/wp-content/themes/generatepress/js/navigation-search.js?ver=1.2.9.5'></script>
+<script type='text/javascript' src='http://2web-master.ru/wp-includes/js/comment-reply.min.js?ver=4.4.2'></script>
+<script type='text/javascript' src='http://2web-master.ru/wp-includes/js/wp-embed.min.js?ver=4.4.2'></script>
+</body>
+</html>
+<!-- Dynamic page generated in 0.530 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2016-02-28 15:50:31 -->
+
+<!-- Compression = gzip -->

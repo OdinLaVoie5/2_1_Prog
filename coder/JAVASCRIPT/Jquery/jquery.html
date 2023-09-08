@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="jquery.css" rel="stylesheet" type="text/css">
+<title>разное</title>
+<script src="../jquery.js"></script>
+</head>
+<body>
+
+<button id="jq"> Применение JQUERY</button>
+<div id="div0">
+<span>&nbsp;</span>
+<h2>TEXT-SHADOW </h2>
+<h1>TEXT-SHADOW </h1>
+<h1>NNNNNNNNN</h1>
+<h2>NNNNNNNNN</h2>
+</div>    
+<a href="anim.html" target="_self"><img class="stat" src="images/OdinStat1.gif" width="535" height="117"><img class="din" src="images/OdinDin1.gif" width="535" height="117"> </a>
+
+ 
+ 
+ 
+<button id="move_up">Move Up</button>
+<button id="move_down">Move Down</button>
+<button id="color">Change Color</button>
+<button id="disappear">Disappear/Re-appear</button>
+<div id="change_me">Make Me Do Stuff!</div>
+
+ 
+ 
+ 
+
+<div>
+<div class="panel0">
+<div class="clickMe">CORWIN</div>
+<div class="picframe">
+<img class="pic" src="images/ar.png"> <p></p>
+</div>
+</div>
+
+<div class="panel0">
+<div class="clickMe">ERIC</div>
+<div class="picframe">
+<img class="pic" src="images/eric.png"><p></p>
+</div>
+</div>
+
+<div class="panel0">
+<div class="clickMe">BENEDICT</div>
+<div class="picframe">
+<img class="pic" src="images/benedict.png"><p></p>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="bottom0">&nbsp;</div>
+ 
+ 
+<script>
+// ##jquery ##animate $   ready   click    css      show hide  slideUp    !!! fadeOut   toggle (исчезновение/появление) 
+
+	
+$(document).ready(function(){ // Когда документ веб-страницы будет готов,выполнить следующие действия.
+
+	//////////////////////////////////////////////////////////////////////
+	var flag = 0;
+	$("#jq").click(function(){ // При щелчке на любой кнопке сделать следующее:
+		if (!flag) {
+			$("h1").hide("slow"); // Все элементы h1 медленно исчезают со страницы.
+			$("h2").show("slow"); // Все элементы h2 медленно появляются на странице.   "fast"
+			// $("img").slideUp(); // Все элементы img скользят вверх и исчезают.
+			flag = 1;
+		}
+		else {
+			$("h1").show("slow"); // Все элементы h1 медленно исчезают со страницы.
+			$("h2").hide("slow"); // Все элементы h2 медленно появляются на странице.
+			flag = 0;
+		}
+	}); // Конец функции click.
+	
+	
+	//////////////////////////////////////////////////////////////////////
+	$("#move_up").click( function() {
+			$("#change_me").animate({top:30},200);
+		});//end move_up
+		$("#move_down").click( function() {
+			$("#change_me").animate({top:500},2000);
+		});//end move_down
+		$("#color").click( function() {
+			$("#change_me").css("color", "gold");
+		});//end color
+		$("#disappear").click( function() {
+			$("#change_me").toggle("slow");
+			$("#jq").fadeOut(3000);
+	});//end disappear
+	
+	
+	//  ###Амбер    my ##аккордион
+	var flagThis;
+	var flagPic = 0;
+	$(".clickMe").click(function() {
+		$(".pic").fadeOut(1000);
+		$(".picframe").slideUp ("slow");
+			if ((flagThis !== this) || (flagPic)) { 
+				flagPic = 0;
+				$(this.nextElementSibling.firstElementChild).fadeIn(1000);
+				$(this.nextElementSibling).slideDown("slow");
+			}
+			else flagPic = (flagPic + 1)%2;
+			
+		$(".pic~p").html("");
+		flagThis = this;
+	});
+	
+	$(".pic").click(function() {
+		//$(".pic~p").html(this.parentElement.previousElementSibling.innerHTML);
+		$(this).animate({height:200,width:150},500).animate({height:300,width:200},500);
+		// location.reload(); // ##перезагрузка
+		// my window.open("file:///E|/files/2_1_Prog/coder/JAVASCRIPT/Jquery/jquery.html",true)
+	});
+	
+	// $("button:first-of-type").trigger('click');
+
+}); // Конец функции ready.
+
+
+
+
+
+
+
+
+
+/*alert (jQuery.type(123))
+alert ($.type(123))
+*/
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

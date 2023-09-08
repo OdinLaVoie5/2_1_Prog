@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript
+Loan Calculator</title>
+<style> 
+.output { font-weight: bold; } 
+#payment { text-decoration: underline; } 
+#graph { border: solid black 1px; } 
+th, td { vertical-align: top; } /* Выравнивание в ячейках таблицы*/
+</style>
+</head>
+<body>
+<!--
+Это HTML-таблица
+с элементами
+<input>, позволяющими
+вводить
+данные,
+и с элементами
+<span>, в которых
+отображаются
+результаты
+вычислений.
+Эти элементы
+имеют
+идентификаторы,
+такие
+как "interest" и "years". Данные
+идентификаторы
+используются
+в JavaScript-
+коде,
+который
+следует
+за определением
+таблицы.
+Обратите
+внимание,
+что для некоторых
+элементов
+ввода
+определены
+обработчики
+событий
+"onchange" и "onclick". В них заданы
+строки
+JavaScript-
+кода,
+выполняемого
+при вводе
+данных
+или щелчке
+на кнопке.
+-->
+<table>
+<tr><th>Enter Loan Data:</th>
+<td></td>
+<th>Loan Balance, Cumulative Equity, and Interest Payments</th></tr>
+<tr><td>Amount of the loan ($):</td>
+<td><input id="amount" onchange="calculate();"></td>
+<td rowspan=8>
+<canvas id="graph" width="400" height="250"></canvas></td></tr>
+<tr><td>Annual interest (%):</td>
+<td><input id="apr" onchange="calculate();"></td></tr>
+<tr><td>Repayment period (years):</td>
+<td><input id="years" onchange="calculate();"></td>
+<tr><td>Zipcode (to find lenders):</td>
+<td><input id="zipcode" onchange="calculate();"></td>
+<tr><th>Approximate Payments:</th>
+<td><button onclick="calculate();">Calculate</button></td></tr>
+<tr><td>Monthly payment:</td>
+<td>$<span class="output" id="payment"></span></td></tr>
+<tr><td>Total payment:</td>
+<td>$<span class="output" id="total"></span></td></tr>
+<tr><td>Total interest:</td>
+<td>$<span class="output" id="totalinterest"></span></td></tr>
+<tr><th>Sponsors:</th><td colspan=2>Apply for your loan with one of these fine lenders:
+<div id="lenders"></div></td></tr>
+</table>
+<!-- Остальная
+часть примера
+- JavaScript-
+код в теге
+<script> ниже.
+Обычно
+сценарии
+-->
+<!-- помещаются
+в начало
+документа,
+в заголовок
+<head>, но в данном
+случае
+вам проще
+-->
+<!-- будет
+понять
+пример,
+если
+JavaScript-
+код будет
+находиться
+ниже
+HTML-содержимого.
+-->
+<script>
+"use strict"; 
+/*
+* Этот сценарий
+определяет
+функцию
+calculate(), вызываемую
+обработчиками
+событий
+* в разметке
+HTML выше.
+Функция
+читает
+значения
+из элементов
+<input>, вычисляет
+размеры
+* платежей
+по ссуде,
+отображает
+результаты
+в элементах
+<span>. Кроме
+того,
+она сохраняет
+* пользовательские
+данные,
+отображает
+ссылки
+на кредитные
+учреждения
+и рисует
+диаграмму.
+*/
+function calculate() {
+// Отыскатьэлементывводаи выводав документе
+var amount = document.getElementById("amount");
+var apr = document.getElementById("apr");
+var years = document.getElementById("years");
+var zipcode = document.getElementById("zipcode");
+var payment = document.getElementById("payment");
+var total = document.getElementById("total");
+var totalinterest = document.getElementById("totalinterest");
+// Получитьввод пользователяиз элементовввода.Предполагается,что все данные
+// являютсякорректными.Преобразоватьпроцентнуюставкуиз процентов
+// в десятичноечислои преобразоватьгодовуюставкув месячнуюставку.
+// Преобразоватьпериодплатежейв годахв количествомесячныхплатежей.
+var principal = parseFloat(amount.value);
+var interest = parseFloat(apr.value) / 100 / 12;
+var payments = parseFloat(years.value) * 12;
+// Теперьвычислитьсуммуежемесячногоплатежа.
+var x = Math.pow(1 + interest, payments); 
+// Math.pow() вычисляетстепень
+var monthly = (principal*x*interest)/(x-1);
+// Еслирезультатомявляетсяконечноечисло,следовательно,пользователь
+// указалкорректныеданныеи результатыможноотобразить
+if (isFinite(monthly)) {
+// Заполнитьполявывода,округливрезультатыдо 2 десятичныхзнаков
+payment.innerHTML = monthly.toFixed(2);
+total.innerHTML = (monthly * payments).toFixed(2);
+totalinterest.innerHTML = ((monthly*payments)-principal).toFixed(2);
+// Сохранитьввод пользователя,чтобыможнобыловосстановитьданные
+// при следующемоткрытиистраницы
+save(amount.value, apr.value, years.value, zipcode.value);
+// Реклама:отыскатьи отобразитьссылкина сайтыместных
+// кредитныхучреждений,но игнорироватьсетевыеошибки
+try { // Перехватыватьвсе ошибки,возникающиев этих фигурныхскобках
+getLenders(amount.value, apr.value, years.value, zipcode.value);
+}
+catch(e) { /* И игнорироватьэти ошибки*/ }
+// В заключениевывестиграфикизмененияостаткапо кредиту,а также
+// графикисумм, выплачиваемыхв погашениекредитаи по процентам
+chart(principal, interest, monthly, payments);
+}
+else {
+// Результатне являетсячисломили имеетбесконечноезначение,
+// что означает,что былиполученынеполныеили некорректныеданные.
+// Очиститьвсе результаты,выведенныеранее.
+payment.innerHTML = ""; // Стеретьсодержимоеэтих элементов
+total.innerHTML = ""
+totalinterest.innerHTML = "";
+chart(); // При вызовебез аргументовочищаетдиаграмму
+}
+}
+// Сохранитьввод пользователяв свойствахобъектаlocalStorage. Значенияэтих свойств
+// будутдоступныпри повторномпосещениистраницы.В некоторыхброузерах(например,
+// в Firefox) возможностьсохраненияне поддерживается,еслистраницаоткрывается
+// с адресомURL видаfile://. Однакоона поддерживаетсяпри открытиистраницычерезHTTP.
+function save(amount, apr, years, zipcode) {
+if (window.localStorage) { // Выполнитьсохранение,еслиподдерживается
+localStorage.loan_amount = amount;
+localStorage.loan_apr = apr;
+localStorage.loan_years = years;
+localStorage.loan_zipcode = zipcode;
+}
+}
+// Автоматическивосстановитьполявводапри загрузкедокумента.
+window.onload = function() {
+// ЕслиброузерподдерживаетlocalStorage и имеютсясохраненныеданные
+if (window.localStorage && localStorage.loan_amount) {
+document.getElementById("amount").value = localStorage.loan_amount;
+document.getElementById("apr").value = localStorage.loan_apr;
+document.getElementById("years").value = localStorage.loan_years;
+document.getElementById("zipcode").value = localStorage.loan_zipcode;
+}
+};
+// Передатьввод пользователясерверномусценарию,которыйможет(теоретически)возвращать
+// списокссылокна сайтыместныхкредитныхучреждений,готовыхпредоставитькредит.
+// Данныйпримерне включаетфактическуюреализациютакогосценарияпоискакредитных
+// учреждений.Но еслитакойсценарийуже имеется,даннаяфункциямоглабы работатьс ним.
+function getLenders(amount, apr, years, zipcode) {
+// Еслиброузерне поддерживаетобъектXMLHttpRequest, не делатьничего
+if (!window.XMLHttpRequest) return;
+// Отыскатьэлементдля отображенияспискакредитныхучреждений
+var ad = document.getElementById("lenders");
+if (!ad) return; // Выйти,еслиэлементотсутствует
+// Преобразоватьввод пользователяв параметрызапросав строкеURL
+var url = "getLenders.php" + // АдресURL службыплюс
+"?amt=" + encodeURIComponent(amount) + // данныепользователя
+"&apr=" + encodeURIComponent(apr) + // в строкезапроса
+"&yrs=" + encodeURIComponent(years) +
+"&zip=" + encodeURIComponent(zipcode);
+// Получитьсодержимоепо заданномуадресуURL с помощьюXMLHttpRequest
+var req = new XMLHttpRequest(); // Создатьновыйзапрос
+req.open("GET", url); // Указатьтип запросаHTTP GET для url
+req.send(null); // Отправитьзапросбез тела
+// Передвозвратомзарегистрироватьобработчиксобытия,которыйбудетвызываться
+// при полученииHTTP-ответаот сервера.Такойприемасинхронногопрограммирования
+// являетсядовольнообычнымв клиентскомJavaScript.
+req.onreadystatechange = function() {
+if (req.readyState == 4 && req.status == 200) {
+// Еслимы попалисюда,следовательно,был полученкорректныйHTTP-ответ
+var response = req.responseText; // HTTP-ответв видестроки
+var lenders = JSON.parse(response); // Преобразоватьв JS-массив
+// Преобразоватьмассивобъектовlender в HTML-строку
+var list = "";
+for(var i = 0; i < lenders.length; i++) {
+list += "<li><a href='" + lenders[i].url + "'>" + lenders[i].name + "</a>";
+}
+// ОтобразитьполученнуюHTML-строкув элементе,
+// ссылкана которыйбылаполученавыше.
+ad.innerHTML = "<ul>" + list + "</ul>";
+}
+}
+}
+// Графикпомесячногоизмененияостаткапо кредиту,а такжеграфикисумм,
+// выплачиваемыхв погашениекредитаи по процентамв HTML-элементе<canvas>.
+// Есливызываетсябез аргументов,простоочищаетранеенарисованныеграфики.
+function chart(principal, interest, monthly, payments) {
+var graph = document.getElementById("graph"); // Ссылкана тег <canvas>
+graph.width = graph.width; // Магияочисткиэлементаcanvas
+// Еслифункциявызванабез аргументовили броузерне поддерживает
+// элемент<canvas>, то простовернутьуправление.
+if (arguments.length == 0 || !graph.getContext) return;
+// Получитьобъект"контекста"для элемента<canvas>,
+// которыйопределяетнаборметодоврисования
+var g = graph.getContext("2d"); // Рисованиевыполняетсяс помощьюэтогообъекта
+var width = graph.width, height = graph.height; // Получитьразмерхолста
+// Следующиефункциипреобразуютколичествомесячныхплатежей
+// и денежныесуммыв пикселы
+function paymentToX(n) { return n * width/payments; }
+function amountToY(a) { return height-(a*height/(monthly*payments*1.05));}
+// Платежи- прямаялинияиз точки(0,0) в точку
+(payments,monthly*payments)                  // ??
+g.moveTo(paymentToX(0), amountToY(0)); // Из нижнеголевогоугла// В правыйверхний
+g.lineTo(paymentToX(payments), 
+amountToY(monthly*payments));
+g.lineTo(paymentToX(payments), amountToY(0)); // В правыйнижний
+g.closePath(); // И обратнов начало
+g.fillStyle = "#f88"; // Светло-красный
+g.fill(); // Залитьтреугольник
+g.font = "bold 12px sans-serif"; // Определитьшрифт
+g.fillText("Total Interest Payments", 20,20); // Вывеститекст в легенде
+// Криваянакопленнойсуммыпогашениякредитане являетсялинейной
+// и выводее реализуетсянемногосложнее
+var equity = 0;
+g.beginPath(); // Новаяфигура
+g.moveTo(paymentToX(0), amountToY(0)); // из левогонижнегоугла
+for(var p = 1; p <= payments; p++) {
+// Для каждогоплатежавыяснитьдолювыплатпо процентам
+var thisMonthsInterest = (principal-equity)*interest;
+equity += (monthly - thisMonthsInterest); // Остаток- погашениекред.
+g.lineTo(paymentToX(p),amountToY(equity)); // Линиюдо этой точки
+}
+g.lineTo(paymentToX(payments), amountToY(0)); // Линиюдо оси X
+g.closePath(); // И опять в нач. точку
+g.fillStyle = "green"; // Зеленыйцвет
+g.fill(); // Залитьобл. под кривой
+g.fillText("Total Equity", 20,35); // Надписьзеленымцветом
+// Повторитьцикл, как выше,но нарисоватьграфикостаткапо кредиту
+var bal = principal;
+g.beginPath();
+g.moveTo(paymentToX(0),amountToY(bal));
+for(var p = 1; p <= payments; p++) {
+var thisMonthsInterest = bal*interest;
+bal -= (monthly - thisMonthsInterest); // Остатокот погаш.по кредиту
+g.lineTo(paymentToX(p),amountToY(bal)); // Линиюдо этой точки
+}
+g.lineWidth = 3; // Жирнаялиния
+g.stroke(); // Нарисоватькривуюграфика
+g.fillStyle = "black"; // Черныйцвет для текста
+g.fillText("Loan Balance", 20,50); // Элементлегенды
+// Нарисоватьотметкилет на оси X
+g.textAlign="center"; // Текст метокпо центру
+var y = amountToY(0); // КоординатаY на оси X
+for(var year=1; year*12 <= payments; year++) { // Для каждогогода
+var x = paymentToX(year*12); // Вычислитьпозициюметки
+g.fillRect(x-0.5,y-3,1,3); // Нарисоватьметку
+if (year == 1) g.fillText("Year", x, y-5); // Подписатьось
+if (year % 5 == 0 && year*12 !== payments) // Числачерезкаждые5 лет
+g.fillText(String(year), x, y-5);
+}
+// Суммыплатежейу правойграницы
+g.textAlign = "right"; // Текст по правомукраю
+g.textBaseline = "middle"; // Центрироватьпо вертикали
+var ticks = [monthly*payments, principal]; // Вывестидве суммы
+var rightEdge = paymentToX(payments); // КоординатаX на оси Y
+for(var i = 0; i < ticks.length; i++) { // Для каждойиз 2 сумм
+var y = amountToY(ticks[i]); // ОпределитькоординатуY
+g.fillRect(rightEdge-3, y-0.5, 3,1); // Нарисоватьметку
+g.fillText(String(ticks[i].toFixed(0)), // И вывестирядомсумму.
+rightEdge-5, y);
+}
+}
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

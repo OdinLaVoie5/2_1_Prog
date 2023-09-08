@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script src='../OSC.js'></script>
+<script src="../jquery.js"></script>
+</head>
+
+<body>
+<ul id="results"> </ul>
+ 
+
+ 
+
+==================================================================
+<script>
+// ##async    !!!   ##асинхрон работает быстрее
+// если вместо async поставить   ##defer - то асинхрон с сохранением порядка выполнения скриптов
+// оба  назначены  только на внешние скрипты           Одновременно указывать async и defer не имеет смысла, в этом случае браузер использует только async
+ var sss = new Date();
+</script>
+
+<p>Начало страницы...</p>
+<script async src="https://js.cx/hello/azzzds.js?speed=0"></script>
+<p>...Важная информация!</p>
+
+
+<script>
+ var ppp = new Date();
+ document.write(ppp-sss);    document.write("<br>");
+</script>
+====================================================================
+
+
+
+
+
+<script src="69.js"></script>
+</body>
+</html>

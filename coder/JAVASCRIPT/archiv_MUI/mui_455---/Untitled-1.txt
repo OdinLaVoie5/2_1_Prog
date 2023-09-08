@@ -1,0 +1,43 @@
+	/////  короткий или совсем короткий вывод. ///// 
+	var tmpWays;
+	if (flagSimpleShow == 2) tmpWays = ways;
+	else if (flagSimpleShow == 1) tmpWays = waysShort;
+
+	var tmpFin = fin, tmpString = "";
+	if (tmpWays[tmpFin]){ // если fin найден 
+		while (tmpWays[tmpFin]) {
+			tmpString += ("<br>" + tmpWays[tmpFin]); 
+			tmpFin += ".";
+		}
+		if (arrMemoryTS[arrMemoryTS.length - 1]!== tmpString) {shortTS.innerHTML += tmpString + "<br>";  arrMemoryTS.push(tmpString); } // избегать повторов с последним выводом.   пришлось глобаль перем. 
+	}
+	else {
+		shortTS.innerHTML += "-";
+	}
+	
+	
+	
+	return arrRez;   // ?? 
+}
+
+
+
+
+	/// подсвет fin    ///  ???  сделать подсвет др предков для режима повтор на уровне.
+	// ??? не получается имитировать даблклик
+	var elemFin = document.getElementById(fin); // ??? 
+	var s = 0;
+	if (elemFin){
+		var rowFin = elemFin;
+		while (rowFin){
+			var ser = rowFin.outerHTML; 
+			ser = ser.replace(/id=\"\w+\"/,"id='"+s+"'"); // id заменяем
+			ser = ser.replace(/class=\"\w+\"/,"class='"+s+"'"); // class тоже 
+			arrRezSmall.unshift(ser);
+			rowFin.firstChild.style.backgroundColor = colorPreFin;
+			rowFin = document.getElementById(rowFin.className);
+			s++;
+		};
+		elemFin.firstChild.style.backgroundColor = colorFin;	// подсветка результата
+	}
+	document.getElementById("textsmall").innerHTML = "<table>" + arrRezSmall.join("") + "</table>";

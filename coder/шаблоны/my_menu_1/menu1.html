@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<link href="menu1.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<div id="gamburg" class="titleMenu">≡</div>
+
+
+<div class="bigmenu">
+  
+  <div class="titleMenu" onDblClick="openAllProper0()" onClick="openProper0()">
+      <img src="img/guar_04.gif">Данные и настройки  &emsp;&emsp;&emsp;&emsp;
+  </div>
+  
+  <div id="menu00" class="menu0">
+    <form onReset="f_reset()"> 
+      <table>
+        <tr id = "ccc">
+          <td>Стартовое выражение:</td>
+          <td><input type="text" id="startname" maxlength="30" style="width:180px" placeholder="MUUIIIUI" value="MUUIIIUI" onKeyPress="nnn()"></td>
+        </tr>
+        <tr>
+          <td>Искомое выражение:</td>
+          <td><input type="text" id="finname"   maxlength="30" style="width:180px" placeholder="MUUIU"    value="MUUIU"></td>
+        </tr>
+        <tr>
+          <td>Лимит длины выражения: <br>
+            (вход min/max; выход min/max.)</td>
+          <td><input type="number" id="limname0" class="smallInput" max="20"  min="0" placeholder=0>
+            <input type="number" id="limname1" class="smallInput" max="100" min="0" placeholder=100>
+            <input type="number" id="limname2" class="smallInput" max="20"  min="0" placeholder=0>
+            <input type="number" id="limname3" class="smallInput" max="20"  min="0" placeholder=10 value=10></td>
+        </tr>
+        <tr>
+          <td>&nbsp;Массив функций:</td>
+          <td><input type="text" id="fncs" style="width:180px" placeholder="UU III I M" value="UU III I M"></td>
+        </tr>
+
+        <tr>
+          <td colspan="2"><hr></td>
+        </tr>
+        <tr>
+          <td><label for="show0">Только краткий вывод &nbsp;</label><input type="checkbox" id="show0"></td>
+          <td> 
+              <label for="show1">цепью:&nbsp;&nbsp;1&nbsp;</label><input type="radio" id="show1" name="type_show" value="1" checked>
+              <label for="show2">&nbsp;&nbsp;2&nbsp;</label><input type="radio" id="show2" name="type_show" value="2">
+          </td>  
+        </tr>
+        
+        <tr>
+          <td colspan="2"><hr></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="reset"  id="butreset0" class="resetIt" value="Сброс">
+            <input type="button" id="butcheck" value="Вычислить" onClick="MUI()">
+          </td>
+        </tr>
+      </table>
+    </form>
+    
+
+    <div class="titleMenu"   onClick="openProper1()">
+        Расширенные
+    </div>
+
+    
+    <div id="menu01" class="menu0">
+      <table>
+        <form onReset="f_reset()">
+          <tr>
+            <td width="220">Разрешить повторы:</td>
+            <td width="230">
+            	<label for="repeat0">на уровне</label>
+                <input type="checkbox" id="repeat0">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label for="repeat1">везде</label>
+                <input type="checkbox" id="repeat1"></td>
+          </tr>
+          <tr>
+            <td>При нахождении искомого выражения остановиться:</td>
+            <td> 
+              <label for="stop1">на уровне</label>
+              <input type="radio" id="stop1" name="type_halt" value="1">&nbsp;&nbsp;&nbsp;
+              <label for="stop2">на слове</label>
+              <input type="radio" id="stop2" name="type_halt" value="2">&nbsp; <br>
+              <label for="stop0">не останавливаться</label>
+              <input type="radio" id="stop0" name="type_halt" value="0" checked></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="reset"  id="butreset1" class="resetIt" value="Сброс">
+            </td>
+          </tr>
+        </form>
+      </table>
+    
+
+      <div class="titleMenu"  onClick="openProper2()">
+          Оформление
+      </div>
+
+
+    
+      <div id="menu02" class="menu0">
+        <table>
+          <form onReset="f_reset()">
+            <tr>
+              <td width="254">xxxxxxxxxx
+                <input type="color">
+                &nbsp;</td>
+              <td width="216">xxxxxxxx
+                <input type="color"></td>
+            </tr>
+            <tr>
+              <td width="254">xxxxxxxxxx
+                <input type="color">
+                &nbsp;</td>
+              <td width="216">xxxxxxxx
+                <input type="color"></td>
+            </tr>
+            <tr>
+              <td width="254">xxxxxxxxxx
+                <input type="color">
+                &nbsp;</td>
+              <td width="216">xxxxxxxx
+                <input type="color"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <input type="reset"  id="butreset2" class="resetIt" value="Сброс">
+              </td>
+            </tr>
+          </form>
+        </table>
+        
+        
+        <div class="titleMenu" onClick="openProper3()">
+            Доп.оформление
+        </div>
+      
+      
+        <div id="menu03" class="menu0">
+          <table>
+            <form onReset="f_reset()">
+              <tr>
+                <td width="254">xxxxxxxxxx
+                  <input type="color">
+                  &nbsp;</td>
+                <td width="216">xxxxxxxx
+                  <input type="color"></td>
+              </tr>
+              <tr>
+                <td width="254">xxxxxxxxxx
+                  <input type="file">
+                  &nbsp;</td>
+                <td width="216">xxxxxxxx
+                  <input type="image"></td>
+              </tr>
+              <tr>
+                <td width="254">xxxxxxxxxx
+                  <input type="password">
+                  &nbsp;</td>
+                <td width="216">xxxxxxxx
+                  <input type="range"></td>
+              </tr>
+              <tr>
+                <td width="254">xxxxxxxxxx
+                  <input type="search">
+                  &nbsp;</td>
+                <td width="216">xxxxxxxx
+                  <input type="text"></td>
+              </tr>
+              <tr>
+                <td width="254">xxxxxxxxxx
+                  <input type="email">
+                  &nbsp;</td>
+                <td width="216">xxxxxxxx
+                  <input type="date"></td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <input type="reset"  id="butreset3" class="resetIt" value="Сброс">
+                 </td>
+              </tr>
+            </form>
+          </table>
+        
+        
+        <div class="titleMenu" onClick="openAllProper0()">
+            Закрыть все настройки
+        </div>
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="menu1.js" type="text/javascript"></script>
+
+
+</body>
+</html>
+

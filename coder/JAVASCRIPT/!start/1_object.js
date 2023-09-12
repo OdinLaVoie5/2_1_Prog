@@ -23,3 +23,5 @@ copyOSC(vasya, user, student);
 // скопирует все свойства в пустой объект  !!!
 var userClone = copyOSC({}, user);
 
+console.log("2")
+

@@ -68,10 +68,10 @@ Ball.prototype.setDirection = function (direction) {
     }
   }
 
-  // тормоз
+  // тормоз  
   else if (direction === "down") {
     if (this.xSpeed > 0) {
-      this.xSpeed--;
+      this.xSpeed--; 
     } else if (this.xSpeed < 0) {
       this.xSpeed++;
     }

@@ -23,7 +23,7 @@ const smallestDivisor = (num) => {
 
 
 
-/////////     РАЗЛОЖЕНИЕ НА ПРОСТЫЕ МНОЖИТЕЛИ      /////////
+/////////    РАЗЛОЖЕНИЕ НА ПРОСТЫЕ МНОЖИТЕЛИ      /////////
 /**
  * Returns an array containing the prime factors of the given number.
  *

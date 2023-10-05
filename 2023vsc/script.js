@@ -4,6 +4,7 @@
 // ниже скрипт вставлен в ф-цию  чтобы открываться после прорисовки страницы (закоментил)
 //  document.addEventListener('DOMContentLoaded', function () {
 
+import { iterRecursiveFactorial } from "./script1.js";  //////////   получился экспорт-импорт    см в браузере
 
 
 /////////     НАИМЕНЬШИЙ ДЕЛИТЕЛЬ      /////////
@@ -70,8 +71,6 @@ const isPrime = (num) => {
 
 
 
-
-
 /////////      ПЕРЕВОРОТ СТРОКИ?      /////////
 const reverse = (str) => str.split('').reverse().join('');
 ///////// console.log(reverse('hello, world!'));
@@ -92,7 +91,8 @@ const reverseOld = (str) => {
 
 
 
-
+ 
+console.log(iterRecursiveFactorial(3)); ////////// получился экспорт-импорт     см в браузере
 
 
 

@@ -10,7 +10,7 @@ const recursiveFactorial = (n) => {
      }
      return n * recursiveFactorial(n - 1);
 }
-console.log(recursiveFactorial(1));
+/////// console.log(recursiveFactorial(1));
 
 
 
@@ -31,7 +31,7 @@ const iterRecursiveFactorial = (n) => {
      };
      return iter(n, 1);
 };
-console.log(iterRecursiveFactorial(2));
+///// console.log(iterRecursiveFactorial(2));
 
 //             2.1  ChatGPT
 function xFactorial(n, result = 1) {
@@ -41,7 +41,7 @@ function xFactorial(n, result = 1) {
           return xFactorial(n - 1, n * result);
      }
 }
-console.log(xFactorial(3));
+/////console.log(xFactorial(3));
 
 
 
@@ -58,7 +58,7 @@ const yFactorial = (n) => {
      }
      return result;
 }
-console.log(yFactorial(4));
+/////// console.log(yFactorial(4));
 
 //          3.1 ChatGPT
 function zFactorial(n) {
@@ -72,7 +72,11 @@ function zFactorial(n) {
           return result;
      }
 }
-console.log(zFactorial(5));
+//////// console.log(zFactorial(5));
+
+
+
+ export { recursiveFactorial, iterRecursiveFactorial, xFactorial, yFactorial, zFactorial }; //////////   получился экспорт-импорт  см в браузере
 
 
 

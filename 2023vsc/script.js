@@ -1,6 +1,5 @@
 //    "use strict";
 
-
 // ниже скрипт вставлен в ф-цию  чтобы открываться после прорисовки страницы (закоментил)
 //  document.addEventListener('DOMContentLoaded', function () {
 

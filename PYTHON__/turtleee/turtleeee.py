@@ -1,5 +1,7 @@
 import turtle
 
+
+
 # Создаем объект turtle
 pen = turtle.Turtle()
 

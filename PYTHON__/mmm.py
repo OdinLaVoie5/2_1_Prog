@@ -3,3 +3,12 @@
 # пустой файл - не трогььььь
 # устой файл - не огатььььь
 # пустой фатььььь
+
+def greeting(name):
+    print("Hello, " + name)
+
+nnn = {
+    "name": "John",
+    "age": 36,
+    "country": "Norway"
+}

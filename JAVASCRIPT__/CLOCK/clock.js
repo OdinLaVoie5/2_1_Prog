@@ -48,3 +48,5 @@ setInterval(() => {
      dotM.style.transform = `rotate(${m * 6}deg)`;
      dotS.style.transform = `rotate(${s * 6}deg)`;
 }, 1000);
+
+

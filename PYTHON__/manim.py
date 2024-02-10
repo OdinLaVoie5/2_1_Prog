@@ -1,4 +1,4 @@
-from manim import *
+from manim import *  # математическая анимация (пока не работает)
 
 
 class SquareToCircle(Scene):

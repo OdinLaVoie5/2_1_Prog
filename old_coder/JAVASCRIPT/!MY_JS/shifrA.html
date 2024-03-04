@@ -1,79 +1,70 @@
 ﻿<!doctype html>
 <html lang="ru">
+
 <head>
-<link href="shifrA.css" rel="stylesheet" type="text/css">
-<title>Шифрование</title>
-<script src='../OSC.js'></script>
-<script src="../jquery.js"></script>
-<meta charset="UTF-8">
+     <link href="shifrA.css" rel="stylesheet" type="text/css">
+     <title>Шифрование</title>
+     <script src='../OSC.js'></script>
+     <script src="../jquery.js"></script>
+     <meta charset="UTF-8">
 </head>
+
 <body>
-     
-
-<form onsubmit="return false">
-
-<!--управление-->
-<div id="toptop"><button class="shifr" id="11" style="color:Red">Zesar</button>
-<button class="shifr" id="12"> Afin </button>
-<button class="shifr" id="13"> Zerkal </button>           
-<button class="shifr" id="14"> Polib </button>           
-<button class="shifr" id="15"> Grons </button>           
-<button class="shifr" id="16"> Lenta </button>           
-<button class="shifr" id="17"> Dance </button>           
-<button class="shifr" id="18"> XOR </button>           
-
-<h2> Шифрование / дешифрование   </h2>
-
-<button class="deshifr" id="21" style="color:Red"> Dezesar</button>
-<button class="deshifr" id="22"> Deafin </button>
-<button class="deshifr" id="23"> Zerkal` </button>
-<button class="deshifr" id="24"> Depolib </button>
-<button class="deshifr" id="25"> Degrons </button>
-<button class="deshifr" id="26"> Delenta </button>
-<button class="deshifr" id="27"> Dedance </button>
-<button class="deshifr" id="28"> XOR` </button>
-</div>
 
 
-<!--ключи + выбор базы-->
-<span> Ключи </span>
-<span id="onnn">  a= <input type="number" value="7" max="31" id="kluchA"/> </span>
-<span> b= <input type="number" value="5" id="kluchB" /></span>
-<span id="tooo"> a`= <input type="number" value="7" max="31" id="dekluchA" /> </span>
-<span> b`= <input type="number" value="5" id="dekluchB" /></span> <p>
-<span> База </span>
-<span> <input type="number" value="0" id="baseMy" /></span> <p>
+     <form onsubmit="return false">
+
+          <!--управление-->
+          <div id="toptop"><button class="shifr" id="11" style="color:Red">Zesar</button>
+               <button class="shifr" id="12"> Afin </button>
+               <button class="shifr" id="13"> Zerkal </button>
+               <button class="shifr" id="14"> Polib </button>
+               <button class="shifr" id="15"> Grons </button>
+               <button class="shifr" id="16"> Lenta </button>
+               <button class="shifr" id="17"> Dance </button>
+               <button class="shifr" id="18"> XOR </button>
+
+               <h2> Шифрование / дешифрование </h2>
+
+               <button class="deshifr" id="21" style="color:Red"> Dezesar</button>
+               <button class="deshifr" id="22"> Deafin </button>
+               <button class="deshifr" id="23"> Zerkal` </button>
+               <button class="deshifr" id="24"> Depolib </button>
+               <button class="deshifr" id="25"> Degrons </button>
+               <button class="deshifr" id="26"> Delenta </button>
+               <button class="deshifr" id="27"> Dedance </button>
+               <button class="deshifr" id="28"> XOR` </button>
+          </div>
 
 
-<!--текст. окна-->
-<textarea id="input1">абв=НаТаШа=ЭЮЯ=123'=` !</textarea><p></p>
-<input type="button" value="Encode" onclick="doEncode(this, kakshifr)" />
-<input id="trip" type="button" value="Round Trip" onclick="doRoundTrip(this)" /><p></p>
-
-<textarea id="input2"></textarea><p></p>
-<input type="button" value="Decode" onclick="doDecode(this, kakDeshifr)" />
-<p></p>
-
-<textarea id="output"></textarea><p></p>
-
-</form>
+          <!--ключи + выбор базы-->
+          <span> Ключи </span>
+          <span id="onnn"> a= <input type="number" value="7" max="31" id="kluchA" /> </span>
+          <span> b= <input type="number" value="5" id="kluchB" /></span>
+          <span id="tooo"> a`= <input type="number" value="7" max="31" id="dekluchA" /> </span>
+          <span> b`= <input type="number" value="5" id="dekluchB" /></span>
+          <p>
+               <span> База </span>
+               <span> <input type="number" value="0" id="baseMy" /></span>
+          <p>
 
 
+               <!--текст. окна-->
+               <textarea id="input1">абв=НаТаШа=ЭЮЯ=123'=` !</textarea>
+          <p></p>
+          <input type="button" value="Encode" onclick="doEncode(this, kakshifr)" />
+          <input id="trip" type="button" value="Round Trip" onclick="doRoundTrip(this)" />
+          <p></p>
 
+          <textarea id="input2"></textarea>
+          <p></p>
+          <input type="button" value="Decode" onclick="doDecode(this, kakDeshifr)" />
+          <p></p>
 
+          <textarea id="output"></textarea>
+          <p></p>
 
-
-
-
-<!--правое меню-->
-<nav id="nav">  
-<img id="dekor"  src="image/right.png">
-
-<a href="my.html"><img class="stat"  src="image/navsta0.gif"><img class="din" src="image/navdin0.gif" > </a>
-<a href="my.html"><img class="stat"  src="image/navsta1.gif"><img class="din" src="image/navdin1.gif" > </a>
-<a href="my.html"><img class="stat"  src="image/navsta2.gif"><img class="din" src="image/navdin2.gif" > </a>
-
-</nav>   
+     </form>
 
 
 
@@ -81,8 +72,25 @@
 
 
 
-<script src="shifrDekor.js"></script>
-<script src="shifrA.js"></script>
+
+     <!--правое меню-->
+     <nav id="nav">
+          <img id="dekor" src="image/right.png">
+
+          <a href="my.html"><img class="stat" src="image/navsta0.gif"><img class="din" src="image/navdin0.gif"> </a>
+          <a href="my.html"><img class="stat" src="image/navsta1.gif"><img class="din" src="image/navdin1.gif"> </a>
+          <a href="my.html"><img class="stat" src="image/navsta2.gif"><img class="din" src="image/navdin2.gif"> </a>
+
+     </nav>
+
+
+
+
+
+
+
+     <script src="shifrDekor.js"></script>
+     <script src="shifrA.js"></script>
 </body>
+
 </html>
- 

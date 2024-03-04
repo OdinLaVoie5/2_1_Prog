@@ -1,4 +1,4 @@
-from manim import *  # математическая анимация (пока не работает)
+from PYTHON__.manim_li_li import *  # математическая анимация (пока не работает)
 
 
 class SquareToCircle(Scene):

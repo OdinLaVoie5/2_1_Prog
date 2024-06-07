@@ -15,3 +15,7 @@ for i in range(4):
 
 # Закрываем окно при клике на него
 turtle.exitonclick()
+
+
+
+

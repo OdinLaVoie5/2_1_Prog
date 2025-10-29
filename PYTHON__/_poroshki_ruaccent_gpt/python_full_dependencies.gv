@@ -1,0 +1,131 @@
+// Python Package Dependencies
+digraph {
+	scipy [label=scipy]
+	pycairo [label=pycairo color=red style=filled]
+	"jupyter-server" [label="jupyter-server" color=red style=filled]
+	pipdeptree [label=pipdeptree]
+	sympy [label=sympy]
+	anyio [label=anyio]
+	"PyQt5-Qt5" [label="PyQt5-Qt5"]
+	"python-crfsuite" [label="python-crfsuite"]
+	filelock [label=filelock]
+	"moderngl-window" [label="moderngl-window"]
+	ManimPango [label=ManimPango]
+	ColabTurtle [label=ColabTurtle]
+	matplotlib [label=matplotlib]
+	click [label=click]
+	"prompt-toolkit" [label="prompt-toolkit"]
+	"pip-review" [label="pip-review"]
+	jupyter [label=jupyter]
+	fsspec [label=fsspec]
+	pickleshare [label=pickleshare]
+	regex [label=regex]
+	srt [label=srt]
+	screeninfo [label=screeninfo]
+	tornado [label=tornado]
+	packaging [label=packaging]
+	overrides [label=overrides]
+	isosurfaces [label=isosurfaces]
+	altgraph [label=altgraph]
+	"C++ backend" [label="C++ backend"]
+	svgelements [label=svgelements]
+	pydub [label=pydub]
+	ipykernel [label=ipykernel]
+	ffmpeg [label=ffmpeg]
+	graphviz [label=graphviz]
+	pandas [label=pandas]
+	SDL [label=SDL]
+	protobuf [label=protobuf]
+	pip [label=pip color=red style=filled]
+	pygame [label=pygame]
+	"click-default-group" [label="click-default-group"]
+	flatbuffers [label=flatbuffers]
+	cairo [label=cairo]
+	"mapbox-earcut" [label="mapbox-earcut"]
+	backcall [label=backcall]
+	objgraph [label=objgraph]
+	cloup [label=cloup]
+	shape [label=shape]
+	wheel [label=wheel]
+	jsonpointer [label=jsonpointer]
+	notebook [label=notebook]
+	tokenizers [label=tokenizers]
+	"skia-pathops" [label="skia-pathops"]
+	coloredlogs [label=coloredlogs]
+	wcwidth [label=wcwidth]
+	IPython [label=IPython]
+	humanfriendly [label=humanfriendly]
+	moderngl [label=moderngl]
+	lxml [label=lxml]
+	distlib [label=distlib]
+	"uri-template" [label="uri-template"]
+	pygments [label=pygments]
+	pyinstaller [label=pyinstaller]
+	ipython [label=ipython color=red style=filled]
+	music21 [label=music21]
+	traitlets [label=traitlets]
+	safetensors [label=safetensors]
+	networkx [label=networkx]
+	isoduration [label=isoduration]
+	razdel [label=razdel]
+	shapes [label=shapes]
+	pefile [label=pefile]
+	mpmath [label=mpmath]
+	pip_audit [label=pip_audit]
+	typing_extensions [label=typing_extensions]
+	seaborn [label=seaborn]
+	arpeggio [label=arpeggio]
+	"PyQt5-sip" [label="PyQt5-sip"]
+	textX [label=textX]
+	numpy [label=numpy color=red style=filled]
+	watchdog [label=watchdog]
+	fqdn [label=fqdn]
+	PyQt5 [label=PyQt5]
+	setuptools [label=setuptools]
+	IPython -> backcall
+	click -> "click-default-group"
+	click -> cloup
+	"click-default-group" -> cloup
+	humanfriendly -> coloredlogs
+	numpy -> isosurfaces
+	ipython -> jupyter
+	ipykernel -> jupyter
+	notebook -> jupyter
+	pycairo -> ManimPango
+	numpy -> "mapbox-earcut"
+	moderngl -> "moderngl-window"
+	lxml -> music21
+	numpy -> music21
+	matplotlib -> music21
+	numpy -> networkx
+	graphviz -> objgraph
+	pip -> pip_audit
+	packaging -> pip_audit
+	pip -> "pip-review"
+	pip -> pipdeptree
+	cairo -> pycairo
+	ffmpeg -> pydub
+	SDL -> pygame
+	altgraph -> pyinstaller
+	pefile -> pyinstaller
+	"PyQt5-sip" -> PyQt5
+	"PyQt5-Qt5" -> PyQt5
+	"C++ backend" -> "python-crfsuite"
+	regex -> razdel
+	numpy -> scipy
+	matplotlib -> seaborn
+	pandas -> seaborn
+	numpy -> shape
+	numpy -> shapes
+	pycairo -> svgelements
+	mpmath -> sympy
+	arpeggio -> textX
+	regex -> tokenizers
+	setuptools -> wheel
+	pygments -> ipython
+	backcall -> ipython
+	"prompt-toolkit" -> ipython
+	tornado -> "jupyter-server"
+	anyio -> "jupyter-server"
+	wcwidth -> "prompt-toolkit"
+}

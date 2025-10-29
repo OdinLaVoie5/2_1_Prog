@@ -1,0 +1,44 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+*.log
+
+# Кэш pytest
+.pytest_cache/
+
+# Логи ruaccent и временные дампы
+*.tmp
+*.bak
+
+# Виртуальные окружения
+.venv/
+venv/
+ENV/
+env/
+
+# Кэш Jupyter
+.ipynb_checkpoints/
+
+# Компиляция C / Cython
+build/
+dist/
+
+# ---- IDE ----
+.vscode/
+.idea/
+*.swp
+
+# ---- Проект Odin ----
+# Игнорировать целиком папки с большими файлами
+PYTHON__/DICTS/
+PYTHON__/MODELS/
+PYTHON__/MEDIA/
+PYTHON__/IMAGES/
+
+# Но не игнорировать конкретные файлы
+# !PYTHON__/DICTS/new_dict.json

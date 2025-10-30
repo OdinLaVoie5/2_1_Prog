@@ -272,7 +272,8 @@ def analyze_poem(text: str, scheme: tuple[str]=SCHEME) -> tuple:
 
 
     # ПРОВЕРКА РИФМЫ      
-    log_norhyme, log_rhyme = check_rhymes(clean_poem, RHYMES, SCHEME)
+    info_rhymes = check_rhymes(clean_poem, RHYMES, SCHEME)
+    log_norhyme, log_rhyme = info_rhymes[0], info_rhymes[1]
     #print(log_norhyme)
     #print(log_rhyme) 
 
@@ -306,7 +307,7 @@ if __name__ == "__main__":
 	в ДОМ вхо`дят будущего люди
 	у каж-дого  ружьё и шт+ык
 	и в на`шиИиИИИ мел*кие проблемы  
-типи 
+иж каг 
 
     """
 

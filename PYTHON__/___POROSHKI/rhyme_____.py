@@ -1,5 +1,9 @@
 # rhyme.py  для  analyze_poem        ПРОВЕРКА РИФМ
-# улучшенный вариант, но пока не интегрирован в analyze_poem 
+# EXPE     улучшенный вариант      
+# см readme_rhyme.txt
+# нужно найти пороговые значения коэффициентов.
+# Неопределённость между “почти рифмой” и “рифмой” требует акустических экспериментов.
+ 
 
 import re
 from itertools import product
@@ -20,7 +24,7 @@ CONSONANTS = "бвгджзйклмнпрстфхцчшщьъБВГДЖЗЙКЛМ
 # MODE_WEIGHTS: более высокий режим даёт больший вклад
 MODE_WEIGHTS = {0: 1.0, 1: 1.5, 2: 2.0}
 STRESS_WEIGHT = 4.0  # умножитель для ударного слога (можно настроить)
-NORM_KOEFF = 5.0  # нормировочный коэффициент для суммы глубин (макс возможная сумма)
+NORM_KOEFF = 60.0  #5.0 нормировочный коэффициент для суммы глубин (макс возможная сумма)
 
 ####################################################################
 
@@ -411,21 +415,20 @@ def two_rhymes_fn(a_tail, b_tail, deep, mode, **kwargs) -> bool:
 
 
 #              ГЛАВНАЯ ФУНКЦИЯ  проверка рифм
-# NOTE: `check_rhymes` была упрощена/перенесена в analyze_rhyme_levels.
-# Явная функция была удалена, чтобы избежать неиспользуемого кода.
-
-
-
 #-------------------  мультирежим  -------------------------
-
-#      ОБЁРТКА для check_rhymes по всем комбинациям DEEP x MODE
-def analyze_rhyme_levels(lines, rhymes=None, scheme=None):
+#    перебор по всем (?) комбинациям DEEP x MODE
+#  ???  уменьшить перебор - если нет какого-либо слога - не перебирать по нему (взять миним ил максим)
+#  при нахождении положительных результатов отдельно по каждому mode -  остановить перебор
+def check_rhymes(lines, rhymes=None, scheme=None):  # переименовал analyze_rhyme_levels
     """
     Анализ рифм на всех уровнях.
     Перебирает комбинации MODE x DEEP 
     """
+    if isinstance(lines, str):
+        lines = lines.splitlines()  # если текст, то делаем список строк
+
     # сначала проверяем на * (пробел) в начале первой непустой строки
-    lines_list = [line.lstrip() for line in lines.splitlines() if line and line.strip()]
+    lines_list = [line.lstrip() for line in lines if line and line.strip()]
     if not lines_list:
         return [], []
 
@@ -480,7 +483,7 @@ def analyze_rhyme_levels(lines, rhymes=None, scheme=None):
 
             # агрегируем скор по группам для этого вектора (среднее group_score)
             group_scores = [g.get("group_score") for g in result_for_deep.values() if g.get("group_score") is not None]
-            if group_scores:
+            if group_scores:        # нужен ли?
                 result_for_deep["_score"] = sum(group_scores) / len(group_scores)
             else:
                 result_for_deep["_score"] = 0.0
@@ -499,7 +502,12 @@ def analyze_rhyme_levels(lines, rhymes=None, scheme=None):
     print("res_no:", len(res_no), "items")
     print("==================")
 
-    return res_yes, res_no
+    res_all_no = []
+    if not res_yes:   # если нет положительных результатов - логируем fail  
+        res_all_no = ["fail"]
+ 
+
+    return res_all_no, res_yes          #, res_no 
 
 
 
@@ -521,17 +529,17 @@ def analyze_rhyme_levels(lines, rhymes=None, scheme=None):
 
 if __name__ == "__main__":
     poem = """
-я щи ищу а тут я  песня морквой
-лишь пустота голодных один 
-ну хоть бы раз сварила весня морской
-один щ
+        в ДОМ вхо'дят будущего люди
+        у каж-дого  ружьё и штык
+        и в на'ши мелкие проблемы
+иж дыг
     """
 
     """ (poem, "abab", ("+--", "+-", "+--", "+-"))
     """
 
-    y, n = analyze_rhyme_levels(poem, "_b_b", ("+-", "+", "+-", "+"))
+    n, y = check_rhymes(poem, "_b_b", ("+-", "+", "+-", "+"))
+    print(n)
     print(y)
-    # print(n)
 
 

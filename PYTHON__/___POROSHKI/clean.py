@@ -1,11 +1,9 @@
 # clean  для  analyze_poem        УТИЛИТЫ ОЧИСТКИ ... 
 import re
+from config import VOWELS, ALLOWED_CHARS
 
 # в конце  clean_cyr_word   normalize_text  ... ...
-
-
-# --- Разрешённые внутренние символы ---
-ALLOWED_CHARS = "+*^"    
+  
 
 # --- Заглушки спец-функций ---
 def num2words_stub(num_str):
@@ -143,8 +141,7 @@ def clean_cyr_word(word: str, allowed_chars=ALLOWED_CHARS, add: str | None = Non
 
 def collapse_long_vowels(text: str) -> str:
     """Схлопывает 4 и более одинаковых кириллических гласных подряд в одну."""
-    vowels = "аеёиоуыэюяАЕЁИОУЫЭЮЯ"
-    pattern = re.compile(fr"([{vowels}])\1{{2,}}", flags=re.IGNORECASE)  # 1 гласная + 3+ тех же подряд Аааа  ?? поставил {2,} ?   но - ООО  длинношеее
+    pattern = re.compile(fr"([{VOWELS}])\1{{2,}}", flags=re.IGNORECASE)  # 1 гласная + 3+ тех же подряд Аааа  ?? поставил {2,} ?   но - ООО  длинношеее
     return pattern.sub(r"\1", text)
 
 
